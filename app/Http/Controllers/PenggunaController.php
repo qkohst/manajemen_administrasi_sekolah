@@ -45,9 +45,18 @@ class PenggunaController extends Controller
     }
     public function update (Request $request, $id)
     {
-        $pengguna = \App\User::find($id);
-        $pengguna->update($request->all());
-        $pengguna->save();
+        $this->validate($request, [
+            'name' => 'min:5',
+        ]);
+
+        $pengguna = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+        ];
+
+        User::whereId($id)->update($pengguna);
         return redirect('pengguna/index') ->with('sukses','Data Pengguna Berhasil Diedit');
     }
 

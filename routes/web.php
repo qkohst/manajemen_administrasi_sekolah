@@ -99,6 +99,8 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {
 
+    Route::resource('/instansi','InstansiController');
+
     //Route Untuk Pengguna
     Route::get('/pengguna','PenggunaController@index');
     Route::get('/pengguna/index','PenggunaController@index');

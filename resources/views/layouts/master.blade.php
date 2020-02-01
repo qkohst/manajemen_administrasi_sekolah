@@ -42,11 +42,6 @@
           <i class="fas fa-user-tie mr-2"></i> &nbsp;<span>{{auth()->user()->name}}</span> &nbsp;<i class="icon-submenu lnr lnr-chevron-down"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">Pengaturan</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-user-tie mr-2"></i> Profile
-          </a>
           <div class="dropdown-divider"></div>
           <a href="/logout" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2"></i> Logout
@@ -171,7 +166,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../forms/general.html" class="nav-link">
+                <a href="{{ route('instansi.index') }}" class="nav-link">
                   <i class="fas fa-warehouse nav-icon"></i>
                   <p>Manajemen Instansi</p>
                 </a>

@@ -45,7 +45,7 @@
                                   <div class="inner">
                                         <a href="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}" data-toggle="lightbox" data-title="Perbesar Gambar">
                                             <center>
-                                                <img src="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}" width="220" height="150" alt="File .doc, .docx, atau .pdf tidak dapat ditampilkan, Silahkan klik Lihat Detail File">
+                                                <img src="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}" width="180" alt="File .doc, .docx, atau .pdf tidak dapat ditampilkan, Silahkan klik Lihat Detail File">
                                             </center>
                                         </a>
                                   </div>

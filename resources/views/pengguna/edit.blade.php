@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-6">
                         <label for="password">Password</label>
-                            <input name="password" type="password" class="form-control bg-light" id="password" placeholder="Password" value="{{$pengguna->password}}" required>
+                            <input name="password" type="password" class="form-control bg-light" id="password" placeholder="Password" required>
                             <label for="role">Level</label>
                             <select name="role" id="role" class="form-control bg-light" required>
                                 <option value="admin" @if ($pengguna->role == 'admin') selected @endif>Administrator</option>
