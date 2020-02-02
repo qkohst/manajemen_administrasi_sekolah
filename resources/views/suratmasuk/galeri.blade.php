@@ -31,8 +31,9 @@
                 <div class="col-2">
                     <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="#" role="button"><i class="far fa-eye"></i> Tampilkan</a>
                 </nav>
-                </div>
-
+                </div>                
+            </div>
+            <div class="row">
                 <div class="card-body">
                     <div>
                       <div class="filter-container p-0 row">
@@ -45,7 +46,7 @@
                                   <div class="inner">
                                         <a href="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}" data-toggle="lightbox" data-title="Perbesar Gambar">
                                             <center>
-                                                <img src="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}" width="180" alt="File .doc, .docx, atau .pdf tidak dapat ditampilkan, Silahkan klik Lihat Detail File">
+                                                <img src="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}" width="220" height="150" alt="File .doc, .docx, atau .pdf tidak dapat ditampilkan, Silahkan klik Lihat Detail File">
                                             </center>
                                         </a>
                                   </div>
@@ -59,7 +60,7 @@
                     <b>Catatan : </b>File .doc, .docx, atau .pdf tidak dapat ditampilkan disini silahkan klik <b>Lihat Detail File</b> !!!
                     </small>
                 </div>
-            </div>
+                </div>
       </div>
     </div>
  @endsection

@@ -32,8 +32,9 @@
                     <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="#" role="button"><i class="far fa-eye"></i> Tampilkan</a>
                 </nav>
                 </div>
-
-                <div class="card-body">
+            </div>
+            <div class="row">
+            <div class="card-body">
                     <div>
                       <div class="filter-container p-0 row">
                         <?php $no = 0;?>
