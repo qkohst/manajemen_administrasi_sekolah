@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\Auth;
+use Excel;
 
 class SuratmasukController extends Controller
 {
@@ -61,6 +62,15 @@ class SuratmasukController extends Controller
 
         $downloads=DB::table('suratmasuk')->get();
         return view('suratmasuk.tampil',compact('downloads'));
+    }
+
+    public function agendamasukdownload_excel(){
+        $suratmasuk = \App\Suratmasuk::select('id', 'isi', 'asal_surat', 'kode', 'no_surat', 'tgl_surat', 'tgl_terima', 'keterangan')->get();
+        return Excel::create('Agenda_Surat_Masuk', function($excel) use ($suratmasuk){
+            $excel->sheet('Agenda_Surat_Masuk',function($sheet) use ($suratmasuk){
+                $sheet->fromArray($suratmasuk);
+            });
+        })->download('xls');
     }
 
     //function untuk masuk ke view edit

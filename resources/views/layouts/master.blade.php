@@ -42,6 +42,11 @@
           <i class="fas fa-user-tie mr-2"></i> &nbsp;<span>{{auth()->user()->name}}</span> &nbsp;<i class="icon-submenu lnr lnr-chevron-down"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">Pengaturan</span>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" data-toggle="modal" data-target="#lihatprofile">
+            <i class="fas fa-user-tie mr-2"></i> Lihat Profile
+          </a>
           <div class="dropdown-divider"></div>
           <a href="/logout" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2"></i> Logout
@@ -257,5 +262,46 @@
             });
         });
 </script>
+<!-- Modal Profile -->
+<div class="modal fade" id="lihatprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="nav-icon fas fa-user-tie my-1 btn-sm-1"></i> Profile Pengguna</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-3">
+                          <label for="nama">Nama </label>
+                        </div>
+                        <div class="col-9">
+                          <label for="nama"> : {{auth()->user()->name}}</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-3">
+                          <label for="nama">Email </label>
+                        </div>
+                        <div class="col-9">
+                          <label for="nama"> : {{auth()->user()->email}}</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-3">
+                          <label for="nama">Level User </label>
+                        </div>
+                        <div class="col-9">
+                          <label for="nama"> : {{auth()->user()->role}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

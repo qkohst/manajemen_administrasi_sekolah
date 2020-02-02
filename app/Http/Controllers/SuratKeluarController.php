@@ -5,6 +5,7 @@ use App\SuratKeluar;
 use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\Auth;
+use Excel;
 
 class SuratKeluarController extends Controller
 {
@@ -61,6 +62,14 @@ class SuratKeluarController extends Controller
         return view('suratkeluar.tampil',compact('downloads'));
     }
 
+    public function agendakeluardownload_excel(){
+        $suratkeluar = \App\Suratkeluar::select('id', 'isi', 'tujuan_surat', 'kode', 'no_surat', 'tgl_surat', 'tgl_catat', 'keterangan')->get();
+        return Excel::create('Agenda_Surat_Keluar', function($excel) use ($suratkeluar){
+            $excel->sheet('Agenda_Surat_Keluar',function($sheet) use ($suratkeluar){
+                $sheet->fromArray($suratkeluar);
+            });
+        })->download('xls');
+    }
     //function untuk ke view edit
     public function edit ($id_suratkeluar)
     {

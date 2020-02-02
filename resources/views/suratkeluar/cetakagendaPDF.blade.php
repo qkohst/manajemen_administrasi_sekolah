@@ -16,7 +16,7 @@
 
 	</center>
 
-	<table class='table table-bordered'>
+	<table class='table responsive-sm'>
 		<thead>
 			<tr>
 				<th>No</th>

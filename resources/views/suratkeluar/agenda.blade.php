@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <section class="content card" style="padding: 10px 10px 10px 10px ">
+    <section class="content card" style="padding: 10px 10px 20px 20px ">
         <div class="box">
                 @if(session('sukses'))
                 <div class="alert alert-success" role="alert">
@@ -35,6 +35,7 @@
                 <span style="float: right">
                     <nav class="navbar">
                         <div class="col">
+                            <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{route('suratkeluar.downloadexcel')}}" role="button"><i class="fas fa-file-download"></i> Download Excel</a>
                             <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="/suratkeluar/agendakeluarcetak_pdf" role="button"><i class="fas fa-file-download"></i> Download Pdf</a>
                         </div>
                     </nav>

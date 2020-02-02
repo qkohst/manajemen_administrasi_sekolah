@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     //Route untuk Agenda Surat Masuk
     Route::get('/suratmasuk/agenda','SuratmasukController@agenda');
     Route::get('/suratmasuk/agendamasukcetak_pdf', 'SuratmasukController@agendamasukcetak_pdf');
+    Route::get('/suratmasuk.agendamasukdownload_excel', 'SuratmasukController@agendamasukdownload_excel')->name('suratmasuk.downloadexcel');
 
     //Route untuk Geleri Surat Masuk
     Route::get('/suratmasuk/galeri','SuratmasukController@galeri');
@@ -72,6 +73,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     //Route untuk Agenda Surat Keluar
     Route::get('/suratkeluar/agenda','SuratKeluarController@agenda');
     Route::get('/suratkeluar/agendakeluarcetak_pdf', 'SuratKeluarController@agendakeluarcetak_pdf');
+    Route::get('/suratkeluar.agendakeluardownload_excel', 'SuratKeluarController@agendakeluardownload_excel')->name('suratkeluar.downloadexcel');
 
     //Route untuk Geleri Surat Keluar
     Route::get('/suratkeluar/galeri','SuratKeluarController@galeri');
@@ -117,3 +119,4 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function () {
     Route::get('/pengguna/{id}/delete','PenggunaController@delete');
 
 });
+

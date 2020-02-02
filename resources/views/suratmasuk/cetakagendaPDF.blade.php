@@ -7,7 +7,7 @@
 	<style type="text/css">
 		table tr td,
 		table tr th{
-			font-size: 9pt;
+			font-size: 6pt;
 		}
 	</style>
 	<center>
@@ -16,7 +16,7 @@
 
 	</center>
 
-	<table class='table table-bordered'>
+	<table class="table responsive-sm">
 		<thead>
 			<tr>
 				<th>No</th>
