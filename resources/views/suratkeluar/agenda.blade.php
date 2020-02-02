@@ -35,8 +35,8 @@
                 <span style="float: right">
                     <nav class="navbar">
                         <div class="col">
-                            <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{route('suratkeluar.downloadexcel')}}" role="button"><i class="fas fa-file-download"></i> Download Excel</a>
-                            <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="/suratkeluar/agendakeluarcetak_pdf" role="button"><i class="fas fa-file-download"></i> Download Pdf</a>
+                            <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{route('suratkeluar.downloadexcel')}}" role="button"><i class="fas fa-file-excel"></i> Download Excel</a>
+                            <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="/suratkeluar/agendakeluarcetak_pdf" role="button"><i class="fas fa-file-pdf"></i> Download Pdf</a>
                         </div>
                     </nav>
                 </span>

@@ -7,16 +7,26 @@
 	<style type="text/css">
 		table tr td,
 		table tr th{
-			font-size: 9pt;
+			font-size: 8pt;
 		}
+		footer {
+                position: fixed; 
+                bottom: -20px; 
+                left: 0px; 
+                right: 0px;
+                height: 50px; 
+
+                /** Extra personal styles **/
+                text-align: center;
+                line-height: 35px;
+            }
 	</style>
 	<center>
-        <h5>AGENDA SURAT KELUAR</h4>
-        <h3>ORGANISASI OYA OYO</h3>
-
+        <h4>AGENDA SURAT KELUAR</h4>
+		<br>
 	</center>
 
-	<table class='table responsive-sm'>
+	<table class="table responsive-sm">
 		<thead>
 			<tr>
 				<th>No</th>
@@ -45,6 +55,8 @@
 			@endforeach
 		</tbody>
 	</table>
-
+	<footer>
+		Aplikasi Manajemen Surat | Copyright &copy; <?php echo date("d-m-Y");?> 
+    </footer>
 </body>
 </html>

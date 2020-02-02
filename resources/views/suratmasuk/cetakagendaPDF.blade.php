@@ -7,13 +7,23 @@
 	<style type="text/css">
 		table tr td,
 		table tr th{
-			font-size: 6pt;
+			font-size: 8pt;
 		}
+		footer {
+                position: fixed; 
+                bottom: -20px; 
+                left: 0px; 
+                right: 0px;
+                height: 50px; 
+
+                /** Extra personal styles **/
+                text-align: center;
+                line-height: 35px;
+            }
 	</style>
 	<center>
-        <h5>AGENDA SURAT MASUK</h4>
-        <h3>ORGANISASI OYA OYO</h3>
-
+        <h4>AGENDA SURAT MASUK</h4>
+		<br>
 	</center>
 
 	<table class="table responsive-sm">
@@ -25,7 +35,7 @@
 				<th>Kode</th>
 				<th>No. Surat</th>
 				<th>Tgl. Surat</th>
-				<th>Tgl. Diterima</th>
+				<th>Tgl. Terima</th>
 				<th>Keterangan</th>
 			</tr>
 		</thead>
@@ -45,6 +55,9 @@
 			@endforeach
 		</tbody>
 	</table>
-
+	<footer>
+		Aplikasi Manajemen Surat | Copyright &copy; <?php echo date("d-m-Y");?> 
+    </footer>
 </body>
+
 </html>

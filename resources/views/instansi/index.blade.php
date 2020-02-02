@@ -31,8 +31,8 @@
                         </div>
                         </div>
                         <hr>
-                        <div class="col-11 text-right">
-                        <a class="btn btn-primary btn-sm" href="{{ route('instansi.edit', $item_ins->id) }}" role="button"><i class="fas fa-edit"></i> Edit</a>
+                        <div class="col-12 text-center">
+                        <a class="btn btn-primary btn-sm" href="{{ route('instansi.edit', $item_ins->id) }}" role="button"><i class="fas fa-edit"></i> Edit Data Instansi</a>
                         </div>
                     </div>
                 </div>

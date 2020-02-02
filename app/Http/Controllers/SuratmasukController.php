@@ -116,14 +116,14 @@ class SuratmasukController extends Controller
     }
 
     //Function Untuk Download Agenda Surat Masuk
-    public function agendamasukcetak_pdf()
+    public function agendamasukcetak_pdf(Request $request)
     {
-        $suratmasuk = Suratmasuk::all();
+        $suratmasuk = \App\Suratmasuk::all();
         $pdf = PDF::loadview('suratmasuk.cetakagendaPDF',['suratmasuk'=>$suratmasuk]);
         return $pdf->download('AgendaSuratMasuk.pdf');
     }
 
-    //Function Untuk Agenda Surat Masuk
+    //Function Untuk Galeri Surat Masuk
     public function galeri(Request $request)
     {
         $data_suratmasuk = \App\Suratmasuk::all();
