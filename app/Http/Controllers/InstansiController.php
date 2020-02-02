@@ -54,7 +54,7 @@ class InstansiController extends Controller
         ]);
 
         $filelogo->move('public/uploads/logo/', $newlogo);
-        return redirect()->back()->with('sukses','Data Instansi Berhasil Disimpan');
+        return redirect()->route('instansi.index')->with('sukses','Data Instansi Berhasil Disimpan');
 
     }
 
