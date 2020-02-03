@@ -16,7 +16,7 @@ class AuthController extends Controller
     {
         $cre = $request->only('email','password');
         if (Auth::attempt($cre)) {
-            return redirect('/dasboard');
+            return redirect('/dashboard');
         }
         return redirect('/login');
     }

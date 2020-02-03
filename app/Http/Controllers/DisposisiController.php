@@ -56,7 +56,7 @@ class DisposisiController extends Controller
             'batas_waktu'   => $request->batas_waktu,
             'catatan'       => $request->catatan,
             'users_id'      => Auth::id(),
-            'smasuk_id'     => $suratmasuk->id,
+            'suratmasuk_id'     => $suratmasuk->id,
         ]);
 
         return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi berhasil di Simpan');
@@ -79,10 +79,11 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Suratmasuk $suratmasuk, $id)
     {
+        $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
-        return view('disposisi.edit', compact('disp'));
+        return view('disposisi.edit', compact('disp','smasuk'));
     }
 
     /**
@@ -92,7 +93,7 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Suratmasuk $suratmasuk)
+    public function update(Request $request, Suratmasuk $suratmasuk, $id)
     {
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
@@ -111,7 +112,7 @@ class DisposisiController extends Controller
             'batas_waktu'   => $request->batas_waktu,
             'catatan'       => $request->catatan,
             'users_id'      => Auth::id(),
-            'smasuk_id'     => Suratmasuk::id(),
+            'smasuk_id'     => $suratmasuk->id,
         ];
 
         $disp->update($disp_data);
@@ -125,11 +126,12 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Suratmasuk $suratmasuk, $id)
     {
+        $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
         $disp->delete();
 
-        return redirect()->back()->with('sukses','Disposisi Berhasil di Hapus');
+        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi Berhasil di Hapus');
     }
 }

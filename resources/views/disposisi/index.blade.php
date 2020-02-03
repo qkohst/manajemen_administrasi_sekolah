@@ -47,12 +47,12 @@
                                             <td>{{$disposisi->batas_waktu}}</td>
                                             <td>{{$disposisi->catatan}}</td>
                                             <td>{{$disposisi->users_id}}</td>
-                                            <td>{{$disposisi->smasuk_id}}</td>
+                                            <td>{{$disposisi->suratmasuk_id}}</td>
                                             <td>
-                                                <form action="{{ route('disposisi.destroy', [$disposisi->smasuk_id, $disposisi->id]) }}" method="post">
+                                                <form action="{{ route('disposisi.destroy', [$disposisi->suratmasuk_id, $disposisi->id]) }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                <a href="{{ route('disposisi.edit', [$disposisi->smasuk_id, $disposisi->id]) }}" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                                <a href="{{ route('disposisi.edit', [$smasuk, $disposisi->id]) }}" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
                                                 <a href="#" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-print"></i> Cetak</a>
                                                 <button type="submit" class="btn btn-danger btn-sm my-1 mr-sm-1 btn-block" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i> Hapus</button>
                                                 </form>

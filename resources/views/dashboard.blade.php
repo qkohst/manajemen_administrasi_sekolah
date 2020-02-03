@@ -50,7 +50,7 @@
                 <!-- small box -->
                 <div class="small-box bg-light">
                     <div class="inner">
-                        <h3>{{DB::table('disposisi')->count()}}</h3>
+                        <h3>{{DB::table('disposisis')->count()}}</h3>
                         <p>Disposisi</p>
                     </div>
                     <div class="icon">

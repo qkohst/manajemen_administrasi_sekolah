@@ -17,11 +17,11 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('disposisi.update', [$smasuk, $disp->id]) }}" method="POST">
+            <form action="{{ route('disposisi.update', [$smasuk, $disp->id]) }}" method="get">
             <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Tambah Disposisi</h3>
             <hr/>
             {{csrf_field()}}
-            @method('patch')
+            @method('put')
                 <div class="row">
                         <div class="col-6">
                             <label for="tujuan">Tujuan</label>

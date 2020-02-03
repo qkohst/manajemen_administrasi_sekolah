@@ -100,10 +100,10 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('disposisi/{suratmasuk}', 'DisposisiController@index')->name('disposisi.index');
     Route::post('disposisi/{suratmasuk}', 'DisposisiController@store')->name('disposisi.store');
     Route::get('disposisi/{suratmasuk}/create', 'DisposisiController@create')->name('disposisi.create');
-    Route::post('disposisi/{suratmasuk}/{id}', 'DisposisiController@update')->name('disposisi.update');
-    Route::get('disposisi/{suratmasuk}/{id}', 'DisposisiController@show')->name('disposisi.show');
-    Route::delete('disposisi/{suratmasuk}/{id}', 'DisposisiController@destroy')->name('disposisi.destroy');
     Route::get('disposisi/{suratmasuk}/{id}/edit', 'DisposisiController@edit')->name('disposisi.edit');
+    Route::get('disposisi/{suratmasuk}/{id}', 'DisposisiController@update')->name('disposisi.update');
+    // Route::get('disposisi/{suratmasuk}/{id}', 'DisposisiController@show')->name('disposisi.show');
+    Route::delete('disposisi/{suratmasuk}/{id}', 'DisposisiController@destroy')->name('disposisi.destroy');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

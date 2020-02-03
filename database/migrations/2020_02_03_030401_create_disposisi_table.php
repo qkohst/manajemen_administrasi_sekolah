@@ -21,7 +21,7 @@ class CreateDisposisiTable extends Migration
             $table->date('batas_waktu');
             $table->string('catatan');
             $table->integer('users_id')->unsigned();
-            $table->integer('smasuk_id')->unsigned();
+            $table->integer('suratmasuk_id')->unsigned();
             $table->timestamps();
         });
     }
