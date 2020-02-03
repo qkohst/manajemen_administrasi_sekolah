@@ -102,14 +102,14 @@ class InstansiController extends Controller
         if ($request->has('file')) {
             $filelogo = $request->file;
             $newlogo = time().$filelogo->getClientOriginalName();
-            $filelogo->move('/uploads/logo/', $newlogo);
+            $filelogo->move('public/uploads/logo/', $newlogo);
 
             $post_data = [
                 'nama' => $request->nama,
                 'alamat' => $request->alamat,
                 'pimpinan' => $request->pimpinan,
                 'email' => $request->email,
-                'file' => '/uploads/logo/'.$newlogo,
+                'file' => 'public/uploads/logo/'.$newlogo,
             ];
         } else {
             $post_data = [

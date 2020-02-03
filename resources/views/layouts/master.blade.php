@@ -39,13 +39,13 @@
       <li class="nav-item dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">
           {{-- <img src="{{asset('admin/assets/img/user.png')}}" class="img-circle" alt="Avatar"> --}}
-          <i class="fas fa-user-tie mr-2"></i> &nbsp;<span>{{auth()->user()->name}}</span> &nbsp;<i class="icon-submenu lnr lnr-chevron-down"></i>
+          <i class="fas fa-user mr-2"></i> &nbsp;<span>{{auth()->user()->name}}</span> &nbsp;<i class="icon-submenu lnr lnr-chevron-down"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">Pengaturan</span>
+          <span class="dropdown-item dropdown-header">Profil</span>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" data-toggle="modal" data-target="#lihatprofile">
-            <i class="fas fa-user-tie mr-2"></i> Lihat Profile
+            <i class="fas fa-user mr-2"></i> Lihat Profil
           </a>
           <div class="dropdown-divider"></div>
           <a href="/logout" class="dropdown-item">
@@ -76,7 +76,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="/dasboard" class="nav-link">
+            <a href="/dashboard" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Beranda
@@ -267,7 +267,7 @@
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="nav-icon fas fa-user-tie my-1 btn-sm-1"></i> Profile Pengguna</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Profil Pengguna</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

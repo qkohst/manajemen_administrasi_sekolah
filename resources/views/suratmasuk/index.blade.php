@@ -9,7 +9,7 @@
             @endif
             <div class="row">
                 <div class="col">
-                    <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Surat Masuk</h3>
+                    <h3><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Surat Masuk</h3>
                     <hr />
                 </div>
             </div>
@@ -19,9 +19,9 @@
                     <br><br>
                 </div>
             </div>
-            <div class="row table-responsive">
+            <div class="row">
                     <div class="col">
-                            <table class="table table-hover table-head-fixed" id='tabelSuratmasuk'>
+                            <table class="table table-hover table-head-fixed table-responsive" id='tabelSuratmasuk'>
                                 <thead>
                                     <tr class="bg-light">
                                     <th>No.</th>

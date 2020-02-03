@@ -19,10 +19,10 @@ Route::get('/logout','AuthController@logout');
 Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
 
     Route::get('/', function () {
-        return view('/dasboard');
+        return view('/dashboard');
     });
 
-    Route::get('/dasboard','DashboardController@index');
+    Route::get('/dashboard','DashboardController@index');
 
     //Route Untuk Surat Masuk
     Route::get('/suratmasuk','SuratmasukController@index');
@@ -96,6 +96,8 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     //Route untuk Modal Import Data
     // Route::post('/klasifikasi/import','KlasifikasiController@importexcel')->name('klasifikasi.import');
     Route::post('/klasifikasi.import', 'KlasifikasiController@import');
+
+    Route::resource('/disposisi', 'DisposisiController');
 
 });
 

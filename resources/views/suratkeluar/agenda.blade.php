@@ -9,7 +9,7 @@
                 @endif
             <div class="row">
                 <div class="col">
-                <h3><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Agenda Surat Keluar</h3>
+                <h3><i class="nav-icon fas fa-envelope-open my-1 btn-sm-1"></i> Agenda Surat Keluar</h3>
                 </div>
             </div>
             <div class="row">
