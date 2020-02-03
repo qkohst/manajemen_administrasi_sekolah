@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Disposisi;
+use App\Suratmasuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,10 +14,11 @@ class DisposisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Suratmasuk $suratmasuk)
     {
         $disp = Disposisi::all();
-        return view('disposisi.index', compact('disp'));
+        $smasuk = $suratmasuk->findorfail($suratmasuk->id);
+        return view('disposisi.index', compact('disp','smasuk'));
     }
 
     /**
@@ -24,9 +26,10 @@ class DisposisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Suratmasuk $suratmasuk)
     {
-        return view('disposisi.create');
+        $smasuk = $suratmasuk->findorfail($suratmasuk->id);
+        return view('disposisi.create', compact('smasuk'));
     }
 
     /**
@@ -35,8 +38,9 @@ class DisposisiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Suratmasuk $suratmasuk)
     {
+        $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $this->validate($request, [
             'tujuan'        => 'required',
             'isi'           => 'required',
@@ -52,10 +56,10 @@ class DisposisiController extends Controller
             'batas_waktu'   => $request->batas_waktu,
             'catatan'       => $request->catatan,
             'users_id'      => Auth::id(),
-
+            'smasuk_id'     => $suratmasuk->id,
         ]);
 
-        return redirect()->route('disposisi.index')->with('sukses','Disposisi berhasil di Simpan');
+        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi berhasil di Simpan');
     }
 
     /**
@@ -88,10 +92,10 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Suratmasuk $suratmasuk)
     {
+        $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
-
         $this->validate($request, [
             'tujuan'        => 'required',
             'isi'           => 'required',
@@ -107,11 +111,12 @@ class DisposisiController extends Controller
             'batas_waktu'   => $request->batas_waktu,
             'catatan'       => $request->catatan,
             'users_id'      => Auth::id(),
+            'smasuk_id'     => Suratmasuk::id(),
         ];
 
         $disp->update($disp_data);
 
-        return redirect()->route('disposisi.index')->with('sukses','Disposisi berhasil di Simpan');
+        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi berhasil di Simpan');
     }
 
     /**

@@ -17,7 +17,7 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('disposisi.store') }}" method="POST">
+            <form action="{{ route('disposisi.store', $smasuk) }}" method="POST">
             <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Tambah Disposisi</h3>
             <hr/>
             {{csrf_field()}}
@@ -37,7 +37,7 @@
                 </div>
                 <hr>
                 <button type="submit" class="btn btn-success btn-sm "><i class="fas fa-save"></i> SIMPAN</button>
-                <a class="btn btn-danger btn-sm" href="{{ route('disposisi.index') }}" role="button"><i class="fas fa-undo"></i> BATAL</a>
+                <a class="btn btn-danger btn-sm" href="{{ route('disposisi.index', $smasuk) }}" role="button"><i class="fas fa-undo"></i> BATAL</a>
             </form>
             </div>
         </div>

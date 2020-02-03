@@ -104,7 +104,7 @@ class SuratmasukController extends Controller
     {
         $suratmasuk=\App\Suratmasuk::find($id_suratmasuk);
         $suratmasuk->delete();
-        return redirect('suratmasuk/index') ->with('sukses','Data Surat Masuk Berhasil Dihapus');
+        return redirect('suratmasuk/index')->with('sukses','Data Surat Masuk Berhasil Dihapus');
     }
 
 

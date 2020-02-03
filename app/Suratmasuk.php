@@ -12,7 +12,7 @@ class Suratmasuk extends Model
     //function relasi ke disposisi
     public function disposisi()
     {
-        return $this->hasMany(Disposisi::class);
+        return $this->hasMany('App\Disposisi');
     }
 
     //function relasi ke user
