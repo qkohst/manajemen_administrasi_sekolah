@@ -7,6 +7,7 @@ use App\Suratmasuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class DisposisiController extends Controller
 {
@@ -134,5 +135,13 @@ class DisposisiController extends Controller
         $disp->delete();
 
         return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi Berhasil di Hapus');
+    }
+
+    public function download(Suratmasuk $suratmasuk, $id)
+    {
+        $smasuk = $suratmasuk->findorfail($suratmasuk->id);
+        $disp = Disposisi::findorfail($id);
+        $pdf = PDF::loadview('disposisi.download',['smasuk'=>$smasuk],['disp'=>$disp]);
+        return $pdf->download('Disposisi.pdf');
     }
 }

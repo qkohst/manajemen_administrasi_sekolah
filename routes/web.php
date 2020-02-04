@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('disposisi/{suratmasuk}/{id}/edit', 'DisposisiController@edit')->name('disposisi.edit');
     Route::get('disposisi/{suratmasuk}/{id}', 'DisposisiController@update')->name('disposisi.update');
     Route::delete('disposisi/{suratmasuk}/{id}', 'DisposisiController@destroy')->name('disposisi.destroy');
+    Route::get('/disposisi/{suratmasuk}/{id}/download', 'DisposisiController@download')->name('disposisi.download');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

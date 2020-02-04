@@ -48,9 +48,10 @@
                                                 <form action="{{ route('disposisi.destroy', [$smasuk, $disposisi->id]) }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                <a href="{{ route('disposisi.edit', [$smasuk, $disposisi->id]) }}" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
-                                                <a href="#" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-print"></i> Cetak</a>
-                                                <button type="submit" class="btn btn-danger btn-sm my-1 mr-sm-1 btn-block" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i> Hapus</button>
+                                                <a href="{{ route('disposisi.edit', [$smasuk, $disposisi->id]) }}" class="btn btn-primary btn-sm my-1 mr-sm-1" role="button"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                                <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{ route('disposisi.download', [$smasuk, $disposisi->id]) }}" role="button"><i class="fas fa-file-pdf"></i> Download Pdf</a>
+                                                <!-- <a href="#" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-print"></i> Cetak</a> -->
+                                                <button type="submit" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i> Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
