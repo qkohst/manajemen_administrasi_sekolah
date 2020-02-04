@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Aplikasi Manajemen Surat</title>
     <style>
         body{
@@ -56,10 +57,6 @@
             width: 100%;
             padding: 14px 10px;
             font-size: 11pt;
-            /* color: white; */
-            /* transition: 0.25s; */
-            /* cursor: pointer; */
-            /* margin-bottom: 20px; */
         }
 
         .tombol_login{
@@ -95,8 +92,15 @@
 </head>
 <body>
     <div class="kotak_login">
+        @if(session('sukses'))
+            <div class="alert alert-danger" role="alert">
+                    {{session('sukses')}}
+            </div>
+        @endif
         <img src="/logo.svg" alt="Logo" class="logo">
-        <h1>Aplikasi Manajemen Surat</h1>
+        <br>
+        <h2 class="font-weight-bold text-center">Aplikasi</h2>
+        <h2 class="font-weight-bold text-center">Manajemen Surat</h2>
 
         <form action="postlogin" method="POST">
             @csrf

@@ -18,7 +18,7 @@ class AuthController extends Controller
         if (Auth::attempt($cre)) {
             return redirect('/dashboard');
         }
-        return redirect('/login');
+        return redirect()->back()->with('sukses','Email atau Password Salah!');
     }
 
     public function logout()
