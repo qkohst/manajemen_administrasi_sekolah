@@ -16,7 +16,7 @@
             <div>
                 <div class="col">
                     <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="create" role="button"><i class="fas fa-plus"></i> Tambah Data</a>
-                    <br><br>
+                    <br>
                 </div>
             </div>
             <div class="row table-responsive">

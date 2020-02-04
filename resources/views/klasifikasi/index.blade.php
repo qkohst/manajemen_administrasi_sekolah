@@ -28,12 +28,6 @@
                         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambahklasifikasi"><i class="fas fa-plus"></i>
                             Tambah Data
                         </button>
-                    {{-- <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="create" role="button"><i class="fas fa-plus"></i> Tambah Data</a> --}}
-                    <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="#" role="button"><i class="fas fa-file-excel"></i> Download Format Import</a>
-                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#importKlasifikasi"><i class="fas fa-upload"></i>
-                        Import XLS
-                    </button>
-                    {{-- <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="#" role="button"><i class="fas fa-upload"></i> Import Data</a> --}}
                 </div>
                 <br>
             </div>

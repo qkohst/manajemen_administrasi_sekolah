@@ -10,13 +10,13 @@
             <div class="row">
                 <div class="col">
                     <h3><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Surat Masuk</h3>
-                    <hr />
+                    <hr/>
                 </div>
             </div>
             <div>
                 <div class="col">
                     <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="create" role="button"><i class="fas fa-plus"></i> Tambah Data</a>
-                    <br><br>
+                    <br>
                 </div>
             </div>
             <div class="row table-responsive">

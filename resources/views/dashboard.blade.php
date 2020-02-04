@@ -16,7 +16,7 @@
     <div class="card-body">
         <!-- Small boxes (Stat box) -->
         <div class="filter-container p-0 row" >
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-light">
                     <div class="inner">
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-light">
                     <div class="inner">
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <!-- ./col -->
-            {{-- <div class="col-lg-4 col-6">
+            {{-- <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-light">
                     <div class="inner">
@@ -61,7 +61,7 @@
                 </div>
             </div> --}}
             <!-- ./col -->
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-light">
                     <div class="inner">
@@ -77,7 +77,7 @@
             </div>
             <!-- ./col -->
             @if (auth()->user()->role == 'admin')
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-light">
                     <div class="inner">

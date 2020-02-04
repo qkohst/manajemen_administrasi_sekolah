@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-9">
                         <h3 class="font-weight-bold">{{ $item_ins->nama }}</h3>
-                        <ul class="ml-4 mb-0 fa-ul text-primary">
+                        <ul class="ml-4 mb-0 fa-ul text-secondary">
                             <li class="my-3"><span class="fa-li"><i class="fas fa-lg fa-user-tie"></i></span> <h4>Pimpinan
                                 &nbsp;: {{ $item_ins->pimpinan }}</h4></li>
                             <li class="my-3"><span class="fa-li"><i class="fas fa-lg fa-map-marker-alt"></i></span>
