@@ -21,9 +21,4 @@ class Suratmasuk extends Model
         return $this->belongsTo('App\User');
     }
 
-     //function relasi ke user
-     public function instansi()
-     {
-         return $this->belongsTo('App\Instansi');
-     }
 }

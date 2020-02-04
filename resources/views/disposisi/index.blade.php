@@ -19,7 +19,7 @@
                     <br><br>
                 </div>
             </div>
-            <div class="row">
+            <div class="row table-responsive">
                     <div class="col">
                             <table class="table table-hover table-head-fixed" id='tabelKlasifikasi'>
                                 <thead>
@@ -30,8 +30,6 @@
                                     <th>Sifat</th>
                                     <th>Batas Waktu</th>
                                     <th>Catatan</th>
-                                    <th>User</th>
-                                    <th>ID Surat</th>
                                     <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -46,10 +44,8 @@
                                             <td>{{$disposisi->sifat}}</td>
                                             <td>{{$disposisi->batas_waktu}}</td>
                                             <td>{{$disposisi->catatan}}</td>
-                                            <td>{{$disposisi->users_id}}</td>
-                                            <td>{{$disposisi->suratmasuk_id}}</td>
                                             <td>
-                                                <form action="{{ route('disposisi.destroy', [$disposisi->suratmasuk_id, $disposisi->id]) }}" method="post">
+                                                <form action="{{ route('disposisi.destroy', [$smasuk, $disposisi->id]) }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                 <a href="{{ route('disposisi.edit', [$smasuk, $disposisi->id]) }}" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>

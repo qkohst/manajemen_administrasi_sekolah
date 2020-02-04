@@ -19,9 +19,9 @@
                     <br><br>
                 </div>
             </div>
-            <div class="row">
+            <div class="row table-responsive">
                     <div class="col">
-                            <table class="table table-hover table-head-fixed table-responsive" id='tabelSuratmasuk'>
+                            <table class="table table-hover table-head-fixed" id='tabelSuratmasuk'>
                                 <thead>
                                     <tr class="bg-light">
                                     <th>No.</th>

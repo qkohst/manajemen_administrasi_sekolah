@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
 
     Route::get('/dashboard','DashboardController@index');
 
-    //Route Untuk Surat Masuk
+    // Route Untuk Surat Masuk
     Route::get('/suratmasuk','SuratmasukController@index');
     Route::get('/suratmasuk/index','SuratmasukController@index');
 
@@ -36,11 +36,11 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     // Route untuk download file Surat Masuk
     Route::get('viewAlldownloadfile','SuratmasukController@downfunc');
 
-    //Route untuk edit Surat Masuk
+    // //Route untuk edit Surat Masuk
     Route::get('/suratmasuk/{id}/edit','SuratmasukController@edit');
     Route::post('/suratmasuk/{id}/update','SuratmasukController@update');
 
-    //Route untuk Hapus Surat Masuk
+    // //Route untuk Hapus Surat Masuk
     Route::get('/suratmasuk/{id}/delete','SuratmasukController@delete');
 
     //Route untuk Agenda Surat Masuk
@@ -102,28 +102,13 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('disposisi/{suratmasuk}/create', 'DisposisiController@create')->name('disposisi.create');
     Route::get('disposisi/{suratmasuk}/{id}/edit', 'DisposisiController@edit')->name('disposisi.edit');
     Route::get('disposisi/{suratmasuk}/{id}', 'DisposisiController@update')->name('disposisi.update');
-    // Route::get('disposisi/{suratmasuk}/{id}', 'DisposisiController@show')->name('disposisi.show');
     Route::delete('disposisi/{suratmasuk}/{id}', 'DisposisiController@destroy')->name('disposisi.destroy');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {
 
     Route::resource('/instansi','InstansiController');
-
-    //Route Untuk Pengguna
-    Route::get('/pengguna','PenggunaController@index');
-    Route::get('/pengguna/index','PenggunaController@index');
-
-    //Route Untuk Tambah Data Pengguna
-    Route::get('/pengguna/create','PenggunaController@create');
-    Route::post('/pengguna/tambah','PenggunaController@tambah');
-
-    //Route untuk Edit Data Pengguna
-    Route::get('/pengguna/{id}/edit','PenggunaController@edit');
-    Route::post('/pengguna/{id}/update','PenggunaController@update');
-
-    //Route untuk Hapus Data Pengguna
-    Route::get('/pengguna/{id}/delete','PenggunaController@delete');
+    Route::resource('/pengguna','PenggunaController');
 
 });
 

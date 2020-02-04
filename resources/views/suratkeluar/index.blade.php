@@ -19,9 +19,9 @@
                     <br><br>
                 </div>
             </div>
-            <div class="row">
+            <div class="row table-responsive">
                 <div class="col">
-                <table class="table table-hover table-head-fixed table-responsive" id="tabelSuratkeluar">
+                <table class="table table-hover table-head-fixed" id="tabelSuratkeluar">
                     <thead>
                         <tr class="bg-light">
                         <th>No.</th>

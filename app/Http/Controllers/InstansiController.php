@@ -50,10 +50,10 @@ class InstansiController extends Controller
             'alamat' => $request->alamat,
             'pimpinan' => $request->pimpinan,
             'email' => $request->email,
-            'file' => 'public/uploads/logo/'.$newlogo,
+            'file' => 'uploads/logo/'.$newlogo,
         ]);
 
-        $filelogo->move('public/uploads/logo/', $newlogo);
+        $filelogo->move('uploads/logo/', $newlogo);
         return redirect()->route('instansi.index')->with('sukses','Data Instansi Berhasil Disimpan');
 
     }
@@ -102,14 +102,14 @@ class InstansiController extends Controller
         if ($request->has('file')) {
             $filelogo = $request->file;
             $newlogo = time().$filelogo->getClientOriginalName();
-            $filelogo->move('public/uploads/logo/', $newlogo);
+            $filelogo->move('uploads/logo/', $newlogo);
 
             $post_data = [
                 'nama' => $request->nama,
                 'alamat' => $request->alamat,
                 'pimpinan' => $request->pimpinan,
                 'email' => $request->email,
-                'file' => 'public/uploads/logo/'.$newlogo,
+                'file' => 'uploads/logo/'.$newlogo,
             ];
         } else {
             $post_data = [

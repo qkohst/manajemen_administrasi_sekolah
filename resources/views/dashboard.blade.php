@@ -46,7 +46,7 @@
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-4 col-6">
+            {{-- <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-light">
                     <div class="inner">
@@ -59,7 +59,7 @@
                     <a href="/disposisi/index" class="small-box-footer bg-orange">Lihat Detail <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+            </div> --}}
             <!-- ./col -->
             <div class="col-lg-4 col-6">
                 <!-- small box -->
@@ -76,6 +76,7 @@
                 </div>
             </div>
             <!-- ./col -->
+            @if (auth()->user()->role == 'admin')
             <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-light">
@@ -90,6 +91,7 @@
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            @endif
             <!-- ./col -->
         </div>
     </div>

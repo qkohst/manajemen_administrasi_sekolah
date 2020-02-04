@@ -6,6 +6,7 @@ use App\Disposisi;
 use App\Suratmasuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DisposisiController extends Controller
 {
@@ -16,9 +17,9 @@ class DisposisiController extends Controller
      */
     public function index(Suratmasuk $suratmasuk)
     {
-        $disp = Disposisi::all();
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
-        return view('disposisi.index', compact('disp','smasuk'));
+        $disp = DB::select('select * from disposisis where suratmasuk_id = ?', [$suratmasuk->id]);
+        return view('disposisi.index', compact('smasuk','disp'));
     }
 
     /**
