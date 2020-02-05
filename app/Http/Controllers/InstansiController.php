@@ -37,9 +37,9 @@ class InstansiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required',
+            'nama'     => 'required',
             'pimpinan' => 'required',
-            'file' => 'file|mimes:jpeg,png|max:2048',
+            'file'     => 'file|mimes:jpeg,png|max:2048',
         ]);
 
         $filelogo = $request->file;

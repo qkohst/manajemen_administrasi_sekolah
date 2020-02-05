@@ -111,7 +111,6 @@ class PenggunaController extends Controller
      */
     public function destroy($id)
     {
-
         try {
             $pengguna = User::findorfail($id);
             $pengguna->delete();
@@ -120,7 +119,5 @@ class PenggunaController extends Controller
         } catch (\Illuminate\Database\QueryException $ex) {
             return redirect()->back()->with('sukses','Maaf, Masih ada data yang terpaut dengan user ini.');
         }
-
-
     }
 }

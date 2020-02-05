@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Disposisi;
-use App\Suratmasuk;
+use App\SuratMasuk;
 use App\Instansi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +17,7 @@ class DisposisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Suratmasuk $suratmasuk)
+    public function index(SuratMasuk $suratmasuk)
     {
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = DB::select('select * from disposisis where suratmasuk_id = ?', [$suratmasuk->id]);
@@ -29,7 +29,7 @@ class DisposisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Suratmasuk $suratmasuk)
+    public function create(SuratMasuk $suratmasuk)
     {
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         return view('disposisi.create', compact('smasuk'));
@@ -41,7 +41,7 @@ class DisposisiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Suratmasuk $suratmasuk)
+    public function store(Request $request, SuratMasuk $suratmasuk)
     {
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $this->validate($request, [
@@ -53,13 +53,13 @@ class DisposisiController extends Controller
         ]);
 
         $disp = Disposisi::create([
-            'tujuan'        => $request->tujuan,
-            'isi'           => $request->isi,
-            'sifat'         => $request->sifat,
-            'batas_waktu'   => $request->batas_waktu,
-            'catatan'       => $request->catatan,
-            'users_id'      => Auth::id(),
-            'suratmasuk_id'     => $suratmasuk->id,
+            'tujuan'          => $request->tujuan,
+            'isi'             => $request->isi,
+            'sifat'           => $request->sifat,
+            'batas_waktu'     => $request->batas_waktu,
+            'catatan'         => $request->catatan,
+            'users_id'        => Auth::id(),
+            'suratmasuk_id'   => $suratmasuk->id,
         ]);
 
         return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi berhasil di Simpan');
@@ -82,7 +82,7 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Suratmasuk $suratmasuk, $id)
+    public function edit(SuratMasuk $suratmasuk, $id)
     {
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
@@ -96,7 +96,7 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Suratmasuk $suratmasuk, $id)
+    public function update(Request $request, SuratMasuk $suratmasuk, $id)
     {
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
@@ -129,7 +129,7 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Suratmasuk $suratmasuk, $id)
+    public function destroy(SuratMasuk $suratmasuk, $id)
     {
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
@@ -138,12 +138,11 @@ class DisposisiController extends Controller
         return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi Berhasil di Hapus');
     }
 
-    public function download(Suratmasuk $suratmasuk, $id)
+    public function download(SuratMasuk $suratmasuk, $id)
     {
-        $inst = Instansi::first(); 
+        $inst = Instansi::first();
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
-        // dd($inst);
         $pdf = PDF::loadview('disposisi.download', compact('inst','disp','smasuk'));
         return $pdf->stream();
     }

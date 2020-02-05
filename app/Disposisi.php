@@ -10,6 +10,6 @@ class Disposisi extends Model
 
     public function smasuk()
     {
-        return $this->belongsTo('App\Suratmasuk');
+        return $this->belongsTo('App\SuratMasuk');
     }
 }

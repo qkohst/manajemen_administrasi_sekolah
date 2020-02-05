@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\Auth;
 use Excel;
+use App\Instansi;
 
 class SuratKeluarController extends Controller
 {
@@ -32,14 +33,14 @@ class SuratKeluarController extends Controller
             'keterangan' => 'min:5',
        ]);
        $suratkeluar = new SuratKeluar();
-       $suratkeluar->no_surat   = $request->input('no_surat');
+       $suratkeluar->no_surat     = $request->input('no_surat');
        $suratkeluar->tujuan_surat = $request->input('tujuan_surat');
-       $suratkeluar->isi        = $request->input('isi');
-       $suratkeluar->kode       = $request->input('kode');
-       $suratkeluar->tgl_surat  = $request->input('tgl_surat');
-       $suratkeluar->tgl_catat = $request->input('tgl_catat');
-       $suratkeluar->keterangan = $request->input('keterangan');
-       $file                   = $request->file('filekeluar');
+       $suratkeluar->isi          = $request->input('isi');
+       $suratkeluar->kode         = $request->input('kode');
+       $suratkeluar->tgl_surat    = $request->input('tgl_surat');
+       $suratkeluar->tgl_catat    = $request->input('tgl_catat');
+       $suratkeluar->keterangan   = $request->input('keterangan');
+       $file                      = $request->file('filekeluar');
        $fileName   = 'suratKeluar-'. $file->getClientOriginalName();
        $file->move('datasuratkeluar/', $fileName);
        $suratkeluar->filekeluar  = $fileName;
@@ -63,7 +64,7 @@ class SuratKeluarController extends Controller
     }
 
     public function agendakeluardownload_excel(){
-        $suratkeluar = \App\Suratkeluar::select('id', 'isi', 'tujuan_surat', 'kode', 'no_surat', 'tgl_surat', 'tgl_catat', 'keterangan')->get();
+        $suratkeluar = \App\SuratKeluar::select('id', 'isi', 'tujuan_surat', 'kode', 'no_surat', 'tgl_surat', 'tgl_catat', 'keterangan')->get();
         return Excel::create('Agenda_Surat_Keluar', function($excel) use ($suratkeluar){
             $excel->sheet('Agenda_Surat_Keluar',function($sheet) use ($suratkeluar){
                 $sheet->fromArray($suratkeluar);
@@ -74,7 +75,7 @@ class SuratKeluarController extends Controller
     public function edit ($id_suratkeluar)
     {
         $data_klasifikasi = \App\Klasifikasi::all();
-        $suratkeluar = \App\Suratkeluar::find($id_suratkeluar);
+        $suratkeluar = \App\SuratKeluar::find($id_suratkeluar);
         return view('suratkeluar/edit',['suratkeluar'=>$suratkeluar],['data_klasifikasi'=>$data_klasifikasi]);
     }
     public function update (Request $request, $id_suratkeluar)
@@ -108,12 +109,13 @@ class SuratKeluarController extends Controller
      public function agenda(Request $request)
      {
         $data_suratkeluar = \App\SuratKeluar::all();
-        return view('suratkeluar.agenda',['data_suratkeluar'=> $data_suratkeluar]);
+        return view('suratkeluar.agenda', compact('data_suratkeluar'));
      }
      public function agendakeluarcetak_pdf()
      {
+        $inst = Instansi::first();
          $suratkeluar = SuratKeluar::all();
-         $pdf = PDF::loadview('suratkeluar.cetakagendaPDF',['suratkeluar'=>$suratkeluar]);
+         $pdf = PDF::loadview('suratkeluar.cetakagendaPDF', compact('inst','suratkeluar'));
          return $pdf->stream();
      }
 

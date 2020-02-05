@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Klasifikasi;
 use App\Imports\KlasifikasiImport;
 use Illuminate\Http\Request;
@@ -70,8 +69,6 @@ class KlasifikasiController extends Controller
     public function import(){
         // Excel::import(new KlasifikasiImport, 'data_klasifikasi.xls');
         Excel::import(new KlasifikasiImport)->import('data_klasifikasi.xls', null, \Maatwebsite\Excel\Excel::XLS);
-
-
         return redirect('klasifikasi/index')->with('sukses', 'Import Klasifikasi Berhasil');
 
         // Excel::import(new ImportKlasifikasi,$request->file('data_klasifikasi'));

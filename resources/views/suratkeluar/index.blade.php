@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <section class="content card" style="padding: 10px 5px 10px 10px ">
+    <section class="content card" style="padding: 10px 10px 10px 10px ">
         <div class="box">
                 @if(session('sukses'))
                 <div class="alert alert-success" role="alert">
@@ -52,7 +52,9 @@
                             <td>{{$suratkeluar->keterangan}}</td>
                             <td>
                                 <a href="/suratkeluar/{{$suratkeluar->id}}/edit" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                @if (auth()->user()->role == 'admin')
                                 <a href="/suratkeluar/{{$suratkeluar->id}}/delete" class="btn btn-danger btn-sm my-1 mr-sm-1 btn-block" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i> Hapus</a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

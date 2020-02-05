@@ -1,18 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Suratmasuk;
+use App\SuratMasuk;
+use App\Instansi;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use PDF;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 use Excel;
+
 
 class SuratmasukController extends Controller
 {
     public function index()
     {
-        $data_suratmasuk = \App\Suratmasuk::all();
+        $data_suratmasuk = \App\SuratMasuk::all();
         return view('suratmasuk.index',['data_suratmasuk'=> $data_suratmasuk]);
     }
 
@@ -27,12 +29,12 @@ class SuratmasukController extends Controller
      public function tambah (Request $request)
      {
         $request->validate([
-            'filemasuk' => 'mimes:jpg,jpeg,png,doc,docx,pdf',
-            'no_surat' => 'unique:suratmasuk|min:5',
-            'isi' => 'min:5',
+            'filemasuk'  => 'mimes:jpg,jpeg,png,doc,docx,pdf',
+            'no_surat'   => 'unique:suratmasuk|min:5',
+            'isi'        => 'min:5',
             'keterangan' => 'min:5',
         ]);
-        $suratmasuk = new Suratmasuk();
+        $suratmasuk = new SuratMasuk();
         $suratmasuk->no_surat   = $request->input('no_surat');
         $suratmasuk->asal_surat = $request->input('asal_surat');
         $suratmasuk->isi        = $request->input('isi');
@@ -53,7 +55,7 @@ class SuratmasukController extends Controller
     //function untuk melihat file
     public function tampil($id_suratmasuk)
     {
-        $suratmasuk = \App\Suratmasuk::find($id_suratmasuk);
+        $suratmasuk = \App\SuratMasuk::find($id_suratmasuk);
         return view('suratmasuk/tampil',['suratmasuk'=>$suratmasuk]);
     }
 
@@ -65,7 +67,7 @@ class SuratmasukController extends Controller
     }
 
     public function agendamasukdownload_excel(){
-        $suratmasuk = \App\Suratmasuk::select('id', 'isi', 'asal_surat', 'kode', 'no_surat', 'tgl_surat', 'tgl_terima', 'keterangan')->get();
+        $suratmasuk = \App\SuratMasuk::select('id', 'isi', 'asal_surat', 'kode', 'no_surat', 'tgl_surat', 'tgl_terima', 'keterangan')->get();
         return Excel::create('Agenda_Surat_Masuk', function($excel) use ($suratmasuk){
             $excel->sheet('Agenda_Surat_Masuk',function($sheet) use ($suratmasuk){
                 $sheet->fromArray($suratmasuk);
@@ -77,7 +79,7 @@ class SuratmasukController extends Controller
     public function edit ($id_suratmasuk)
     {
         $data_klasifikasi = \App\Klasifikasi::all();
-        $suratmasuk = \App\Suratmasuk::find($id_suratmasuk);
+        $suratmasuk = \App\SuratMasuk::find($id_suratmasuk);
         return view('suratmasuk/edit',['suratmasuk'=>$suratmasuk],['data_klasifikasi'=>$data_klasifikasi]);
     }
     public function update (Request $request, $id_suratmasuk)
@@ -88,7 +90,7 @@ class SuratmasukController extends Controller
             'isi' => 'min:5',
             'keterangan' => 'min:5',
         ]);
-        $suratmasuk = \App\Suratmasuk::find($id_suratmasuk);
+        $suratmasuk = \App\SuratMasuk::find($id_suratmasuk);
         $suratmasuk->update($request->all());
         //Untuk Update File
         if($request->hasFile('filemasuk')){
@@ -102,31 +104,31 @@ class SuratmasukController extends Controller
     //function untuk hapus
     public function delete($id_suratmasuk)
     {
-        $suratmasuk=\App\Suratmasuk::find($id_suratmasuk);
+        $suratmasuk=\App\SuratMasuk::find($id_suratmasuk);
         $suratmasuk->delete();
         return redirect('suratmasuk/index')->with('sukses','Data Surat Masuk Berhasil Dihapus');
     }
 
-
     //Function Untuk Agenda Surat Masuk
     public function agenda(Request $request)
     {
-        $data_suratmasuk = \App\Suratmasuk::all();
-       return view('suratmasuk.agenda',['data_suratmasuk'=> $data_suratmasuk]);
+        $data_suratmasuk = \App\SuratMasuk::all();
+        return view('suratmasuk.agenda', compact('data_suratmasuk'));
     }
 
     //Function Untuk Download Agenda Surat Masuk
     public function agendamasukcetak_pdf(Request $request)
     {
-        $suratmasuk = \App\Suratmasuk::all();
-        $pdf = PDF::loadview('suratmasuk.cetakagendaPDF',['suratmasuk'=>$suratmasuk]);
+        $inst = Instansi::first();
+        $suratmasuk = \App\SuratMasuk::all();
+        $pdf = PDF::loadview('suratmasuk.cetakagendaPDF', compact('inst','suratmasuk','pdf'));
         return $pdf->stream();
     }
 
     //Function Untuk Galeri Surat Masuk
     public function galeri(Request $request)
     {
-        $data_suratmasuk = \App\Suratmasuk::all();
+        $data_suratmasuk = \App\SuratMasuk::all();
        return view('suratmasuk.galeri',['data_suratmasuk'=> $data_suratmasuk]);
     }
 }
