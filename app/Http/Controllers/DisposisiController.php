@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Disposisi;
 use App\Suratmasuk;
+use App\Instansi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -139,9 +140,11 @@ class DisposisiController extends Controller
 
     public function download(Suratmasuk $suratmasuk, $id)
     {
+        $inst = Instansi::first(); 
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
-        $pdf = PDF::loadview('disposisi.download',['smasuk'=>$smasuk],['disp'=>$disp]);
-        return $pdf->download('Disposisi.pdf');
+        // dd($inst);
+        $pdf = PDF::loadview('disposisi.download', compact('inst','disp','smasuk'));
+        return $pdf->stream();
     }
 }

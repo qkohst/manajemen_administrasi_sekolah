@@ -16,7 +16,7 @@
             <div class="row">
                 <span style="float: right">
                     <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{route('suratmasuk.downloadexcel')}}" role="button"><i class="fas fa-file-excel"></i> Download Excel</a>
-                    <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="/suratmasuk/agendamasukcetak_pdf" role="button"><i class="fas fa-file-pdf"></i> Download Pdf</a>
+                    <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="/suratmasuk/agendamasukcetak_pdf" target="_blank" role="button"><i class="fas fa-print"></i> Cetak</a>
                 </span>
                 <div class="row table-responsive">
                     <div class="col-12">

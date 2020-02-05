@@ -114,7 +114,7 @@ class SuratKeluarController extends Controller
      {
          $suratkeluar = SuratKeluar::all();
          $pdf = PDF::loadview('suratkeluar.cetakagendaPDF',['suratkeluar'=>$suratkeluar]);
-         return $pdf->download('AgendaSuratKeluar.pdf');
+         return $pdf->stream();
      }
 
     public function galeri(Request $request)
