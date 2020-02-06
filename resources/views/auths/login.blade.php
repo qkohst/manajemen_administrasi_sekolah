@@ -110,8 +110,8 @@
 
         <form action="postlogin" method="POST">
             @csrf
-            <input type="email" name="email" class="form_login" placeholder="name@example.com">
-            <input id="password" type="password" name="password" class="form_login" placeholder="password">
+            <input type="email" name="email" class="form_login" placeholder="name@example.com" required>
+            <input id="password" type="password" name="password" class="form_login" placeholder="password" required>
             <button type="submit" class="tombol_login">Login</button>
         </form>
     </div>

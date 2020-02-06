@@ -18,7 +18,7 @@
         </div>
         @endif
         <form action="{{ route('disposisi.update', [$smasuk, $disp->id]) }}" method="get">
-            <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Tambah Disposisi</h3>
+            <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Edit Disposisi</h3>
             <hr />
             {{csrf_field()}}
             @method('put')
