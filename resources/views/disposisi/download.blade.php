@@ -39,7 +39,7 @@
             <hr>
         </center>
     </div>
-    <table class="table table-bordered table-active">
+    <table class="table table-bordered table-active" bgcolor="#FFFFFF">
         <tr>
             <td colspan="6" align="center">
                 <h6>LEMBAR DISPOSISI</h6>

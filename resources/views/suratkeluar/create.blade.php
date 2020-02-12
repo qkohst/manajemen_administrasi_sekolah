@@ -21,7 +21,7 @@
                     <label for="nomorsurat">Nomor Surat</label>
                     <input value="{{old('no_surat')}}" name="no_surat" type="text" class="form-control" id="nomorsurat"
                         placeholder="Nomor Surat" required>
-                    <label for="asalsurat">Asal Surat</label>
+                    <label for="asalsurat">Tujuan Surat</label>
                     <input value="{{old('tujuan_surat')}}" name="tujuan_surat" type="text" class="form-control bg-light"
                         id="tujuansurat" placeholder="Tujuan Surat" required>
                     <label for="isisurat">Isi Ringkas</label>

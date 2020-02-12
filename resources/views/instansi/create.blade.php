@@ -39,7 +39,7 @@
                         placeholder="Email Instansi" required>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">File</label>
-                        <input name="file" type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input name="file" type="file" class="form-control-file" id="exampleFormControlFile1" required>
                         <small id="exampleFormControlFile1" class="text-danger">
                             Format file yang diperbolehkan hanya *.JPG, *.PNG dan ukuran maksimal file 2 MB. Disarankan
                             gambar berbentuk kotak atau lingkaran!
