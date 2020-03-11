@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Guru;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class GuruController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $data_guru = \App\Guru::all();
+        return view('guru.index',['data_guru'=> $data_guru]);
+    }
+
+     //function untuk tambah
+     public function tambah (Request $request)
+     {
+         $request->validate([
+             'nama' => 'min:5',
+             'tempat_lahir' => 'min:5',
+             'alamat' => 'min:10',
+             'no_hp' => 'unique:guru|min:12',
+             'email' => 'required|unique:guru|email',
+         ]);
+        $guru = new Guru();
+        $guru->nama   = $request->input('nama');
+        $guru->jenis_kelamin   = $request->input('jk');
+        $guru->tempat_lahir   = $request->input('tempatlahir');
+        $guru->tanggal_lahir   = $request->input('tgllahir');
+        $guru->alamat = $request->input('alamat');
+        $guru->no_hp = $request->input('no_hp');
+        $guru->email = $request->input('email');
+        $guru->save();
+        return redirect('/guru/index')->with("sukses", "Data Guru Berhasil Ditambahkan");
+     }
+    //function untuk masuk ke view edit
+    public function edit ($id_guru)
+    {
+        $guru = \App\Guru::find($id_guru);
+        return view('guru/edit',['guru'=>$guru]);
+    }
+    public function update (Request $request, $id_guru)
+    {
+        $request->validate([
+            'nama' => 'min:5',
+            'tempat_lahir' => 'min:5',
+            'alamat' => 'min:10',
+            'no_hp' => 'min:12',
+            'email' => 'email',
+        ]);
+        $guru = \App\Guru::find($id_guru);
+        $guru->update($request->all());
+        $guru->save();
+        return redirect('guru/index') ->with('sukses','Data Guru Berhasil Diedit');
+    }
+
+     //function untuk hapus
+    public function delete($id)
+    {
+        $guru=\App\Guru::find($id);
+        $guru->delete();
+        return redirect('guru/index') ->with('sukses','Data Guru Berhasil Dihapus');
+    }
+}

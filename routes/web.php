@@ -61,8 +61,6 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::post('/klasifikasi/{id}/update','KlasifikasiController@update');
     Route::get('/klasifikasi/{id}/delete','KlasifikasiController@delete');
 
-    //Route untuk Modal Import Data
-    // Route::post('/klasifikasi/import','KlasifikasiController@importexcel')->name('klasifikasi.import');
     Route::post('/klasifikasi.import', 'KlasifikasiController@import');
 
     Route::get('disposisi/{suratmasuk}', 'DisposisiController@index')->name('disposisi.index');
@@ -72,6 +70,18 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('disposisi/{suratmasuk}/{id}', 'DisposisiController@update')->name('disposisi.update');
     Route::delete('disposisi/{suratmasuk}/{id}', 'DisposisiController@destroy')->name('disposisi.destroy');
     Route::get('/disposisi/{suratmasuk}/{id}/download', 'DisposisiController@download')->name('disposisi.download');
+
+    Route::get('/guru/index','GuruController@index');
+    Route::post('/guru/tambah','GuruController@tambah');
+    Route::get('/guru/{id}/edit','GuruController@edit');
+    Route::post('/guru/{id}/update','GuruController@update');
+    Route::get('/guru/{id}/delete','GuruController@delete');
+
+    Route::get('/tendik/index','TendikController@index');
+    Route::post('/tendik/tambah','TendikController@tambah');
+    Route::get('/tendik/{id}/edit','TendikController@edit');
+    Route::post('/tendik/{id}/update','TendikController@update');
+    Route::get('/tendik/{id}/delete','TendikController@delete');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

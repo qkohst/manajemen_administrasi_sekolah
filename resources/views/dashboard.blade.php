@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
                 <center>
-                    <h3 class="font-weight-bold">SELAMAT DATANG DI BERANDA APLIKASI MANAJEMEN SURAT</h3>
+                    <h3 class="font-weight-bold">SELAMAT DATANG DI BERANDA MANAJEMEN ADMINISTRASI SEKOLAH</h3>
                     <hr />
                 </center>
                 <br>

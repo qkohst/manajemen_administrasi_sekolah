@@ -1,27 +1,42 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Aplikasi Manajemen Surat</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/adminlte/fontawesome-free/css/all.min.css">
-    <!-- Ekko Lightbox -->
-    <link rel="stylesheet" href="/adminlte/plugins/ekko-lightbox/ekko-lightbox.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="/adminlte/css/adminlte.min.css">
-    <!-- DataTable -->
-    <link rel="stylesheet" href="/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Manajemen Administrasi Sekolah</title>
+    <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="/adminLTE/plugins/fontawesome-free/css/all.min.css">
+   <!-- overlayScrollbars -->
+   <link rel="stylesheet" href="/adminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/adminLTE/css/adminlte.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/adminLTE/dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="/adminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="/adminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="/adminLTE/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/adminLTE/css/adminlte.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/adminLTE/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="/adminLTE/plugins/summernote/summernote-bs4.css">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -31,13 +46,14 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
-                <h3 class="font-weight-bold">APLIKASI MANAJEMEN SURAT</h3>
+                <h3 class="font-weight-bold">MANAJEMEN ADMINISTRASI SEKOLAH</h3>
             </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
                 <!-- Notifications Dropdown Menu -->
+
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fas fa-user mr-2"></i> &nbsp;<span>{{auth()->user()->name}}</span> &nbsp;<i
@@ -60,29 +76,23 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-light-primary elevation-1">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+             <!-- Brand Logo -->
+            <a href="/dashboard" class="brand-link bg-secondary">
+            <img src="/seo.svg" alt="Logo" class="brand-image"
+                style="opacity: .8">
+            <span class="brand-text font-weight-white">Beranda</span>
+            </a>
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user (optional) -->
-                <div class="mt-3 pb-3 mb-1">
-                    <div></div><br>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <!-- Sidebar Menu -->
+                        <a href="/">
+                        <span class="text-white">MANAJEMEN SURAT</span>
+                        </a>
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-                        <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p>
-                                    Beranda
-                                </p>
-                            </a>
-                        </li>
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-mail-bulk"></i>
@@ -91,15 +101,15 @@
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
+                            <ul class="nav nav-treeview bg-secondary">
                                 <li class="nav-item">
-                                    <a href="/suratmasuk/index" class="nav-link">
+                                    <a href="/suratmasuk/index" class="nav-link text-white">
                                         <i class="far fa-envelope nav-icon"></i>
                                         <p>Surat Masuk</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/suratkeluar/index" class="nav-link">
+                                    <a href="/suratkeluar/index" class="nav-link text-white">
                                         <i class="far fa-envelope-open nav-icon"></i>
                                         <p>Surat Keluar</p>
                                     </a>
@@ -114,15 +124,15 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
+                            <ul class="nav nav-treeview bg-secondary">
                                 <li class="nav-item">
-                                    <a href="/suratmasuk/agenda" class="nav-link">
+                                    <a href="/suratmasuk/agenda" class="nav-link text-white">
                                         <i class="far fa-envelope nav-icon"></i>
                                         <p>Agenda Surat Masuk</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/suratkeluar/agenda" class="nav-link">
+                                    <a href="/suratkeluar/agenda" class="nav-link text-white">
                                         <i class="far fa-envelope-open nav-icon"></i>
                                         <p>Agenda Surat Keluar</p>
                                     </a>
@@ -137,15 +147,15 @@
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
+                            <ul class="nav nav-treeview bg-secondary">
                                 <li class="nav-item">
-                                    <a href="/suratmasuk/galeri" class="nav-link">
+                                    <a href="/suratmasuk/galeri" class="nav-link text-white">
                                         <i class="fas fa-sign-in-alt nav-icon"></i>
                                         <p>File Surat Masuk</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/suratkeluar/galeri" class="nav-link">
+                                <li class="nav-item ">
+                                    <a href="/suratkeluar/galeri" class="nav-link text-white">
                                         <i class="fas fa-sign-out-alt nav-icon"></i>
                                         <p>File Surat Keluar</p>
                                     </a>
@@ -160,33 +170,161 @@
                                 </p>
                             </a>
                         </li>
-                        @if (auth()->user()->role == 'admin')
+                    </ul>
+
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <!-- Sidebar Menu -->
+                        <a href="/" class="text-white">
+                        <p>
+                            MANAJEMEN KEUANGAN
+                            <span class="right badge badge-danger">New</span>
+                        </p>
+                        </a>
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-cogs"></i>
+                                <i class="nav-icon fas fa-dollar-sign"></i>
                                 <p>
-                                    Pengaturan
+                                    Keuangan Sekolah
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('instansi.index') }}" class="nav-link">
-                                        <i class="fas fa-warehouse nav-icon"></i>
-                                        <p>Manajemen Instansi</p>
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-money-bill-alt nav-icon"></i>
+                                        <p>Pemasukan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('pengguna.index') }}" class="nav-link">
-                                        <i class="fas fa-users-cog nav-icon"></i>
-                                        <p>Manajemen User </p>
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-money-bill nav-icon"></i>
+                                        <p>Pengeluaran</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        @endif
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-hand-holding-usd"></i>
+                                <p>
+                                    Pembayaran
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-money-check-alt nav-icon"></i>
+                                        <p>Rincian Pembayaran</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-handshake nav-icon"></i>
+                                        <p>Transaksi Pembayaran</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-download"></i>
+                                <p>
+                                    Unduhan
+                                </p>
+                            </a>
+                        </li>
                     </ul>
-                </nav>
+
+                    @if (auth()->user()->role == 'admin')
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <!-- Sidebar Menu -->
+                        <a href="/" class="text-white">
+                        <p>
+                            PENGATURAN
+                        </p>
+                        </a>
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a href="{{ route('instansi.index') }}" class="nav-link">
+                                <i class="fas fa-warehouse nav-icon"></i>
+                                <p>
+                                    Sekolah
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-graduation-cap nav-icon"></i>
+                                <p>
+                                    GTK
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview bg-secondary">
+                                <li class="nav-item">
+                                    <a href="/guru/index" class="nav-link text-white">
+                                        <i class="fas fa-graduation-cap nav-icon"></i>
+                                        <p>Guru</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/tendik/index" class="nav-link text-white">
+                                        <i class="fas fa-graduation-cap nav-icon"></i>
+                                        <p>Tendik</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-child nav-icon"></i>
+                                <p>
+                                    Peserta Didik
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview bg-secondary">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link text-white">
+                                        <i class="fas fa-child nav-icon"></i>
+                                        <p>Peserta Didik</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link text-white">
+                                        <i class="fas fa-user-graduate nav-icon"></i>
+                                        <p>Alumni</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>
+                                    Rombongan Belajar
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('pengguna.index') }}" class="nav-link">
+                                <i class="fas fa-user-cog nav-icon"></i>
+                                <p>
+                                    Pengguna
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                    @endif
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -200,36 +338,39 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <footer class="main-footer">
+        <footer class="main-footer bg-secondary">
             <div class="float-right d-none d-sm-block">
-                <b>Teknik Informatika Unirow Tuban</b>
+                <b>Teknik Informatika Unirow Tuban | </b>
+                Version 1.1.0
             </div>
             Copyright &copy; 2020 | by : Qkoh St, Iqbal, Afif
         </footer>
 
-        <!-- Control Sidebar -->
+      
         <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="/adminlte/jquery/jquery.min.js"></script>
+    <script src="/adminLTE/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="/adminlte/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/adminLTE/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/adminlte/js/adminlte.min.js"></script>
+    <script src="/adminLTE/js/adminlte.min.js"></script>
     <!-- Ekko Lightbox -->
-    <script src="/adminlte/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+    <script src="/adminLTE/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
     <!-- Filterizr-->
-    <script src="/adminlte/plugins/filterizr/jquery.filterizr.min.js"></script>
+    <script src="/adminLTE/plugins/filterizr/jquery.filterizr.min.js"></script>
     <!-- Data Table -->
-    <script src="/adminlte/plugins/datatables/jquery.dataTables.js"></script>
-    <script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="/adminLTE/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="/adminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="/adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="/adminlte/js/demo.js"></script>
+    <script src="/adminLTE/js/demo.js"></script>
+
     <!-- page script -->
     <script>
         $(function () {

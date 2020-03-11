@@ -121,7 +121,7 @@ class SuratmasukController extends Controller
     {
         $inst = Instansi::first();
         $suratmasuk = \App\SuratMasuk::all();
-        $pdf = PDF::loadview('suratmasuk.cetakagendaPDF', compact('inst','suratmasuk','pdf'));
+        $pdf = PDF::loadview('suratmasuk.cetakagendaPDF', compact('inst','suratmasuk'));
         return $pdf->stream();
     }
 
