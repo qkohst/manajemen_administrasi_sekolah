@@ -82,6 +82,12 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/tendik/{id}/edit','TendikController@edit');
     Route::post('/tendik/{id}/update','TendikController@update');
     Route::get('/tendik/{id}/delete','TendikController@delete');
+
+    Route::get('/rombel/index','RombelController@index');
+    Route::post('/rombel/tambah','RombelController@tambah');
+    Route::get('/rombel/{id}/edit','RombelController@edit');
+    Route::post('/rombel/{id}/update','RombelController@update');
+    Route::get('/rombel/{id}/delete','RombelController@delete');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

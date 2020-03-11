@@ -233,6 +233,14 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-download"></i>
                                 <p>
+                                    Tabungan Siswa
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-download"></i>
+                                <p>
                                     Unduhan
                                 </p>
                             </a>
@@ -282,6 +290,15 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="/rombel/index" class="nav-link">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>
+                                    Rombongan Belajar
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-child nav-icon"></i>
@@ -305,15 +322,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-users nav-icon"></i>
-                                <p>
-                                    Rombongan Belajar
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('pengguna.index') }}" class="nav-link">
