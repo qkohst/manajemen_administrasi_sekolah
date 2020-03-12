@@ -88,6 +88,13 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/rombel/{id}/edit','RombelController@edit');
     Route::post('/rombel/{id}/update','RombelController@update');
     Route::get('/rombel/{id}/delete','RombelController@delete');
+
+    Route::get('/pesdik/index','PesdikController@index');
+    Route::get('/pesdik/create','PesdikController@create');
+    Route::post('/pesdik/tambah','PesdikController@tambah');
+    Route::get('/pesdik/{id}/edit','PesdikController@edit');
+    Route::post('/pesdik/{id}/update','PesdikController@update');
+    Route::get('/pesdik/{id}/delete','PesdikController@delete');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

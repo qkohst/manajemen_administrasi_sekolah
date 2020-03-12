@@ -231,7 +231,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-download"></i>
+                                <i class="nav-icon fas fa-credit-card"></i>
                                 <p>
                                     Tabungan Siswa
                                 </p>
@@ -309,16 +309,22 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview bg-secondary">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link text-white">
+                                <li class="nav-item bg-secondary">
+                                    <a href="/pesdik/index" class="nav-link text-white">
                                         <i class="fas fa-child nav-icon"></i>
                                         <p>Peserta Didik</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item bg-secondary">
                                     <a href="#" class="nav-link text-white">
                                         <i class="fas fa-user-graduate nav-icon"></i>
                                         <p>Alumni</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item bg-warning">
+                                    <a href="#" class="nav-link text-dark">
+                                        <i class="fas fa-child nav-icon"></i>
+                                        <p>Peserta Didik Keluar</p>
                                     </a>
                                 </li>
                             </ul>

@@ -1,0 +1,69 @@
+@extends('layouts.master')
+
+@section('content')
+<section class="content card" style="padding: 10px 10px 10px 10px ">
+    <div class="box">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <form action="/pesdik/{{$pesdik->id}}/update" method="POST" enctype="multipart/form-data">
+            <h3><i class="nav-icon fas fa-child my-1 btn-sm-1"></i> Edit Data Peserta Didik</h3>
+            <hr>
+            {{csrf_field()}}
+            <div class="row">
+                <div class="col-6">
+                    <label for="nama">Nama Siswa</label>
+                    <input value="{{$pesdik->nama}}" name="nama" type="text" class="form-control" id="nama"
+                        placeholder="Nama Siswa" required>
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                        <select name="jenis_kelamin" class="custom-select my-1 mr-sm-1 bg-light" id="jenis_kelamin"required>
+                            <option value="Laki-Laki" @if ($pesdik->rombel == 'Laki-Laki') selected @endif>Laki-Laki</option>
+                            <option value="Perempuan" @if ($pesdik->rombel == 'Perempuan') selected @endif>Perempuan</option>
+                        </select>
+                    <label for="nisn">NISN</label>
+                    <input value="{{$pesdik->nisn}}" name="nisn" type="text" class="form-control" id="nisn"
+                        placeholder="NISN" required>
+                    <label for="induk">Induk</label>
+                    <input value="{{$pesdik->induk}}" name="induk" type="text" class="form-control" id="induk"
+                        placeholder="Induk" required>
+                    <label for="rombel">Rombongan Belajar</label>
+                    <select name="rombel" class="custom-select my-1 mr-sm-2 bg-light" id="rombel"
+                        value="{{$pesdik->rombel}}" required>
+                        <option selected>{{$pesdik->rombel}}</option>
+                        @foreach($data_rombel as $rombel)
+                        <option value="{{$rombel->nama_rombel}}">{{$rombel->nama_rombel}}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-6">
+                <label for="tempat_lahir">Tempat Lahir</label>
+                    <input value="{{$pesdik->tempat_lahir}}" name="tempat_lahir" type="text" class="form-control" id="tempat_lahir"
+                        placeholder="Tempat Lahir" required>
+                    <label for="tanggal_lahir">Tanggal Lahir</label>
+                    <input value="{{$pesdik->tanggal_lahir}}" name="tanggal_lahir" type="date" class="form-control bg-light"
+                        id="tanggal_lahir" required>
+                    <label for="jenis_pendaftaran">Jenis Pendaftaran</label>
+                    <select name="jenis_pendaftaran" id="jenis_pendaftaran" class="form-control bg-light" required>
+                        <option value="Siswa Baru" @if ($pesdik->jenis_pendaftaran == 'Siswa Baru') selected @endif>Siswa Baru</option>
+                        <option value="Pindahan" @if ($pesdik->jenis_pendaftaran == 'Pindahan') selected @endif>Pindahan</option>
+                        <option value="Mengulang" @if ($pesdik->jenis_pendaftaran == 'Mengulang') selected @endif>Mengulang</option>
+                    </select>
+                    <label for="tanggal_masuk">Tanggal Masuk</label>
+                    <input value="{{$pesdik->tanggal_masuk}}" name="tanggal_masuk" type="date" class="form-control bg-light"
+                        id="tanggal_masuk" required>
+                </div>
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> SIMPAN</button>
+            <a class="btn btn-danger btn-sm" href="index" role="button"><i class="fas fa-undo"></i> BATAL</a>
+        </form>
+    </div>
+</section>
+@endsection

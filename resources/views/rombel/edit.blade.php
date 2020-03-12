@@ -33,7 +33,7 @@
                     <select name="kelas" id="kelas" class="form-control bg-light" required>
                         <option value="7" @if ($rombel->kelas == '7') selected @endif>7</option>
                         <option value="8" @if ($rombel->kelas == '8') selected @endif>8</option>
-                        <option value="9" @if ($rombel->kelas == '9') selected @endif>8</option>
+                        <option value="9" @if ($rombel->kelas == '9') selected @endif>9</option>
                     </select>
                     <label for="nama_rombel">Nama Rombel</label>
                     <input name="nama_rombel" type="text" class="form-control bg-light" id="nama_rombel"
