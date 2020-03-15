@@ -253,7 +253,7 @@
                         <!-- Sidebar Menu -->
                         <a href="/" class="text-white">
                         <p>
-                            PENGATURAN
+                            KELOLA DATA
                         </p>
                         </a>
                         <!-- Add icons to the links using the .nav-icon class
@@ -329,6 +329,27 @@
                                 </li>
                             </ul>
                         </li>
+                    </ul>
+                    @endif
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <!-- Sidebar Menu -->
+                        <a href="/" class="text-white">
+                        <p>
+                            PENGATURAN
+                        </p>
+                        </a>
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a href="/pengumuman/index" class="nav-link">
+                                <i class="fas fa-bullhorn nav-icon"></i>
+                                <p>
+                                    Pengumuman
+                                </p>
+                                <span class="right badge badge-danger">New</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('pengguna.index') }}" class="nav-link">
                                 <i class="fas fa-user-cog nav-icon"></i>
@@ -338,7 +359,6 @@
                             </a>
                         </li>
                     </ul>
-                    @endif
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->

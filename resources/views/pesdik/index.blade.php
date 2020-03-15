@@ -77,6 +77,9 @@
                                     class="btn btn-danger btn-sm my-1 mr-sm-1"
                                     onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                     Hapus</a>
+                                <a href="/pesdik/{{$pesdik->id}}/registrasi"
+                                    class="btn btn-success btn-sm my-1 mr-sm-1"><i
+                                        class="nav-icon fas fa-user"></i> Registrasi</a>
                                 @endif
                             </td>
                             </tr>

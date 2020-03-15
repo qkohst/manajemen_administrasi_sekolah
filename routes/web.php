@@ -95,6 +95,12 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/pesdik/{id}/edit','PesdikController@edit');
     Route::post('/pesdik/{id}/update','PesdikController@update');
     Route::get('/pesdik/{id}/delete','PesdikController@delete');
+
+    Route::get('/pengumuman/index','PengumumanController@index');
+    Route::post('/pengumuman/tambah','PengumumanController@tambah');
+    Route::get('/pengumuman/{id}/edit','PengumumanController@edit');
+    Route::post('/pengumuman/{id}/update','PengumumanController@update');
+    Route::get('/pengumuman/{id}/delete','PengumumanController@delete');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {
