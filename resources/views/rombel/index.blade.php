@@ -34,10 +34,6 @@
                         data-target="#tambahRombel"><i class="fas fa-plus"></i>
                         Tambah Data
                     </button>
-                    <button type="button" class="btn btn-sm btn-success" data-toggle="modal"
-                        data-target="#"><i class="fas fa-users"></i>
-                        Anggota Rombel
-                    </button>
                 </div>
                 <br>
         </div>
@@ -64,6 +60,9 @@
                                 <td>{{$rombel->nama_rombel}}</td>
                                 <td>{{$rombel->wali_kelas}}</td>
                                 <td>
+                                <a href="/rombel/{{$rombel->nama_rombel}}/anggota"
+                                    class="btn btn-success btn-sm my-1 mr-sm-1"><i
+                                        class="nav-icon fas fa-users"></i> Anggota Rombel</a>
                                 <a href="/rombel/{{$rombel->id}}/edit"
                                     class="btn btn-primary btn-sm my-1 mr-sm-1"><i
                                         class="nav-icon fas fa-pencil-alt"></i> Edit</a>

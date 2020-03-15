@@ -100,7 +100,7 @@
                             <div class="icon">
                                 <i class="nav-icon fas fa-graduation-cap"></i>
                             </div>
-                            <a href="/guru/index" class="small-box-footer">Lihat Detail <i
+                            <a href="/tendik/index" class="small-box-footer">Lihat Detail <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                             <div class="icon">
                                 <i class="nav-icon fas fa-users"></i>
                             </div>
-                            <a href="/klasifikasi/index" class="small-box-footer">Lihat Detail <i
+                            <a href="/rombel/index" class="small-box-footer">Lihat Detail <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
   </section>
 </div>
 <div class="col-6">
-    <section class="content card" style="padding: 15px 15px 15px 15px ">
+    <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
             <div class="row">
                 <div class="col">
@@ -181,35 +181,34 @@
                         <div class="timeline timeline-inverse">
                           <!-- timeline time label -->
                           <div class="time-label">
-                            <span class="bg-danger">
-                              14 Maret 2020
+                            <span class="bg-success">
+                            Pengumuman Terakhir
                             </span>
                           </div>
+                          @foreach($data_pengumuman as $pengumuman)
                           <!-- /.timeline-label -->
                           <!-- timeline item -->
                           <div>
                             <i class="fas fa-envelope bg-primary"></i>
 
                             <div class="timeline-item">
-                              <span class="time"><i class="far fa-clock"></i> 12:05</span>
-
-                              <h3 class="timeline-header"><a href="#">Admin</a> => Penggantian Password </h3>
-
+                              <span class="time"><i class="far fa-calendar-alt"></i> {{$pengumuman->created_at}} <br> {{$pengumuman->created_at->diffForHumans()}} </span>
+                              <h3 class="timeline-header"><a class="text-primary">{{$pengumuman->judul}}</a><br>{{$pengumuman->users->role}} </h3>
                               <div class="timeline-body">
-                                Untuk semua user agar segera melakukan penggantian password.
+                                <p>{{$pengumuman->isi}}</p>
                               </div>
-                              <div class="timeline-footer">
+                              <!-- <div class="timeline-footer">
                                 <a href="#" class="btn btn-primary btn-sm">Lihat Detail</a>
-                                <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-                              </div>
+                              </div> -->
                             </div>
                           </div>
                           <!-- END timeline item -->
+                          @endforeach
                           <div>
                             <i class="far fa-clock bg-gray"></i>
                           </div>
                         </div>
-                    </div>
+            </div>
         </div>
     </section>
   </div>

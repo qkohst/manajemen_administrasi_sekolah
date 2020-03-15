@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rombel;
+use App\Pesdik;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -33,6 +34,13 @@ class RombelController extends Controller
        $rombel->wali_kelas   = $request->input('wali_kelas');
        $rombel->save();
        return redirect('/rombel/index')->with("sukses", "Data Rombongan Belajar Berhasil Ditambahkan");
+    }
+
+     //function untuk anggota Rombel
+    public function anggota($nama_rombel)
+    {
+        $data_pesdik = \App\Pesdik::where('rombel',$nama_rombel)->get();
+        return view('rombel.anggota',['data_pesdik'=> $data_pesdik]);
     }
 
      //function untuk masuk ke view edit
