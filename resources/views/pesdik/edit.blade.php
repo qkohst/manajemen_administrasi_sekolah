@@ -23,8 +23,8 @@
                         placeholder="Nama Siswa" required>
                     <label for="jenis_kelamin">Jenis Kelamin</label>
                         <select name="jenis_kelamin" class="custom-select my-1 mr-sm-1 bg-light" id="jenis_kelamin"required>
-                            <option value="Laki-Laki" @if ($pesdik->rombel == 'Laki-Laki') selected @endif>Laki-Laki</option>
-                            <option value="Perempuan" @if ($pesdik->rombel == 'Perempuan') selected @endif>Perempuan</option>
+                            <option value="Laki-Laki" @if ($pesdik->jenis_kelamin == 'Laki-Laki') selected @endif>Laki-Laki</option>
+                            <option value="Perempuan" @if ($pesdik->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
                         </select>
                     <label for="nisn">NISN</label>
                     <input value="{{$pesdik->nisn}}" name="nisn" type="text" class="form-control" id="nisn"
@@ -34,10 +34,10 @@
                         placeholder="Induk" required>
                     <label for="rombel">Rombongan Belajar</label>
                     <select name="rombel" class="custom-select my-1 mr-sm-2 bg-light" id="rombel"
-                        value="{{$pesdik->rombel}}" required>
-                        <option selected>{{$pesdik->rombel}}</option>
+                        value="{{$pesdik->rombel_id}}" required>
+                        <option selected>{{$pesdik->rombel->nama_rombel}}</option>
                         @foreach($data_rombel as $rombel)
-                        <option value="{{$rombel->nama_rombel}}">{{$rombel->nama_rombel}}
+                        <option value="{{$rombel->id}}">(Tingkat {{$rombel->kelas}}) {{$rombel->nama_rombel}}
                         </option>
                         @endforeach
                     </select>

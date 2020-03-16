@@ -316,13 +316,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item bg-secondary">
-                                    <a href="#" class="nav-link text-white">
+                                    <a href="/pesdik/alumniindex" class="nav-link text-white">
                                         <i class="fas fa-user-graduate nav-icon"></i>
                                         <p>Alumni</p>
                                     </a>
                                 </li>
                                 <li class="nav-item bg-warning">
-                                    <a href="#" class="nav-link text-dark">
+                                    <a href="/pesdik/keluarindex" class="nav-link text-dark">
                                         <i class="fas fa-child nav-icon"></i>
                                         <p>Peserta Didik Keluar</p>
                                     </a>

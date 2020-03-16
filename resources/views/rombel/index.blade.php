@@ -60,7 +60,7 @@
                                 <td>{{$rombel->nama_rombel}}</td>
                                 <td>{{$rombel->wali_kelas}}</td>
                                 <td>
-                                <a href="/rombel/{{$rombel->nama_rombel}}/anggota"
+                                <a href="/rombel/{{$rombel->id}}/anggota"
                                     class="btn btn-success btn-sm my-1 mr-sm-1"><i
                                         class="nav-icon fas fa-users"></i> Anggota Rombel</a>
                                 <a href="/rombel/{{$rombel->id}}/edit"

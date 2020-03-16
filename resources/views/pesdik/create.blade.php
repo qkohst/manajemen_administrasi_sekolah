@@ -35,9 +35,9 @@
                         placeholder="Induk" required>
                     <label for="rombel">Rombongan Belajar</label>
                         <select name="rombel" class="custom-select my-1 mr-sm-2 bg-light" id="rombel"required>
-                            <option value="">-- Pilih Rombongan Belajar--</option>
+                            <option value="">-- Pilih Rombongan Belajar --</option>
                             @foreach($data_rombel as $rombel)
-                            <option value="{{$rombel->nama_rombel}}">{{$rombel->nama_rombel}}
+                            <option value="{{$rombel->id}}">(Tingkat {{$rombel->kelas}}) {{$rombel->nama_rombel}} 
                             </option>
                             @endforeach
                         </select>

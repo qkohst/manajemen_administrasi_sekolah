@@ -107,6 +107,7 @@
         <br>
         <h2 class="font-weight-bold text-center">Manajemen</h2>
         <h3 class="font-weight-bold text-center">Administrasi Sekolah</h3>
+        <!-- <h6 class="font-weight text-center">Versi 1.1.0</h6> -->
 
         <form action="postlogin" method="POST">
             @csrf

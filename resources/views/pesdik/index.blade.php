@@ -45,11 +45,10 @@
                                 <th>Jenis Kelamin</th>
                                 <th>NISN</th>
                                 <th>No. Induk</th>
+                                <th>Tingkat Kelas</th>
                                 <th>Rombel</th>
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
-                                <th>Jenis Pendaftaran</th>
-                                <th>Tanggal Masuk</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -63,11 +62,10 @@
                                 <td>{{$pesdik->jenis_kelamin}}</td>
                                 <td>{{$pesdik->nisn}}</td>
                                 <td>{{$pesdik->induk}}</td>
-                                <td>{{$pesdik->rombel}}</td>
+                                <td>{{$pesdik->rombel->kelas}}</td>
+                                <td>{{$pesdik->rombel->nama_rombel}}</td>
                                 <td>{{$pesdik->tempat_lahir}}</td>
                                 <td>{{$pesdik->tanggal_lahir}}</td>
-                                <td>{{$pesdik->jenis_pendaftaran}}</td>
-                                <td>{{$pesdik->tanggal_masuk}}</td>
                                 <td>
                                 <a href="/pesdik/{{$pesdik->id}}/edit"
                                     class="btn btn-primary btn-sm my-1 mr-sm-1"><i
@@ -79,7 +77,7 @@
                                     Hapus</a>
                                 <a href="/pesdik/{{$pesdik->id}}/registrasi"
                                     class="btn btn-success btn-sm my-1 mr-sm-1"><i
-                                        class="nav-icon fas fa-user"></i> Registrasi</a>
+                                        class="nav-icon fas fa-child"></i> Regsitrasi</a>
                                 @endif
                             </td>
                             </tr>

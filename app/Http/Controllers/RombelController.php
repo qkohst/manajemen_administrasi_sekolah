@@ -37,9 +37,9 @@ class RombelController extends Controller
     }
 
      //function untuk anggota Rombel
-    public function anggota($nama_rombel)
+    public function anggota($id_rombel)
     {
-        $data_pesdik = \App\Pesdik::where('rombel',$nama_rombel)->get();
+        $data_pesdik = \App\Pesdik::where('rombel_id',$id_rombel)->get();
         return view('rombel.anggota',['data_pesdik'=> $data_pesdik]);
     }
 

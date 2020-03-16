@@ -265,8 +265,8 @@
                         <span class="product-description">
                           Email : {{$pengguna->email}}
                         </span>
-                        <span class="product-description">
-                          HP : {{$pengguna->email}}
+                        <span class="product-description text-info">
+                          HP : 085232077932
                           </span>
                       </div>
                     </li>

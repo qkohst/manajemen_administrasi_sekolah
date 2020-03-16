@@ -24,14 +24,8 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-users my-0 btn-sm-1"></i> Data Anggota Rombongan Belajar</h3>
+                <h3><i class="nav-icon fas fa-user-graduate my-0 btn-sm-1"></i> Data Alumni</h3>
                 <hr>
-            </div>
-        </div>
-        <div>
-            <div class="col">
-                <a class="btn btn-danger btn-sm my-1 mr-sm-1" href="/rombel/index" role="button"><i class="fas fa-undo"></i> Kembali</a>
-                <br>
             </div>
         </div>
         <div class="row">
@@ -45,26 +39,26 @@
                                 <th>Jenis Kelamin</th>
                                 <th>NISN</th>
                                 <th>No. Induk</th>
-                                <th>Rombel</th>
-                                <th>Tempat Lahir</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Jenis Pendaftaran</th>
+                                <th>Tanggal Masuk</th>
+                                <th>Tanggal Lulus</th>
+                                <th>Melanjutkan Ke</th>
+                                <th>Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $no = 0;?>
-                            @foreach($data_pesdik as $pesdik)
+                            @foreach($data_pesdikalumni as $pesdikalumni)
                             <?php $no++ ;?>
                             <tr>
                                 <td>{{$no}}</td>
-                                <td>{{$pesdik->nama}}</td>
-                                <td>{{$pesdik->jenis_kelamin}}</td>
-                                <td>{{$pesdik->nisn}}</td>
-                                <td>{{$pesdik->induk}}</td>
-                                <td>{{$pesdik->rombel->nama_rombel}}</td>
-                                <td>{{$pesdik->tempat_lahir}}</td>
-                                <td>{{$pesdik->tanggal_lahir}}</td>
-                                <td>{{$pesdik->jenis_pendaftaran}}</td>
+                                <td>{{$pesdikalumni->nama}}</td>
+                                <td>{{$pesdikalumni->jenis_kelamin}}</td>
+                                <td>{{$pesdikalumni->nisn}}</td>
+                                <td>{{$pesdikalumni->induk}}</td>
+                                <td>{{$pesdikalumni->tanggal_masuk}}</td>
+                                <td>{{$pesdikalumni->tanggal_lulus}}</td>
+                                <td>{{$pesdikalumni->melanjutkan_ke}}</td>
+                                <td>{{$pesdikalumni->keterangan}}</td>
                             </tr>
                             @endforeach
                         </tbody>
