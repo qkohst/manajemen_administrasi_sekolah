@@ -36,8 +36,8 @@ class PesdikController extends Controller
         {
            $request->validate([
                 'nama' => 'min:5',
-                'nisn' => 'unique:pesdik|min:5',
-                'iduk' => 'unique:pesdik|min:5',
+                'nisn' => 'unique:pesdik|numeric|min:10',
+                'induk' => 'unique:pesdik|numeric|min:2',
            ]);
            $pesdik = new Pesdik();
            $pesdik->nama     = $request->input('nama');
@@ -158,8 +158,8 @@ class PesdikController extends Controller
         {
             $request->validate([
                 'nama' => 'min:5',
-                'nisn' => 'min:5',
-                'iduk' => 'min:5',
+                'nisn' => 'numeric|min:10',
+                'induk' => 'numeric|min:2',
             ]);
             $pesdik = \App\Pesdik::find($id_pesdik);
             $pesdik->update($request->all());

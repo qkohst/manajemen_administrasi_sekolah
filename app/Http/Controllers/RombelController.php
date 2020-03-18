@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rombel;
 use App\Pesdik;
+use App\Tapel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,17 +19,18 @@ class RombelController extends Controller
     {
         $data_rombel = \App\Rombel::all();
         $data_guru = \App\Guru::all();
-        return view('rombel.index',['data_rombel'=> $data_rombel],['data_guru'=>$data_guru]);
+        $data_tapel = \App\Tapel::all();
+        return view('rombel.index', compact('data_rombel','data_guru','data_tapel'));
     }
 
     //function untuk tambah
     public function tambah (Request $request)
     {
         $request->validate([
-            'nama_rombel' => 'unique:rombel|min:3',
-            'wali_kelas' => 'unique:rombel',
+            'nama_rombel' => 'min:3',
         ]);
        $rombel = new Rombel();
+       $rombel->tapel_id   = $request->input('tapel_id');
        $rombel->kelas   = $request->input('kelas');
        $rombel->nama_rombel   = $request->input('nama_rombel');
        $rombel->wali_kelas   = $request->input('wali_kelas');
@@ -48,7 +50,8 @@ class RombelController extends Controller
     {
         $rombel = \App\Rombel::find($id_rombel);
         $data_guru = \App\Guru::all();
-        return view('rombel/edit',['rombel'=>$rombel],['data_guru'=>$data_guru]);
+        $data_tapel = \App\Tapel::all();
+        return view('rombel/edit', compact('rombel','data_guru','data_tapel'));
     }
     public function update (Request $request, $id_rombel)
     {

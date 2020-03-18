@@ -88,7 +88,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Sidebar Menu -->
-                        <a href="/">
+                        <a>
                         <span class="text-white">MANAJEMEN SURAT</span>
                         </a>
                         <!-- Add icons to the links using the .nav-icon class
@@ -175,43 +175,21 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Sidebar Menu -->
-                        <a href="/" class="text-white">
+                        <a class="text-white">
                         <p>
                             MANAJEMEN KEUANGAN
-                            <span class="right badge badge-danger">New</span>
+                            <span class="right badge badge-danger">Not Yet</span>
                         </p>
                         </a>
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-dollar-sign"></i>
-                                <p>
-                                    Keuangan Sekolah
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fas fa-money-bill-alt nav-icon"></i>
-                                        <p>Pemasukan</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fas fa-money-bill nav-icon"></i>
-                                        <p>Pengeluaran</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-hand-holding-usd"></i>
                                 <p>
                                     Pembayaran
                                     <i class="right fas fa-angle-left"></i>
+                                    <span class="right badge badge-danger">Not Yet</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -219,12 +197,14 @@
                                     <a href="#" class="nav-link">
                                         <i class="fas fa-money-check-alt nav-icon"></i>
                                         <p>Rincian Pembayaran</p>
+                                        <span class="right badge badge-danger">Not Yet</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-handshake nav-icon"></i>
                                         <p>Transaksi Pembayaran</p>
+                                        <span class="right badge badge-danger">Not Yet</span>
                                     </a>
                                 </li>
                             </ul>
@@ -235,7 +215,34 @@
                                 <p>
                                     Tabungan Siswa
                                 </p>
+                                <span class="right badge badge-danger">Not Yet</span>
                             </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-dollar-sign"></i>
+                                <p>
+                                    Keuangan Sekolah
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="right badge badge-danger">Not Yet</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-money-bill-alt nav-icon"></i>
+                                        <p>Pemasukan</p>
+                                        <span class="right badge badge-danger">Not Yet</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-money-bill nav-icon"></i>
+                                        <p>Pengeluaran</p>
+                                        <span class="right badge badge-danger">Not Yet</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -243,6 +250,7 @@
                                 <p>
                                     Unduhan
                                 </p>
+                                <span class="right badge badge-danger">Not Yet</span>
                             </a>
                         </li>
                     </ul>
@@ -251,7 +259,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Sidebar Menu -->
-                        <a href="/" class="text-white">
+                        <a class="text-white">
                         <p>
                             KELOLA DATA
                         </p>
@@ -272,7 +280,7 @@
                                 <p>
                                     GTK
                                     <i class="fas fa-angle-left right"></i>
-                                    <span class="right badge badge-danger">New</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview bg-secondary">
@@ -291,11 +299,20 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a href="/tapel/index" class="nav-link">
+                                <i class="fas fa-calendar-alt nav-icon"></i>
+                                <p>
+                                    Tahun Pelajaran
+                                    <span class="right badge badge-primary">New</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/rombel/index" class="nav-link">
                                 <i class="fas fa-users nav-icon"></i>
                                 <p>
                                     Rombongan Belajar
-                                    <span class="right badge badge-danger">New</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </p>
                             </a>
                         </li>
@@ -305,7 +322,7 @@
                                 <p>
                                     Peserta Didik
                                     <i class="fas fa-angle-left right"></i>
-                                    <span class="right badge badge-danger">New</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview bg-secondary">
@@ -334,7 +351,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Sidebar Menu -->
-                        <a href="/" class="text-white">
+                        <a class="text-white">
                         <p>
                             PENGATURAN
                         </p>
@@ -347,7 +364,7 @@
                                 <p>
                                     Pengumuman
                                 </p>
-                                <span class="right badge badge-danger">New</span>
+                                <span class="right badge badge-primary">New</span>
                             </a>
                         </li>
                         <li class="nav-item">

@@ -47,6 +47,7 @@
                                 <th>No. Induk</th>
                                 <th>Tingkat Kelas</th>
                                 <th>Rombel</th>
+                                <th>Tahun Pelajaran</th>
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Aksi</th>
@@ -64,6 +65,7 @@
                                 <td>{{$pesdik->induk}}</td>
                                 <td>{{$pesdik->rombel->kelas}}</td>
                                 <td>{{$pesdik->rombel->nama_rombel}}</td>
+                                <td>{{$pesdik->rombel->tapel->tahun}} {{$pesdik->rombel->tapel->semester}}</td>
                                 <td>{{$pesdik->tempat_lahir}}</td>
                                 <td>{{$pesdik->tanggal_lahir}}</td>
                                 <td>

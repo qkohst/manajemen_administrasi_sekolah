@@ -90,6 +90,12 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::post('/rombel/{id}/update','RombelController@update');
     Route::get('/rombel/{id}/delete','RombelController@delete');
 
+    Route::get('/tapel/index','TapelController@index');
+    Route::post('/tapel/tambah','TapelController@tambah');
+    Route::get('/tapel/{id}/edit','TapelController@edit');
+    Route::post('/tapel/{id}/update','TapelController@update');
+    Route::get('/tapel/{id}/delete','TapelController@delete');
+
     Route::get('/pesdik/index','PesdikController@index');
     Route::get('/pesdik/create','PesdikController@create');
     Route::post('/pesdik/tambah','PesdikController@tambah');

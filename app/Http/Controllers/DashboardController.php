@@ -12,6 +12,6 @@ class DashboardController extends Controller
     {
         $data_pengguna = $pengguna->all();
         $data_pengumuman = \App\Pengumuman::orderByRaw('created_at DESC')->limit(5)->get();
-        return view('dashboard', ['data_pengguna'=>$data_pengguna],['data_pengumuman'=>$data_pengumuman]);
+        return view('dashboard', compact('data_pengguna','data_pengumuman'));
     }
 }

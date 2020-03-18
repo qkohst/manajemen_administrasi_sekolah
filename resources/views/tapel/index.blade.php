@@ -24,14 +24,14 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-users my-0 btn-sm-1"></i> Data Rombongan Belajar</h3>
+                <h3><i class="nav-icon fas fa-calendar-alt my-0 btn-sm-1"></i> Data Tahun Pelajaran</h3>
                 <hr>
             </div>
         </div>
         <div>
                 <div class="col">
                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                        data-target="#tambahRombel"><i class="fas fa-plus"></i>
+                        data-target="#tambahTapel"><i class="fas fa-plus"></i>
                         Tambah Data
                     </button>
                 </div>
@@ -46,32 +46,23 @@
                                 <th>No.</th>
                                 <th>Tahun Pelajaran</th>
                                 <th>Semester</th>
-                                <th>Kelas</th>
-                                <th>Nama Rombel</th>
-                                <th>Wali Kelas</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $no = 0;?>
-                            @foreach($data_rombel as $rombel)
+                            @foreach($data_tapel as $tapel)
                             <?php $no++ ;?>
                             <tr>
                                 <td>{{$no}}</td>
-                                <td>{{$rombel->tapel->tahun}}</td>
-                                <td>{{$rombel->tapel->semester}}</td>
-                                <td>{{$rombel->kelas}}</td>
-                                <td>{{$rombel->nama_rombel}}</td>
-                                <td>{{$rombel->wali_kelas}}</td>
+                                <td>{{$tapel->tahun}}</td>
+                                <td>{{$tapel->semester}}</td>
                                 <td>
-                                <a href="/rombel/{{$rombel->id}}/anggota"
-                                    class="btn btn-success btn-sm my-1 mr-sm-1"><i
-                                        class="nav-icon fas fa-users"></i> Anggota Rombel</a>
-                                <a href="/rombel/{{$rombel->id}}/edit"
+                                <a href="/tapel/{{$tapel->id}}/edit"
                                     class="btn btn-primary btn-sm my-1 mr-sm-1"><i
                                         class="nav-icon fas fa-pencil-alt"></i> Edit</a>
                                 @if (auth()->user()->role == 'admin')
-                                <a href="/rombel/{{$rombel->id}}/delete"
+                                <a href="/tapel/{{$tapel->id}}/delete"
                                     class="btn btn-danger btn-sm my-1 mr-sm-1"
                                     onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                     Hapus</a>
@@ -84,46 +75,29 @@
                 </div>
             </div>
             <!-- Modal Tambah -->
-        <div class="modal fade" id="tambahRombel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="tambahTapel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel"><i
-                                class="nav-icon fas fa-users my-1 btn-sm-1"></i> Tambah Data Rombongan Belajar</h5>
+                                class="nav-icon fas fa-calendar-alt my-1 btn-sm-1"></i> Tambah Tahun Pelajaran</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/rombel/tambah" method="POST">
+                        <form action="/tapel/tambah" method="POST">
                             {{csrf_field()}}
                             <div class="row">
-                                    <label for="tapel_id">Tahun Pelajaran</label>
-                                    <select name="tapel_id" class="custom-select my-1 mr-sm-2 bg-light" id="tapel_id"required>
-                                        <option value="">-- Pilih Tahun Pelajaran --</option>
-                                        @foreach($data_tapel as $tapel)
-                                        <option value="{{$tapel->id}}">{{$tapel->tahun}} ({{$tapel->semester}})
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    <label for="kelas">Kelas</label>
-                                    <select name="kelas" class="custom-select my-1 mr-sm-2 bg-light" id="kelas"required>
-                                        <option value="">-- Pilih Kelas --</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                    </select>
-                                    <label for="nama_rombel">Nama Rombel</label>
-                                    <input value="{{old('nama_rombel')}}" name="nama_rombel" type="text" class="form-control bg-light"
-                                        id="nama_rombel" placeholder="Nama Rombel" required>
-                                    <label for="wali_kelas">Wali Kelas</label>
-                                    <select name="wali_kelas" class="custom-select my-1 mr-sm-2 bg-light" id="wali_kelas"required>
-                                        <option value="">-- Pilih Wali Kelas--</option>
-                                        @foreach($data_guru as $guru)
-                                        <option value="{{$guru->nama}}">{{$guru->nama}}
-                                        </option>
-                                        @endforeach
+                                    <label for="tahun">Tahun Pelajaran</label>
+                                    <input value="{{old('tahun')}}" name="tahun" type="text" class="form-control bg-light"
+                                        id="tahun" placeholder="Contoh : (2019/2020)" required>
+                                    <label for="semester">Semester</label>
+                                    <select name="semester" class="custom-select my-1 mr-sm-2 bg-light" id="semester"required>
+                                        <option value="">-- Pilih Semester --</option>
+                                        <option value="Semester Ganjil">Semester Ganjil</option>
+                                        <option value="Semester Genap">Semester Genap</option>
                                     </select>
                             </div>
                             <hr>

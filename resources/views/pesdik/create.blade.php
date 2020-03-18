@@ -37,7 +37,7 @@
                         <select name="rombel" class="custom-select my-1 mr-sm-2 bg-light" id="rombel"required>
                             <option value="">-- Pilih Rombongan Belajar --</option>
                             @foreach($data_rombel as $rombel)
-                            <option value="{{$rombel->id}}">(Tingkat {{$rombel->kelas}}) {{$rombel->nama_rombel}} 
+                            <option value="{{$rombel->id}}">(Tingkat {{$rombel->kelas}}) {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}} {{$rombel->nama_rombel}}
                             </option>
                             @endforeach
                         </select>

@@ -41,17 +41,24 @@
                 </div>
                 <div class="col-6">
                     <label for="wali_kelas">Wali Kelas</label>
-                        <select name="wali_kelas" class="custom-select my-1 mr-sm-2 bg-light" id="wali_kelas"required>
-                            <option value="">-- Pilih Wali Kelas--</option>
+                        <select name="wali_kelas" class="form-control bg-light" id="wali_kelas"required>
+                            <option value="{{$rombel->wali_kelas}}">{{$rombel->wali_kelas}}</option>
                             @foreach($data_guru as $guru)
                             <option value="{{$guru->nama}}">{{$guru->nama}}</option>
+                            @endforeach
+                        </select>
+                    <label for="tapel_id">Tahun Pelajaran</label>
+                        <select name="tapel_id" class="form-control bg-light" id="tapel_id"required>
+                            <option value="{{$rombel->tapel_id}}">{{$rombel->tapel->tahun}} ({{$rombel->tapel->semester}})</option>
+                            @foreach($data_tapel as $tapel)
+                            <option value="{{$tapel->id}}">{{$tapel->tahun}} ({{$tapel->semester}})</option>
                             @endforeach
                         </select>
                 </div>
             </div>
             <hr>
             <button type="submit" class="btn btn-success btn-sm "><i class="fas fa-save"></i> SIMPAN</button>
-            <a class="btn btn-danger btn-sm" href="/tendik/index" role="button"><i class="fas fa-undo"></i>
+            <a class="btn btn-danger btn-sm" href="/rombel/index" role="button"><i class="fas fa-undo"></i>
                 BATAL</a>
         </form>
     </div>
