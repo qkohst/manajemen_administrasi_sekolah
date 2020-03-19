@@ -114,6 +114,12 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/pengumuman/{id}/edit','PengumumanController@edit');
     Route::post('/pengumuman/{id}/update','PengumumanController@update');
     Route::get('/pengumuman/{id}/delete','PengumumanController@delete');
+
+    Route::get('/keuangan/pemasukan/index','PemasukanController@index');
+    Route::post('/keuangan/pemasukan/tambah','PemasukanController@tambah');
+    Route::get('/keuangan/pemasukan/{id}/edit','PemasukanController@edit');
+    Route::post('/keuangan/pemasukan/{id}/update','PemasukanController@update');
+    Route::get('/keuangan/pemasukan/{id}/delete','PemasukanController@delete');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

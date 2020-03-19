@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRombelTable extends Migration
+class CreatePemasukanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateRombelTable extends Migration
      */
     public function up()
     {
-        Schema::create('rombel', function (Blueprint $table) {
+        Schema::create('pemasukan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tapel_id');
-            $table->string('kelas');
-            $table->string('nama_rombel');
-            $table->string('wali_kelas');
+            $table->integer('kategori_id');
+            $table->date('tanggal');
+            $table->integer('jumlah');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateRombelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rombel');
+        Schema::dropIfExists('pemasukan');
     }
 }

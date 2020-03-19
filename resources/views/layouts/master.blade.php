@@ -224,19 +224,19 @@
                                 <p>
                                     Keuangan Sekolah
                                     <i class="fas fa-angle-left right"></i>
-                                    <span class="right badge badge-danger">Not Yet</span>
+                                    <span class="right badge badge-warning">Progress</span>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
+                            <ul class="nav nav-treeview bg-secondary">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/keuangan/pemasukan/index" class="nav-link text-white">
                                         <i class="fas fa-money-bill-alt nav-icon"></i>
                                         <p>Pemasukan</p>
-                                        <span class="right badge badge-danger">Not Yet</span>
+                                        <span class="right badge badge-warning">On Progress</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="#" class="nav-link text-white">
                                         <i class="fas fa-money-bill nav-icon"></i>
                                         <p>Pengeluaran</p>
                                         <span class="right badge badge-danger">Not Yet</span>
