@@ -124,6 +124,15 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::post('/keuangan/pemasukan/tambahkategori','PemasukanController@tambahkategori');
     Route::get('/keuangan/pemasukan/{id}/deletekategori','PemasukanController@deletekategori');
 
+    Route::get('/keuangan/pengeluaran/index','PengeluaranController@index');
+    Route::post('/keuangan/pengeluaran/tambah','PengeluaranController@tambah');
+    Route::get('/keuangan/pengeluaran/{id}/edit','PengeluaranController@edit');
+    Route::post('/keuangan/pengeluaran/{id}/update','PengeluaranController@update');
+    Route::get('/keuangan/pengeluaran/{id}/delete','PengeluaranController@delete');
+    
+    Route::post('/keuangan/pengeluaran/tambahkategori','PengeluaranController@tambahkategori');
+    Route::get('/keuangan/pengeluaran/{id}/deletekategori','PengeluaranController@deletekategori');
+
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

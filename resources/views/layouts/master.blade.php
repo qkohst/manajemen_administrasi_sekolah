@@ -232,14 +232,14 @@
                                     <a href="/keuangan/pemasukan/index" class="nav-link text-white">
                                         <i class="fas fa-money-bill-alt nav-icon"></i>
                                         <p>Pemasukan</p>
-                                        <span class="right badge badge-warning">On Progress</span>
+                                        <span class="right badge badge-primary">New</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-white">
+                                    <a href="/keuangan/pengeluaran/index" class="nav-link text-white">
                                         <i class="fas fa-money-bill nav-icon"></i>
                                         <p>Pengeluaran</p>
-                                        <span class="right badge badge-danger">Not Yet</span>
+                                        <span class="right badge badge-warning">On Progress</span>
                                     </a>
                                 </li>
                             </ul>

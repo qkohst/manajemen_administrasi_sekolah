@@ -51,6 +51,7 @@ class PemasukanController extends Controller
          $pemasukan->save();
          return redirect('/keuangan/pemasukan/index') ->with('sukses','Data Pemasukan Berhasil Diedit');
      }
+     
     //function untuk hapus
     public function delete($id)
     {
