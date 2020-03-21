@@ -30,12 +30,7 @@
                     <div class="row">
                     <div class="col-md-4">
                         <div class="card">
-                        <div class="card-header bg-dark p-0">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item"><h6 class="card-header bg-dark"><i class="fas fa-money-bill-alt"></i> TAMBAH PEMASUKAN</h6></li>
-                                <li class="nav-item"><a class="nav-link active btn-sm my-1 mr-sm-1" data-toggle="modal" href="#kategori"><i class="fas fa-plus"></i> Kategori</a></li>
-                            </ul>
-                        </div>
+                        <h6 class="card-header p-3"><i class="fas fa-money-bill-alt"></i> TAMBAH PEMASUKAN</h6>
                         <div class="card-body">
                         <form action="/keuangan/pemasukan/tambah" method="POST" enctype="multipart/form-data">
                                         {{csrf_field()}}
@@ -43,9 +38,9 @@
                                                 <label for="kategori_id">Pilih Kategori</label>
                                                 <select name="kategori_id" id="kategori_id" class="form-control bg-light" required>
                                                     <option value="">-- Pilih Kategori Pemasukan --</option>
-                                                    <option value="1">Bosnas</option>
-                                                    <option value="2">Bosda</option>
-                                                    <option value="3">Sumber Lain</option>
+                                                    @foreach($data_kategori as $ktgr)
+                                                    <option value="{{$ktgr->id}}">{{$ktgr->nama_kategori}}</option>
+                                                    @endforeach
                                                 </select>
                                         </div>
                                         <div class="form-group row">
@@ -77,50 +72,113 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                            <div class="card">
-                            <h6 class="card-header bg-dark"><i class="fas fa-money-bill-alt"></i> REKAP DATA PEMASUKAN</h6>
-                            <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-head-fixed" id='tabelAgendaMasuk'>
-                                            <thead>
-                                                <tr class="bg-light">
-                                                    <th>No.</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Jumlah</th>
-                                                    <th>Keterangan</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $no = 0;?>
-                                                @foreach($data_pemasukan as $pemasukan)
-                                                <?php $no++ ;?>
-                                                <tr>
-                                                    <td>{{$no}}</td>
-                                                    <td>{{$pemasukan->tanggal}}</td>
-                                                    <td>Rp.{{$pemasukan->jumlah}},00</td>
-                                                    <td>{{$pemasukan->keterangan}}</td>
-                                                    <td>
-                                                    <a href="/pemasukan/{{$pemasukan->id}}/edit"
-                                                        class="btn btn-primary btn-sm my-1 mr-sm-1"><i
-                                                            class="nav-icon fas fa-pencil-alt"></i> Edit</a>
-                                                    @if (auth()->user()->role == 'admin')
-                                                    <a href="/keuangan/pemasukan/{{$pemasukan->id}}/delete"
-                                                        class="btn btn-danger btn-sm my-1 mr-sm-1"
-                                                        onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
-                                                        Hapus</a>
-                                                    @endif
-                                                </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                        <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active btn-sm" href="#pemasukan" data-toggle="tab"><i class="fas fa-money-bill-alt"></i> Rekap Data Pemasukan</a></li>
+                                <li class="nav-item"><a class="nav-link btn-sm" href="#kategori" data-toggle="tab"><i class="fas fa-layer-group"></i> Kategori Pemasukan</a></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="pemasukan">
+                                <div class="row">
+                                    <div class="row table-responsive">
+                                        <div class="col-12">
+                                            <table class="table table-head-fixed" id='tabelAgendaMasuk'>
+                                                <thead>
+                                                    <tr class="bg-light">
+                                                        <th>No.</th>
+                                                        <th>Tanggal</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Kategori</th>
+                                                        <th>Keterangan</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $no = 0;?>
+                                                    @foreach($data_pemasukan as $pemasukan)
+                                                    <?php $no++ ;?>
+                                                    <tr>
+                                                        <td>{{$no}}</td>
+                                                        <td>{{$pemasukan->tanggal}}</td>
+                                                        <td>Rp.{{$pemasukan->jumlah}},00</td>
+                                                        <td>{{$pemasukan->kategori->nama_kategori}}</td>
+                                                        <td>{{$pemasukan->keterangan}}</td>
+                                                        <td>
+                                                        <a href="/keuangan/pemasukan/{{$pemasukan->id}}/edit"
+                                                            class="btn btn-primary btn-sm my-1 mr-sm-1"><i
+                                                                class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                                        @if (auth()->user()->role == 'admin')
+                                                        <a href="/keuangan/pemasukan/{{$pemasukan->id}}/delete"
+                                                            class="btn btn-danger btn-sm my-1 mr-sm-1"
+                                                            onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
+                                                            Hapus</a>
+                                                        @endif
+                                                    </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                            </div>
+                                </div>
+                                </div>
+
+                                <div class="tab-pane" id="kategori">
+                                <div>
+                                    <div class="col">
+                                        <a class="btn btn-primary btn-sm my-1 mr-sm-1" data-toggle="modal" href="#tambahKategori"><i class="fas fa-plus"></i> Tambah Data</a>
+                                        <br>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="row table-responsive">
+                                        <div class="col-12">
+                                            <table class="table table-head-fixed" id='tabelAgendaKeluar'>
+                                                <thead>
+                                                    <tr class="bg-light">
+                                                        <th>No.</th>
+                                                        <th>Nama Kategori</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $no = 0;?>
+                                                    @foreach($data_kategori as $kategorimasuk)
+                                                    <?php $no++ ;?>
+                                                    <tr>
+                                                        <td>{{$no}}</td>
+                                                        <td>{{$kategorimasuk->nama_kategori}}</td>
+                                                        <td>
+                                                        <!-- <a href="#"
+                                                            class="btn btn-primary btn-sm my-1 mr-sm-1"><i
+                                                                class="nav-icon fas fa-pencil-alt"></i> Edit</a> -->
+                                                        @if (auth()->user()->role == 'admin')
+                                                        <a href="/keuangan/pemasukan/{{$kategorimasuk->id}}/deletekategori"
+                                                            class="btn btn-danger btn-sm my-1 mr-sm-1"
+                                                            onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
+                                                            Hapus</a>
+                                                        @endif
+                                                    </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                           
+                                </div>
+                            </div>  
+                        </div>
+                        <!-- /.nav-tabs-custom -->
                     </div>
+                    <!-- /.col -->
                     </div>
                     <!-- Modal Tambah -->
-                    <div class="modal fade" id="kategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade" id="tambahKategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -132,12 +190,12 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="#" method="POST">
+                                    <form action="/keuangan/pemasukan/tambahkategori" method="POST">
                                         {{csrf_field()}}
                                         <div class="row">
-                                                <label for="nama_pemasukan">Nama Pemasukan</label>
-                                                <input value="{{old('nama_pemasukan')}}" name="nama_pemasukan" type="text" class="form-control bg-light"
-                                                    id="nama_pemasukan" placeholder="Nama Pemasukan" required>
+                                                <label for="nama_kategori">Nama Kategori</label>
+                                                <input value="{{old('nama_kategori')}}" name="nama_kategori" type="text" class="form-control bg-light"
+                                                    id="nama_kategori" placeholder="Nama Kategori" required>
                                         </div>
                                         <hr>
                                         <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i>

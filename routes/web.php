@@ -120,6 +120,10 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/keuangan/pemasukan/{id}/edit','PemasukanController@edit');
     Route::post('/keuangan/pemasukan/{id}/update','PemasukanController@update');
     Route::get('/keuangan/pemasukan/{id}/delete','PemasukanController@delete');
+    
+    Route::post('/keuangan/pemasukan/tambahkategori','PemasukanController@tambahkategori');
+    Route::get('/keuangan/pemasukan/{id}/deletekategori','PemasukanController@deletekategori');
+
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

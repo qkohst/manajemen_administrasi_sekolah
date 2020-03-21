@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Pemasukan;
+use App\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PemasukanController extends Controller
 {
     public function index()
     {
         $data_pemasukan = \App\Pemasukan::all();
-        return view('/keuangan/pemasukan/index', compact('data_pemasukan'));
+        $data_kategori = \App\Kategori::where('jenis_kategori', 1)->get();
+        return view('/keuangan/pemasukan/index', compact('data_pemasukan','data_kategori'));
     }
 
     //function untuk tambah
@@ -30,11 +33,50 @@ class PemasukanController extends Controller
        return redirect('/keuangan/pemasukan/index')->with("sukses", "Data Pemasukan Berhasil Ditambahkan");
     }
 
+     //function untuk masuk ke view edit
+     public function edit ($id_pemasukan)
+     {
+         $pemasukan = \App\Pemasukan::find($id_pemasukan);
+         $data_kategori = \App\Kategori::where('jenis_kategori', 1)->get();
+         return view('/keuangan/pemasukan/editpemasukan', compact('pemasukan','data_kategori'));
+     }
+     public function update (Request $request, $id_pemasukan)
+     {
+         $request->validate([
+            'jumlah' => 'numeric',
+            'keterangan' => 'min:10',
+         ]);
+         $pemasukan = \App\Pemasukan::find($id_pemasukan);
+         $pemasukan->update($request->all());
+         $pemasukan->save();
+         return redirect('/keuangan/pemasukan/index') ->with('sukses','Data Pemasukan Berhasil Diedit');
+     }
     //function untuk hapus
     public function delete($id)
     {
         $pemasukan=\App\Pemasukan::find($id);
         $pemasukan->delete();
-        return redirect('/keuangan/pemasukan/index') ->with('sukses','Data Rombongan Belajar Berhasil Dihapus');
+        return redirect('/keuangan/pemasukan/index') ->with('sukses','Data Pemasukan Berhasil Dihapus');
     }
+
+    //KATEGORI PEMASUKAN
+    //function untuk tambahkategori
+    public function tambahkategori (Request $request)
+    {
+        $request->validate([
+            'nama_kategori' => 'min:5',
+        ]);
+       $kategori = new Kategori();
+       $kategori->jenis_kategori   = 1;
+       $kategori->nama_kategori    = $request->input('nama_kategori');
+       $kategori->save();
+       return redirect('/keuangan/pemasukan/index')->with("sukses", "Data Kategori Berhasil Ditambahkan");
+    }
+      //function untuk hapus
+      public function deletekategori($id)
+      {
+          $kategori=\App\Kategori::find($id);
+          $kategori->delete();
+          return redirect('/keuangan/pemasukan/index') ->with('sukses','Data Kategori Berhasil Dihapus');
+      }
 }

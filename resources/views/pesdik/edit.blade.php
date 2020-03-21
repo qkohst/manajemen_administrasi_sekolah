@@ -43,7 +43,7 @@
                     </select>
                 </div>
                 <div class="col-6">
-                <label for="tempat_lahir">Tempat Lahir</label>
+                    <label for="tempat_lahir">Tempat Lahir</label>
                     <input value="{{$pesdik->tempat_lahir}}" name="tempat_lahir" type="text" class="form-control" id="tempat_lahir"
                         placeholder="Tempat Lahir" required>
                     <label for="tanggal_lahir">Tanggal Lahir</label>

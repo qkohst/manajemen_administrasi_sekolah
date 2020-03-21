@@ -5,6 +5,7 @@ use App\User;
 use App\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {

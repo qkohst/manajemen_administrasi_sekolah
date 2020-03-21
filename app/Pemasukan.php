@@ -8,4 +8,10 @@ class Pemasukan extends Model
 {
     protected $table = 'pemasukan';
     protected $fillable = ['kategori_id','tanggal','jumlah','keterangan'];
+
+    //function relasi ke tapel
+    public function kategori()
+      {
+          return $this->belongsTo('App\Kategori');
+      }
 }

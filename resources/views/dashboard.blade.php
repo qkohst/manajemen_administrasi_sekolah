@@ -5,7 +5,7 @@
    <!-- Info boxes -->
    <div class="d-flex justify-content-center">
           <div class="flex-fill" style="padding: 4px 4px 4px 4px">
-            <div class="info-box">
+            <div class="info-box md-3">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-envelope"></i></span>
 
               <div class="info-box-content">
@@ -20,7 +20,7 @@
           </div>
           <!-- /.col -->
           <div class=" flex-fill" style="padding: 4px 4px 4px 4px">
-            <div class="info-box mb-3">
+            <div class="info-box md-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-envelope-open"></i></span>
 
               <div class="info-box-content">
@@ -35,7 +35,7 @@
 
           <!-- fix for small devices only -->
           <div class="flex-fill" style="padding: 4px 4px 4px 4px">
-            <div class="info-box mb-3">
+            <div class="info-box md-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-layer-group"></i></span>
 
               <div class="info-box-content">
@@ -49,7 +49,7 @@
           <!-- /.col -->
           @if (auth()->user()->role == 'admin')
           <div class=" flex-fill" style="padding: 4px 4px 4px 4px">
-            <div class="info-box mb-3">
+            <div class="info-box md-3">
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Pengguna</span>
@@ -148,19 +148,24 @@
               </div>
           </div>
           <div class="card-body p-0">
+                   <?php
+                      $jumlah_pengeluaran=12000000;
+                      $jumlah_pemasukan = DB::table('pemasukan')
+                      ->sum('pemasukan.jumlah');
+                    ?>
                   <ul class="products-list product-list-in-card pl-1 pr-1">
-                        <a href="javascript:void(0)" class="product-title">Pemasukan</a>
-                          <h5> Rp. 20.000.000,00</h5>
+                        <a href="javascript:void(0)" class="product-title">Jumlah Pemasukan</a>
+                          <h5>Rp. {{$jumlah_pemasukan}}</h5>
                           <hr>
                   </ul>
                   <ul class="products-list product-list-in-card pl-1 pr-1">
-                        <a href="javascript:void(0)" class="product-title">Pengeluaran</a>
-                          <h5> Rp. 15.000.000,00</h5>
+                        <a href="javascript:void(0)" class="product-title">Jumlah Pengeluaran</a>
+                          <h5> Rp. {{$jumlah_pengeluaran}}</h5>
                           <hr>
                   </ul>
                   <ul class="products-list product-list-in-card pl-1 pr-1">
                         <a href="javascript:void(0)" class="product-title">Saldo</a>
-                          <h5> Rp. 5.000.000,00</h5>
+                          <h5>Rp. {{$jumlah_pemasukan-$jumlah_pengeluaran}}</h5>
                           <hr/>
                   </ul>
           </div>
