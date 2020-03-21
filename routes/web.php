@@ -133,6 +133,14 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::post('/keuangan/pengeluaran/tambahkategori','PengeluaranController@tambahkategori');
     Route::get('/keuangan/pengeluaran/{id}/deletekategori','PengeluaranController@deletekategori');
 
+    Route::get('/tabungan/setor/index','SetorController@index');
+    Route::post('/tabungan/setor/tambah','SetorController@tambah');
+    Route::get('/tabungan/setor/{id}/edit','SetorController@edit');
+    Route::post('/tabungan/setor/{id}/update','SetorController@update');
+    Route::get('/tabungan/setor/{id}/delete','SetorController@delete');
+    Route::get('/tabungan/setor/{id}/cetak','SetorController@cetak');
+    Route::get('/tabungan/setor/{id}/cetakprint','SetorController@cetakprint');
+
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

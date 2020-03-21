@@ -34,6 +34,9 @@
   <link rel="stylesheet" href="/adminLTE/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="/adminLTE/plugins/summernote/summernote-bs4.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="/adminLTE/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/adminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -209,14 +212,31 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-credit-card"></i>
                                 <p>
                                     Tabungan Siswa
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="right badge badge-warning">Progress</span>
                                 </p>
-                                <span class="right badge badge-danger">Not Yet</span>
                             </a>
+                            <ul class="nav nav-treeview bg-secondary">
+                                <li class="nav-item">
+                                    <a href="/tabungan/setor/index" class="nav-link text-white">
+                                        <i class="fas fa-credit-card nav-icon"></i>
+                                        <p>Setor Tunai</p>
+                                        <span class="right badge badge-warning">Progress</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link text-white">
+                                        <i class="fas fa-credit-card nav-icon"></i>
+                                        <p>Tarik Tunai</p>
+                                        <span class="right badge badge-danger">Not Yet</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
@@ -224,7 +244,7 @@
                                 <p>
                                     Keuangan Sekolah
                                     <i class="fas fa-angle-left right"></i>
-                                    <span class="right badge badge-warning">Progress</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview bg-secondary">
@@ -239,7 +259,7 @@
                                     <a href="/keuangan/pengeluaran/index" class="nav-link text-white">
                                         <i class="fas fa-money-bill nav-icon"></i>
                                         <p>Pengeluaran</p>
-                                        <span class="right badge badge-warning">On Progress</span>
+                                        <span class="right badge badge-primary">New</span>
                                     </a>
                                 </li>
                             </ul>
@@ -408,6 +428,8 @@
     <script src="/adminLTE/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="/adminLTE/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="/adminLTE/plugins/select2/js/select2.full.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/adminLTE/js/adminlte.min.js"></script>
     <!-- Ekko Lightbox -->
@@ -454,6 +476,16 @@
                 $('.btn[data-filter]').removeClass('active');
                 $(this).addClass('active');
             });
+        });
+
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+            theme: 'bootstrap4'
+            })
         });
     </script>
     <!-- Modal Profile -->

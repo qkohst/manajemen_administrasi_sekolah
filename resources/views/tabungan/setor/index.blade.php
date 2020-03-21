@@ -23,28 +23,28 @@
             </button>
         </div>
         @endif
-            <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Pemasukan Sekolah</h3>
+            <h3><i class="nav-icon fas fa-credit-card my-1 btn-sm-1"></i> Setor Tunai</h3>
             <hr>
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card">
-                        <h6 class="card-header p-3"><i class="fas fa-money-bill-alt"></i> TAMBAH PEMASUKAN</h6>
+                        <h6 class="card-header bg-light p-3"><i class="fas fa-credit-card"></i> TAMBAH SETOR TUNAI</h6>
                         <div class="card-body">
-                        <form action="/keuangan/pemasukan/tambah" method="POST" enctype="multipart/form-data">
+                        <form action="/tabungan/setor/tambah" method="POST" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group row">
-                                                <label for="kategori_id">Pilih Kategori</label>
-                                                <select name="kategori_id" id="kategori_id" class="form-control bg-light" required>
-                                                    <option value="">-- Pilih Kategori Pemasukan --</option>
-                                                    @foreach($data_kategori as $ktgr)
-                                                    <option value="{{$ktgr->id}}">{{$ktgr->nama_kategori}}</option>
-                                                    @endforeach
-                                                </select>
+                                            <label for="pesdik_id">Pilih Peserta Didik</label>
+                                            <select name="pesdik_id" id="pesdik_id" class="form-control select2bs4" required>
+                                                <option value="">-- Pilih Peserta Didik --</option>
+                                                @foreach($data_pesdik as $pesdik)
+                                                <option value="{{$pesdik->id}}">{{$pesdik->nisn}} {{$pesdik->nama}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group row">
-                                                <label for="tanggal">Tanggal Uang Masuk</label>
+                                                <label for="tanggal">Tanggal Setoran</label>
                                                 <input value="{{old('tanggal')}}" name="tanggal" type="date" class="form-control bg-light"
                                                     id="tanggal" required>
                                         </div>
@@ -62,8 +62,8 @@
                                         </div>
                                         <div class="form-group row">
                                                 <label for="keterangan">Keterangan</label>
-                                                <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="2"
-                                                    placeholder="Keterangan" required>{{old('keterangan')}}</textarea>
+                                                <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3"
+                                                    placeholder="Ketikkan Tanda ( - ) Jika Tidak Ada Keterangan">{{old('keterangan')}}</textarea>
                                         </div>
                                         <hr>
                                         <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> SIMPAN</button>
@@ -71,17 +71,17 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="card">
-                        <div class="card-header p-2">
+                        <div class="card-header bg-light p-2">
                             <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link active btn-sm" href="#pemasukan" data-toggle="tab"><i class="fas fa-money-bill-alt"></i> Rekap Data Pemasukan</a></li>
-                                <li class="nav-item"><a class="nav-link btn-sm" href="#kategori" data-toggle="tab"><i class="fas fa-layer-group"></i> Kategori Pemasukan</a></li>
+                                <li class="nav-item"><a class="nav-link active btn-sm" href="#setor" data-toggle="tab"><i class="fas fa-credit-card"></i> Rekap Data Setor Tunai</a></li>
+                                <li class="nav-item"><a class="nav-link btn-sm" href="#pesdik" data-toggle="tab"><i class="fas fa-child"></i> Data Peserta Didik</a></li>
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="active tab-pane" id="pemasukan">
+                                <div class="active tab-pane" id="setor">
                                 <div class="row">
                                     <div class="row table-responsive">
                                         <div class="col-12">
@@ -89,29 +89,36 @@
                                                 <thead>
                                                     <tr class="bg-light">
                                                         <th>No.</th>
+                                                        <th>No. Trans</th>
+                                                        <th>Nama Pesdik</th>
                                                         <th>Tanggal</th>
                                                         <th>Jumlah</th>
-                                                        <th>Kategori</th>
                                                         <th>Keterangan</th>
+                                                        <th>Petugas</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php $no = 0;?>
-                                                    @foreach($data_pemasukan as $pemasukan)
+                                                    @foreach($data_setor as $setor)
                                                     <?php $no++ ;?>
                                                     <tr>
                                                         <td>{{$no}}</td>
-                                                        <td>{{$pemasukan->tanggal}}</td>
-                                                        <td>Rp.{{$pemasukan->jumlah}},00</td>
-                                                        <td>{{$pemasukan->kategori->nama_kategori}}</td>
-                                                        <td>{{$pemasukan->keterangan}}</td>
+                                                        <td>ST0{{$setor->id}}</td>
+                                                        <td>{{$setor->pesdik->nama}}</td>
+                                                        <td>{{$setor->tanggal}}</td>
+                                                        <td>Rp.{{$setor->jumlah}},00</td>
+                                                        <td>{{$setor->keterangan}}</td>
+                                                        <td>{{$setor->users->name}}</td>
                                                         <td>
-                                                        <a href="/keuangan/pemasukan/{{$pemasukan->id}}/edit"
+                                                        <a href="/tabungan/setor/{{$setor->id}}/cetak"
+                                                            class="btn btn-primary btn-sm my-1 mr-sm-1"><i
+                                                                class="nav-icon fas fa-print"></i> Cetak</a>
+                                                        <a href="/tabungan/setor/{{$setor->id}}/edit"
                                                             class="btn btn-primary btn-sm my-1 mr-sm-1"><i
                                                                 class="nav-icon fas fa-pencil-alt"></i> Edit</a>
                                                         @if (auth()->user()->role == 'admin')
-                                                        <a href="/keuangan/pemasukan/{{$pemasukan->id}}/delete"
+                                                        <a href="/tabungan/setor/{{$setor->id}}/delete"
                                                             class="btn btn-danger btn-sm my-1 mr-sm-1"
                                                             onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                                             Hapus</a>
@@ -126,13 +133,7 @@
                                 </div>
                                 </div>
 
-                                <div class="tab-pane" id="kategori">
-                                <div>
-                                    <div class="col">
-                                        <a class="btn btn-primary btn-sm my-1 mr-sm-1" data-toggle="modal" href="#tambahKategori"><i class="fas fa-plus"></i> Tambah Data</a>
-                                        <br>
-                                    </div>
-                                </div>
+                                <div class="tab-pane" id="pesdik">
                                 <div class="row">
                                     <div class="row table-responsive">
                                         <div class="col-12">
@@ -140,28 +141,20 @@
                                                 <thead>
                                                     <tr class="bg-light">
                                                         <th>No.</th>
-                                                        <th>Nama Kategori</th>
-                                                        <th>Aksi</th>
+                                                        <th>NISN </th>
+                                                        <th>Nama Pesdik</th>
+                                                        <th>Rombel</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php $no = 0;?>
-                                                    @foreach($data_kategori as $kategorimasuk)
+                                                    @foreach($data_pesdik as $pesdik)
                                                     <?php $no++ ;?>
                                                     <tr>
                                                         <td>{{$no}}</td>
-                                                        <td>{{$kategorimasuk->nama_kategori}}</td>
-                                                        <td>
-                                                        <!-- <a href="#"
-                                                            class="btn btn-primary btn-sm my-1 mr-sm-1"><i
-                                                                class="nav-icon fas fa-pencil-alt"></i> Edit</a> -->
-                                                        @if (auth()->user()->role == 'admin')
-                                                        <a href="/keuangan/pemasukan/{{$kategorimasuk->id}}/deletekategori"
-                                                            class="btn btn-danger btn-sm my-1 mr-sm-1"
-                                                            onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
-                                                            Hapus</a>
-                                                        @endif
-                                                    </td>
+                                                        <td>{{$pesdik->nisn}}</td>
+                                                        <td>{{$pesdik->nama}}</td>
+                                                        <td>{{$pesdik->rombel->nama_rombel}}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
@@ -176,34 +169,6 @@
                         <!-- /.nav-tabs-custom -->
                     </div>
                     <!-- /.col -->
-                    </div>
-                    <!-- Modal Tambah -->
-                    <div class="modal fade" id="tambahKategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel"><i
-                                            class="nav-icon fas fa-layer-group my-1 btn-sm-1"></i> Tambah Kategori Pemasukan</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="/keuangan/pemasukan/tambahkategori" method="POST">
-                                        {{csrf_field()}}
-                                        <div class="row">
-                                                <label for="nama_kategori">Nama Kategori</label>
-                                                <input value="{{old('nama_kategori')}}" name="nama_kategori" type="text" class="form-control bg-light"
-                                                    id="nama_kategori" placeholder="Nama Kategori" required>
-                                        </div>
-                                        <hr>
-                                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i>
-                                            SIMPAN</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>

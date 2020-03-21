@@ -149,7 +149,8 @@
           </div>
           <div class="card-body p-0">
                    <?php
-                      $jumlah_pengeluaran=12000000;
+                      $jumlah_pengeluaran = DB::table('pengeluaran')
+                      ->sum('pengeluaran.jumlah');
                       $jumlah_pemasukan = DB::table('pemasukan')
                       ->sum('pemasukan.jumlah');
                     ?>
