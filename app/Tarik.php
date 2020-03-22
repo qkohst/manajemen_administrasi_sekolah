@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Setor extends Model
+class Tarik extends Model
 {
-    protected $table = 'setor';
+    protected $table = 'tarik';
     protected $fillable = ['pesdik_id','tanggal','jumlah','keterangan','users_id'];
 
     //function relasi ke Pesdik
@@ -15,7 +15,7 @@ class Setor extends Model
           return $this->belongsTo('App\Pesdik');
       }
 
-    //function relasi ke User
+    //function relasi ke Pesdik
     public function users()
       {
         return $this->belongsTo('App\User');

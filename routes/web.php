@@ -141,6 +141,14 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/tabungan/setor/{id}/cetak','SetorController@cetak');
     Route::get('/tabungan/setor/{id}/cetakprint','SetorController@cetakprint');
 
+    Route::get('/tabungan/tarik/index','TarikController@index');
+    Route::post('/tabungan/tarik/tambah','TarikController@tambah');
+    Route::get('/tabungan/tarik/{id}/edit','TarikController@edit');
+    Route::post('/tabungan/tarik/{id}/update','TarikController@update');
+    Route::get('/tabungan/tarik/{id}/delete','TarikController@delete');
+    Route::get('/tabungan/tarik/{id}/cetak','TarikController@cetak');
+    Route::get('/tabungan/tarik/{id}/cetakprint','TarikController@cetakprint');
+
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

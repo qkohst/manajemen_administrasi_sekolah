@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Tanda Bukti Tarik Tunai No_{{$setor->pesdik->nisn}}-0{{$setor->id}}</title>
+  <title>Tanda Bukti Tarik Tunai No_{{$tarik->pesdik->nisn}}-0{{$tarik->id}}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome Icons -->
@@ -53,7 +53,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4>
-                    <i class="fas fa-credit-card"></i> Tanda Bukti Setor Tunai
+                    <i class="fas fa-credit-card"></i> Tanda Bukti Tarik Tunai
                     <small class="float-right">Tanggal Cetak : <?php echo date("d-m-Y h:i:s");?></small>
                   </h4>
                 </div>
@@ -62,29 +62,29 @@
               <!-- info row -->
               <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
-                  Telah terima dari :
+                  Telah dilakukan penarikan oleh :
                   <address>
-                    <strong>{{$setor->pesdik->nama}}</strong><br>
-                    Tempat, Tanggal Lahir : {{$setor->pesdik->tempat_lahir}}, {{$setor->pesdik->tanggal_lahir}}<br>
-                    Jenis Kelamin : {{$setor->pesdik->jenis_kelamin}}<br>
-                    NISN/Induk : {{$setor->pesdik->nisn}}/{{$setor->pesdik->induk}}<br>
-                    Rombel : {{$setor->pesdik->rombel->nama_rombel}}
+                    <strong>{{$tarik->pesdik->nama}}</strong><br>
+                    Tempat, Tanggal Lahir : {{$tarik->pesdik->tempat_lahir}}, {{$tarik->pesdik->tanggal_lahir}}<br>
+                    Jenis Kelamin : {{$tarik->pesdik->jenis_kelamin}}<br>
+                    NISN/Induk : {{$tarik->pesdik->nisn}}/{{$tarik->pesdik->induk}}<br>
+                    Rombel : {{$tarik->pesdik->rombel->nama_rombel}}
                   </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                   Petugas :
                   <address>
-                    <strong>{{$setor->users->name}}</strong><br>
-                    Email : {{$setor->users->email}}
+                    <strong>{{$tarik->users->name}}</strong><br>
+                    Email : {{$tarik->users->email}}
                   </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                     <br>
-                    <b>Nomor Berkas : *{{$setor->pesdik->nisn}}-0{{$setor->id}}</b><br>
-                    <b>Tanggal Catat :</b> {{$setor->created_at}}<br><br>
-                    Lembar Untuk Penyetor<br>
+                    <b>Nomor Berkas : *{{$tarik->pesdik->nisn}}-0{{$tarik->id}}</b><br>
+                    <b>Tanggal Catat :</b> {{$tarik->created_at}}<br><br>
+                    Lembar Untuk Penerima<br>
                   
                 </div>
                 <!-- /.col -->
@@ -107,10 +107,10 @@
                     <tbody>
                     <tr>
                       <td>1</td>
-                      <td>ST0{{$setor->id}}</td>
-                      <td>{{$setor->tanggal}}</td>
-                      <td>{{$setor->keterangan}}</td>
-                      <td>Rp.{{$setor->jumlah}},00</td>
+                      <td>TT0{{$tarik->id}}</td>
+                      <td>{{$tarik->tanggal}}</td>
+                      <td>{{$tarik->keterangan}}</td>
+                      <td>Rp.{{$tarik->jumlah}},00</td>
                     </tr>
                     </tbody>
                   </table>
@@ -124,33 +124,33 @@
                 <div class="col-6">
                   <p class="lead">Catatan :</p>
                   <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                    - Mohon disimpan sebagai bukti setor tunai yang sah <br>
-                    - Komplain tidak dilayani tanpa menunjukkan bukti setor ini
+                    - Mohon disimpan sebagai bukti tarik tunai yang sah <br>
+                    - Komplain tidak dilayani tanpa menunjukkan bukti penarikan ini
                   </p>
                   <div class="row">
                     <div class="col-1">
 
                     </div>
                     <div class="col-6">
-                        Penyetor <br><br><br>
-                        <strong>{{$setor->pesdik->nama}}</strong>
+                        Penerima <br><br><br>
+                        <strong>{{$tarik->pesdik->nama}}</strong>
                     </div>
                     <div class="col-5">
                         Petugas <br><br><br>
-                        <strong>{{$setor->users->name}}</strong>
+                        <strong>{{$tarik->users->name}}</strong>
                     </div>
                   </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
                   <p class="lead">Rekap Tabungan Siswa :</p>
-                  <?php
-                      $id=$setor->pesdik->id;
-                      $total_setor = DB::table('setor')->where('setor.pesdik_id','=',$id)
-                      ->sum('setor.jumlah');
-                      $total_tarik = DB::table('tarik')->where('tarik.pesdik_id','=',$id)
-                      ->sum('tarik.jumlah');
-                  ?>
+                    <?php
+                        $id=$tarik->pesdik->id;
+                        $total_setor = DB::table('setor')->where('setor.pesdik_id','=',$id)
+                        ->sum('setor.jumlah');
+                        $total_tarik = DB::table('tarik')->where('tarik.pesdik_id','=',$id)
+                        ->sum('tarik.jumlah');
+                    ?>
                   <div class="table-responsive">
                     <table class="table">
                       <tr>
@@ -186,7 +186,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4>
-                    <i class="fas fa-credit-card"></i> Tanda Bukti Setor Tunai
+                    <i class="fas fa-credit-card"></i> Tanda Bukti Tarik Tunai
                     <small class="float-right">Tanggal Cetak : <?php echo date("d-m-Y h:i:s");?></small>
                   </h4>
                 </div>
@@ -195,28 +195,28 @@
               <!-- info row -->
               <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
-                  Telah terima dari :
+                  Telah dilakukan penarikan oleh :
                   <address>
-                    <strong>{{$setor->pesdik->nama}}</strong><br>
-                    Tempat, Tanggal Lahir : {{$setor->pesdik->tempat_lahir}}, {{$setor->pesdik->tanggal_lahir}}<br>
-                    Jenis Kelamin : {{$setor->pesdik->jenis_kelamin}}<br>
-                    NISN/Induk : {{$setor->pesdik->nisn}}/{{$setor->pesdik->induk}}<br>
-                    Rombel : {{$setor->pesdik->rombel->nama_rombel}}
+                    <strong>{{$tarik->pesdik->nama}}</strong><br>
+                    Tempat, Tanggal Lahir : {{$tarik->pesdik->tempat_lahir}}, {{$tarik->pesdik->tanggal_lahir}}<br>
+                    Jenis Kelamin : {{$tarik->pesdik->jenis_kelamin}}<br>
+                    NISN/Induk : {{$tarik->pesdik->nisn}}/{{$tarik->pesdik->induk}}<br>
+                    Rombel : {{$tarik->pesdik->rombel->nama_rombel}}
                   </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                   Petugas :
                   <address>
-                    <strong>{{$setor->users->name}}</strong><br>
-                    Email : {{$setor->users->email}}
+                    <strong>{{$tarik->users->name}}</strong><br>
+                    Email : {{$tarik->users->email}}
                   </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                     <br>
-                    <b>Nomor Berkas : *{{$setor->pesdik->nisn}}-0{{$setor->id}}</b><br>
-                    <b>Tanggal Catat :</b> {{$setor->created_at}}<br><br>
+                    <b>Nomor Berkas : *{{$tarik->pesdik->nisn}}-0{{$tarik->id}}</b><br>
+                    <b>Tanggal Catat :</b> {{$tarik->created_at}}<br><br>
                     Lembar Untuk Petugas<br>
                   
                 </div>
@@ -240,10 +240,10 @@
                     <tbody>
                     <tr>
                       <td>1</td>
-                      <td>ST0{{$setor->id}}</td>
-                      <td>{{$setor->tanggal}}</td>
-                      <td>{{$setor->keterangan}}</td>
-                      <td>Rp.{{$setor->jumlah}},00</td>
+                      <td>TT0{{$tarik->id}}</td>
+                      <td>{{$tarik->tanggal}}</td>
+                      <td>{{$tarik->keterangan}}</td>
+                      <td>Rp.{{$tarik->jumlah}},00</td>
                     </tr>
                     </tbody>
                   </table>
@@ -257,20 +257,20 @@
                 <div class="col-6">
                   <p class="lead">Catatan :</p>
                   <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                    - Mohon disimpan sebagai bukti setor tunai yang sah <br>
-                    - Komplain tidak dilayani tanpa menunjukkan bukti setor ini
+                    - Mohon disimpan sebagai bukti tarik tunai yang sah <br>
+                    - Komplain tidak dilayani tanpa menunjukkan bukti penarikan ini
                   </p>
                   <div class="row">
                     <div class="col-1">
 
                     </div>
                     <div class="col-6">
-                        Penyetor <br><br><br>
-                        <strong>{{$setor->pesdik->nama}}</strong>
+                        Penerima <br><br><br>
+                        <strong>{{$tarik->pesdik->nama}}</strong>
                     </div>
                     <div class="col-5">
                         Petugas <br><br><br>
-                        <strong>{{$setor->users->name}}</strong>
+                        <strong>{{$tarik->users->name}}</strong>
                     </div>
                   </div>
                 </div>
@@ -278,28 +278,27 @@
                 <div class="col-6">
                   <p class="lead">Rekap Tabungan Siswa :</p>
                     <?php
-                        $id=$setor->pesdik->id;
+                        $id=$tarik->pesdik->id;
                         $total_setor = DB::table('setor')->where('setor.pesdik_id','=',$id)
                         ->sum('setor.jumlah');
                         $total_tarik = DB::table('tarik')->where('tarik.pesdik_id','=',$id)
                         ->sum('tarik.jumlah');
                     ?>
-                    <div class="table-responsive">
-                      <table class="table">
-                        <tr>
-                          <th style="width:50%">Total Setor Tunai</th>
-                          <td>Rp.{{$total_setor}},00</td>
-                        </tr>
-                        <tr>
-                          <th>Total Tarik Tunai</th>
-                          <td>Rp.{{$total_tarik}},00</td>
-                        </tr>
-                        <tr>
-                          <th>Sisa Saldo</th>
-                          <td>Rp.{{$total_setor-$total_tarik}},00</td>
-                        </tr>
-                      </table>
-                    </div>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tr>
+                        <th style="width:50%">Total Setor Tunai</th>
+                        <td>Rp.{{$total_setor}},00</td>
+                      </tr>
+                      <tr>
+                        <th>Total Tarik Tunai</th>
+                        <td>Rp.{{$total_tarik}},00</td>
+                      </tr>
+                      <tr>
+                        <th>Sisa Saldo</th>
+                        <td>Rp.{{$total_setor-$total_tarik}},00</td>
+                      </tr>
+                    </table>
                   </div>
                 </div>
                 <!-- /.col -->

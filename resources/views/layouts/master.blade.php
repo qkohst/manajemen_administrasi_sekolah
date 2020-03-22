@@ -226,14 +226,14 @@
                                     <a href="/tabungan/setor/index" class="nav-link text-white">
                                         <i class="fas fa-credit-card nav-icon"></i>
                                         <p>Setor Tunai</p>
-                                        <span class="right badge badge-warning">Progress</span>
+                                        <span class="right badge badge-primary">New</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-white">
+                                    <a href="/tabungan/tarik/index" class="nav-link text-white">
                                         <i class="fas fa-credit-card nav-icon"></i>
                                         <p>Tarik Tunai</p>
-                                        <span class="right badge badge-danger">Not Yet</span>
+                                        <span class="right badge badge-warning">Progress</span>
                                     </a>
                                 </li>
                             </ul>
