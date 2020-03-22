@@ -107,7 +107,7 @@
                                                         <td>ST0{{$setor->id}}</td>
                                                         <td>{{$setor->pesdik->nama}}</td>
                                                         <td>{{$setor->tanggal}}</td>
-                                                        <td>Rp.{{$setor->jumlah}},00</td>
+                                                        <td>@currency($setor->jumlah),00</td>
                                                         <td>{{$setor->keterangan}}</td>
                                                         <td>{{$setor->users->name}}</td>
                                                         <td>
@@ -144,6 +144,7 @@
                                                         <th>NISN </th>
                                                         <th>Nama Pesdik</th>
                                                         <th>Rombel</th>
+                                                        <th>Saldo Tabungan</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -155,6 +156,14 @@
                                                         <td>{{$pesdik->nisn}}</td>
                                                         <td>{{$pesdik->nama}}</td>
                                                         <td>{{$pesdik->rombel->nama_rombel}}</td>
+                                                        <?php
+                                                            $id=$pesdik->id;
+                                                            $total_setor = DB::table('setor')->where('setor.pesdik_id','=',$id)
+                                                            ->sum('setor.jumlah');
+                                                            $total_tarik = DB::table('tarik')->where('tarik.pesdik_id','=',$id)
+                                                            ->sum('tarik.jumlah');
+                                                        ?>
+                                                        <td>@currency($total_setor-$total_tarik),00</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

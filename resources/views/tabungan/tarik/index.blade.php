@@ -27,6 +27,10 @@
             <hr>
             <section class="content">
                 <div class="container-fluid">
+                        <div class="callout callout-info bg-light">
+                            <h5 class="text-danger"><i class="fas fa-info"></i> <b>Perhatian !!!!</b></h5>
+                            Sebelum melakukan transaksi tarik tunai, harap cek saldo siswa terlebih dahulu pada <b>tab pane Data Peserta Didik</b>.
+                        </div>
                     <div class="row">
                     <div class="col-md-3">
                         <div class="card">
@@ -107,7 +111,7 @@
                                                         <td>TT0{{$tarik->id}}</td>
                                                         <td>{{$tarik->pesdik->nama}}</td>
                                                         <td>{{$tarik->tanggal}}</td>
-                                                        <td>Rp.{{$tarik->jumlah}},00</td>
+                                                        <td>@currency($tarik->jumlah),00</td>
                                                         <td>{{$tarik->keterangan}}</td>
                                                         <td>{{$tarik->users->name}}</td>
                                                         <td>
@@ -144,6 +148,7 @@
                                                         <th>NISN </th>
                                                         <th>Nama Pesdik</th>
                                                         <th>Rombel</th>
+                                                        <th>Saldo Tabungan</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -155,6 +160,14 @@
                                                         <td>{{$pesdik->nisn}}</td>
                                                         <td>{{$pesdik->nama}}</td>
                                                         <td>{{$pesdik->rombel->nama_rombel}}</td>
+                                                        <?php
+                                                            $id=$pesdik->id;
+                                                            $total_setor = DB::table('setor')->where('setor.pesdik_id','=',$id)
+                                                            ->sum('setor.jumlah');
+                                                            $total_tarik = DB::table('tarik')->where('tarik.pesdik_id','=',$id)
+                                                            ->sum('tarik.jumlah');
+                                                        ?>
+                                                        <td>@currency($total_setor-$total_tarik),00</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

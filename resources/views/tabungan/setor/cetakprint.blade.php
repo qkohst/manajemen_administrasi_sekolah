@@ -110,7 +110,7 @@
                       <td>ST0{{$setor->id}}</td>
                       <td>{{$setor->tanggal}}</td>
                       <td>{{$setor->keterangan}}</td>
-                      <td>Rp.{{$setor->jumlah}},00</td>
+                      <td>@currency($setor->jumlah),00</td>
                     </tr>
                     </tbody>
                   </table>
@@ -155,15 +155,15 @@
                     <table class="table">
                       <tr>
                         <th style="width:50%">Total Setor Tunai</th>
-                        <td>Rp.{{$total_setor}},00</td>
+                        <td>@currency($total_setor),00</td>
                       </tr>
                       <tr>
                         <th>Total Tarik Tunai</th>
-                        <td>Rp.{{$total_tarik}},00</td>
+                        <td>@currency($total_tarik),00</td>
                       </tr>
                       <tr>
                         <th>Sisa Saldo</th>
-                        <td>Rp.{{$total_setor-$total_tarik}},00</td>
+                        <td>@currency($total_setor-$total_tarik),00</td>
                       </tr>
                     </table>
                   </div>
@@ -243,7 +243,7 @@
                       <td>ST0{{$setor->id}}</td>
                       <td>{{$setor->tanggal}}</td>
                       <td>{{$setor->keterangan}}</td>
-                      <td>Rp.{{$setor->jumlah}},00</td>
+                      <td>@currency($setor->jumlah),00</td>
                     </tr>
                     </tbody>
                   </table>
@@ -288,15 +288,15 @@
                       <table class="table">
                         <tr>
                           <th style="width:50%">Total Setor Tunai</th>
-                          <td>Rp.{{$total_setor}},00</td>
+                          <td>@currency($total_setor),00</td>
                         </tr>
                         <tr>
                           <th>Total Tarik Tunai</th>
-                          <td>Rp.{{$total_tarik}},00</td>
+                          <td>@currency($total_tarik),00</td>
                         </tr>
                         <tr>
                           <th>Sisa Saldo</th>
-                          <td>Rp.{{$total_setor-$total_tarik}},00</td>
+                          <td>@currency($total_setor-$total_tarik),00</td>
                         </tr>
                       </table>
                     </div>

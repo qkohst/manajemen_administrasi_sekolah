@@ -156,17 +156,17 @@
                     ?>
                   <ul class="products-list product-list-in-card pl-1 pr-1">
                         <a href="javascript:void(0)" class="product-title">Jumlah Pemasukan</a>
-                          <h5>Rp. {{$jumlah_pemasukan}}</h5>
+                          <h5>@currency($jumlah_pemasukan),00</h5>
                           <hr>
                   </ul>
                   <ul class="products-list product-list-in-card pl-1 pr-1">
                         <a href="javascript:void(0)" class="product-title">Jumlah Pengeluaran</a>
-                          <h5> Rp. {{$jumlah_pengeluaran}}</h5>
+                          <h5> @currency($jumlah_pengeluaran),00</h5>
                           <hr>
                   </ul>
                   <ul class="products-list product-list-in-card pl-1 pr-1">
                         <a href="javascript:void(0)" class="product-title">Saldo</a>
-                          <h5>Rp. {{$jumlah_pemasukan-$jumlah_pengeluaran}}</h5>
+                          <h5>@currency($jumlah_pemasukan-$jumlah_pengeluaran),00</h5>
                           <hr/>
                   </ul>
           </div>

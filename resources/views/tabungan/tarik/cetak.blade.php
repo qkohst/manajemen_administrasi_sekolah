@@ -73,7 +73,7 @@
                       <td>TT0{{$tarik->id}}</td>
                       <td>{{$tarik->tanggal}}</td>
                       <td>{{$tarik->keterangan}}</td>
-                      <td>Rp.{{$tarik->jumlah}},00</td>
+                      <td>@currency($tarik->jumlah),00</td>
                     </tr>
                     </tbody>
                   </table>
@@ -118,15 +118,15 @@
                     <table class="table">
                       <tr>
                         <th style="width:50%">Total Setor Tunai</th>
-                        <td>Rp.{{$total_setor}},00</td>
+                        <td>@currency($total_setor),00</td>
                       </tr>
                       <tr>
                         <th>Total Tarik Tunai</th>
-                        <td>Rp.{{$total_tarik}},00</td>
+                        <td>@currency($total_tarik),00</td>
                       </tr>
                       <tr>
                         <th>Sisa Saldo</th>
-                        <td><b>Rp.{{$total_setor-$total_tarik}},00</b></td>
+                        <td><b>@currency($total_setor-$total_tarik),00</b></td>
                       </tr>
                     </table>
                   </div>
