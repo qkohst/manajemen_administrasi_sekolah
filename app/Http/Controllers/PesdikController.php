@@ -6,6 +6,7 @@ use App\Pesdik;
 use App\Rombel;
 use App\Pesdikkeluar;
 use App\Pesdikalumni;
+use App\Anggotarombel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class PesdikController extends Controller
      */
     public function index()
     {
-        $data_pesdik = \App\Pesdik::all();
+        $data_pesdik = \App\Pesdik::where('status', 'Aktif')->get();
+        // $data_kategori = \App\Kategori::where('jenis_kategori', 2)->get();
         return view('pesdik.index',['data_pesdik'=> $data_pesdik]);
     }
 
@@ -39,17 +41,23 @@ class PesdikController extends Controller
                 'nisn' => 'unique:pesdik|numeric|min:10',
                 'induk' => 'unique:pesdik|numeric|min:2',
            ]);
-           $pesdik = new Pesdik();
-           $pesdik->nama     = $request->input('nama');
-           $pesdik->jenis_kelamin = $request->input('jenis_kelamin');
-           $pesdik->nisn          = $request->input('nisn');
-           $pesdik->induk         = $request->input('induk');
-           $pesdik->rombel_id     = $request->input('rombel');
-           $pesdik->tempat_lahir    = $request->input('tempat_lahir');
-           $pesdik->tanggal_lahir   = $request->input('tanggal_lahir');
-           $pesdik->jenis_pendaftaran   = $request->input('jenis_pendaftaran');
-           $pesdik->tanggal_masuk   = $request->input('tanggal_masuk');
-           $pesdik->save();
+            $pesdik = new Pesdik();
+            $pesdik->status  = 'Aktif';
+            $pesdik->nama     = $request->input('nama');
+            $pesdik->jenis_kelamin = $request->input('jenis_kelamin');
+            $pesdik->nisn          = $request->input('nisn');
+            $pesdik->induk         = $request->input('induk');
+            $pesdik->rombel_id     = $request->input('rombel');
+            $pesdik->tempat_lahir    = $request->input('tempat_lahir');
+            $pesdik->tanggal_lahir   = $request->input('tanggal_lahir');
+            $pesdik->jenis_pendaftaran   = $request->input('jenis_pendaftaran');
+            $pesdik->tanggal_masuk   = $request->input('tanggal_masuk');
+            $pesdik->save();
+
+            $anggotarombel = new Anggotarombel();
+            $anggotarombel->pesdik_id       = $pesdik->id;
+            $anggotarombel->rombel_id       = $request->input('rombel');
+            $anggotarombel->save();
            return redirect('/pesdik/index')->with("sukses", "Data Peserta Didik Berhasil Ditambahkan");
         }
 
@@ -57,10 +65,29 @@ class PesdikController extends Controller
         public function registrasi ($id_pesdik)
         {
             $pesdik = \App\Pesdik::find($id_pesdik);
+            // $data_rombel = \App\Rombel::orderByRaw('tapel_id DESC')->limit(1)->get();
             $data_rombel = \App\Rombel::all();
             return view('pesdik/registrasi',['pesdik'=>$pesdik],['data_rombel'=>$data_rombel]);
         }
 
+        //function untuk registrasi keluar
+        public function naik(Request $request, $id_pesdik)
+        {
+            $pesdik=\App\Pesdik::find($id_pesdik);
+            $data_rombel = \App\Rombel::all();
+            //deklarasi variabel
+            $id_pesdik          = $pesdik->id;
+
+            $anggotarombel = new Anggotarombel();
+            $anggotarombel->pesdik_id       = $id_pesdik;
+            $anggotarombel->rombel_id       = $request->input('rombel_id');
+            $anggotarombel->save();
+
+            $pesdik->rombel_id = $request->input('rombel_id');
+            $pesdik->update();
+            // $pesdik->delete();
+            return redirect('pesdik/index') ->with('sukses','Registrasi Peserta Didik, Berhasil');
+        }
         //function untuk registrasi keluar
         public function keluar(Request $request, $id_pesdik)
         {
@@ -79,6 +106,7 @@ class PesdikController extends Controller
             $rombel_sebelumnya  = $pesdik->rombel->nama_rombel;
             $jenis_pendaftaran  = $pesdik->jenis_pendaftaran;
             $tanggal_masuk      = $pesdik->tanggal_masuk;
+            $reg      = 'Keluar';
 
             $pesdikkeluar = new Pesdikkeluar();
             $pesdikkeluar->nama             = $nama;
@@ -94,7 +122,9 @@ class PesdikController extends Controller
             $pesdikkeluar->tanggal_keluar   = $request->input('tanggal_keluar');
             $pesdikkeluar->alasan_keluar   = $request->input('alasan_keluar');
             $pesdikkeluar->save();
-            $pesdik->delete();
+
+            $pesdik->status = $reg;
+            $pesdik->update();
             return redirect('pesdik/index') ->with('sukses','Registrasi Peserta Didik Keluar, Berhasil');
         }
         
@@ -122,6 +152,7 @@ class PesdikController extends Controller
             $tanggal_lahir      = $pesdik->tanggal_lahir;
             $jenis_pendaftaran  = $pesdik->jenis_pendaftaran;
             $tanggal_masuk      = $pesdik->tanggal_masuk;
+            $reg      = 'Lulus';
 
             $pesdikalumni = new Pesdikalumni();
             $pesdikalumni->nama             = $nama;
@@ -136,7 +167,8 @@ class PesdikController extends Controller
             $pesdikalumni->melanjutkan_ke   = $request->input('melanjutkan_ke');
             $pesdikalumni->keterangan   = $request->input('keterangan');
             $pesdikalumni->save();
-            $pesdik->delete();
+            $pesdik->status = $reg;
+            $pesdik->update();
             return redirect('pesdik/index') ->with('sukses','Registrasi Peserta Didik Lulus, Berhasil');
         }
 

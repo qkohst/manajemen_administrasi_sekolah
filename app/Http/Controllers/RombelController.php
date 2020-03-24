@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Rombel;
 use App\Pesdik;
 use App\Tapel;
+use App\Anggotarombel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -40,9 +41,9 @@ class RombelController extends Controller
 
      //function untuk anggota Rombel
     public function anggota($id_rombel)
-    {
-        $data_pesdik = \App\Pesdik::where('rombel_id',$id_rombel)->get();
-        return view('rombel.anggota',['data_pesdik'=> $data_pesdik]);
+    {  
+        $data_anggota = \App\Anggotarombel::where('rombel_id',$id_rombel)->get();
+        return view('rombel.anggota',['data_anggota'=> $data_anggota]);
     }
 
      //function untuk masuk ke view edit

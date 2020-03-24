@@ -104,6 +104,7 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/pesdik/{id}/delete','PesdikController@delete');
 
     Route::get('/pesdik/{id}/registrasi','PesdikController@registrasi');
+    Route::post('/pesdik/{id}/naik','PesdikController@naik');
     Route::post('/pesdik/{id}/keluar','PesdikController@keluar');
     Route::get('/pesdik/keluarindex','PesdikController@keluarindex');
     Route::post('/pesdik/{id}/alumni','PesdikController@alumni');

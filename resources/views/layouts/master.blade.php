@@ -199,7 +199,7 @@
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="fas fa-money-check-alt nav-icon"></i>
-                                        <p>Rincian Pembayaran</p>
+                                        <p>Rincian Tagihan</p>
                                         <span class="right badge badge-danger">Not Yet</span>
                                     </a>
                                 </li>
@@ -218,7 +218,7 @@
                                 <p>
                                     Tabungan Siswa
                                     <i class="fas fa-angle-left right"></i>
-                                    <span class="right badge badge-warning">Progress</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview bg-secondary">
@@ -233,7 +233,7 @@
                                     <a href="/tabungan/tarik/index" class="nav-link text-white">
                                         <i class="fas fa-credit-card nav-icon"></i>
                                         <p>Tarik Tunai</p>
-                                        <span class="right badge badge-warning">Progress</span>
+                                        <span class="right badge badge-primary">New</span>
                                     </a>
                                 </li>
                             </ul>

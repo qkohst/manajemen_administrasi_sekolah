@@ -41,12 +41,13 @@
                         <thead>
                             <tr class="bg-light">
                                 <th>No.</th>
+                                <th>Status</th>
                                 <th>Nama Lengkap</th>
                                 <th>Jenis Kelamin</th>
                                 <th>NISN</th>
                                 <th>No. Induk</th>
                                 <th>Tingkat Kelas</th>
-                                <th>Rombel</th>
+                                <th>Rombel Saat Ini</th>
                                 <th>Tahun Pelajaran</th>
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
@@ -59,6 +60,7 @@
                             <?php $no++ ;?>
                             <tr>
                                 <td>{{$no}}</td>
+                                <td>{{$pesdik->status}}</td>
                                 <td>{{$pesdik->nama}}</td>
                                 <td>{{$pesdik->jenis_kelamin}}</td>
                                 <td>{{$pesdik->nisn}}</td>

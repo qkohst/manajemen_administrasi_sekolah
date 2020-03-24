@@ -15,6 +15,7 @@ class CreatePesdikTable extends Migration
     {
         Schema::create('pesdik', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('status');
             $table->string('nama');
             $table->string('jenis_kelamin');
             $table->string('nisn');

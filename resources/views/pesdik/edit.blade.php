@@ -32,15 +32,6 @@
                     <label for="induk">Induk</label>
                     <input value="{{$pesdik->induk}}" name="induk" type="text" class="form-control" id="induk"
                         placeholder="Induk" required>
-                    <label for="rombel">Rombongan Belajar</label>
-                    <select name="rombel" class="form-control" id="rombel"
-                        value="{{$pesdik->rombel_id}}" required>
-                        <option selected>(Tingkat {{$pesdik->rombel->kelas}}) {{$pesdik->rombel->tapel->tahun}} {{$pesdik->rombel->tapel->semester}} {{$pesdik->rombel->nama_rombel}}</option>
-                        @foreach($data_rombel as $rombel)
-                        <option value="{{$rombel->id}}">(Tingkat {{$rombel->kelas}}) {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}} {{$rombel->nama_rombel}}
-                        </option>
-                        @endforeach
-                    </select>
                 </div>
                 <div class="col-6">
                     <label for="tempat_lahir">Tempat Lahir</label>

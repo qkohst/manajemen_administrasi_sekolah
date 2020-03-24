@@ -68,13 +68,35 @@
                         <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link active btn-sm" href="#keluar" data-toggle="tab"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                                <li class="nav-item"><a class="nav-link active btn-sm" href="#naik" data-toggle="tab"><i class="far fa-smile-beam"></i> Kenaikan Tingkat</a></li>
+                                <li class="nav-item"><a class="nav-link btn-sm" href="#keluar" data-toggle="tab"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                                 <li class="nav-item"><a class="nav-link btn-sm" href="#lulus" data-toggle="tab"><i class="fas fa-user-graduate"></i> Lulus</a></li>
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="active tab-pane" id="keluar">
+                                <div class="active tab-pane" id="naik">
+                                    <form action="/pesdik/{{$pesdik->id}}/naik" method="POST" enctype="multipart/form-data">
+                                    {{csrf_field()}}
+                                    <div class="form-group row">
+                                        <label for="rombel_id" class="col-sm-3 col-form-label">Naik Ke Rombel</label>
+                                        <div class="col-sm-4">
+                                        <select name="rombel_id" class="custom-select my-1 mr-sm-1 bg-light" id="rombel_id"required>
+                                            <option value="">-- Pilih Rombel --</option>
+                                            @foreach($data_rombel as $rombel)
+                                            <option value="{{$rombel->id}}">(Tingkat {{$rombel->kelas}}) {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}} {{$rombel->nama_rombel}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> SIMPAN</button>
+                                    <a class="btn btn-danger btn-sm" href="/pesdik/index" role="button"><i class="fas fa-undo"></i> BATAL</a>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="keluar">
                                     <form action="/pesdik/{{$pesdik->id}}/keluar" method="POST" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="form-group row">
@@ -87,7 +109,7 @@
                                             <option value="Mengundurkan Diri">Mengundurkan Diri</option>
                                             <option value="Putus Sekolah">Putus Sekolah</option>
                                             <option value="Wafat">Wafat</option>
-                                            <option value="Hilang">Hilang</option>
+                                            <option value="Lainnya">Lainnya....</option>
                                         </select>
                                         </div>
                                     </div>
@@ -130,7 +152,7 @@
                                             <option value="Modok">Modok</option>
                                             <option value="SMA/SMK + Mondok">SMA/SMK + Mondok</option>
                                             <option value="Tidak Sekolah">Tidak Sekolah</option>
-                                            <option value="Menikah">Menikah</option>
+                                            <option value="Lainnya">Lainnya....</option>
                                         </select>
                                         </div>
                                     </div>

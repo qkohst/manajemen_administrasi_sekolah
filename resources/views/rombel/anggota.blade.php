@@ -49,22 +49,24 @@
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Jenis Pendaftaran</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $no = 0;?>
-                            @foreach($data_pesdik as $pesdik)
+                            @foreach($data_anggota as $anggota)
                             <?php $no++ ;?>
                             <tr>
                                 <td>{{$no}}</td>
-                                <td>{{$pesdik->nama}}</td>
-                                <td>{{$pesdik->jenis_kelamin}}</td>
-                                <td>{{$pesdik->nisn}}</td>
-                                <td>{{$pesdik->induk}}</td>
-                                <td>{{$pesdik->rombel->nama_rombel}}</td>
-                                <td>{{$pesdik->tempat_lahir}}</td>
-                                <td>{{$pesdik->tanggal_lahir}}</td>
-                                <td>{{$pesdik->jenis_pendaftaran}}</td>
+                                <td>{{$anggota->pesdik->nama}}</td>
+                                <td>{{$anggota->pesdik->jenis_kelamin}}</td>
+                                <td>{{$anggota->pesdik->nisn}}</td>
+                                <td>{{$anggota->pesdik->induk}}</td>
+                                <td>{{$anggota->pesdik->rombel->nama_rombel}}</td>
+                                <td>{{$anggota->pesdik->tempat_lahir}}</td>
+                                <td>{{$anggota->pesdik->tanggal_lahir}}</td>
+                                <td>{{$anggota->pesdik->jenis_pendaftaran}}</td>
+                                <td>{{$anggota->pesdik->status}}</td>
                             </tr>
                             @endforeach
                         </tbody>
