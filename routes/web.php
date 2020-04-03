@@ -150,6 +150,14 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/tabungan/tarik/{id}/cetak','TarikController@cetak');
     Route::get('/tabungan/tarik/{id}/cetakprint','TarikController@cetakprint');
 
+    Route::get('/pembayaran/tagihan/index','TagihanController@index');
+    Route::post('/pembayaran/tagihan/tambah','TagihanController@tambah');
+    Route::get('/pembayaran/tagihan/{id}/edit','TagihanController@edit');
+    Route::post('/pembayaran/tagihan/{id}/update','TagihanController@update');
+    Route::get('/pembayaran/tagihan/{id}/delete','TagihanController@delete');
+    Route::get('/pembayaran/tagihan/{id}/cetak','TagihanController@cetak');
+    Route::get('/pembayaran/tagihan/{id}/cetakprint','TagihanController@cetakprint');
+
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function () {

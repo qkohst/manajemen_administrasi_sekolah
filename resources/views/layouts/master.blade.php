@@ -192,15 +192,15 @@
                                 <p>
                                     Pembayaran
                                     <i class="right fas fa-angle-left"></i>
-                                    <span class="right badge badge-danger">Not Yet</span>
+                                    <span class="right badge badge-warning">Progress</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/pembayaran/tagihan/index" class="nav-link">
                                         <i class="fas fa-money-check-alt nav-icon"></i>
                                         <p>Rincian Tagihan</p>
-                                        <span class="right badge badge-danger">Not Yet</span>
+                                        <span class="right badge badge-warning">Progress</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -459,6 +459,14 @@
                 "info": true,
                 "autoWidth": true,
             });
+            $("#dataTable").DataTable({
+                "paging": false,
+                "lengthChange": true,
+                "searching": false,
+                "ordering": false,
+                "info": false,
+                "autoWidth": true,
+            });
         });
 
         $(function () {
@@ -487,7 +495,47 @@
             theme: 'bootstrap4'
             })
         });
+
+        //Untuk tambah baris pada table form
+        var maxID = 0;
+        function getTemplateRow() {
+            var x = document.getElementById("templateRow").cloneNode(true);
+            x.id = "";
+            x.style.display = "";
+            x.innerHTML = x.innerHTML.replace(/{id}/, ++maxID);
+            return x;
+        }
+
+        function addRow() {
+
+            var t = document.getElementById("dataTable");
+            var rows = t.getElementsByTagName("tr");
+            var r = rows[rows.length - 1];
+            r.parentNode.insertBefore(getTemplateRow(), r);
+
+        }
+
+        function deleteRow(tableID) {
+            try {
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+
+            for(var i=0; i<rowCount; i++) {
+            var row = table.rows[i];
+            var chkbox = row.cells[0].childNodes[0];
+            if(null != chkbox && true == chkbox.checked) {
+            table.deleteRow(i);
+            rowCount--;
+            i--;
+            }
+            
+            }
+            }catch(e) {
+            alert(e);
+            }
+        }
     </script>
+
     <!-- Modal Profile -->
     <div class="modal fade" id="lihatprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
