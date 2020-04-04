@@ -38,6 +38,10 @@
   <link rel="stylesheet" href="/adminLTE/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="/adminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
+  <!-- Tambahan -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -405,7 +409,79 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="background: #192192192; padding: 15px 15px 15px 15px ">
 
-            @yield('content')
+        <section class="content card" style="padding: 10px 10px 10px 10px ">
+    <div class="box">
+        @if(session('sukses'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('sukses')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+            <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Tambah Tagihan Pembayaran</h3>
+            <hr>
+            <section class="content">
+                                <div>
+                                    <div class="col">
+                                        <a class="btn btn-danger btn-sm" href="index" role="button"><i class="fas fa-undo"></i> Kembali</a>
+                                    </div>
+                                </div>
+                                <div class="row table-responsive">
+                                <span id="result"></span>
+                                    <form method="post" id="dynamic_form">
+                                        <!-- <span id="result"></span> -->
+                                        <table class="table table-hover table-head-fixed" id="user_table">
+                                            <thead>
+                                                <tr>
+                                                    <th width="18%">Rombel</th>
+                                                    <th width="12%">Jenis Kelamin</th>
+                                                    <th width="25%">Rincian</th>
+                                                    <th width="20%">Nominal</th>
+                                                    <th width="12%">Batas Pembayaran</th>
+                                                    <th width="13%">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="4" align="right">&nbsp;</td>
+                                                    <td colspan="2" align="right">
+                                                    @csrf
+                                                    <button type="submit" name="save" id="save" class="btn btn-success btn-sm "><i class="fas fa-save"></i> SIMPAN</button>
+                                                    <a class="btn btn-danger btn-sm" href="index" role="button"><i class="fas fa-undo"></i> BATAL</a>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                            <!-- <tfoot>
+                                                <tr>
+                                                                <td colspan="5" align="right">&nbsp;</td>
+                                                                <td>
+                                                @csrf
+                                                <input type="submit" name="save" id="save" class="btn btn-primary" value="Save" />
+                                                </td>
+                                                </tr>
+                                            </tfoot> -->
+                                        </table>
+                                    </form>
+                                </div>
+            </section>
+    </div>
+</section>
 
         </div>
         <!-- /.content-wrapper -->
@@ -448,17 +524,12 @@
     <!-- page script -->
     <script>
         $(function () {
-            $("#tabelSuratmasuk").DataTable();
-            $("#tabelSuratkeluar").DataTable();
-            $("#tabelAgendaMasuk").DataTable();
-            $("#tabelAgendaKeluar").DataTable();
-            $("#tabelTagihan").DataTable();
-            $("#tabelKlasifikasi").DataTable({
-                "paging": true,
+            $("#user_table").DataTable({
+                "paging": false,
                 "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
+                "searching": false,
+                "ordering": false,
+                "info": false,
                 "autoWidth": true,
             });
         });
@@ -490,34 +561,75 @@
             })
         });
 
-        // //Filter Data Tagihan
-        // $(document).ready(function(){
- 
-        // fetch_data();
         
-        // function fetch_data(rombel = '')
-        // {
-        // $('#tabelTagihan').DataTable({
-        // processing: true,
-        // serverSide: true,
-        // ajax: {
-        //     url:"{{ route('pembayaran.tagihan.index') }}",
-        //     data: {rombel:rombel}
-        // },
-        // });
-        // }
-        
-        // $('#rombel_filter').change(function(){
-        // var rombel_id = $('#rombel_filter').val();
-        
-        // $('#tabelTagihan').DataTable().destroy();
-        
-        // fetch_data(rombel_id);
-        // });
+        $(document).ready(function(){
 
+        var count = 1;
 
-        // });
+        dynamic_field(count);
 
+        function dynamic_field(number)
+        {
+        html = '<tr>';
+            html += '<td> <select name="rombel_id[]" id="rombel_id[]" class="form-control select2bs4" required><option value="">-- Pilih Rombel --</option>@foreach($data_rombel as $rombel)<option value="{{$rombel->id}}">{{$rombel->nama_rombel}} {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}}</option>@endforeach</select></td>';
+            html += '<td><select id="jenis_kelamin[]" name="jenis_kelamin[]"  class="form-control" required><option value="Semua" selected="selected">Semua</option><option value="Laki-Laki">Laki-Laki</option><option value="Perempuan">Perempuan</option></select></td>';
+            html += '<td><textarea name="rincian[]" class="form-control bg-light" id="rincian[]" rows="2"placeholder="Rincian Deskripsi Pembayaran">{{old('rincian')}}</textarea></td>';
+            html += '<td><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">Rp.</span></div><input value="{{old('nominal[]')}}" name="nominal[]" type="text" class="form-control" id="nominal[]" required><div class="input-group-append"><span class="input-group-text">.00</span></div></div></td>';
+            html += '<td><input value="{{old('batas_bayar[]')}}" name="batas_bayar[]" type="date" class="form-control bg-light" id="batas_bayar[]" required></td>';
+            if(number > 1)
+            {
+                html += '<td><button type="button" name="remove" id="" class="btn btn-sm btn-danger remove"><i class="fas fa-trash"></i> Hapus Baris</button></td></tr>';
+                $('tbody').append(html);
+            }
+            else
+            {   
+                html += '<td><button type="button" name="add" id="add" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Tambah Baris</button></td></tr>';
+                $('tbody').html(html);
+            }
+        }
+
+        $(document).on('click', '#add', function(){
+        count++;
+        dynamic_field(count);
+        });
+
+        $(document).on('click', '.remove', function(){
+        count--;
+        $(this).closest("tr").remove();
+        });
+
+        $('#dynamic_form').on('submit', function(event){
+            event.preventDefault();
+            $.ajax({
+                url:'{{ route("pembayaran.tagihan.tambah") }}',
+                method:'post',
+                data:$(this).serialize(),
+                dataType:'json',
+                beforeSend:function(){
+                    $('#save').attr('disabled','disabled');
+                },
+                success:function(data)
+                {
+                    if(data.error)
+                    {
+                        var error_html = '';
+                        for(var count = 0; count < data.error.length; count++)
+                        {
+                            error_html += '<p>'+data.error[count]+'</p>';
+                        }
+                        $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
+                    }
+                    else
+                    {
+                        dynamic_field(1);
+                        $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
+                    }
+                    $('#save').attr('disabled', false);
+                }
+            })
+        });
+
+        });
     </script>
 
     <!-- Modal Profile -->
