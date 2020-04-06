@@ -24,7 +24,7 @@
         </div>
         @endif
         <form action="/pembayaran/tagihan/{{$tagihan->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Edit Data Setor Tunai</h3>
+            <h3><i class="nav-icon fas fa-money-check-alt my-1 btn-sm-1"></i> Edit Data Setor Tunai</h3>
             <hr>
             {{csrf_field()}}
             <div class="row">
@@ -33,6 +33,7 @@
                     <input value="{{$tagihan->rombel->nama_rombel}} {{$tagihan->rombel->tapel->tahun}} {{$tagihan->rombel->tapel->semester}}" name="rombel_id" type="text" class="form-control bg-disabled" id="jumlah" disabled>
                     <label for="jenis_kelamin">Wali Kelas</label>
                         <select name="jenis_kelamin" class="form-control bg-light" id="jenis_kelamin"required>
+                            <option value="Semua" @if ($tagihan->jenis_kelamin == 'Semua') selected @endif>Semua</option>
                             <option value="Laki-Laki" @if ($tagihan->jenis_kelamin == 'Laki-Laki') selected @endif>Laki-Laki</option>
                             <option value="Perempuan" @if ($tagihan->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
                         </select>

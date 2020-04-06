@@ -157,7 +157,9 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::post('/pembayaran/tagihan/{id}/update','TagihanController@update');
     Route::get('/pembayaran/tagihan/{id}/delete','TagihanController@delete');
 
-    Route::get('/pembayaran/tagihan/{id}/cetak','TagihanController@cetak');
+    Route::post('/pembayaran/tagihan/filter','TagihanController@filter');
+    Route::get('/pembayaran/tagihan/{filter}/print','TagihanController@print');
+    
     Route::get('/pembayaran/tagihan/{id}/cetakprint','TagihanController@cetakprint');
 
 });

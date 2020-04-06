@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Rombel;
 use App\Tagihan;
 use App\Anggotarombel;
+use App\Instansi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -97,4 +98,49 @@ class TagihanController extends Controller
          $tagihan->delete();
          return redirect('/pembayaran/tagihan/index') ->with('sukses','Data Rincian Tagihan Berhasil Dihapus');
      }
+
+    //function untuk masuk ke view filter
+     public function filter(Request $request)
+     {
+        $filter = $request->input('rombel_filter');
+
+        $data_tagihan_L = \App\Tagihan::where('rombel_id', $filter)
+            ->where(function($query) {
+                $query->where('jenis_kelamin', 'Laki-Laki')
+                    ->orWhere('jenis_kelamin', 'Semua');
+            })->get();
+
+        $data_tagihan_P = \App\Tagihan::where('rombel_id', $filter)
+            ->where(function($query) {
+                $query->where('jenis_kelamin', 'Perempuan')
+                    ->orWhere('jenis_kelamin', 'Semua');
+            })->get();
+
+        $header = $data_tagihan_L->first();
+
+        return view('/pembayaran/tagihan/filter', compact('data_tagihan_L','data_tagihan_P','header','filter'));
+     }
+
+    //function untuk print
+     public function print($rombel_id)
+     {
+        $filter = $rombel_id;
+
+        $data_tagihan_L = \App\Tagihan::where('rombel_id', $filter)
+            ->where(function($query) {
+                $query->where('jenis_kelamin', 'Laki-Laki')
+                    ->orWhere('jenis_kelamin', 'Semua');
+            })->get();
+
+        $data_tagihan_P = \App\Tagihan::where('rombel_id', $filter)
+            ->where(function($query) {
+                $query->where('jenis_kelamin', 'Perempuan')
+                    ->orWhere('jenis_kelamin', 'Semua');
+            })->get();
+
+        $header = $data_tagihan_L->first();
+        $data_instansi = \App\Instansi::first();
+        return view('/pembayaran/tagihan/print', compact('data_tagihan_L','data_tagihan_P','header','filter','data_instansi'));
+     }
+
 }

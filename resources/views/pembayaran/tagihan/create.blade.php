@@ -434,15 +434,14 @@
             <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Tambah Tagihan Pembayaran</h3>
             <hr>
             <section class="content">
+                                <span id="result"></span>
                                 <div>
                                     <div class="col">
                                         <a class="btn btn-danger btn-sm" href="index" role="button"><i class="fas fa-undo"></i> Kembali</a>
                                     </div>
                                 </div>
                                 <div class="row table-responsive">
-                                <span id="result"></span>
                                     <form method="post" id="dynamic_form">
-                                        <!-- <span id="result"></span> -->
                                         <table class="table table-hover table-head-fixed" id="user_table">
                                             <thead>
                                                 <tr>

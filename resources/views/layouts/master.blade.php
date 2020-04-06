@@ -196,16 +196,16 @@
                                     <span class="right badge badge-warning">Progress</span>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
+                            <ul class="nav nav-treeview bg-secondary">
                                 <li class="nav-item">
-                                    <a href="/pembayaran/tagihan/index" class="nav-link">
+                                    <a href="/pembayaran/tagihan/index" class="nav-link  text-white">
                                         <i class="fas fa-money-check-alt nav-icon"></i>
                                         <p>Rincian Tagihan</p>
                                         <span class="right badge badge-primary">New</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="#" class="nav-link  text-white">
                                         <i class="far fa-handshake nav-icon"></i>
                                         <p>Transaksi Pembayaran</p>
                                         <span class="right badge badge-danger">Not Yet</span>
@@ -461,6 +461,22 @@
                 "info": true,
                 "autoWidth": true,
             });
+            $("#tabelTagihanInvoice1").DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": true,
+            });
+            $("#tabelTagihanInvoice2").DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": true,
+            });
         });
 
         $(function () {
@@ -489,35 +505,6 @@
             theme: 'bootstrap4'
             })
         });
-
-        // //Filter Data Tagihan
-        // $(document).ready(function(){
- 
-        // fetch_data();
-        
-        // function fetch_data(rombel = '')
-        // {
-        // $('#tabelTagihan').DataTable({
-        // processing: true,
-        // serverSide: true,
-        // ajax: {
-        //     url:"{{ route('pembayaran.tagihan.index') }}",
-        //     data: {rombel:rombel}
-        // },
-        // });
-        // }
-        
-        // $('#rombel_filter').change(function(){
-        // var rombel_id = $('#rombel_filter').val();
-        
-        // $('#tabelTagihan').DataTable().destroy();
-        
-        // fetch_data(rombel_id);
-        // });
-
-
-        // });
-
     </script>
 
     <!-- Modal Profile -->
