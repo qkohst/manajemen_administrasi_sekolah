@@ -156,11 +156,19 @@ Route::group(['middleware' => ['auth','checkRole:admin,petugas']], function () {
     Route::get('/pembayaran/tagihan/{id}/edit','TagihanController@edit');
     Route::post('/pembayaran/tagihan/{id}/update','TagihanController@update');
     Route::get('/pembayaran/tagihan/{id}/delete','TagihanController@delete');
-
     Route::post('/pembayaran/tagihan/filter','TagihanController@filter');
     Route::get('/pembayaran/tagihan/{filter}/print','TagihanController@print');
+
+    Route::get('/pembayaran/transaksipembayaran/index','TransaksiPembayaranController@index')->name('pembayaran.transaksipembayaran.index');
+    Route::post('/pembayaran/transaksipembayaran/cari_pesdik','TransaksiPembayaranController@cari_pesdik');
+
+    Route::get('/pembayaran/transaksipembayaran/create','TransaksiPembayaranController@create');
+    Route::post('/pembayaran/transaksipembayaran/tambah','TransaksiPembayaranController@tambah')->name('pembayaran.transaksipembayaran.tambah');
+    Route::get('/pembayaran/transaksipembayaran/{id}/edit','TransaksiPembayaranController@edit');
+    Route::post('/pembayaran/transaksipembayaran/{id}/update','TransaksiPembayaranController@update');
+    Route::get('/pembayaran/transaksipembayaran/{id}/delete','TransaksiPembayaranController@delete');
+    Route::get('/pembayaran/transaksipembayaran/{filter}/print','TransaksiPembayaranController@print');
     
-    Route::get('/pembayaran/tagihan/{id}/cetakprint','TagihanController@cetakprint');
 
 });
 

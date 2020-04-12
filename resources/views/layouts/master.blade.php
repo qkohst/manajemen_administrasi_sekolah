@@ -205,10 +205,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link  text-white">
+                                    <a href="/pembayaran/transaksipembayaran/index" class="nav-link  text-white">
                                         <i class="far fa-handshake nav-icon"></i>
                                         <p>Transaksi Pembayaran</p>
-                                        <span class="right badge badge-danger">Not Yet</span>
+                                        <span class="right badge badge-warning">Progress</span>
                                     </a>
                                 </li>
                             </ul>
@@ -267,9 +267,9 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-download"></i>
+                                <i class="nav-icon fas fa-print"></i>
                                 <p>
-                                    Unduhan
+                                    Laporan
                                 </p>
                                 <span class="right badge badge-danger">Not Yet</span>
                             </a>
