@@ -112,8 +112,29 @@ class SuratmasukController extends Controller
     //Function Untuk Agenda Surat Masuk
     public function agenda(Request $request)
     {
+        $tgl_awal = '__/__/20__';
+        $tgl_akhir = '__/__/20__';
         $data_suratmasuk = \App\SuratMasuk::all();
-        return view('suratmasuk.agenda', compact('data_suratmasuk'));
+        return view('suratmasuk.agenda', compact('data_suratmasuk','tgl_awal','tgl_akhir'));
+    }
+
+    public function filter_agenda(Request $request)
+    {
+        $tgl_awal = $request->input('tgl_awal');
+        $tgl_akhir = $request->input('tgl_akhir');
+
+        $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl_awal, $tgl_akhir])->get();
+        return view('suratmasuk.agenda', compact('data_suratmasuk','tgl_awal','tgl_akhir'));
+    }
+
+    public function cetakagenda(Request $request)
+    {
+        $inst = Instansi::first();
+        $tgl1 = $request->input('tgl_a');
+        $tgl2 = $request->input('tgl_b');
+
+        $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl1, $tgl2])->get();
+        return view('suratmasuk.cetakagenda', compact('inst','data_suratmasuk','tgl1','tgl2'));
     }
 
     //Function Untuk Download Agenda Surat Masuk

@@ -55,9 +55,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 0;?>
+                            <?php $no = 0; ?>
                             @foreach($data_pesdik as $pesdik)
-                            <?php $no++ ;?>
+                            <?php $no++; ?>
                             <tr>
                                 <td>{{$no}}</td>
                                 <td>{{$pesdik->status}}</td>
@@ -71,19 +71,13 @@
                                 <td>{{$pesdik->tempat_lahir}}</td>
                                 <td>{{$pesdik->tanggal_lahir}}</td>
                                 <td>
-                                <a href="/pesdik/{{$pesdik->id}}/edit"
-                                    class="btn btn-primary btn-sm my-1 mr-sm-1"><i
-                                        class="nav-icon fas fa-pencil-alt"></i> Edit</a>
-                                @if (auth()->user()->role == 'admin')
-                                <a href="/pesdik/{{$pesdik->id}}/delete"
-                                    class="btn btn-danger btn-sm my-1 mr-sm-1"
-                                    onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
-                                    Hapus</a>
-                                <a href="/pesdik/{{$pesdik->id}}/registrasi"
-                                    class="btn btn-success btn-sm my-1 mr-sm-1"><i
-                                        class="nav-icon fas fa-child"></i> Regsitrasi</a>
-                                @endif
-                            </td>
+                                    <a href="/pesdik/{{$pesdik->id}}/edit" class="btn btn-primary btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                    @if (auth()->user()->role == 'admin')
+                                    <a href="/pesdik/{{$pesdik->id}}/delete" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
+                                        Hapus</a>
+                                    <a href="/pesdik/{{$pesdik->id}}/registrasi" class="btn btn-success btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-child"></i> Registrasi</a>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

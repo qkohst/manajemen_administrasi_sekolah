@@ -23,111 +23,154 @@
             </button>
         </div>
         @endif
-            <h3><i class="nav-icon far fa-handshake nav-icon my-1 btn-sm-1"></i> Transaksi Pembayaran Siswa</h3>
-            <hr>
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col">
-                            <div class="card">
-                                <h6 class="card-header bg-secondary p-2"><i class="fas fa-search"></i> CARI DATA SISWA</h6>
-                                <div class="card-body table-responsive bg-light">
-                                    <form action="/pembayaran/transaksipembayaran/cari_pesdik" method="POST">
-                                        {{csrf_field()}}
-                                        <select name="cari_pesdik" id="cari_pesdik" class="form-control select2bs4" onchange="this.form.submit();">
-                                            <option value="">-- Pilih Siswa --</option>
-                                            @foreach($pesdik as $data)
-                                            <option value="{{ $data->pesdik_id }}">{{$data->pesdik->nisn}}/{{$data->pesdik->induk}} - {{$data->pesdik->nama}}</option>
-                                            @endforeach
-                                        </select>
-                                    </form>
-                                </div>
+        <h3><i class="nav-icon far fa-handshake nav-icon my-1 btn-sm-1"></i> Transaksi Pembayaran Siswa</h3>
+        <hr>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <h6 class="card-header bg-secondary p-2"><i class="fas fa-search"></i> CARI DATA SISWA</h6>
+                            <div class="card-body table-responsive bg-light">
+                                <form action="/pembayaran/transaksipembayaran/cari_pesdik" method="POST">
+                                    {{csrf_field()}}
+                                    <select name="cari_pesdik" id="cari_pesdik" class="form-control select2bs4" onchange="this.form.submit();">
+                                        <option value="">-- Pilih Siswa --</option>
+                                        @foreach($pesdik as $data)
+                                        <option value="{{ $data->pesdik_id }}">{{$data->pesdik->nisn}}/{{$data->pesdik->induk}} - {{$data->pesdik->nama}}</option>
+                                        @endforeach
+                                    </select>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-md-3">
-                            <!-- Profile Image -->
-                            <div class="card card-primary card-outline">
-                                <div class="card-body box-profile bg-light">
-                                    <div class="text-center">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Profile Image -->
+                        <div class="card card-primary card-outline">
+                            <div class="card-body box-profile bg-light">
+                                <div class="text-center">
                                     <img class="profile-user-img img-fluid img-circle" src="/adminLTE/img/user.png" alt="User profile picture">
-                                    </div>
-                                    <h3 class="profile-username text-center"><b>{{$data_pesdik->pesdik->nama}}</b></h3>
-                                    <p class="text-muted text-center">{{$data_pesdik->rombel->nama_rombel}} {{$data_pesdik->rombel->tapel->semester}}</p>
-                                    <ul class="list-group list-group-unbordered bg-light mb-3">
-                                    <li class="list-group-item">
+                                </div>
+                                <h3 class="profile-username text-center"><b>{{$data_pesdik->pesdik->nama}}</b></h3>
+                                <p class="text-muted text-center">{{$data_pesdik->rombel->nama_rombel}} {{$data_pesdik->rombel->tapel->semester}}</p>
+                                <ul class="list-group list-group-unbordered bg-light mb-3">
+                                    <li class="list-group-item bg-light">
                                         <b>Status</b>
                                         <a class="float-right">{{$data_pesdik->pesdik->status}}</a>
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item bg-light">
                                         <b>TTL</b>
                                         <a class="float-right">{{$data_pesdik->pesdik->tempat_lahir}}, {{$data_pesdik->pesdik->tanggal_lahir}}</a>
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item bg-light">
                                         <b>Jenis Kelamin</b> <a class="float-right">{{$data_pesdik->pesdik->jenis_kelamin}}</a>
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item bg-light">
                                         <b>NISN/Induk</b>
                                         <a class="float-right">{{$data_pesdik->pesdik->induk}}</a>
                                         <a class="float-right">/</a>
                                         <a class="float-right">{{$data_pesdik->pesdik->nisn}}</a>
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item bg-light">
                                         <b>Jenis Pendaftaran</b> <a class="float-right">{{$data_pesdik->pesdik->jenis_pendaftaran}}</a>
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item bg-light">
                                         <b>Tanggal Masuk</b> <a class="float-right">{{$data_pesdik->pesdik->tanggal_masuk}}</a>
                                     </li>
-                                    </ul>
-                                </div>
-                                <!-- /.card-body -->
+                                </ul>
                             </div>
-                            <!-- /.card -->
+                            <!-- /.card-body -->
                         </div>
+                        <!-- /.card -->
+                    </div>
 
-                        <div class="col-md-9">
-                            <div class="card">
-                                <h6 class="card-header bg-secondary p-2"><i class="fas fa-money-check-alt"></i> TAGIHAN PEMBAYARAN SISWA</h6>
-                                <div class="card-body bg-light table-responsive">
-                                    <table class="table table-bordered table-head-fixed bg-white">
-                                        <thead>                  
-                                            <tr>
+                    <div class="col-md-9">
+                        <div class="card">
+                            <h6 class="card-header bg-secondary p-2"><i class="fas fa-money-check-alt"></i> TAGIHAN PEMBAYARAN SISWA</h6>
+                            <div class="card-body bg-light table-responsive">
+                                <form action="">
+                                
+                                </form>
+                                <table class="table table-bordered table-head-fixed bg-white" id='tabelAgendaMasuk'>
+                                    <thead>
+                                        <tr>
                                             <th style="width: 10px">No</th>
+                                            <th>Kelas</th>
+                                            <!-- <th>Jenis Kelamin</th> -->
                                             <th>Rincian</th>
+                                            <th>Batas Pembayaran</th>
                                             <th>Tagihan</th>
                                             <th>Terbayar</th>
                                             <th>Sisa Tagihan</th>
-                                            <th>Batas Pembayaran</th>
-                                            <th style="width: 40px">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $no = 0;?>
-                                            @foreach($tagihan_siswa as $tagih)
-                                            <?php $no++ ;?>
-                                            <tr>
-                                                <td>{{$no}}</td>
-                                                <td>{{$tagih->rincian}}</td>
-                                                <td>@currency($tagih->nominal),00</td>
-                                                <td>Rp.0,00</td>
-                                                <td>@currency($tagih->nominal),00</td>
-                                                <td>{{$tagih->batas_bayar}}</td>
-                                                <td>
-                                                <a href="#"
-                                                    class="btn btn-success btn-sm"> Bayar</a>
+                                            <th>Pilih</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 0; ?>
+                                        @foreach($tagihan_siswa as $tagih)
+                                        <?php $no++; ?>
+                                        <tr>
+                                            <td>{{$no}}</td>
+                                            <td>{{$tagih->rombel->nama_rombel}} {{$tagih->rombel->tapel->semester}}</td>
+                                            <!-- <td>{{$tagih->jenis_kelamin}}</td> -->
+                                            <td>{{$tagih->rincian}}</td>
+                                            <td>{{$tagih->batas_bayar}}</td>
+                                            <td>@currency($tagih->nominal),00</td>
+                                            <td>Rp.0,00</td>
+                                            <td>@currency($tagih->nominal),00</td>
+                                            <td align="center">
+                                            <input type="checkbox" id="pilih[]" name="pilih[]" value="$tagih->id">
                                             </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4" align="center"><b>Jumlah</b></td>
+                                            <td align="left">
+                                                <?php
+                                                $jumlah_tagihan = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
+                                                    ->WhereIn('jenis_kelamin', $pilih_jk)->sum('nominal');
+                                                ?>
+                                                <b>@currency($jumlah_tagihan),00</b><br>
+                                            </td>
+                                            <td align="left">
+                                                <?php
+                                                $jumlah_tagihan =  \App\Tagihan::where('rombel_id', '=', '4')
+                                                    ->where(function ($query) {
+                                                        $query->where('jenis_kelamin', 'Laki-Laki')
+                                                            ->orWhere('jenis_kelamin', 'Semua');
+                                                    })->sum('nominal');
+                                                ?>
+                                                <b>@currency($jumlah_tagihan),00</b><br>
+                                            </td>
+                                            <td align="left">
+                                                <?php
+                                                $sisa_tagihan = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
+                                                    ->WhereIn('jenis_kelamin', $pilih_jk)->sum('nominal');
+                                                ?>
+                                                <b>@currency($sisa_tagihan),00</b><br>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm my-1 mr-sm-1" type="submit" id="bayar">Bayar</button>                                            
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <!-- <div class="col-12">
+                                    <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="/pembayaran/transaksipembayaran/{{$data_pesdik->pesdik->id}}/form_bayar" role="button"><i class="fas fa-plus"></i>
+                                        Bayar</a>
+                                    <br>
+                                </div> -->
                             </div>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
     </div>
 </section>
 @endsection

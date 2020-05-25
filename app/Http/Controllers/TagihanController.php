@@ -18,7 +18,7 @@ class TagihanController extends Controller
         $data_rombel = \App\Rombel::all();
         $data_tagihan = \App\Tagihan::all();
         $data_anggotarombel = \App\Anggotarombel::all();
-        return view('/pembayaran/tagihan/index', compact('data_rombel','data_tagihan','data_anggotarombel'));
+        return view('/pembayaran/tagihan/index', compact('data_rombel', 'data_tagihan', 'data_anggotarombel'));
     }
 
     public function create()
@@ -26,121 +26,118 @@ class TagihanController extends Controller
         $data_rombel = \App\Rombel::all();
         $data_tagihan = \App\Tagihan::all();
         $data_anggotarombel = \App\Anggotarombel::all();
-        return view('/pembayaran/tagihan/create', compact('data_rombel','data_tagihan','data_anggotarombel'));
+        return view('/pembayaran/tagihan/create', compact('data_rombel', 'data_tagihan', 'data_anggotarombel'));
     }
 
     function tambah(Request $request)
     {
-     if($request->ajax())
-     {
-      $rules = array(
-       'rombel_id.*'  => 'required',
-       'rincian.*'  => 'required',
-       'jenis_kelamin.*'  => 'required',
-       'nominal.*'  => 'required|numeric',
-       'batas_bayar.*'  => 'required'
-      );
-      $error = Validator::make($request->all(), $rules);
-      if($error->fails())
-      {
-       return response()->json([
-        'error'  => $error->errors()->all()
-       ]);
-      }
+        if ($request->ajax()) {
+            $rules = array(
+                'rombel_id.*'  => 'required',
+                'rincian.*'  => 'required',
+                'jenis_kelamin.*'  => 'required',
+                'nominal.*'  => 'required|numeric',
+                'batas_bayar.*'  => 'required'
+            );
+            //   $error = Validator::make($request->all(), $rules);
+            //   if($error->fails())
+            //   {
+            //    return response()->json([
+            //     'error'  => $error->errors()->all()
+            //    ]);
+            //   }
 
-      $rombel_id = $request->rombel_id;
-      $rincian = $request->rincian;
-      $jenis_kelamin = $request->jenis_kelamin;
-      $nominal = $request->nominal;
-      $batas_bayar = $request->batas_bayar;
-      for($count = 0; $count < count($rombel_id); $count++)
-      {
-       $data = array(
-        'rombel_id' => $rombel_id[$count],
-        'rincian'  => $rincian[$count],
-        'jenis_kelamin'  => $jenis_kelamin[$count],
-        'nominal'  => $nominal[$count],
-        'batas_bayar'  => $batas_bayar[$count]
-       );
-       $insert_data[] = $data; 
-      }
+            $rombel_id = $request->rombel_id;
+            $rincian = $request->rincian;
+            $jenis_kelamin = $request->jenis_kelamin;
+            $nominal = $request->nominal;
+            $batas_bayar = $request->batas_bayar;
+            for ($count = 0; $count < count($rombel_id); $count++) {
+                $data = array(
+                    'rombel_id' => $rombel_id[$count],
+                    'rincian'  => $rincian[$count],
+                    'jenis_kelamin'  => $jenis_kelamin[$count],
+                    'nominal'  => $nominal[$count],
+                    'batas_bayar'  => $batas_bayar[$count]
+                );
+                $insert_data[] = $data;
+            }
 
-      Tagihan::insert($insert_data);
-      return response()->json([
-        'success'  => 'Data Rincian Tagihan Berhasil Ditambahkan !!!'
-       ]);
-     }
+            Tagihan::insert($insert_data);
+            return response()->json([
+                'success'  => 'Data Rincian Tagihan Berhasil Ditambahkan !!!'
+            ]);
+        }
     }
 
-    
+
     //function untuk masuk ke view edit
-    public function edit ($id_tagihan)
+    public function edit($id_tagihan)
     {
-       $tagihan = \App\Tagihan::find($id_tagihan);
-       return view('/pembayaran/tagihan/edit', compact('tagihan'));
+        $tagihan = \App\Tagihan::find($id_tagihan);
+        return view('/pembayaran/tagihan/edit', compact('tagihan'));
     }
 
-    public function update (Request $request, $id_tagihan)
+    public function update(Request $request, $id_tagihan)
     {
-       $request->validate([
-          'nominal' => 'numeric',
-       ]);
-       $tagihan = \App\Tagihan::find($id_tagihan);
-       $tagihan->update($request->all());
-       $tagihan->save();
-       return redirect('/pembayaran/tagihan/index') ->with('sukses','Data Rincian Tagihan Berhasil Diedit');
+        $request->validate([
+            'nominal' => 'numeric',
+        ]);
+        $tagihan = \App\Tagihan::find($id_tagihan);
+        $tagihan->update($request->all());
+        $tagihan->save();
+        return redirect('/pembayaran/tagihan/index')->with('sukses', 'Data Rincian Tagihan Berhasil Diedit');
     }
 
-     //function untuk hapus
-     public function delete($id)
-     {
-         $tagihan=\App\Tagihan::find($id);
-         $tagihan->delete();
-         return redirect('/pembayaran/tagihan/index') ->with('sukses','Data Rincian Tagihan Berhasil Dihapus');
-     }
+    //function untuk hapus
+    public function delete($id)
+    {
+        $tagihan = \App\Tagihan::find($id);
+        $tagihan->delete();
+        return redirect('/pembayaran/tagihan/index')->with('sukses', 'Data Rincian Tagihan Berhasil Dihapus');
+    }
 
     //function untuk masuk ke view filter
-     public function filter(Request $request)
-     {
+    public function filter(Request $request)
+    {
         $filter = $request->input('rombel_filter');
 
         $data_tagihan_L = \App\Tagihan::where('rombel_id', $filter)
-            ->where(function($query) {
+            ->where(function ($query) {
                 $query->where('jenis_kelamin', 'Laki-Laki')
                     ->orWhere('jenis_kelamin', 'Semua');
             })->get();
 
         $data_tagihan_P = \App\Tagihan::where('rombel_id', $filter)
-            ->where(function($query) {
+            ->where(function ($query) {
                 $query->where('jenis_kelamin', 'Perempuan')
                     ->orWhere('jenis_kelamin', 'Semua');
             })->get();
 
         $header = $data_tagihan_L->first();
 
-        return view('/pembayaran/tagihan/filter', compact('data_tagihan_L','data_tagihan_P','header','filter'));
-     }
+        return view('/pembayaran/tagihan/filter', compact('data_tagihan_L', 'data_tagihan_P', 'header', 'filter'));
+    }
 
     //function untuk print
-     public function print($rombel_id)
-     {
+    public function print($rombel_id)
+    {
         $filter = $rombel_id;
 
         $data_tagihan_L = \App\Tagihan::where('rombel_id', $filter)
-            ->where(function($query) {
+            ->where(function ($query) {
                 $query->where('jenis_kelamin', 'Laki-Laki')
                     ->orWhere('jenis_kelamin', 'Semua');
             })->get();
 
         $data_tagihan_P = \App\Tagihan::where('rombel_id', $filter)
-            ->where(function($query) {
+            ->where(function ($query) {
                 $query->where('jenis_kelamin', 'Perempuan')
                     ->orWhere('jenis_kelamin', 'Semua');
             })->get();
 
         $header = $data_tagihan_L->first();
         $data_instansi = \App\Instansi::first();
-        return view('/pembayaran/tagihan/print', compact('data_tagihan_L','data_tagihan_P','header','filter','data_instansi'));
-     }
-
+        return view('/pembayaran/tagihan/print', compact('data_tagihan_L', 'data_tagihan_P', 'header', 'filter', 'data_instansi'));
+    }
 }
