@@ -14,7 +14,7 @@ class CreateTransaksipembayaranTable extends Migration
     public function up()
     {
         Schema::create('transaksipembayaran', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_transaksi');
             $table->integer('tagihan_id');
             $table->integer('users_id');
             $table->integer('pesdik_id');

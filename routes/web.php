@@ -164,8 +164,8 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::get('/pembayaran/transaksipembayaran/index', 'TransaksiPembayaranController@index')->name('pembayaran.transaksipembayaran.index');
     Route::post('/pembayaran/transaksipembayaran/cari_pesdik', 'TransaksiPembayaranController@cari_pesdik');
     Route::get('/pembayaran/transaksipembayaran/{id}/form_bayar', 'TransaksiPembayaranController@form_bayar');
+    Route::post('/pembayaran/transaksipembayaran/bayar', 'TransaksiPembayaranController@bayar');
 
-    Route::get('/pembayaran/transaksipembayaran/create', 'TransaksiPembayaranController@create');
     Route::post('/pembayaran/transaksipembayaran/tambah', 'TransaksiPembayaranController@tambah')->name('pembayaran.transaksipembayaran.tambah');
     Route::get('/pembayaran/transaksipembayaran/{id}/edit', 'TransaksiPembayaranController@edit');
     Route::post('/pembayaran/transaksipembayaran/{id}/update', 'TransaksiPembayaranController@update');
