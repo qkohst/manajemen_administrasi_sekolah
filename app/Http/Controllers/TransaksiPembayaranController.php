@@ -53,11 +53,11 @@ class TransaksiPembayaranController extends Controller
         $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id_pesdik)->get();
         $tagihan_siswa =  \App\Tagihan::whereIn('id', $pilihTagihan)->get();
         //End Olah Lagi
-        // dd($coba);
         return view('/pembayaran/transaksipembayaran/form_bayar', compact('pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilihTagihan'));
     }
 
     public function bayar(Request $request)
+    
     {
         $users_id = Auth::id();
         $tagihan_id = $request->tagihan_id;
@@ -74,12 +74,19 @@ class TransaksiPembayaranController extends Controller
             );
             $insert_data[] = $data;
         }
-        // dd($insert_data);
         TransaksiPembayaran::insert($insert_data);
-        // return response()->json([
-        //     'success'  => 'Data Rincian Tagihan Berhasil Ditambahkan !!!'
-        // ]);
+        $tagihan_dibayar=\App\TransaksiPembayaran::whereIn('tagihan_id',$tagihan_id)->where('pesdik_id', $pesdik_id)->get();
+        $identitas = $tagihan_dibayar->first();
+        return view('/pembayaran/transaksipembayaran/invoice_bukti_pembayaran', compact('identitas','tagihan_dibayar','tagihan_id','pesdik_id'));
+    }
 
-        // return view('/pembayaran/transaksipembayaran/form_bayar', compact('pesdik','tagihan_siswa', 'pesdik_pilih', 'pilihTagihan'));
+    public function cetak_invoice(Request $request)
+    {
+        $tagihan_id = $request->id_tagih;
+        $pesdik_id = $request->id_pesdik;
+        $tagihan_dibayar=\App\TransaksiPembayaran::whereIn('tagihan_id',$tagihan_id)->where('pesdik_id', $pesdik_id)->get();
+        $identitas = $tagihan_dibayar->first();
+        // dd($identitas);
+        return view('/pembayaran/transaksipembayaran/cetak_invoice', compact('identitas','tagihan_dibayar','tagihan_id','pesdik_id'));
     }
 }

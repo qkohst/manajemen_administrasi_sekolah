@@ -3,28 +3,16 @@
 @section('content')
 <section class="content card" style="padding: 10px 10px 10px 10px ">
   <div class="box">
-    @if(session('sukses'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {{session('sukses')}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    @endif
-    @if ($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    @endif
     <h3><i class="nav-icon far fa-handshake nav-icon my-1 btn-sm-1"></i> Bayar Tagihan Siswa</h3>
     <hr>
+    <div class=" callout callout-primary alert alert-info alert-dismissible fade show" role="alert">
+                <h5><i class="fas fa-info"></i> Informasi :</h5>
+                - Pastikan data yang anda pilih sudah benar !  <br>
+                - Klik tombol SIMPAN untuk melanjutkan proses pembayaran
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+    </div>
     <section class="content">
       <form action="/pembayaran/transaksipembayaran/bayar" method="POST">
         {{csrf_field()}}

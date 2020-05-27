@@ -178,7 +178,7 @@
                     <a class="text-white">
                         <p>
                             MANAJEMEN KEUANGAN
-                            <span class="right badge badge-danger">Not Yet</span>
+                            <span class="right badge badge-warning">Progress</span>
                         </p>
                     </a>
                     <!-- Add icons to the links using the .nav-icon class
@@ -189,7 +189,7 @@
                             <p>
                                 Pembayaran
                                 <i class="right fas fa-angle-left"></i>
-                                <span class="right badge badge-warning">Progress</span>
+                                <span class="right badge badge-primary">New</span>
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -204,7 +204,7 @@
                                 <a href="/pembayaran/transaksipembayaran/index" class="nav-link  text-white">
                                     <i class="far fa-handshake nav-icon"></i>
                                     <p>Transaksi Pembayaran</p>
-                                    <span class="right badge badge-warning">Progress</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </a>
                             </li>
                         </ul>
@@ -441,6 +441,36 @@
 
     <!-- page script -->
     <script>
+
+        // Untuk Menampilkan Button kembali
+        function viewKembali() {
+        // Get the checkbox
+        var button = document.getElementById("kembali");
+
+        if (button.style.display === "none") {
+            button.style.display = "block";
+        } else {
+            button.style.display = "none";
+        }
+        }
+        // end Untuk Menampilkan Button kembali
+
+        // Untuk Menampilkan Button Bayar
+        function myFunction() {
+        // Get the checkbox
+        var checkBox = document.getElementById("pilih[]");
+        // Get the output text
+        var text = document.getElementById("bayar");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        }
+        // end Untuk Menampilkan Button Bayar
+
         $(function() {
             $("#tabelSuratmasuk").DataTable();
             $("#tabelSuratkeluar").DataTable();

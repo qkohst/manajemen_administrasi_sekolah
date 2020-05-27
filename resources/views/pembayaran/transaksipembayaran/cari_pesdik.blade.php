@@ -91,6 +91,12 @@
                         <div class="card">
                             <h6 class="card-header bg-secondary p-2"><i class="fas fa-money-check-alt"></i> TAGIHAN PEMBAYARAN SISWA</h6>
                             <div class="card-body bg-light table-responsive">
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    Silahkan centang pada checkbox disamping kanan tabel, lalu klik tombol BAYAR !!!
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                                 <form action="/pembayaran/transaksipembayaran/{{$data_pesdik->pesdik->id}}/form_bayar" method="GET">
                                     {{csrf_field()}}
                                     <table class="table table-bordered table-head-fixed bg-white" id='tabelAgendaMasuk'>
@@ -98,7 +104,6 @@
                                             <tr>
                                                 <th style="width: 10px">No</th>
                                                 <th>Kelas</th>
-                                                <!-- <th>Jenis Kelamin</th> -->
                                                 <th>Rincian</th>
                                                 <th>Batas Pembayaran</th>
                                                 <th>Tagihan</th>
@@ -114,14 +119,15 @@
                                             <tr>
                                                 <td>{{$no}}</td>
                                                 <td>{{$tagih->rombel->nama_rombel}} {{$tagih->rombel->tapel->semester}}</td>
-                                                <!-- <td>{{$tagih->jenis_kelamin}}</td> -->
                                                 <td>{{$tagih->rincian}}</td>
                                                 <td>{{$tagih->batas_bayar}}</td>
                                                 <td>@currency($tagih->nominal),00</td>
                                                 <td>@currency($tagih->jumlah_bayar),00</td>
                                                 <td>@currency($tagih->nominal-$tagih->jumlah_bayar),00</td>
                                                 <td align="center">
-                                                <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}">
+                                                @if($tagih->nominal != $tagih->jumlah_bayar)
+                                                <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}" onclick="myFunction()">
+                                                @endif
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -147,7 +153,7 @@
                                                     <b>@currency($jumlah_tagihan-$jumlah_terbayar),00</b><br>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary btn-sm my-1 mr-sm-1" type="submit" id="bayar">Bayar</button>                                            
+                                                    <button class="btn btn-primary btn-sm my-1 mr-sm-1" style="display:none" type="submit" id="bayar">Bayar</button>                                            
                                                 </td>
                                             </tr>
                                         </tfoot>
