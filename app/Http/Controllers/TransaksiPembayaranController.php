@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TransaksiPembayaranController extends Controller
 {
@@ -70,7 +71,10 @@ class TransaksiPembayaranController extends Controller
                 'tagihan_id' => $tagihan_id[$count],
                 'users_id'  => $users_id,
                 'pesdik_id'  => $pesdik_id[$count],
-                'jumlah_bayar'  => $jumlah_bayar[$count]
+                'jumlah_bayar'  => $jumlah_bayar[$count],
+                'created_at'  => Carbon::now(),
+                'updated_at'  => Carbon::now()
+
             );
             $insert_data[] = $data;
         }

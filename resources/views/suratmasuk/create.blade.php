@@ -1,22 +1,28 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="content card" style="padding: 10px 10px 10px 10px ">
-    <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{session('sukses')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
+<section class="content card" style="padding: 10px 10px 10px 10px ">
+    <div class="box">
         <form action="/suratmasuk/tambah" method="POST" enctype="multipart/form-data">
             <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Tambah Data Surat Masuk</h3>
             <hr />
@@ -33,7 +39,7 @@
                     <textarea name="isi" class="form-control bg-light" id="isisurat" rows="3"
                         placeholder="Isi Ringkas Surat Masuk" required>{{old('isi')}}</textarea>
                     <label for="kode">Kode Klasifikasi</label>
-                    <select name="kode" class="custom-select my-1 mr-sm-2 bg-light" id="inlineFormCustomSelectPref"
+                    <select name="kode" class="form-control my-1 mr-sm-2 bg-light" id="inlineFormCustomSelectPref"
                         required>
                         <option value="">-- Pilih Klasifikasi Surat --</option>
                         @foreach($data_klasifikasi as $klasifikasi)

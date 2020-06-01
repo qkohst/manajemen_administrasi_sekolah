@@ -16,7 +16,7 @@
     <section class="content">
       <form action="/pembayaran/transaksipembayaran/bayar" method="POST">
         {{csrf_field()}}
-        <table class="table table-bordered table-head-fixed bg-white">
+        <table class="table table-hover table-head-fixed bg-white">
           <thead>
             <tr>
               <th>No</th>

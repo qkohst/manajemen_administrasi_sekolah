@@ -1,22 +1,28 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="content card" style="padding: 10px 10px 10px 10px ">
-    <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{session('sukses')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
+<section class="content card" style="padding: 10px 10px 10px 10px ">
+    <div class="box">
         <form action="{{ route('disposisi.update', [$smasuk, $disp->id]) }}" method="get">
             <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Edit Disposisi</h3>
             <hr />
@@ -33,6 +39,8 @@
                     <label for="sifat">Sifat</label>
                     <input name="sifat" type="text" class="form-control bg-light" placeholder="Sifat"
                         value="{{ $disp->sifat }}" required>
+                </div>
+                <div class="col-6">
                     <label for="batas_waktu">Batas Waktu</label>
                     <input name="batas_waktu" type="date" class="form-control bg-light" value="{{ $disp->batas_waktu }}"
                         required>

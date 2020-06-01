@@ -1,12 +1,27 @@
 @extends('layouts.master')
 @section('content')
-<section class="content card" style="padding: 10px 10px 10px 10px ">
-    <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{session('sukses')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
+        @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+<section class="content card" style="padding: 10px 10px 10px 10px ">
+    <div class="box">
         <div class="row">
             <div class="col">
                 <h3><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Disposisi</h3>

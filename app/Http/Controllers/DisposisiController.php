@@ -45,11 +45,11 @@ class DisposisiController extends Controller
     {
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $this->validate($request, [
-            'tujuan'        => 'required',
-            'isi'           => 'required',
-            'sifat'         => 'required',
+            'tujuan'        => 'required|min:5',
+            'isi'           => 'required|min:5',
+            'sifat'         => 'required|min:5',
             'batas_waktu'   => 'required',
-            'catatan'       => 'required',
+            'catatan'       => 'required|min:5',
         ]);
 
         $disp = Disposisi::create([
@@ -62,7 +62,7 @@ class DisposisiController extends Controller
             'suratmasuk_id'   => $suratmasuk->id,
         ]);
 
-        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi berhasil di Simpan');
+        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Data disposisi berhasil ditambahkan');
     }
 
     /**
@@ -101,11 +101,11 @@ class DisposisiController extends Controller
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
         $this->validate($request, [
-            'tujuan'        => 'required',
-            'isi'           => 'required',
-            'sifat'         => 'required',
+            'tujuan'        => 'required|min:5',
+            'isi'           => 'required|min:5',
+            'sifat'         => 'required|min:5',
             'batas_waktu'   => 'required',
-            'catatan'       => 'required',
+            'catatan'       => 'required|min:5',
         ]);
 
         $disp_data = [
@@ -120,7 +120,7 @@ class DisposisiController extends Controller
 
         $disp->update($disp_data);
 
-        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi berhasil di Simpan');
+        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Data disposisi berhasil diedit');
     }
 
     /**
@@ -135,7 +135,7 @@ class DisposisiController extends Controller
         $disp = Disposisi::findorfail($id);
         $disp->delete();
 
-        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Disposisi Berhasil di Hapus');
+        return redirect()->route('disposisi.index', compact('smasuk'))->with('sukses','Data disposisi telah dihapus');
     }
 
     public function download(SuratMasuk $suratmasuk, $id)
@@ -143,7 +143,6 @@ class DisposisiController extends Controller
         $inst = Instansi::first();
         $smasuk = $suratmasuk->findorfail($suratmasuk->id);
         $disp = Disposisi::findorfail($id);
-        $pdf = PDF::loadview('disposisi.download', compact('inst','disp','smasuk'));
-        return $pdf->stream();
+        return view('/disposisi/download', compact('inst', 'smasuk', 'disp'));
     }
 }

@@ -1,22 +1,28 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="content card" style="padding: 10px 10px 10px 10px ">
-    <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{session('sukses')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
+<section class="content card" style="padding: 10px 10px 10px 10px ">
+    <div class="box">
         <form action="{{ route('disposisi.store', $smasuk) }}" method="POST">
             <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Tambah Disposisi</h3>
             <hr />
@@ -24,15 +30,17 @@
             <div class="row">
                 <div class="col-6">
                     <label for="tujuan">Tujuan</label>
-                    <input name="tujuan" type="text" class="form-control bg-light" placeholder="Tujuan" required>
+                    <input value="{{old('tujuan')}}" name="tujuan" type="text" class="form-control bg-light" placeholder="Tujuan" required>
                     <label for="isi">Isi</label>
-                    <input name="isi" type="text" class="form-control bg-light" placeholder="Isi" required>
+                    <input value="{{old('isi')}}" name="isi" type="text" class="form-control bg-light" placeholder="Isi" required>
                     <label for="sifat">Sifat</label>
-                    <input name="sifat" type="text" class="form-control bg-light" placeholder="Sifat" required>
+                    <input value="{{old('sifat')}}" name="sifat" type="text" class="form-control bg-light" placeholder="Sifat" required>
+                </div>
+                <div class="col-6">
                     <label for="batas_waktu">Batas Waktu</label>
-                    <input name="batas_waktu" type="date" class="form-control bg-light" required>
+                    <input value="{{old('batas_waktu')}}" name="batas_waktu" type="date" class="form-control bg-light" required>
                     <label for="catatan">Catatan</label>
-                    <input name="catatan" type="text" class="form-control bg-light" placeholder="Catatan" required>
+                    <input value="{{old('catatan')}}" name="catatan" type="text" class="form-control bg-light" placeholder="Catatan" required>
                 </div>
             </div>
             <hr>

@@ -85,7 +85,7 @@
                                 <div class="row">
                                     <div class="row table-responsive">
                                         <div class="col-12">
-                                            <table class="table table-head-fixed" id='tabelAgendaMasuk'>
+                                            <table class="table table-hover table-head-fixed" id='tabelAgendaMasuk'>
                                                 <thead>
                                                     <tr class="bg-light">
                                                         <th>No.</th>
@@ -103,7 +103,7 @@
                                                     <tr>
                                                         <td>{{$no}}</td>
                                                         <td>{{$pengeluaran->tanggal}}</td>
-                                                        <td>Rp.{{$pengeluaran->jumlah}},00</td>
+                                                        <td>@currency($pengeluaran->jumlah),00</td>
                                                         <td>{{$pengeluaran->kategori->nama_kategori}}</td>
                                                         <td>{{$pengeluaran->keterangan}}</td>
                                                         <td>
@@ -136,7 +136,7 @@
                                 <div class="row">
                                     <div class="row table-responsive">
                                         <div class="col-12">
-                                            <table class="table table-head-fixed" id='tabelAgendaKeluar'>
+                                            <table class="table table-hover table-head-fixed" id='tabelAgendaKeluar'>
                                                 <thead>
                                                     <tr class="bg-light">
                                                         <th>No.</th>

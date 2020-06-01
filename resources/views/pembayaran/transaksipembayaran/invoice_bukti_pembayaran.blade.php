@@ -135,7 +135,7 @@
                       <input name="id_pesdik[]" type="text" class="d-none" id="id_pesdik[]" value="{{$id_pesdik}}">
                     @endforeach
                     <button id="cetak" name="cetak" type="submit" class="btn btn-primary btn-sm my-1 mr-sm-1 float-right" onclick="viewKembali()" ><i class="fas fa-print"></i> CETAK</button>
-                    <a id="kembali" name="kembali" class="btn btn-danger btn-sm my-1 mr-sm-1 float-right" href="/pembayaran/transaksipembayaran/index" style="display:none" role="button"><i class="fas fa-undo"></i> KEMBALI</a>
+                    <a id="kembali" name="kembali" class="btn btn-danger btn-sm my-1 mr-sm-1 float-right" href="index" style="display:none" role="button"><i class="fas fa-undo"></i> KEMBALI</a>
                 </form>
                 </div>
               </div>

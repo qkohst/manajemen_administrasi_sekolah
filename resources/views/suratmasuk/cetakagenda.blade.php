@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Tanda Bukti Tarik Tunai No_</title>
+  <title>AGENDA SURAT MASUK</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome Icons -->
@@ -55,7 +55,7 @@
                     <img id="logo" src="{{ asset($inst->file) }}" alt="Logo Instansi" class="rounded" width="75">
                 </div>
                 <!-- /.col -->
-                <div class="col-sm-10 invoice-col">
+                <div class="col-sm-8 invoice-col">
                     <center>
                         <address class="justify-content-center">
                             <strong>{{ $inst->nama }}</strong><br>
@@ -64,20 +64,23 @@
                         </address>
                     </center>
                 </div>
+                <div class="col-sm-2 invoice-col">
+                   
+                </div>
                 <!-- /.col -->
               </div>
-              <hr>
               <!-- /.row -->
-              <tr>
-                <td class="justify-content-center">
-                    <h6>AGENDA SURAT MASUK</h6>
-                </td>
-              </tr>
+          
               <!-- Table row -->
               <div class="row">
                 <div class="col-12 table-responsive">
                   <table class="table table-striped">
                     <thead>
+                        <tr>
+                            <td colspan="8" align="center">
+                              <h6><b>AGENDA SURAT MASUK</b></h6>
+                            </td>
+                        </tr>
                         <tr>
                             <th>No.</th>
                             <th>Isi Ringkas </th>
@@ -112,33 +115,11 @@
 
               <div class="row">
                 <!-- accepted payments column -->
-                <div class="col-6">
+                <div class="col">
                   <p class="lead">Catatan :</p>
-                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                    - Mohon disimpan sebagai bukti setor tunai yang sah <br>
-                    - Komplain tidak dilayani tanpa menunjukkan bukti setor ini
+                  <p class="text-muted well well-sm shadow-none" style="margin-top: 5px;">
+                    - Data yang dicetak adalah agenda surat masuk dari tanggal {{$tgl1}} sampai tanggal {{$tgl2}}
                   </p>
-                  <div class="row">
-                    <div class="col-1">
-
-                    </div>
-                    <div class="col-6">
-                        Penyetor <br><br><br>
-                       
-                    </div>
-                    <div class="col-5">
-                        Petugas <br><br><br>
-                        
-                    </div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-6">
-                  <p class="lead">Rekap Tabungan Siswa :</p>
-                    <div class="table-responsive">
-                     
-                    </div>
-                  </div>
                 </div>
                 <!-- /.col -->
               </div>

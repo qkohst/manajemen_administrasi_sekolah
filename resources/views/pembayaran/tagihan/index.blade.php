@@ -45,7 +45,7 @@
                     </div>
                     <div class="row table-responsive">
                         <div class="col-12">
-                            <table class="table table-head-fixed" id='tabelTagihan'>
+                            <table class="table table-hover table-head-fixed" id='tabelTagihan'>
                                 <thead>
                                     <tr class="bg-light">
                                         <th>No.</th>

@@ -59,13 +59,13 @@
                 <!-- Notifications Dropdown Menu -->
 
                 <li class="nav-item dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
+                    <a class="dropdown-toggle " href="javascript:void(0)" data-toggle="dropdown">
                         <i class="fas fa-user mr-2"></i> &nbsp;<span>{{auth()->user()->name}}</span> &nbsp;<i class="icon-submenu lnr lnr-chevron-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">Profil</span>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#lihatprofile">
+                        <a class="dropdown-item" data-toggle="modal" href="javascript:void(0)" data-target="#lihatprofile">
                             <i class="fas fa-user mr-2"></i> Lihat Profil
                         </a>
                         <div class="dropdown-divider"></div>
@@ -265,10 +265,34 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-print"></i>
                             <p>
-                                Laporan
+                                Cetak Laporan
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="right badge badge-warning">Progress</span>
                             </p>
-                            <span class="right badge badge-danger">Not Yet</span>
                         </a>
+                        <ul class="nav nav-treeview bg-secondary">
+                            <li class="nav-item">
+                                <a href="/laporankeuangan/transaksipembayaran/index" class="nav-link text-white">
+                                    <i class="far fa-handshake nav-icon"></i>
+                                    <p>Transaksi Pembayaran</p>
+                                    <span class="right badge badge-warning">onProgress</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/laporankeuangan/setortariktunai/index" class="nav-link text-white">
+                                    <i class="nav-icon fas fa-credit-card"></i>
+                                    <p>Setor & Tarik Tunai</p>
+                                    <span class="right badge badge-danger">progress</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/laporankeuangan/keuangansekolah/index" class="nav-link text-white">
+                                    <i class="nav-icon fas fa-dollar-sign"></i>
+                                    <p>Keuangan Sekolah</p>
+                                    <span class="right badge badge-danger">progress</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
 
@@ -441,17 +465,15 @@
 
     <!-- page script -->
     <script>
-
         // Untuk Menampilkan Button kembali
         function viewKembali() {
-        // Get the checkbox
         var button = document.getElementById("kembali");
 
         if (button.style.display === "none") {
             button.style.display = "block";
-        } else {
-            button.style.display = "none";
-        }
+            } else {
+                button.style.display = "none";
+            }
         }
         // end Untuk Menampilkan Button kembali
 

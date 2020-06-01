@@ -36,7 +36,6 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::get('/suratmasuk/agenda', 'SuratMasukController@agenda')->name('suratmasuk.agenda');
     Route::post('/suratmasuk/filter_agenda', 'SuratMasukController@filter_agenda');
     Route::post('/suratmasuk/cetakagenda', 'SuratMasukController@cetakagenda');
-    Route::get('/suratmasuk/agendamasukcetak_pdf', 'SuratMasukController@agendamasukcetak_pdf');
     Route::get('/suratmasuk.agendamasukdownload_excel', 'SuratMasukController@agendamasukdownload_excel')->name('suratmasuk.downloadexcel');
     Route::get('/suratmasuk/galeri', 'SuratMasukController@galeri');
 
@@ -49,8 +48,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::get('/suratkeluar/{id}/edit', 'SuratKeluarController@edit');
     Route::post('/suratkeluar/{id}/update', 'SuratKeluarController@update');
     Route::get('/suratkeluar/{id}/delete', 'SuratKeluarController@delete');
-    Route::get('/suratkeluar/agenda', 'SuratKeluarController@agenda');
-    Route::get('/suratkeluar/agendakeluarcetak_pdf', 'SuratKeluarController@agendakeluarcetak_pdf');
+    Route::get('/suratkeluar/agenda', 'SuratKeluarController@agenda')->name('suratkeluar.agenda');
+    Route::post('/suratkeluar/filter_agenda', 'SuratKeluarController@filter_agenda');
+    Route::post('/suratkeluar/cetakagenda', 'SuratKeluarController@cetakagenda');
     Route::get('/suratkeluar.agendakeluardownload_excel', 'SuratKeluarController@agendakeluardownload_excel')->name('suratkeluar.downloadexcel');
     Route::get('/suratkeluar/galeri', 'SuratKeluarController@galeri');
 
@@ -166,6 +166,10 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::get('/pembayaran/transaksipembayaran/{id}/form_bayar', 'TransaksiPembayaranController@form_bayar');
     Route::post('/pembayaran/transaksipembayaran/bayar', 'TransaksiPembayaranController@bayar');
     Route::post('/pembayaran/transaksipembayaran/cetak_invoice', 'TransaksiPembayaranController@cetak_invoice');
+
+    Route::get('/laporankeuangan/transaksipembayaran/index', 'LaporanController@tPembayaranIndex')->name('laporankeuangan.transaksipembayaran.index');
+    Route::get('/laporankeuangan/setortariktunai/index', 'LaporanController@tSetorTarikIndex')->name('laporankeuangan.setortariktunai.index');
+    Route::get('/laporankeuangan/keuangansekolah/index', 'LaporanController@tKeuanganSekolah')->name('laporankeuangan.keuangansekolah.index');
 
 });
 

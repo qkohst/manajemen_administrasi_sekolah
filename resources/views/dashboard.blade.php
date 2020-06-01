@@ -3,8 +3,8 @@
 <div class="row">
   <div class="container-fluid">
    <!-- Info boxes -->
-   <div class="d-flex justify-content-center">
-          <div class="flex-fill" style="padding: 4px 4px 4px 4px">
+   <div class="row">
+          <div class="flex-fill col-md-3" style="padding: 4px 4px 4px 4px">
             <div class="info-box md-3">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-envelope"></i></span>
 
@@ -19,7 +19,7 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class=" flex-fill" style="padding: 4px 4px 4px 4px">
+          <div class=" flex-fill col-md-3" style="padding: 4px 4px 4px 4px">
             <div class="info-box md-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-envelope-open"></i></span>
 
@@ -34,7 +34,7 @@
           <!-- /.col -->
 
           <!-- fix for small devices only -->
-          <div class="flex-fill" style="padding: 4px 4px 4px 4px">
+          <div class="flex-fill col-md-3" style="padding: 4px 4px 4px 4px">
             <div class="info-box md-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-layer-group"></i></span>
 
@@ -64,7 +64,7 @@
         </div>
         <!-- /.row -->
   </div>
-<div class="col-9">
+<div class="col-md-9">
 <section class="content card" style="padding: 15px 15px 40px 15px ">
 <div class="box">
             <div class="row">
@@ -138,7 +138,7 @@
     </div>
 </section>
 </div>
-<div class="col-3">
+<div class="col-md-3">
   <section class="content card" style="padding: 15px 15px 0px 15px ">
   <div class="box">
           <div class="row">
@@ -173,7 +173,7 @@
       </div>
   </section>
 </div>
-<div class="col-6">
+<div class="col-md-6">
     <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
             <div class="row">
@@ -218,7 +218,7 @@
         </div>
     </section>
   </div>
-  <div class="col-3">
+  <div class="col-md-3">
   <section class="content card" style="padding: 10px 10px 10px 10px ">
   <div class="box">
           <div class="row">
@@ -249,7 +249,7 @@
       </div>
   </section>
   </div>
-  <div class="col-3">
+  <div class="col-md-3">
   <section class="content card" style="padding: 10px 10px 10px 10px ">
   <div class="box">
           <div class="row">

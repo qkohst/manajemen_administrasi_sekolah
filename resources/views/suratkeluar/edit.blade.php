@@ -1,22 +1,28 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="content card" style="padding: 10px 10px 10px 10px ">
-    <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{session('sukses')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
+<section class="content card" style="padding: 10px 10px 10px 10px ">
+    <div class="box">
         <form action="/suratkeluar/{{$suratkeluar->id}}/update" method="POST" enctype="multipart/form-data">
             <h3><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Edit Surat Keluar</h3>
             <hr>
@@ -34,7 +40,7 @@
                         placeholder="Isi Ringkas Surat Keluar" value="{{$suratkeluar->isi}}"
                         required>{{$suratkeluar->isi}}</textarea>
                     <label for="kode">Kode Klasifikasi</label>
-                    <select name="kode" class="custom-select my-1 mr-sm-2 bg-light" id="kode"
+                    <select name="kode" class="form-control my-1 mr-sm-2 bg-light" id="kode"
                         value="{{$suratkeluar->kode}}" required>
                         <option selected>{{$suratkeluar->kode}}</option>
                         @foreach($data_klasifikasi as $klasifikasi)

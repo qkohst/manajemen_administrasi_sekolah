@@ -89,7 +89,7 @@
                                 <div class="row">
                                     <div class="row table-responsive">
                                         <div class="col-12">
-                                            <table class="table table-head-fixed" id='tabelAgendaMasuk'>
+                                            <table class="table table-hover table-head-fixed" id='tabelAgendaMasuk'>
                                                 <thead>
                                                     <tr class="bg-light">
                                                         <th>No.</th>
@@ -141,7 +141,7 @@
                                 <div class="row">
                                     <div class="row table-responsive">
                                         <div class="col-12">
-                                            <table class="table table-head-fixed" id='tabelAgendaKeluar'>
+                                            <table class="table table-hover table-head-fixed" id='tabelAgendaKeluar'>
                                                 <thead>
                                                     <tr class="bg-light">
                                                         <th>No.</th>

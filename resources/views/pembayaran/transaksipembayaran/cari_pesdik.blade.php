@@ -99,7 +99,7 @@
                                 </div>
                                 <form action="/pembayaran/transaksipembayaran/{{$data_pesdik->pesdik->id}}/form_bayar" method="GET">
                                     {{csrf_field()}}
-                                    <table class="table table-bordered table-head-fixed bg-white" id='tabelAgendaMasuk'>
+                                    <table class="table table-hover table-head-fixed bg-white" id='tabelAgendaMasuk'>
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">No</th>
@@ -113,7 +113,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $no = 0; ?>
+                                            <?php $no = 0; 
+                                            ?>
                                             @foreach($tagihan_siswa as $tagih)
                                             <?php $no++; ?>
                                             <tr>

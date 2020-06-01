@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Validator;
+use Carbon\Carbon;
 
 class TagihanController extends Controller
 {
@@ -39,13 +40,6 @@ class TagihanController extends Controller
                 'nominal.*'  => 'required|numeric',
                 'batas_bayar.*'  => 'required'
             );
-            //   $error = Validator::make($request->all(), $rules);
-            //   if($error->fails())
-            //   {
-            //    return response()->json([
-            //     'error'  => $error->errors()->all()
-            //    ]);
-            //   }
 
             $rombel_id = $request->rombel_id;
             $rincian = $request->rincian;
@@ -58,7 +52,9 @@ class TagihanController extends Controller
                     'rincian'  => $rincian[$count],
                     'jenis_kelamin'  => $jenis_kelamin[$count],
                     'nominal'  => $nominal[$count],
-                    'batas_bayar'  => $batas_bayar[$count]
+                    'batas_bayar'  => $batas_bayar[$count],
+                    'created_at'  => Carbon::now(),
+                    'updated_at'  => Carbon::now()
                 );
                 $insert_data[] = $data;
             }
