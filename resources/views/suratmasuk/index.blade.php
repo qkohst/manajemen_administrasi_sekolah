@@ -1,25 +1,25 @@
 @extends('layouts.master')
 @section('content')
-        @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{session('sukses')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
-        @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+@if(session('sukses'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{session('sukses')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         <div class="row">
@@ -53,9 +53,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 0;?>
+                        <?php $no = 0; ?>
                         @foreach($data_suratmasuk as $suratmasuk)
-                        <?php $no++ ;?>
+                        <?php $no++; ?>
                         <tr>
                             <td>{{$no}}</td>
                             <td>{{$suratmasuk->isi}}</td>
@@ -67,16 +67,10 @@
                             <td>{{$suratmasuk->tgl_terima}}</td>
                             <td>{{$suratmasuk->keterangan}}</td>
                             <td>
-                                <a href="/suratmasuk/{{$suratmasuk->id}}/edit"
-                                    class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i
-                                        class="nav-icon fas fa-pencil-alt"></i> Edit</a>
-                                <a href="{{ route('disposisi.index', $suratmasuk->id) }}"
-                                    class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i
-                                        class="fas fa-file-alt"></i> Disposisi</a>
+                                <a href="/suratmasuk/{{$suratmasuk->id}}/edit" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                <a href="{{ route('disposisi.index', $suratmasuk->id) }}" class="btn btn-primary btn-sm my-1 mr-sm-1 btn-block"><i class="fas fa-file-alt"></i> Disposisi</a>
                                 @if (auth()->user()->role == 'admin')
-                                <a href="/suratmasuk/{{$suratmasuk->id}}/delete"
-                                    class="btn btn-danger btn-sm my-1 mr-sm-1 btn-block"
-                                    onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
+                                <a href="/suratmasuk/{{$suratmasuk->id}}/delete" class="btn btn-danger btn-sm my-1 mr-sm-1 btn-block" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                     Hapus</a>
                                 @endif
                             </td>

@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Laravel\Http\Controllers;
 
-use App\Pengumuman;
+use Laravel\Pengumuman;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Laravel\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class PengumumanController extends Controller
 {
     public function index()
     {
-        $data_pengumuman = \App\Pengumuman::all();
+        $data_pengumuman = \Laravel\Pengumuman::all();
         return view('pengumuman.index',['data_pengumuman'=> $data_pengumuman]);
     }
 
@@ -33,7 +33,7 @@ class PengumumanController extends Controller
     //function untuk masuk ke view edit
     public function edit ($id_pengumuman)
     {
-        $pengumuman = \App\Pengumuman::find($id_pengumuman);
+        $pengumuman = \Laravel\Pengumuman::find($id_pengumuman);
         return view('pengumuman/edit',['pengumuman'=>$pengumuman]);
     }
     public function update (Request $request, $id_pengumuman)
@@ -42,7 +42,7 @@ class PengumumanController extends Controller
                 'judul'  => 'min:5',
                 'isi'    => 'min:10',
             ]);
-            $pengumuman = \App\Pengumuman::find($id_pengumuman);
+            $pengumuman = \Laravel\Pengumuman::find($id_pengumuman);
             $pengumuman->update($request->all());
             $pengumuman->save();
             return redirect('pengumuman/index') ->with('sukses','Data Pengumuman Berhasil Diedit');
@@ -51,7 +51,7 @@ class PengumumanController extends Controller
     //function untuk hapus
     public function delete($id_pengumuman)
     {
-        $pengumuman=\App\Pengumuman::find($id_pengumuman);
+        $pengumuman=\Laravel\Pengumuman::find($id_pengumuman);
         $pengumuman->delete();
         return redirect('pengumuman/index') ->with('sukses','Data Pengumuman Berhasil Dihapus');
     }

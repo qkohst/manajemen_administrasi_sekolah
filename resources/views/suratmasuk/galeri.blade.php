@@ -17,25 +17,20 @@
             <div class="card-body">
                 <div>
                     <div class="filter-container p-0 row">
-                        <?php $no = 0;?>
+                        <?php $no = 0; ?>
                         @foreach($data_suratmasuk as $suratmasuk)
-                        <?php $no++ ;?>
+                        <?php $no++; ?>
                         <div class="col-lg-2 col-6">
                             <!-- small box -->
                             <div class="small-box">
                                 <div class="inner">
-                                    <a href="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}"
-                                        data-toggle="lightbox" data-title="Perbesar Gambar">
+                                    <a href="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}" data-toggle="lightbox" data-title="Perbesar Gambar">
                                         <center>
-                                            <img src="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}"
-                                                width="100" height="150"
-                                                alt="File .doc, .docx, atau .pdf tidak dapat ditampilkan, Silahkan klik Lihat Detail File">
+                                            <img src="{{URL::to('/')}}/datasuratmasuk/{{$suratmasuk->filemasuk}}" width="100" height="150" alt="File .doc, .docx, atau .pdf tidak dapat ditampilkan, Silahkan klik Lihat Detail File">
                                         </center>
                                     </a>
                                 </div>
-                                <a href="/suratmasuk/{{$suratmasuk->id}}/tampil"
-                                    class="small-box-footer bg-success">Lihat Detail File <i
-                                        class="fas fa-arrow-circle-right"></i></a>
+                                <a href="/suratmasuk/{{$suratmasuk->id}}/tampil" class="small-box-footer bg-success">Lihat Detail File <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         @endforeach

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Imports;
+namespace Laravel\Imports;
 
-use App\Klasifikasi;
+use Laravel\Klasifikasi;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class KlasifikasiImport implements ToModel

@@ -1,25 +1,25 @@
 @extends('layouts.master')
 @section('content')
-        @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{session('sukses')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
-        @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+@if(session('sukses'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{session('sukses')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         <div class="row">
@@ -30,10 +30,8 @@
         </div>
         <div>
             <div class="col">
-                <a class="btn btn-danger btn-sm my-1 mr-sm-1" href="/suratmasuk/index" role="button"><i
-                        class="fas fa-undo"></i> Kembali</a>
-                <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{ route('disposisi.create', $smasuk) }}"
-                    role="button"><i class="fas fa-plus"></i> Tambah Data</a>
+                <a class="btn btn-danger btn-sm my-1 mr-sm-1" href="/suratmasuk/index" role="button"><i class="fas fa-undo"></i> Kembali</a>
+                <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{ route('disposisi.create', $smasuk) }}" role="button"><i class="fas fa-plus"></i> Tambah Data</a>
                 <br><br>
             </div>
         </div>
@@ -52,9 +50,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 0;?>
+                        <?php $no = 0; ?>
                         @foreach($disp as $disposisi)
-                        <?php $no++ ;?>
+                        <?php $no++; ?>
                         <tr>
                             <td>{{$no}}</td>
                             <td>{{$disposisi->tujuan}}</td>
@@ -63,19 +61,13 @@
                             <td>{{$disposisi->batas_waktu}}</td>
                             <td>{{$disposisi->catatan}}</td>
                             <td>
-                                <form action="{{ route('disposisi.destroy', [$smasuk, $disposisi->id]) }}"
-                                    method="post">
+                                <form action="{{ route('disposisi.destroy', [$smasuk, $disposisi->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('disposisi.edit', [$smasuk, $disposisi->id]) }}"
-                                        class="btn btn-primary btn-sm my-1 mr-sm-1" role="button"><i
-                                            class="nav-icon fas fa-pencil-alt"></i> Edit</a>
-                                    <a class="btn btn-primary btn-sm my-1 mr-sm-1"
-                                        href="{{ route('disposisi.download', [$smasuk, $disposisi->id]) }}"
-                                        target="_blank" role="button"><i class="fas fa-print"></i> Cetak</a>
+                                    <a href="{{ route('disposisi.edit', [$smasuk, $disposisi->id]) }}" class="btn btn-primary btn-sm my-1 mr-sm-1" role="button"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                    <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{ route('disposisi.download', [$smasuk, $disposisi->id]) }}" target="_blank" role="button"><i class="fas fa-print"></i> Cetak</a>
                                     @if (auth()->user()->role == 'admin')
-                                    <button type="submit" class="btn btn-danger btn-sm my-1 mr-sm-1"
-                                        onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
+                                    <button type="submit" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                         Hapus</button>
                                     @endif
                                 </form>

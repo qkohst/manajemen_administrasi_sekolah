@@ -30,8 +30,7 @@
             <div class="row">
                 <div class="col-6">
                     <label for="tahun">Tahun</label>
-                    <input name="tahun" type="text" class="form-control bg-light" id="tahun"
-                        placeholder="Contoh : (2019/2020)" value="{{$tapel->tahun}}" required>
+                    <input name="tahun" type="text" class="form-control bg-light" id="tahun" placeholder="Contoh : (2019/2020)" value="{{$tapel->tahun}}" required>
                     <label for="semester">Semester</label>
                     <select name="semester" id="semester" class="form-control bg-light" required>
                         <option value="Semester Ganjil" @if ($tapel->semester == 'Semester Ganjil') selected @endif>Semester Ganjil</option>

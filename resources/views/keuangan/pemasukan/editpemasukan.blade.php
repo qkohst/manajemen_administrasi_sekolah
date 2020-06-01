@@ -30,22 +30,20 @@
             <div class="row">
                 <div class="col-6">
                     <label for="kategori_id">Nama Kategori</label>
-                        <select name="kategori_id" class="form-control bg-light" id="kategori_id"required>
-                            <option value="{{$pemasukan->kategori_id}}">{{$pemasukan->kategori->nama_kategori}}</option>
-                            @foreach($data_kategori as $kategori)
-                            <option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
-                            @endforeach
-                        </select>
+                    <select name="kategori_id" class="form-control bg-light" id="kategori_id" required>
+                        <option value="{{$pemasukan->kategori_id}}">{{$pemasukan->kategori->nama_kategori}}</option>
+                        @foreach($data_kategori as $kategori)
+                        <option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
+                        @endforeach
+                    </select>
                     <label for="tanggal">Tanggal Uang Masuk</label>
-                    <input value="{{$pemasukan->tanggal}}" name="tanggal" type="date" class="form-control bg-light"
-                        id="tanggal" required>
+                    <input value="{{$pemasukan->tanggal}}" name="tanggal" type="date" class="form-control bg-light" id="tanggal" required>
                     <label for="jumlah">Jumlah</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Rp.</span>
                         </div>
-                        <input value="{{$pemasukan->jumlah}}" name="jumlah" type="text" class="form-control bg-light" id="jumlah"
-                        placeholder="Jumlah" required>
+                        <input value="{{$pemasukan->jumlah}}" name="jumlah" type="text" class="form-control bg-light" id="jumlah" placeholder="Jumlah" required>
                         <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                         </div>
@@ -53,8 +51,7 @@
                 </div>
                 <div class="col-6">
                     <label for="keterangan">Keterangan</label>
-                    <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3"
-                        placeholder="Keterangan" required>{{$pemasukan->keterangan}}</textarea>
+                    <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Keterangan" required>{{$pemasukan->keterangan}}</textarea>
                 </div>
             </div>
             <hr>

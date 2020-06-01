@@ -30,8 +30,7 @@
             <div class="row">
                 <div class="col-6">
                     <label for="nama">Nama Lengkap</label>
-                    <input name="nama" type="text" class="form-control bg-light" id="nama"
-                        placeholder="Nama Lengkap" value="{{$guru->nama}}" required>
+                    <input name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Lengkap" value="{{$guru->nama}}" required>
                     <label for="jenis_kelamin">Jenis Kelamin</label>
                     <select name="jenis_kelamin" id="jenis_kelamin" class="form-control bg-light" required>
                         <option value="Laki-Laki" @if ($guru->jenis_kelamin == 'Laki-Laki') selected @endif>Laki-Laki
@@ -39,23 +38,17 @@
                         <option value="Perempuan" @if ($guru->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
                     </select>
                     <label for="tempat_lahir">Tempat Lahir</label>
-                    <input name="tempat_lahir" type="text" class="form-control bg-light" id="tempat_lahir"
-                        placeholder="Tempat Lahir" value="{{$guru->tempat_lahir}}" required>
+                    <input name="tempat_lahir" type="text" class="form-control bg-light" id="tempat_lahir" placeholder="Tempat Lahir" value="{{$guru->tempat_lahir}}" required>
                     <label for="tanggal_lahir">Tanggal Surat</label>
-                    <input name="tanggal_lahir" type="date" class="form-control bg-light" id="tanggal_lahir"
-                        value="{{$guru->tanggal_lahir}}" required>
+                    <input name="tanggal_lahir" type="date" class="form-control bg-light" id="tanggal_lahir" value="{{$guru->tanggal_lahir}}" required>
                 </div>
                 <div class="col-6">
                     <label for="alamat">Alamat Lengkap</label>
-                    <textarea name="alamat" class="form-control bg-light" id="alamat" rows="2"
-                        placeholder="Alamat" value="{{$guru->alamat}}"
-                        required>{{$guru->alamat}}</textarea>
+                    <textarea name="alamat" class="form-control bg-light" id="alamat" rows="2" placeholder="Alamat" value="{{$guru->alamat}}" required>{{$guru->alamat}}</textarea>
                     <label for="no_hp">Nomor HP</label>
-                    <input name="no_hp" type="text" class="form-control bg-light" id="no_hp"
-                        placeholder="Nomor HP" value="{{$guru->no_hp}}" required>
+                    <input name="no_hp" type="text" class="form-control bg-light" id="no_hp" placeholder="Nomor HP" value="{{$guru->no_hp}}" required>
                     <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email"
-                        value="{{$guru->email}}" required>
+                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" value="{{$guru->email}}" required>
                 </div>
             </div>
             <hr>

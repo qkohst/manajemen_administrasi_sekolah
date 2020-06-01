@@ -47,9 +47,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 0;?>
+                            <?php $no = 0; ?>
                             @foreach($data_pesdikkeluar as $pesdikkeluar)
-                            <?php $no++ ;?>
+                            <?php $no++; ?>
                             <tr>
                                 <td>{{$no}}</td>
                                 <td>{{$pesdikkeluar->nama}}</td>

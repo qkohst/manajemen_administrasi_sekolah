@@ -24,19 +24,15 @@
             <div class="row">
                 <div class="col-6">
                     <label for="nama">Nama Instansi</label>
-                    <input name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Instansi"
-                        required>
+                    <input name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Instansi" required>
                     <label for="alamat">Alamat</label>
-                    <textarea name="alamat" class="form-control bg-light" id="alamat" rows="3" placeholder="Alamat"
-                        required></textarea>
+                    <textarea name="alamat" class="form-control bg-light" id="alamat" rows="3" placeholder="Alamat" required></textarea>
                 </div>
                 <div class="col-6">
                     <label for="pimpinan">Nama Pimpinan</label>
-                    <input name="pimpinan" type="text" class="form-control bg-light" id="pimpinan"
-                        placeholder="Nama Pimpinan" required>
+                    <input name="pimpinan" type="text" class="form-control bg-light" id="pimpinan" placeholder="Nama Pimpinan" required>
                     <label for="email">Email Instansi</label>
-                    <input name="email" type="email" class="form-control bg-light" id="email"
-                        placeholder="Email Instansi" required>
+                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email Instansi" required>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">File</label>
                         <input name="file" type="file" class="form-control-file" id="exampleFormControlFile1" required>

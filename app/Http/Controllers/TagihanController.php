@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Laravel\Http\Controllers;
 
-use App\Rombel;
-use App\Tagihan;
-use App\Anggotarombel;
-use App\Instansi;
+use Laravel\Rombel;
+use Laravel\Tagihan;
+use Laravel\Anggotarombel;
+use Laravel\Instansi;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Laravel\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Carbon\Carbon;
@@ -16,17 +16,17 @@ class TagihanController extends Controller
 {
     public function index()
     {
-        $data_rombel = \App\Rombel::all();
-        $data_tagihan = \App\Tagihan::all();
-        $data_anggotarombel = \App\Anggotarombel::all();
+        $data_rombel = \Laravel\Rombel::all();
+        $data_tagihan = \Laravel\Tagihan::all();
+        $data_anggotarombel = \Laravel\Anggotarombel::all();
         return view('/pembayaran/tagihan/index', compact('data_rombel', 'data_tagihan', 'data_anggotarombel'));
     }
 
     public function create()
     {
-        $data_rombel = \App\Rombel::all();
-        $data_tagihan = \App\Tagihan::all();
-        $data_anggotarombel = \App\Anggotarombel::all();
+        $data_rombel = \Laravel\Rombel::all();
+        $data_tagihan = \Laravel\Tagihan::all();
+        $data_anggotarombel = \Laravel\Anggotarombel::all();
         return view('/pembayaran/tagihan/create', compact('data_rombel', 'data_tagihan', 'data_anggotarombel'));
     }
 
@@ -70,7 +70,7 @@ class TagihanController extends Controller
     //function untuk masuk ke view edit
     public function edit($id_tagihan)
     {
-        $tagihan = \App\Tagihan::find($id_tagihan);
+        $tagihan = \Laravel\Tagihan::find($id_tagihan);
         return view('/pembayaran/tagihan/edit', compact('tagihan'));
     }
 
@@ -79,7 +79,7 @@ class TagihanController extends Controller
         $request->validate([
             'nominal' => 'numeric',
         ]);
-        $tagihan = \App\Tagihan::find($id_tagihan);
+        $tagihan = \Laravel\Tagihan::find($id_tagihan);
         $tagihan->update($request->all());
         $tagihan->save();
         return redirect('/pembayaran/tagihan/index')->with('sukses', 'Data Rincian Tagihan Berhasil Diedit');
@@ -88,7 +88,7 @@ class TagihanController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $tagihan = \App\Tagihan::find($id);
+        $tagihan = \Laravel\Tagihan::find($id);
         $tagihan->delete();
         return redirect('/pembayaran/tagihan/index')->with('sukses', 'Data Rincian Tagihan Berhasil Dihapus');
     }
@@ -98,13 +98,13 @@ class TagihanController extends Controller
     {
         $filter = $request->input('rombel_filter');
 
-        $data_tagihan_L = \App\Tagihan::where('rombel_id', $filter)
+        $data_tagihan_L = \Laravel\Tagihan::where('rombel_id', $filter)
             ->where(function ($query) {
                 $query->where('jenis_kelamin', 'Laki-Laki')
                     ->orWhere('jenis_kelamin', 'Semua');
             })->get();
 
-        $data_tagihan_P = \App\Tagihan::where('rombel_id', $filter)
+        $data_tagihan_P = \Laravel\Tagihan::where('rombel_id', $filter)
             ->where(function ($query) {
                 $query->where('jenis_kelamin', 'Perempuan')
                     ->orWhere('jenis_kelamin', 'Semua');
@@ -120,20 +120,20 @@ class TagihanController extends Controller
     {
         $filter = $rombel_id;
 
-        $data_tagihan_L = \App\Tagihan::where('rombel_id', $filter)
+        $data_tagihan_L = \Laravel\Tagihan::where('rombel_id', $filter)
             ->where(function ($query) {
                 $query->where('jenis_kelamin', 'Laki-Laki')
                     ->orWhere('jenis_kelamin', 'Semua');
             })->get();
 
-        $data_tagihan_P = \App\Tagihan::where('rombel_id', $filter)
+        $data_tagihan_P = \Laravel\Tagihan::where('rombel_id', $filter)
             ->where(function ($query) {
                 $query->where('jenis_kelamin', 'Perempuan')
                     ->orWhere('jenis_kelamin', 'Semua');
             })->get();
 
         $header = $data_tagihan_L->first();
-        $data_instansi = \App\Instansi::first();
+        $data_instansi = \Laravel\Instansi::first();
         return view('/pembayaran/tagihan/print', compact('data_tagihan_L', 'data_tagihan_P', 'header', 'filter', 'data_instansi'));
     }
 }

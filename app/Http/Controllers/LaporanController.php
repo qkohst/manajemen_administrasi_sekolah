@@ -1,35 +1,35 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Laravel\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Laravel\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\TransaksiPembayaran;
-use App\Setor;
-use App\Tarik;
-use App\Pemasukan;
-use App\Pengeluaran;
+use Laravel\TransaksiPembayaran;
+use Laravel\Setor;
+use Laravel\Tarik;
+use Laravel\Pemasukan;
+use Laravel\Pengeluaran;
 
 class LaporanController extends Controller
 {
     public function tPembayaranIndex()
     {
-        $data_transaksi = \App\TransaksiPembayaran::all();
+        $data_transaksi = \Laravel\TransaksiPembayaran::all();
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi'));
     }
 
     public function tSetorTarikIndex()
     {
-        $data_setor = \App\Setor::all();
-        $data_tarik = \App\Tarik::all();
+        $data_setor = \Laravel\Setor::all();
+        $data_tarik = \Laravel\Tarik::all();
         return view('/laporankeuangan/setortariktunai/index', compact('data_setor','data_tarik'));
     }
     public function tKeuanganSekolah()
     {
-        $data_pemasukan = \App\Pemasukan::all();
-        $data_pengeluaran = \App\Pengeluaran::all();
+        $data_pemasukan = \Laravel\Pemasukan::all();
+        $data_pengeluaran = \Laravel\Pengeluaran::all();
         return view('/laporankeuangan/keuangansekolah/index', compact('data_pemasukan','data_pengeluaran'));
     }
 }

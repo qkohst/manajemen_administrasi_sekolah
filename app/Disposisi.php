@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Laravel;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Disposisi extends Model
 
     public function smasuk()
     {
-        return $this->belongsTo('App\SuratMasuk');
+        return $this->belongsTo('Laravel\SuratMasuk');
     }
 }

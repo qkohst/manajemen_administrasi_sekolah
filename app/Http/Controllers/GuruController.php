@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Laravel\Http\Controllers;
 
-use App\Guru;
+use Laravel\Guru;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Laravel\Http\Controllers\Controller;
 
 class GuruController extends Controller
 {
@@ -15,7 +15,7 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $data_guru = \App\Guru::all();
+        $data_guru = \Laravel\Guru::all();
         return view('guru.index',['data_guru'=> $data_guru]);
     }
 
@@ -43,7 +43,7 @@ class GuruController extends Controller
     //function untuk masuk ke view edit
     public function edit ($id_guru)
     {
-        $guru = \App\Guru::find($id_guru);
+        $guru = \Laravel\Guru::find($id_guru);
         return view('guru/edit',['guru'=>$guru]);
     }
     public function update (Request $request, $id_guru)
@@ -55,7 +55,7 @@ class GuruController extends Controller
             'no_hp' => 'min:12',
             'email' => 'email',
         ]);
-        $guru = \App\Guru::find($id_guru);
+        $guru = \Laravel\Guru::find($id_guru);
         $guru->update($request->all());
         $guru->save();
         return redirect('guru/index') ->with('sukses','Data Guru Berhasil Diedit');
@@ -64,7 +64,7 @@ class GuruController extends Controller
      //function untuk hapus
     public function delete($id)
     {
-        $guru=\App\Guru::find($id);
+        $guru=\Laravel\Guru::find($id);
         $guru->delete();
         return redirect('guru/index') ->with('sukses','Data Guru Berhasil Dihapus');
     }

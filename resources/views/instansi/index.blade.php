@@ -28,24 +28,21 @@
                     </div>
                     <a href="{{ asset($item_ins->file) }}" data-toggle="lightbox" data-title="Lihat Logo Instansi">
                         <center>
-                            <img id="logo" src="{{ asset($item_ins->file) }}" alt="Logo Instansi" class="rounded"
-                                width="200"><br>
+                            <img id="logo" src="{{ asset($item_ins->file) }}" alt="Logo Instansi" class="rounded" width="200"><br>
                         </center>
                     </a>
                 </div>
             </div>
             <hr>
             <div class="col-12 text-center">
-                <a class="btn btn-primary" href="{{ route('instansi.edit', $item_ins->id) }}" role="button"><i
-                        class="fas fa-edit"></i> Edit Data Instansi</a>
+                <a class="btn btn-primary" href="{{ route('instansi.edit', $item_ins->id) }}" role="button"><i class="fas fa-edit"></i> Edit Data Instansi</a>
             </div>
         </div>
     </div>
     @endforeach
     @else
     <div class="col-md-6">
-        <a class="btn btn-primary btn-md" href="{{ route('instansi.create') }}" role="button"><i
-                class="fas fa-plus"></i> Setting Data Instansi</a>
+        <a class="btn btn-primary btn-md" href="{{ route('instansi.create') }}" role="button"><i class="fas fa-plus"></i> Setting Data Instansi</a>
     </div>
     @endif
 </section>

@@ -46,9 +46,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 0;?>
+                            <?php $no = 0; ?>
                             @foreach($data_pesdikalumni as $pesdikalumni)
-                            <?php $no++ ;?>
+                            <?php $no++; ?>
                             <tr>
                                 <td>{{$no}}</td>
                                 <td>{{$pesdikalumni->nama}}</td>

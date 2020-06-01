@@ -53,9 +53,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 0;?>
+                            <?php $no = 0; ?>
                             @foreach($data_anggota as $anggota)
-                            <?php $no++ ;?>
+                            <?php $no++; ?>
                             <tr>
                                 <td>{{$no}}</td>
                                 <td>{{$anggota->pesdik->nama}}</td>

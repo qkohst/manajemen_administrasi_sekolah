@@ -1,26 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Laravel\Http\Controllers;
 
-use App\SuratKeluar;
-use App\Instansi;
+use Laravel\SuratKeluar;
+use Laravel\Instansi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Excel;
+use Laravel\Exports\SuratKeluarExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SuratKeluarController extends Controller
 {
     public function index()
     {
-        $data_suratkeluar = \App\SuratKeluar::all();
+        $data_suratkeluar = \Laravel\SuratKeluar::all();
         return view('suratkeluar.index', ['data_suratkeluar' => $data_suratkeluar]);
     }
 
     //function untuk masuk ke view Tambah
     public function create()
     {
-        $data_klasifikasi = \App\Klasifikasi::all();
+        $data_klasifikasi = \Laravel\Klasifikasi::all();
         return view('suratkeluar/create', ['data_klasifikasi' => $data_klasifikasi]);
     }
 
@@ -53,7 +54,7 @@ class SuratKeluarController extends Controller
     //function untuk melihat file
     public function tampil($id_suratkeluar)
     {
-        $suratkeluar = \App\SuratKeluar::find($id_suratkeluar);
+        $suratkeluar = \Laravel\SuratKeluar::find($id_suratkeluar);
         return view('suratkeluar/tampil', ['suratkeluar' => $suratkeluar]);
     }
 
@@ -67,18 +68,13 @@ class SuratKeluarController extends Controller
 
     public function agendakeluardownload_excel()
     {
-        $suratkeluar = \App\SuratKeluar::select('id', 'isi', 'tujuan_surat', 'kode', 'no_surat', 'tgl_surat', 'tgl_catat', 'keterangan')->get();
-        return Excel::create('Agenda_Surat_Keluar', function ($excel) use ($suratkeluar) {
-            $excel->sheet('Agenda_Surat_Keluar', function ($sheet) use ($suratkeluar) {
-                $sheet->fromArray($suratkeluar);
-            });
-        })->download('xls');
+        return Excel::download(new SuratKeluarExport, 'AgendaSuratKeluar(All).xlsx');
     }
     //function untuk ke view edit
     public function edit($id_suratkeluar)
     {
-        $data_klasifikasi = \App\Klasifikasi::all();
-        $suratkeluar = \App\SuratKeluar::find($id_suratkeluar);
+        $data_klasifikasi = \Laravel\Klasifikasi::all();
+        $suratkeluar = \Laravel\SuratKeluar::find($id_suratkeluar);
         return view('suratkeluar/edit', ['suratkeluar' => $suratkeluar], ['data_klasifikasi' => $data_klasifikasi]);
     }
     public function update(Request $request, $id_suratkeluar)
@@ -89,7 +85,7 @@ class SuratKeluarController extends Controller
             'isi' => 'min:5',
             'keterangan' => 'min:5',
         ]);
-        $suratkeluar = \App\SuratKeluar::find($id_suratkeluar);
+        $suratkeluar = \Laravel\SuratKeluar::find($id_suratkeluar);
         $suratkeluar->update($request->all());
         //Untuk Update File
         if ($request->hasFile('filekeluar')) {
@@ -103,7 +99,7 @@ class SuratKeluarController extends Controller
     //function untuk hapus
     public function delete($id_suratkeluar)
     {
-        $suratkeluar = \App\SuratKeluar::find($id_suratkeluar);
+        $suratkeluar = \Laravel\SuratKeluar::find($id_suratkeluar);
         $suratkeluar->delete();
         return redirect('suratkeluar/index')->with('sukses', 'Data Surat Keluar Berhasil Dihapus');
     }
@@ -111,11 +107,11 @@ class SuratKeluarController extends Controller
     //Function Untuk Agenda Surat keluar
     public function agenda(Request $request)
     {
-        $tgl1 = \App\SuratKeluar::first();
-        $tgl2 = \App\SuratKeluar::latest()->first();
+        $tgl1 = \Laravel\SuratKeluar::first();
+        $tgl2 = \Laravel\SuratKeluar::latest()->first();
         $tgl_awal = $tgl1->tgl_catat;
         $tgl_akhir = $tgl2->tgl_catat;
-        $data_suratkeluar = \App\SuratKeluar::all();
+        $data_suratkeluar = \Laravel\SuratKeluar::all();
         return view('suratkeluar.agenda', compact('data_suratkeluar', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -124,7 +120,7 @@ class SuratKeluarController extends Controller
         $tgl_awal = $request->input('tgl_awal');
         $tgl_akhir = $request->input('tgl_akhir');
 
-        $data_suratkeluar = \App\SuratKeluar::whereBetween('tgl_catat', [$tgl_awal, $tgl_akhir])->get();
+        $data_suratkeluar = \Laravel\SuratKeluar::whereBetween('tgl_catat', [$tgl_awal, $tgl_akhir])->get();
         return view('suratkeluar.agenda', compact('data_suratkeluar', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -134,13 +130,13 @@ class SuratKeluarController extends Controller
         $tgl1 = $request->input('tgl_a');
         $tgl2 = $request->input('tgl_b');
 
-        $data_suratkeluar = \App\SuratKeluar::whereBetween('tgl_catat', [$tgl1, $tgl2])->get();
+        $data_suratkeluar = \Laravel\SuratKeluar::whereBetween('tgl_catat', [$tgl1, $tgl2])->get();
         return view('suratkeluar.cetakagenda', compact('inst', 'data_suratkeluar', 'tgl1', 'tgl2'));
     }
 
     public function galeri(Request $request)
     {
-        $data_suratkeluar = \App\SuratKeluar::all();
+        $data_suratkeluar = \Laravel\SuratKeluar::all();
         return view('suratkeluar.galeri', ['data_suratkeluar' => $data_suratkeluar]);
     }
 }

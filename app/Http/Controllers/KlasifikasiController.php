@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Laravel\Http\Controllers;
 
-use App\Klasifikasi;
-use App\Imports\KlasifikasiImport;
+use Laravel\Klasifikasi;
+use Laravel\Imports\KlasifikasiImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Controllers\Controller;
+use Laravel\Http\Controllers\Controller;
 
 class KlasifikasiController extends Controller
 {
     public function index()
     {
-        $data_klasifikasi = \App\Klasifikasi::all();
+        $data_klasifikasi = \Laravel\Klasifikasi::all();
         return view('klasifikasi.index',['data_klasifikasi'=> $data_klasifikasi]);
     }
 
@@ -41,7 +41,7 @@ class KlasifikasiController extends Controller
     //function untuk masuk ke view edit
     public function edit ($id_klasifikasi)
     {
-        $klasifikasi = \App\Klasifikasi::find($id_klasifikasi);
+        $klasifikasi = \Laravel\Klasifikasi::find($id_klasifikasi);
         return view('klasifikasi/edit',['klasifikasi'=>$klasifikasi]);
     }
     public function update (Request $request, $id_klasifikasi)
@@ -51,7 +51,7 @@ class KlasifikasiController extends Controller
             'kode' => 'max:2',
             'uraian' => 'min:5',
         ]);
-        $klasifikasi = \App\Klasifikasi::find($id_klasifikasi);
+        $klasifikasi = \Laravel\Klasifikasi::find($id_klasifikasi);
         $klasifikasi->update($request->all());
         $klasifikasi->save();
         return redirect('klasifikasi/index') ->with('sukses','Data Klasifikasi Berhasil Diedit');
@@ -60,7 +60,7 @@ class KlasifikasiController extends Controller
     //function untuk hapus
     public function delete($id_klasifikasi)
     {
-        $klasifikasi=\App\Klasifikasi::find($id_klasifikasi);
+        $klasifikasi=\Laravel\Klasifikasi::find($id_klasifikasi);
         $klasifikasi->delete();
         return redirect('klasifikasi/index') ->with('sukses','Data Klasifikasi Berhasil Dihapus');
     }

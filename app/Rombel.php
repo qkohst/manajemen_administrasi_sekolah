@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Laravel;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class Rombel extends Model
     //function relasi ke tapel
     public function tapel()
     {
-        return $this->belongsTo('App\Tapel');
+        return $this->belongsTo('Laravel\Tapel');
     }
 }

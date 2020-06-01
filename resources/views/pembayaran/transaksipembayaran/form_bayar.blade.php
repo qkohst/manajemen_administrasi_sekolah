@@ -6,12 +6,12 @@
     <h3><i class="nav-icon far fa-handshake nav-icon my-1 btn-sm-1"></i> Bayar Tagihan Siswa</h3>
     <hr>
     <div class=" callout callout-primary alert alert-info alert-dismissible fade show" role="alert">
-                <h5><i class="fas fa-info"></i> Informasi :</h5>
-                - Pastikan data yang anda pilih sudah benar !  <br>
-                - Klik tombol SIMPAN untuk melanjutkan proses pembayaran
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+      <h5><i class="fas fa-info"></i> Informasi :</h5>
+      - Pastikan data yang anda pilih sudah benar ! <br>
+      - Klik tombol SIMPAN untuk melanjutkan proses pembayaran
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <section class="content">
       <form action="/pembayaran/transaksipembayaran/bayar" method="POST">

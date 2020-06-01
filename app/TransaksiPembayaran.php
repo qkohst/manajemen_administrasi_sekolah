@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Laravel;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,17 +12,17 @@ class TransaksiPembayaran extends Model
     //function relasi ke Pesdik
     public function tagihan()
       {
-          return $this->belongsTo('App\Tagihan');
+          return $this->belongsTo('Laravel\Tagihan');
       }
 
     public function pesdik()
       {
-          return $this->belongsTo('App\Pesdik');
+          return $this->belongsTo('Laravel\Pesdik');
       }
 
     //function relasi ke Pesdik
     public function users()
       {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('Laravel\User');
       }
 }

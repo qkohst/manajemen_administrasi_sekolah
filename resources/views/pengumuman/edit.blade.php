@@ -29,17 +29,15 @@
             {{csrf_field()}}
             <div class="row">
                 <div class="col-4">
-                        <label for="judul">Judul Ppengumuman</label>
-                        <input name="judul" type="text" class="form-control bg-light" id="judul"
-                            placeholder="Judul Pengumuman" value="{{$pengumuman->judul}}" required>
+                    <label for="judul">Judul Ppengumuman</label>
+                    <input name="judul" type="text" class="form-control bg-light" id="judul" placeholder="Judul Pengumuman" value="{{$pengumuman->judul}}" required>
                 </div>
             </div>
             <div class="row">
-                    <div class="col-12">
-                        <label for="isi">Isi Pengumuman</label>
-                        <textarea name="isi" class="form-control bg-light" id="isi" rows="7"
-                            placeholder="Isi Pengumuman" required>{{$pengumuman->isi}}</textarea>
-                    </div>
+                <div class="col-12">
+                    <label for="isi">Isi Pengumuman</label>
+                    <textarea name="isi" class="form-control bg-light" id="isi" rows="7" placeholder="Isi Pengumuman" required>{{$pengumuman->isi}}</textarea>
+                </div>
             </div>
             <hr>
             <button type="submit" class="btn btn-success btn-sm "><i class="fas fa-save"></i> SIMPAN</button>

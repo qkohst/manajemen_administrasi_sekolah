@@ -36,24 +36,23 @@
                         <option value="9" @if ($rombel->kelas == '9') selected @endif>9</option>
                     </select>
                     <label for="nama_rombel">Nama Rombel</label>
-                    <input name="nama_rombel" type="text" class="form-control bg-light" id="nama_rombel"
-                        placeholder="Nama Rombel" value="{{$rombel->nama_rombel}}" required>
+                    <input name="nama_rombel" type="text" class="form-control bg-light" id="nama_rombel" placeholder="Nama Rombel" value="{{$rombel->nama_rombel}}" required>
                 </div>
                 <div class="col-6">
                     <label for="wali_kelas">Wali Kelas</label>
-                        <select name="wali_kelas" class="form-control bg-light" id="wali_kelas"required>
-                            <option value="{{$rombel->wali_kelas}}">{{$rombel->wali_kelas}}</option>
-                            @foreach($data_guru as $guru)
-                            <option value="{{$guru->nama}}">{{$guru->nama}}</option>
-                            @endforeach
-                        </select>
+                    <select name="wali_kelas" class="form-control bg-light" id="wali_kelas" required>
+                        <option value="{{$rombel->wali_kelas}}">{{$rombel->wali_kelas}}</option>
+                        @foreach($data_guru as $guru)
+                        <option value="{{$guru->nama}}">{{$guru->nama}}</option>
+                        @endforeach
+                    </select>
                     <label for="tapel_id">Tahun Pelajaran</label>
-                        <select name="tapel_id" class="form-control bg-light" id="tapel_id"required>
-                            <option value="{{$rombel->tapel_id}}">{{$rombel->tapel->tahun}} ({{$rombel->tapel->semester}})</option>
-                            @foreach($data_tapel as $tapel)
-                            <option value="{{$tapel->id}}">{{$tapel->tahun}} ({{$tapel->semester}})</option>
-                            @endforeach
-                        </select>
+                    <select name="tapel_id" class="form-control bg-light" id="tapel_id" required>
+                        <option value="{{$rombel->tapel_id}}">{{$rombel->tapel->tahun}} ({{$rombel->tapel->semester}})</option>
+                        @foreach($data_tapel as $tapel)
+                        <option value="{{$tapel->id}}">{{$tapel->tahun}} ({{$tapel->semester}})</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <hr>

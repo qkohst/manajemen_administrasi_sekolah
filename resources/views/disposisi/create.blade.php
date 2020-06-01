@@ -1,26 +1,26 @@
 @extends('layouts.master')
 
 @section('content')
-        @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{session('sukses')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
-        @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+@if(session('sukses'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{session('sukses')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         <form action="{{ route('disposisi.store', $smasuk) }}" method="POST">
@@ -45,8 +45,7 @@
             </div>
             <hr>
             <button type="submit" class="btn btn-success btn-sm "><i class="fas fa-save"></i> SIMPAN</button>
-            <a class="btn btn-danger btn-sm" href="{{ route('disposisi.index', $smasuk) }}" role="button"><i
-                    class="fas fa-undo"></i> BATAL</a>
+            <a class="btn btn-danger btn-sm" href="{{ route('disposisi.index', $smasuk) }}" role="button"><i class="fas fa-undo"></i> BATAL</a>
         </form>
     </div>
     </div>

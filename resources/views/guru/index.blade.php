@@ -29,13 +29,12 @@
             </div>
         </div>
         <div>
-                <div class="col">
-                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                        data-target="#tambahGuru"><i class="fas fa-plus"></i>
-                        Tambah Data
-                    </button>
-                </div>
-                <br>
+            <div class="col">
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambahGuru"><i class="fas fa-plus"></i>
+                    Tambah Data
+                </button>
+            </div>
+            <br>
         </div>
         <div class="row">
             <div class="row table-responsive">
@@ -55,9 +54,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 0;?>
+                            <?php $no = 0; ?>
                             @foreach($data_guru as $guru)
-                            <?php $no++ ;?>
+                            <?php $no++; ?>
                             <tr>
                                 <td>{{$no}}</td>
                                 <td>{{$guru->nama}}</td>
@@ -68,16 +67,12 @@
                                 <td>{{$guru->no_hp}}</td>
                                 <td>{{$guru->email}}</td>
                                 <td>
-                                <a href="/guru/{{$guru->id}}/edit"
-                                    class="btn btn-primary btn-sm my-1 mr-sm-1"><i
-                                        class="nav-icon fas fa-pencil-alt"></i> Edit</a>
-                                @if (auth()->user()->role == 'admin')
-                                <a href="/guru/{{$guru->id}}/delete"
-                                    class="btn btn-danger btn-sm my-1 mr-sm-1"
-                                    onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
-                                    Hapus</a>
-                                @endif
-                            </td>
+                                    <a href="/guru/{{$guru->id}}/edit" class="btn btn-primary btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                    @if (auth()->user()->role == 'admin')
+                                    <a href="/guru/{{$guru->id}}/delete" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
+                                        Hapus</a>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -85,54 +80,46 @@
                 </div>
             </div>
             <!-- Modal Tambah -->
-        <div class="modal fade" id="tambahGuru" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><i
-                                class="nav-icon fas fa-graduation-cap my-1 btn-sm-1"></i> Tambah Data Guru</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/guru/tambah" method="POST">
-                            {{csrf_field()}}
-                            <div class="row">
+            <div class="modal fade" id="tambahGuru" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="nav-icon fas fa-graduation-cap my-1 btn-sm-1"></i> Tambah Data Guru</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/guru/tambah" method="POST">
+                                {{csrf_field()}}
+                                <div class="row">
                                     <label for="nama">Nama Lengkap</label>
-                                    <input value="{{old('nama')}}" name="nama" type="text" class="form-control bg-light"
-                                        id="nama" placeholder="Nama Lengkap" required>
+                                    <input value="{{old('nama')}}" name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Lengkap" required>
                                     <label for="kode">Jenis Kelamin</label>
-                                    <select name="jk" class="custom-select my-1 mr-sm-2 bg-light" id="jk"required>
+                                    <select name="jk" class="custom-select my-1 mr-sm-2 bg-light" id="jk" required>
                                         <option value="">-- Pilih Jenis Kelamin --</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
                                     </select>
                                     <label for="tempatlahir">Tempat Lahir</label>
-                                    <input value="{{old('tempatlahir')}}" name="tempatlahir" type="text" class="form-control bg-light"
-                                        id="tempatlahir" placeholder="Tempat Lahir" required>
+                                    <input value="{{old('tempatlahir')}}" name="tempatlahir" type="text" class="form-control bg-light" id="tempatlahir" placeholder="Tempat Lahir" required>
                                     <label for="tgllahir">Tanggal Lahir</label>
-                                    <input value="{{old('tgllahir')}}" name="tgllahir" type="date" class="form-control bg-light"
-                                        id="tgllahir" required>
+                                    <input value="{{old('tgllahir')}}" name="tgllahir" type="date" class="form-control bg-light" id="tgllahir" required>
                                     <label for="alamat">Alamat Lengkap</label>
-                                    <textarea name="alamat" class="form-control bg-light" id="alamat" rows="2"
-                                        placeholder="Alamat Lengkap" required>{{old('alamat')}}</textarea>
+                                    <textarea name="alamat" class="form-control bg-light" id="alamat" rows="2" placeholder="Alamat Lengkap" required>{{old('alamat')}}</textarea>
                                     <label for="no_hp">Nomor HP</label>
-                                    <input value="{{old('no_hp')}}" name="no_hp" type="text" class="form-control bg-light"
-                                        id="no_hp" placeholder="Nomor HP" required>
+                                    <input value="{{old('no_hp')}}" name="no_hp" type="text" class="form-control bg-light" id="no_hp" placeholder="Nomor HP" required>
                                     <label for="email">Email</label>
-                                    <input value="{{old('email')}}" name="email" type="email" class="form-control bg-light" id="email" placeholder="Email"
-                                        required>
-                            </div>
-                            <hr>
-                            <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i>
-                                SIMPAN</button>
-                        </form>
+                                    <input value="{{old('email')}}" name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" required>
+                                </div>
+                                <hr>
+                                <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i>
+                                    SIMPAN</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </section>

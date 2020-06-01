@@ -32,30 +32,27 @@
                     <label for="rombel_id">Rombongan Belajar</label>
                     <input value="{{$tagihan->rombel->nama_rombel}} {{$tagihan->rombel->tapel->tahun}} {{$tagihan->rombel->tapel->semester}}" name="rombel_id" type="text" class="form-control bg-disabled" id="jumlah" disabled>
                     <label for="jenis_kelamin">Wali Kelas</label>
-                        <select name="jenis_kelamin" class="form-control bg-light" id="jenis_kelamin"required>
-                            <option value="Semua" @if ($tagihan->jenis_kelamin == 'Semua') selected @endif>Semua</option>
-                            <option value="Laki-Laki" @if ($tagihan->jenis_kelamin == 'Laki-Laki') selected @endif>Laki-Laki</option>
-                            <option value="Perempuan" @if ($tagihan->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
-                        </select>
+                    <select name="jenis_kelamin" class="form-control bg-light" id="jenis_kelamin" required>
+                        <option value="Semua" @if ($tagihan->jenis_kelamin == 'Semua') selected @endif>Semua</option>
+                        <option value="Laki-Laki" @if ($tagihan->jenis_kelamin == 'Laki-Laki') selected @endif>Laki-Laki</option>
+                        <option value="Perempuan" @if ($tagihan->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
+                    </select>
                     <label for="rincian">Rincian</label>
-                    <textarea name="rincian" class="form-control bg-light" id="rincian" rows="2"
-                        placeholder="rincian" required>{{$tagihan->rincian}}</textarea>
+                    <textarea name="rincian" class="form-control bg-light" id="rincian" rows="2" placeholder="rincian" required>{{$tagihan->rincian}}</textarea>
                 </div>
                 <div class="col-6">
                     <label for="nominal">Nominal</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            <input value="{{$tagihan->nominal}}" name="nominal" type="text" class="form-control bg-light" id="nominal"
-                            placeholder="nominal" required>
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
-                            </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
                         </div>
+                        <input value="{{$tagihan->nominal}}" name="nominal" type="text" class="form-control bg-light" id="nominal" placeholder="nominal" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
                     <label for="batas_bayar">Batas Waktu Pembayaran</label>
-                    <input value="{{$tagihan->batas_bayar}}" name="batas_bayar" type="date" class="form-control bg-light"
-                        id="batas_bayar" required>
+                    <input value="{{$tagihan->batas_bayar}}" name="batas_bayar" type="date" class="form-control bg-light" id="batas_bayar" required>
                 </div>
             </div>
             <hr>

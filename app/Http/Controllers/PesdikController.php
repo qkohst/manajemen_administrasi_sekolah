@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Laravel\Http\Controllers;
 
-use App\Pesdik;
-use App\Rombel;
-use App\Pesdikkeluar;
-use App\Pesdikalumni;
-use App\Anggotarombel;
+use Laravel\Pesdik;
+use Laravel\Rombel;
+use Laravel\Pesdikkeluar;
+use Laravel\Pesdikalumni;
+use Laravel\Anggotarombel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Laravel\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class PesdikController extends Controller
@@ -20,16 +20,16 @@ class PesdikController extends Controller
      */
     public function index()
     {
-        $data_pesdik = \App\Pesdik::where('status', 'Aktif')->get();
-        // $data_kategori = \App\Kategori::where('jenis_kategori', 2)->get();
+        $data_pesdik = \Laravel\Pesdik::where('status', 'Aktif')->get();
+        // $data_kategori = \Laravel\Kategori::where('jenis_kategori', 2)->get();
         return view('pesdik.index',['data_pesdik'=> $data_pesdik]);
     }
 
     //function untuk masuk ke view Tambah
     public function create()
     {
-        $data_pesdik = \App\Pesdik::all();
-        $data_rombel = \App\Rombel::all();
+        $data_pesdik = \Laravel\Pesdik::all();
+        $data_rombel = \Laravel\Rombel::all();
         return view('pesdik.create', ['data_pesdik' => $data_pesdik],['data_rombel'=>$data_rombel]);
     }
 
@@ -64,17 +64,17 @@ class PesdikController extends Controller
          //function untuk masuk ke modal
         public function registrasi ($id_pesdik)
         {
-            $pesdik = \App\Pesdik::find($id_pesdik);
-            // $data_rombel = \App\Rombel::orderByRaw('tapel_id DESC')->limit(1)->get();
-            $data_rombel = \App\Rombel::all();
+            $pesdik = \Laravel\Pesdik::find($id_pesdik);
+            // $data_rombel = \Laravel\Rombel::orderByRaw('tapel_id DESC')->limit(1)->get();
+            $data_rombel = \Laravel\Rombel::all();
             return view('pesdik/registrasi',['pesdik'=>$pesdik],['data_rombel'=>$data_rombel]);
         }
 
         //function untuk registrasi keluar
         public function naik(Request $request, $id_pesdik)
         {
-            $pesdik=\App\Pesdik::find($id_pesdik);
-            $data_rombel = \App\Rombel::all();
+            $pesdik=\Laravel\Pesdik::find($id_pesdik);
+            $data_rombel = \Laravel\Rombel::all();
             //deklarasi variabel
             $id_pesdik          = $pesdik->id;
 
@@ -94,8 +94,8 @@ class PesdikController extends Controller
             $request->validate([
                 'alasan_keluar' => 'min:10',
            ]);
-            $pesdik=\App\Pesdik::find($id_pesdik);
-            $data_rombel = \App\Rombel::all();
+            $pesdik=\Laravel\Pesdik::find($id_pesdik);
+            $data_rombel = \Laravel\Rombel::all();
             //deklarasi variabel
             $nama               = $pesdik->nama;
             $jenis_kelamin      = $pesdik->jenis_kelamin;
@@ -131,7 +131,7 @@ class PesdikController extends Controller
         //function untuk masuk ke view pesdik keluar
         public function keluarindex()
         {
-            $data_pesdikkeluar = \App\Pesdikkeluar::all();
+            $data_pesdikkeluar = \Laravel\Pesdikkeluar::all();
             return view('pesdik.keluarindex',['data_pesdikkeluar'=> $data_pesdikkeluar]);
         }
 
@@ -141,7 +141,7 @@ class PesdikController extends Controller
             $request->validate([
                 'keterangan' => 'min:10',
            ]);
-            $pesdik=\App\Pesdik::find($id_pesdik);
+            $pesdik=\Laravel\Pesdik::find($id_pesdik);
 
             //deklarasi variabel
             $nama               = $pesdik->nama;
@@ -175,15 +175,15 @@ class PesdikController extends Controller
         //function untuk masuk ke view pesdik alumni
         public function alumniindex()
         {
-            $data_pesdikalumni = \App\Pesdikalumni::all();
+            $data_pesdikalumni = \Laravel\Pesdikalumni::all();
             return view('pesdik.alumniindex',['data_pesdikalumni'=> $data_pesdikalumni]);
         }
 
         //function untuk masuk ke view edit
         public function edit ($id_pesdik)
         {
-            $pesdik = \App\Pesdik::find($id_pesdik);
-            $data_rombel = \App\Rombel::all();
+            $pesdik = \Laravel\Pesdik::find($id_pesdik);
+            $data_rombel = \Laravel\Rombel::all();
             return view('pesdik/edit',['pesdik'=>$pesdik],['data_rombel'=>$data_rombel]);
         }
         public function update (Request $request, $id_pesdik)
@@ -193,7 +193,7 @@ class PesdikController extends Controller
                 'nisn' => 'numeric|min:10',
                 'induk' => 'numeric|min:2',
             ]);
-            $pesdik = \App\Pesdik::find($id_pesdik);
+            $pesdik = \Laravel\Pesdik::find($id_pesdik);
             $pesdik->update($request->all());
             $pesdik->save();
             return redirect('pesdik/index') ->with('sukses','Data Rombongan Belajar Berhasil Diedit');
@@ -202,7 +202,7 @@ class PesdikController extends Controller
         //function untuk hapus
         public function delete($id_pesdik)
         {
-            $pesdik=\App\Pesdik::find($id_pesdik);
+            $pesdik=\Laravel\Pesdik::find($id_pesdik);
             $pesdik->delete();
             return redirect('pesdik/index') ->with('sukses','Data Peserta Didik Berhasil Dihapus');
         }

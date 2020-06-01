@@ -21,7 +21,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            </div>
+        </div>
         @endif
         <h3><i class="nav-icon far fa-handshake nav-icon my-1 btn-sm-1"></i> Transaksi Pembayaran Siswa</h3>
         <hr>
@@ -113,7 +113,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $no = 0; 
+                                            <?php $no = 0;
                                             ?>
                                             @foreach($tagihan_siswa as $tagih)
                                             <?php $no++; ?>
@@ -126,9 +126,9 @@
                                                 <td>@currency($tagih->jumlah_bayar),00</td>
                                                 <td>@currency($tagih->nominal-$tagih->jumlah_bayar),00</td>
                                                 <td align="center">
-                                                @if($tagih->nominal != $tagih->jumlah_bayar)
-                                                <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}" onclick="myFunction()">
-                                                @endif
+                                                    @if($tagih->nominal != $tagih->jumlah_bayar)
+                                                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}" onclick="myFunction()">
+                                                    @endif
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -146,7 +146,7 @@
                                                 <td align="left">
                                                     <?php
                                                     $jumlah_terbayar =  \App\TransaksiPembayaran::where('pesdik_id', $data_pesdik->pesdik->id)
-                                                    ->sum('jumlah_bayar');
+                                                        ->sum('jumlah_bayar');
                                                     ?>
                                                     <b>@currency($jumlah_terbayar),00</b><br>
                                                 </td>
@@ -154,7 +154,7 @@
                                                     <b>@currency($jumlah_tagihan-$jumlah_terbayar),00</b><br>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary btn-sm my-1 mr-sm-1" style="display:none" type="submit" id="bayar">Bayar</button>                                            
+                                                    <button class="btn btn-primary btn-sm my-1 mr-sm-1" style="display:none" type="submit" id="bayar">Bayar</button>
                                                 </td>
                                             </tr>
                                         </tfoot>

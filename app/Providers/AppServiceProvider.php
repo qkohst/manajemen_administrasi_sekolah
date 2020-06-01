@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Laravel\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;

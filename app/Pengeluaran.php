@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Laravel;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class Pengeluaran extends Model
     //function relasi ke tapel
     public function kategori()
       {
-          return $this->belongsTo('App\Kategori');
+          return $this->belongsTo('Laravel\Kategori');
       }
 }

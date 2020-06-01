@@ -21,13 +21,11 @@
                     <label for="name">Nama</label>
                     <input name="name" type="text" class="form-control bg-light" id="name" placeholder="Nama" required>
                     <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email"
-                        required>
+                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" required>
                 </div>
                 <div class="col-6">
                     <label for="password">Password</label>
-                    <input name="password" type="password" class="form-control bg-light" id="password"
-                        placeholder="Password" required>
+                    <input name="password" type="password" class="form-control bg-light" id="password" placeholder="Password" required>
                     <label for="role">Level</label>
                     <select name="role" id="role" class="form-control bg-light" required>
                         <option value="admin">Administrator</option>
@@ -37,8 +35,7 @@
             </div>
             <hr>
             <button type="submit" class="btn btn-success btn-sm "><i class="fas fa-save"></i> SIMPAN</button>
-            <a class="btn btn-danger btn-sm" href="{{ route('pengguna.index') }}" role="button"><i
-                    class="fas fa-undo"></i> BATAL</a>
+            <a class="btn btn-danger btn-sm" href="{{ route('pengguna.index') }}" role="button"><i class="fas fa-undo"></i> BATAL</a>
         </form>
     </div>
     </div>

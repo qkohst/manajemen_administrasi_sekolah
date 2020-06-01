@@ -24,8 +24,7 @@
         </div>
         <div>
             <div class="col">
-                <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{ route('pengguna.create') }}" role="button"><i
-                        class="fas fa-plus"></i> Tambah Data</a>
+                <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{ route('pengguna.create') }}" role="button"><i class="fas fa-plus"></i> Tambah Data</a>
                 <br><br>
             </div>
         </div>
@@ -42,9 +41,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 0;?>
+                        <?php $no = 0; ?>
                         @foreach($data_pengguna as $pengguna)
-                        <?php $no++ ;?>
+                        <?php $no++; ?>
                         <tr>
                             <td>{{$no}}</td>
                             <td>{{$pengguna->name}}</td>
@@ -54,11 +53,8 @@
                                 <form action="{{ route('pengguna.destroy', $pengguna->id) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('pengguna.edit', $pengguna->id) }}"
-                                        class="btn btn-primary btn-sm my-1 mr-sm-1"><i
-                                            class="nav-icon fas fa-pencil-alt"></i> Edit</a>
-                                    <button type="submit" class="btn btn-danger btn-sm my-1 mr-sm-1"
-                                        onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
+                                    <a href="{{ route('pengguna.edit', $pengguna->id) }}" class="btn btn-primary btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
+                                    <button type="submit" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                         Hapus</button>
                                 </form>
                             </td>
