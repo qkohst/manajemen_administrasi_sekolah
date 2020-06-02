@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,13 +12,13 @@ class Suratmasuk extends Model
     //function relasi ke disposisi
     public function disposisi()
     {
-        return $this->hasMany('Laravel\Disposisi');
+        return $this->hasMany('App\Disposisi');
     }
 
     //function relasi ke user
     public function users()
     {
-        return $this->belongsTo('Laravel\User');
+        return $this->belongsTo('App\User');
     }
 
 }

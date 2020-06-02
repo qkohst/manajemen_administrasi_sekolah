@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class Tagihan extends Model
      //function relasi ke rombel
      public function rombel()
      {
-         return $this->belongsTo('Laravel\Rombel');
+         return $this->belongsTo('App\Rombel');
      }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\Instansi;
+use App\Instansi;
 use Illuminate\Http\Request;
 
 class InstansiController extends Controller

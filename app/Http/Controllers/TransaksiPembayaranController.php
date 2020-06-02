@@ -1,14 +1,14 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
 
-use Laravel\TransaksiPembayaran;
-use Laravel\Tagihan;
-use Laravel\Anggotarombel;
-use Laravel\Pesdik;
+use App\TransaksiPembayaran;
+use App\Tagihan;
+use App\Anggotarombel;
+use App\Pesdik;
 use Illuminate\Http\Request;
-use Laravel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -17,27 +17,27 @@ class TransaksiPembayaranController extends Controller
 {
     public function index()
     {
-        $pesdik = \Laravel\Anggotarombel::groupBy('pesdik_id')->orderByRaw('updated_at - created_at DESC')->get();
-        $rombel = \Laravel\Anggotarombel::groupBy('rombel_id')->orderByRaw('updated_at - created_at DESC')->get();
+        $pesdik = \App\Anggotarombel::groupBy('pesdik_id')->orderByRaw('updated_at - created_at DESC')->get();
+        $rombel = \App\Anggotarombel::groupBy('rombel_id')->orderByRaw('updated_at - created_at DESC')->get();
         return view('/pembayaran/transaksipembayaran/index', compact('pesdik', 'rombel'));
     }
 
     public function cari_pesdik(Request $request)
     {
         $cari = $request->input('cari_pesdik');
-        $pesdik = \Laravel\Anggotarombel::groupBy('pesdik_id')->orderByRaw('updated_at - created_at DESC')->get();
-        $data = \Laravel\Anggotarombel::where('pesdik_id', $cari)->get();
+        $pesdik = \App\Anggotarombel::groupBy('pesdik_id')->orderByRaw('updated_at - created_at DESC')->get();
+        $data = \App\Anggotarombel::where('pesdik_id', $cari)->get();
         $data_pesdik = $data->last();
 
         //Olah Lagi
-        $pesdik_pilih = \Laravel\Anggotarombel::select('rombel_id')->where('pesdik_id', $cari)->get();
-        $pesdik_jk = \Laravel\Pesdik::select('jenis_kelamin')->where('id', $cari)->get();
-        $pilih_jk =  \Laravel\Tagihan::whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
+        $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $cari)->get();
+        $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $cari)->get();
+        $pilih_jk =  \App\Tagihan::whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
 
-        // $tagihan_siswa =  \Laravel\Tagihan::whereIn('rombel_id', $pesdik_pilih)
+        // $tagihan_siswa =  \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
         //     ->WhereIn('jenis_kelamin', $pilih_jk)->get();
         
-        $tagihan_siswa = \Laravel\Tagihan::whereIn('rombel_id', $pesdik_pilih)
+        $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
         ->WhereIn('jenis_kelamin', $pilih_jk)
         ->leftJoin('transaksipembayaran', 'tagihan.id', '=', 'transaksipembayaran.tagihan_id')
         ->get();
@@ -51,8 +51,8 @@ class TransaksiPembayaranController extends Controller
         //Olah Lagi
         $pesdik = $id_pesdik;
         $pilihTagihan = $request->Input('pilih');
-        $pesdik_pilih = \Laravel\Anggotarombel::select('rombel_id')->where('pesdik_id', $id_pesdik)->get();
-        $tagihan_siswa =  \Laravel\Tagihan::whereIn('id', $pilihTagihan)->get();
+        $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id_pesdik)->get();
+        $tagihan_siswa =  \App\Tagihan::whereIn('id', $pilihTagihan)->get();
         //End Olah Lagi
         return view('/pembayaran/transaksipembayaran/form_bayar', compact('pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilihTagihan'));
     }
@@ -63,6 +63,7 @@ class TransaksiPembayaranController extends Controller
         $users_id = Auth::id();
         $tagihan_id = $request->tagihan_id;
         $pesdik_id = $request->pesdik_id;
+        $id_rombel = $request->id_rombel;
         $nominal = $request->nominal;
         $jumlah_bayar = $request->jumlah_bayar;
 
@@ -71,6 +72,7 @@ class TransaksiPembayaranController extends Controller
                 'tagihan_id' => $tagihan_id[$count],
                 'users_id'  => $users_id,
                 'pesdik_id'  => $pesdik_id[$count],
+                'id_rombel'  => $id_rombel[$count],
                 'jumlah_bayar'  => $jumlah_bayar[$count],
                 'created_at'  => Carbon::now(),
                 'updated_at'  => Carbon::now()
@@ -79,7 +81,7 @@ class TransaksiPembayaranController extends Controller
             $insert_data[] = $data;
         }
         TransaksiPembayaran::insert($insert_data);
-        $tagihan_dibayar=\Laravel\TransaksiPembayaran::whereIn('tagihan_id',$tagihan_id)->where('pesdik_id', $pesdik_id)->get();
+        $tagihan_dibayar=\App\TransaksiPembayaran::whereIn('tagihan_id',$tagihan_id)->where('pesdik_id', $pesdik_id)->get();
         $identitas = $tagihan_dibayar->first();
         return view('/pembayaran/transaksipembayaran/invoice_bukti_pembayaran', compact('identitas','tagihan_dibayar','tagihan_id','pesdik_id'));
     }
@@ -88,9 +90,8 @@ class TransaksiPembayaranController extends Controller
     {
         $tagihan_id = $request->id_tagih;
         $pesdik_id = $request->id_pesdik;
-        $tagihan_dibayar=\Laravel\TransaksiPembayaran::whereIn('tagihan_id',$tagihan_id)->where('pesdik_id', $pesdik_id)->get();
+        $tagihan_dibayar=\App\TransaksiPembayaran::whereIn('tagihan_id',$tagihan_id)->where('pesdik_id', $pesdik_id)->get();
         $identitas = $tagihan_dibayar->first();
-        // dd($identitas);
         return view('/pembayaran/transaksipembayaran/cetak_invoice', compact('identitas','tagihan_dibayar','tagihan_id','pesdik_id'));
     }
 }

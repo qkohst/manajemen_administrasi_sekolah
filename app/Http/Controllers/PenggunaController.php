@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\User;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 

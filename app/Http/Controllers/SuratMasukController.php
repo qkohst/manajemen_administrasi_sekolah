@@ -1,13 +1,13 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\SuratMasuk;
-use Laravel\Instansi;
+use App\SuratMasuk;
+use App\Instansi;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Exports\SuratMasukExport;
+use App\Exports\SuratMasukExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -16,14 +16,14 @@ class SuratmasukController extends Controller
 {
     public function index()
     {
-        $data_suratmasuk = \Laravel\SuratMasuk::all();
+        $data_suratmasuk = \App\SuratMasuk::all();
         return view('suratmasuk.index', ['data_suratmasuk' => $data_suratmasuk]);
     }
 
     //function untuk masuk ke view Tambah
     public function create()
     {
-        $data_klasifikasi = \Laravel\Klasifikasi::all();
+        $data_klasifikasi = \App\Klasifikasi::all();
         return view('suratmasuk/create', ['data_klasifikasi' => $data_klasifikasi]);
     }
 
@@ -56,7 +56,7 @@ class SuratmasukController extends Controller
     //function untuk melihat file
     public function tampil($id_suratmasuk)
     {
-        $suratmasuk = \Laravel\SuratMasuk::find($id_suratmasuk);
+        $suratmasuk = \App\SuratMasuk::find($id_suratmasuk);
         return view('suratmasuk/tampil', ['suratmasuk' => $suratmasuk]);
     }
 
@@ -76,8 +76,8 @@ class SuratmasukController extends Controller
     //function untuk masuk ke view edit
     public function edit($id_suratmasuk)
     {
-        $data_klasifikasi = \Laravel\Klasifikasi::all();
-        $suratmasuk = \Laravel\SuratMasuk::find($id_suratmasuk);
+        $data_klasifikasi = \App\Klasifikasi::all();
+        $suratmasuk = \App\SuratMasuk::find($id_suratmasuk);
         return view('suratmasuk/edit', ['suratmasuk' => $suratmasuk], ['data_klasifikasi' => $data_klasifikasi]);
     }
     public function update(Request $request, $id_suratmasuk)
@@ -88,7 +88,7 @@ class SuratmasukController extends Controller
             'isi' => 'min:5',
             'keterangan' => 'min:5',
         ]);
-        $suratmasuk = \Laravel\SuratMasuk::find($id_suratmasuk);
+        $suratmasuk = \App\SuratMasuk::find($id_suratmasuk);
         $suratmasuk->update($request->all());
         //Untuk Update File
         if ($request->hasFile('filemasuk')) {
@@ -102,7 +102,7 @@ class SuratmasukController extends Controller
     //function untuk hapus
     public function delete($id_suratmasuk)
     {
-        $suratmasuk = \Laravel\SuratMasuk::find($id_suratmasuk);
+        $suratmasuk = \App\SuratMasuk::find($id_suratmasuk);
         $suratmasuk->delete();
         return redirect('suratmasuk/index')->with('sukses', 'Data Surat Masuk Berhasil Dihapus');
     }
@@ -110,11 +110,11 @@ class SuratmasukController extends Controller
     //Function Untuk Agenda Surat Masuk
     public function agenda(Request $request)
     {
-        $tgl1 = \Laravel\SuratMasuk::first();
-        $tgl2 = \Laravel\SuratMasuk::latest()->first();
+        $tgl1 = \App\SuratMasuk::first();
+        $tgl2 = \App\SuratMasuk::latest()->first();
         $tgl_awal = $tgl1->tgl_terima;
         $tgl_akhir = $tgl2->tgl_terima;
-        $data_suratmasuk = \Laravel\SuratMasuk::all();
+        $data_suratmasuk = \App\SuratMasuk::all();
         return view('suratmasuk.agenda', compact('data_suratmasuk', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -123,7 +123,7 @@ class SuratmasukController extends Controller
         $tgl_awal = $request->input('tgl_awal');
         $tgl_akhir = $request->input('tgl_akhir');
 
-        $data_suratmasuk = \Laravel\SuratMasuk::whereBetween('tgl_terima', [$tgl_awal, $tgl_akhir])->get();
+        $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl_awal, $tgl_akhir])->get();
         return view('suratmasuk.agenda', compact('data_suratmasuk', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -133,14 +133,14 @@ class SuratmasukController extends Controller
         $tgl1 = $request->input('tgl_a');
         $tgl2 = $request->input('tgl_b');
 
-        $data_suratmasuk = \Laravel\SuratMasuk::whereBetween('tgl_terima', [$tgl1, $tgl2])->get();
+        $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl1, $tgl2])->get();
         return view('suratmasuk.cetakagenda', compact('inst', 'data_suratmasuk', 'tgl1', 'tgl2'));
     }
 
     //Function Untuk Galeri Surat Masuk
     public function galeri(Request $request)
     {
-        $data_suratmasuk = \Laravel\SuratMasuk::all();
+        $data_suratmasuk = \App\SuratMasuk::all();
         return view('suratmasuk.galeri', ['data_suratmasuk' => $data_suratmasuk]);
     }
 }

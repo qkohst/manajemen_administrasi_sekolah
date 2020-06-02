@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\Disposisi;
-use Laravel\SuratMasuk;
-use Laravel\Instansi;
+use App\Disposisi;
+use App\SuratMasuk;
+use App\Instansi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

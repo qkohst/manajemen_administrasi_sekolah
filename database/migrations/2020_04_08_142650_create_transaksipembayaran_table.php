@@ -18,6 +18,7 @@ class CreateTransaksipembayaranTable extends Migration
             $table->integer('tagihan_id');
             $table->integer('users_id');
             $table->integer('pesdik_id');
+            $table->integer('id_rombel');
             $table->integer('jumlah_bayar');
             $table->timestamps();
         });

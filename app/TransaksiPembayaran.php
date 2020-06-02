@@ -1,28 +1,31 @@
 <?php
 
-namespace Laravel;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
 class TransaksiPembayaran extends Model
 {
     protected $table = 'transaksipembayaran';
-    protected $fillable = ['tagihan_id','users_id','pesdik_id','jumlah_bayar'];
+    protected $fillable = ['tagihan_id','users_id','pesdik_id','id_rombel','jumlah_bayar'];
 
-    //function relasi ke Pesdik
     public function tagihan()
       {
-          return $this->belongsTo('Laravel\Tagihan');
+          return $this->belongsTo('App\Tagihan');
       }
 
     public function pesdik()
       {
-          return $this->belongsTo('Laravel\Pesdik');
+          return $this->belongsTo('App\Pesdik');
       }
 
-    //function relasi ke Pesdik
     public function users()
       {
-        return $this->belongsTo('Laravel\User');
+        return $this->belongsTo('App\User');
+      }
+
+    public function rombel()
+      {
+        return $this->belongsTo('App\Rombel');
       }
 }

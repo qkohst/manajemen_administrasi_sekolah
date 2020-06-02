@@ -168,6 +168,12 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::post('/pembayaran/transaksipembayaran/cetak_invoice', 'TransaksiPembayaranController@cetak_invoice');
 
     Route::get('/laporankeuangan/transaksipembayaran/index', 'LaporanController@tPembayaranIndex')->name('laporankeuangan.transaksipembayaran.index');
+    Route::post('/laporankeuangan/transaksipembayaran/filterByNama', 'LaporanController@tPembayaranfilterByNama')->name('laporankeuangan.transaksipembayaran.filterByNama');
+    Route::post('/laporankeuangan/transaksipembayaran/filterByKelas', 'LaporanController@tPembayaranfilterByKelas')->name('laporankeuangan.transaksipembayaran.filterByKelas');
+    Route::post('/laporankeuangan/transaksipembayaran/filterByTanggal', 'LaporanController@tPembayaranfilterByTanggal')->name('laporankeuangan.transaksipembayaran.filterByTanggal');
+    Route::get('/laporankeuangan/transaksipembayaran/DownloadExcel', 'LaporanController@tPembayaranDownloadExcel')->name('laporankeuangan.transaksipembayaran.DownloadExcel');
+    Route::post('/laporankeuangan/transaksipembayaran/cetak', 'LaporanController@tPembayaranCetak');
+    
     Route::get('/laporankeuangan/setortariktunai/index', 'LaporanController@tSetorTarikIndex')->name('laporankeuangan.setortariktunai.index');
     Route::get('/laporankeuangan/keuangansekolah/index', 'LaporanController@tKeuanganSekolah')->name('laporankeuangan.keuangansekolah.index');
 

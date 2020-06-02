@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,12 +12,12 @@ class Tarik extends Model
     //function relasi ke Pesdik
     public function pesdik()
       {
-          return $this->belongsTo('Laravel\Pesdik');
+          return $this->belongsTo('App\Pesdik');
       }
 
     //function relasi ke Pesdik
     public function users()
       {
-        return $this->belongsTo('Laravel\User');
+        return $this->belongsTo('App\User');
       }
 }

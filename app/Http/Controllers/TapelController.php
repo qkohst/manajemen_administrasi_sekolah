@@ -1,16 +1,16 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\Tapel;
+use App\Tapel;
 use Illuminate\Http\Request;
-use Laravel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class TapelController extends Controller
 {
     public function index()
     {
-        $data_tapel = \Laravel\Tapel::all();
+        $data_tapel = \App\Tapel::all();
         return view('tapel.index',['data_tapel'=> $data_tapel]);
     }
 
@@ -30,7 +30,7 @@ class TapelController extends Controller
      //function untuk masuk ke view edit
      public function edit ($id_tapel)
      {
-         $tapel = \Laravel\Tapel::find($id_tapel);
+         $tapel = \App\Tapel::find($id_tapel);
          return view('tapel/edit',['tapel'=>$tapel]);
      }
      public function update (Request $request, $id_tapel)
@@ -38,7 +38,7 @@ class TapelController extends Controller
          $request->validate([
              'tapel' => 'max:9',
          ]);
-         $tapel = \Laravel\Tapel::find($id_tapel);
+         $tapel = \App\Tapel::find($id_tapel);
          $tapel->update($request->all());
          $tapel->save();
          return redirect('tapel/index') ->with('sukses','Data Tahun Pelajaran Berhasil Diedit');
@@ -46,7 +46,7 @@ class TapelController extends Controller
       //function untuk hapus
       public function delete($id)
       {
-          $tapel=\Laravel\Tapel::find($id);
+          $tapel=\App\Tapel::find($id);
           $tapel->delete();
           return redirect('tapel/index') ->with('sukses','Data Tahun Pelajaran Berhasil Dihapus');
       }

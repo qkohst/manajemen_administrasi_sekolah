@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\Tendik;
+use App\Tendik;
 use Illuminate\Http\Request;
-use Laravel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class TendikController extends Controller
 {
@@ -15,7 +15,7 @@ class TendikController extends Controller
      */
     public function index()
     {
-        $data_tendik = \Laravel\Tendik::all();
+        $data_tendik = \App\Tendik::all();
         return view('tendik.index',['data_tendik'=> $data_tendik]);
     }
 
@@ -45,7 +45,7 @@ class TendikController extends Controller
     //function untuk masuk ke view edit
     public function edit ($id_tendik)
     {
-        $tendik = \Laravel\Tendik::find($id_tendik);
+        $tendik = \App\Tendik::find($id_tendik);
         return view('tendik/edit',['tendik'=>$tendik]);
     }
     public function update (Request $request, $id_tendik)
@@ -57,7 +57,7 @@ class TendikController extends Controller
             'no_hp' => 'min:12',
             'email' => 'email',
         ]);
-        $tendik = \Laravel\Tendik::find($id_tendik);
+        $tendik = \App\Tendik::find($id_tendik);
         $tendik->update($request->all());
         $tendik->save();
         return redirect('tendik/index') ->with('sukses','Data Tenaga Kependidikan Berhasil Diedit');
@@ -66,7 +66,7 @@ class TendikController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $tendik=\Laravel\Tendik::find($id);
+        $tendik=\App\Tendik::find($id);
         $tendik->delete();
         return redirect('tendik/index') ->with('sukses','Data Tenaga Kependidikan Berhasil Dihapus');
     }

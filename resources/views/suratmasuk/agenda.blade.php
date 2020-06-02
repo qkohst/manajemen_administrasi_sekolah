@@ -13,7 +13,7 @@
                 <hr>
             </div>
         </div>
-        <form action="/suratmasuk/filter_agenda" method="POST" class="row input-daterange">
+        <form action="filter_agenda" method="POST" class="row input-daterange">
             {{csrf_field()}}
             <div class="col-md-4">
                 <div class="form-group row">

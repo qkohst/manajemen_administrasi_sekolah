@@ -275,14 +275,14 @@
                                 <a href="/laporankeuangan/transaksipembayaran/index" class="nav-link text-white">
                                     <i class="far fa-handshake nav-icon"></i>
                                     <p>Transaksi Pembayaran</p>
-                                    <span class="right badge badge-warning">onProgress</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/laporankeuangan/setortariktunai/index" class="nav-link text-white">
                                     <i class="nav-icon fas fa-credit-card"></i>
                                     <p>Setor & Tarik Tunai</p>
-                                    <span class="right badge badge-danger">progress</span>
+                                    <span class="right badge badge-warning">onProgress</span>
                                 </a>
                             </li>
                             <li class="nav-item">

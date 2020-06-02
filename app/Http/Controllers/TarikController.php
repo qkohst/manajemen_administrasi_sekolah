@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\Tarik;
-use Laravel\Pesdik;
+use App\Tarik;
+use App\Pesdik;
 use Illuminate\Http\Request;
-use Laravel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -13,8 +13,8 @@ class TarikController extends Controller
 {
     public function index()
     {
-        $data_tarik = \Laravel\Tarik::all();
-        $data_pesdik = \Laravel\Pesdik::all();
+        $data_tarik = \App\Tarik::all();
+        $data_pesdik = \App\Pesdik::all();
         return view('/tabungan/tarik/index', compact('data_tarik','data_pesdik'));
     }
 
@@ -37,7 +37,7 @@ class TarikController extends Controller
     //function untuk masuk ke view edit
     public function edit ($id_tarik)
     {
-       $tarik = \Laravel\Tarik::find($id_tarik);
+       $tarik = \App\Tarik::find($id_tarik);
        return view('/tabungan/tarik/edit', compact('tarik'));
     }
 
@@ -46,7 +46,7 @@ class TarikController extends Controller
        $request->validate([
           'jumlah' => 'numeric',
        ]);
-       $tarik = \Laravel\Tarik::find($id_tarik);
+       $tarik = \App\Tarik::find($id_tarik);
        $tarik->update($request->all());
        $tarik->save();
        return redirect('/tabungan/tarik/index') ->with('sukses','Data Tarik Tunai Berhasil Diedit');
@@ -55,7 +55,7 @@ class TarikController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $tarik=\Laravel\Tarik::find($id);
+        $tarik=\App\Tarik::find($id);
         $tarik->delete();
         return redirect('/tabungan/tarik/index') ->with('sukses','Data Tarik Tunai Berhasil Dihapus');
     }
@@ -63,14 +63,14 @@ class TarikController extends Controller
     //function untuk masuk ke view cetak
     public function cetak ($id_tarik)
     {
-       $tarik = \Laravel\Tarik::find($id_tarik);
+       $tarik = \App\Tarik::find($id_tarik);
        return view('/tabungan/tarik/cetak', compact('tarik'));
     }
 
     //function untuk masuk ke view cetak
     public function cetakprint ($id_tarik)
     {
-       $tarik = \Laravel\Tarik::find($id_tarik);
+       $tarik = \App\Tarik::find($id_tarik);
        return view('/tabungan/tarik/cetakprint', compact('tarik'));
     }
 }

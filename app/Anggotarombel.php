@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,11 +11,11 @@ class Anggotarombel extends Model
 
     public function pesdik()
     {
-        return $this->belongsTo('Laravel\Pesdik');
+        return $this->belongsTo('App\Pesdik');
     }
 
     public function rombel()
     {
-        return $this->belongsTo('Laravel\Rombel');
+        return $this->belongsTo('App\Rombel');
     }
 }

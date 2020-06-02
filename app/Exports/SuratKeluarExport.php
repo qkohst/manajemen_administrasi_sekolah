@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Exports;
+namespace App\Exports;
 
-use Laravel\SuratKeluar;
+use App\SuratKeluar;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class SuratKeluarExport implements FromCollection

@@ -1,18 +1,18 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\Pengeluaran;
-use Laravel\Kategori;
+use App\Pengeluaran;
+use App\Kategori;
 use Illuminate\Http\Request;
-use Laravel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 class PengeluaranController extends Controller
 {
     public function index()
     {
-        $data_pengeluaran = \Laravel\Pengeluaran::all();
-        $data_kategori = \Laravel\Kategori::where('jenis_kategori', 2)->get();
+        $data_pengeluaran = \App\Pengeluaran::all();
+        $data_kategori = \App\Kategori::where('jenis_kategori', 2)->get();
         return view('/keuangan/pengeluaran/index', compact('data_pengeluaran','data_kategori'));
     }
 
@@ -35,8 +35,8 @@ class PengeluaranController extends Controller
      //function untuk masuk ke view edit
      public function edit ($id_pengeluaran)
      {
-         $pengeluaran = \Laravel\Pengeluaran::find($id_pengeluaran);
-         $data_kategori = \Laravel\Kategori::where('jenis_kategori', 2)->get();
+         $pengeluaran = \App\Pengeluaran::find($id_pengeluaran);
+         $data_kategori = \App\Kategori::where('jenis_kategori', 2)->get();
          return view('/keuangan/pengeluaran/editpengeluaran', compact('pengeluaran','data_kategori'));
      }
      public function update (Request $request, $id_pengeluaran)
@@ -45,7 +45,7 @@ class PengeluaranController extends Controller
             'jumlah' => 'numeric',
             'keterangan' => 'min:10',
          ]);
-         $pengeluaran = \Laravel\Pengeluaran::find($id_pengeluaran);
+         $pengeluaran = \App\Pengeluaran::find($id_pengeluaran);
          $pengeluaran->update($request->all());
          $pengeluaran->save();
          return redirect('/keuangan/pengeluaran/index') ->with('sukses','Data Pengeluaran Berhasil Diedit');
@@ -54,7 +54,7 @@ class PengeluaranController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $pengeluaran=\Laravel\Pengeluaran::find($id);
+        $pengeluaran=\App\Pengeluaran::find($id);
         $pengeluaran->delete();
         return redirect('/keuangan/pengeluaran/index') ->with('sukses','Data Pengeluaran Berhasil Dihapus');
     }
@@ -75,7 +75,7 @@ class PengeluaranController extends Controller
       //function untuk hapus
       public function deletekategori($id)
       {
-          $kategori=\Laravel\Kategori::find($id);
+          $kategori=\App\Kategori::find($id);
           $kategori->delete();
           return redirect('/keuangan/pengeluaran/index') ->with('sukses','Data Kategori Berhasil Dihapus');
       }

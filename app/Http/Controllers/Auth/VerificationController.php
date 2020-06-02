@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

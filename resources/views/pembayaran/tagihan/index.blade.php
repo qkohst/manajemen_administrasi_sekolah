@@ -36,8 +36,8 @@
                             {{csrf_field()}}
                             <select name="rombel_filter" id="rombel_filter" class="form-control select2bs4" onchange="this.form.submit();">
                                 <option value="">-- Lihat Rincian Tagihan Berdasarkan Rombel --</option>
-                                @foreach($data_rombel as $rombel)
-                                <option value="{{ $rombel->id }}">{{$rombel->nama_rombel}} {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}}</option>
+                                @foreach($daftar_rombel as $list_rombel)
+                                <option value="{{ $list_rombel->rombel_id }}">{{$list_rombel->rombel->nama_rombel}} {{$list_rombel->rombel->tapel->tahun}} {{$list_rombel->rombel->tapel->semester}}</option>
                                 @endforeach
                             </select>
                             <br>

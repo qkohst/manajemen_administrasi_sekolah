@@ -39,6 +39,9 @@
               <td visibility: hidden>
                 <input value="{{$pesdik_id}}" name="pesdik_id[]" type="text" class="form-control bg-white" id="pesdik_id[]">
               </td>
+              <td visibility: hidden>
+                <input value="{{$tagih->rombel_id}}" name="id_rombel[]" type="text" class="form-control bg-white" id="id_rombel[]">
+              </td>
               <td>{{$no}}</td>
               <td>{{$tagih->rombel->nama_rombel}} {{$tagih->rombel->tapel->semester}}</td>
               <td>{{$tagih->rincian}}</td>

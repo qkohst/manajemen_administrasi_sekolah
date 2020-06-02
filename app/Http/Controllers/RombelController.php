@@ -1,13 +1,13 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\Rombel;
-use Laravel\Pesdik;
-use Laravel\Tapel;
-use Laravel\Anggotarombel;
+use App\Rombel;
+use App\Pesdik;
+use App\Tapel;
+use App\Anggotarombel;
 use Illuminate\Http\Request;
-use Laravel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class RombelController extends Controller
 {
@@ -18,9 +18,9 @@ class RombelController extends Controller
      */
     public function index()
     {
-        $data_rombel = \Laravel\Rombel::all();
-        $data_guru = \Laravel\Guru::all();
-        $data_tapel = \Laravel\Tapel::all();
+        $data_rombel = \App\Rombel::all();
+        $data_guru = \App\Guru::all();
+        $data_tapel = \App\Tapel::all();
         return view('rombel.index', compact('data_rombel','data_guru','data_tapel'));
     }
 
@@ -42,16 +42,16 @@ class RombelController extends Controller
      //function untuk anggota Rombel
     public function anggota($id_rombel)
     {  
-        $data_anggota = \Laravel\Anggotarombel::where('rombel_id',$id_rombel)->get();
+        $data_anggota = \App\Anggotarombel::where('rombel_id',$id_rombel)->get();
         return view('rombel.anggota',['data_anggota'=> $data_anggota]);
     }
 
      //function untuk masuk ke view edit
     public function edit ($id_rombel)
     {
-        $rombel = \Laravel\Rombel::find($id_rombel);
-        $data_guru = \Laravel\Guru::all();
-        $data_tapel = \Laravel\Tapel::all();
+        $rombel = \App\Rombel::find($id_rombel);
+        $data_guru = \App\Guru::all();
+        $data_tapel = \App\Tapel::all();
         return view('rombel/edit', compact('rombel','data_guru','data_tapel'));
     }
     public function update (Request $request, $id_rombel)
@@ -59,7 +59,7 @@ class RombelController extends Controller
         $request->validate([
             'nama_rombel' => 'min:3',
         ]);
-        $rombel = \Laravel\Rombel::find($id_rombel);
+        $rombel = \App\Rombel::find($id_rombel);
         $rombel->update($request->all());
         $rombel->save();
         return redirect('rombel/index') ->with('sukses','Data Rombongan Belajar Berhasil Diedit');
@@ -67,7 +67,7 @@ class RombelController extends Controller
      //function untuk hapus
      public function delete($id)
      {
-         $rombel=\Laravel\Rombel::find($id);
+         $rombel=\App\Rombel::find($id);
          $rombel->delete();
          return redirect('rombel/index') ->with('sukses','Data Rombongan Belajar Berhasil Dihapus');
      }

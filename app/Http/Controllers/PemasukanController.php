@@ -1,19 +1,19 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Laravel\Pemasukan;
-use Laravel\Kategori;
+use App\Pemasukan;
+use App\Kategori;
 use Illuminate\Http\Request;
-use Laravel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 class PemasukanController extends Controller
 {
     public function index()
     {
-        $data_pemasukan = \Laravel\Pemasukan::all();
-        $data_kategori = \Laravel\Kategori::where('jenis_kategori', 1)->get();
+        $data_pemasukan = \App\Pemasukan::all();
+        $data_kategori = \App\Kategori::where('jenis_kategori', 1)->get();
         return view('/keuangan/pemasukan/index', compact('data_pemasukan','data_kategori'));
     }
 
@@ -36,8 +36,8 @@ class PemasukanController extends Controller
      //function untuk masuk ke view edit
      public function edit ($id_pemasukan)
      {
-         $pemasukan = \Laravel\Pemasukan::find($id_pemasukan);
-         $data_kategori = \Laravel\Kategori::where('jenis_kategori', 1)->get();
+         $pemasukan = \App\Pemasukan::find($id_pemasukan);
+         $data_kategori = \App\Kategori::where('jenis_kategori', 1)->get();
          return view('/keuangan/pemasukan/editpemasukan', compact('pemasukan','data_kategori'));
      }
      public function update (Request $request, $id_pemasukan)
@@ -46,7 +46,7 @@ class PemasukanController extends Controller
             'jumlah' => 'numeric',
             'keterangan' => 'min:10',
          ]);
-         $pemasukan = \Laravel\Pemasukan::find($id_pemasukan);
+         $pemasukan = \App\Pemasukan::find($id_pemasukan);
          $pemasukan->update($request->all());
          $pemasukan->save();
          return redirect('/keuangan/pemasukan/index') ->with('sukses','Data Pemasukan Berhasil Diedit');
@@ -55,7 +55,7 @@ class PemasukanController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $pemasukan=\Laravel\Pemasukan::find($id);
+        $pemasukan=\App\Pemasukan::find($id);
         $pemasukan->delete();
         return redirect('/keuangan/pemasukan/index') ->with('sukses','Data Pemasukan Berhasil Dihapus');
     }
@@ -76,7 +76,7 @@ class PemasukanController extends Controller
       //function untuk hapus
       public function deletekategori($id)
       {
-          $kategori=\Laravel\Kategori::find($id);
+          $kategori=\App\Kategori::find($id);
           $kategori->delete();
           return redirect('/keuangan/pemasukan/index') ->with('sukses','Data Kategori Berhasil Dihapus');
       }
