@@ -43,7 +43,7 @@
                                         <select name="pesdik_id" id="pesdik_id" class="form-control select2bs4" required>
                                             <option value="">-- Pilih Peserta Didik --</option>
                                             @foreach($data_pesdik as $pesdik)
-                                            <option value="{{$pesdik->id}}">{{$pesdik->nisn}} {{$pesdik->nama}}</option>
+                                            <option value="{{$pesdik->pesdik_id}}">{{$pesdik->pesdik->nisn}} {{$pesdik->pesdik->nama}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -149,11 +149,11 @@
                                                             <?php $no++; ?>
                                                             <tr>
                                                                 <td>{{$no}}</td>
-                                                                <td>{{$pesdik->nisn}}</td>
-                                                                <td>{{$pesdik->nama}}</td>
-                                                                <td>{{$pesdik->rombel->nama_rombel}}</td>
+                                                                <td>{{$pesdik->pesdik->nisn}}</td>
+                                                                <td>{{$pesdik->pesdik->nama}}</td>
+                                                                <td>{{$pesdik->pesdik->rombel->nama_rombel}}</td>
                                                                 <?php
-                                                                $id = $pesdik->id;
+                                                                $id = $pesdik->pesdik->id;
                                                                 $total_setor = DB::table('setor')->where('setor.pesdik_id', '=', $id)
                                                                     ->sum('setor.jumlah');
                                                                 $total_tarik = DB::table('tarik')->where('tarik.pesdik_id', '=', $id)

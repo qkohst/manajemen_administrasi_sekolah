@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>LAPORAN_TRANSAKSI_PEMBAYARAN</title>
+  <title>LAPORAN_SETOR_TARIK_TUNAI</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome Icons -->
@@ -73,52 +73,96 @@
               </div>
               <!-- /.row -->
 
+              <table class="table">
+                <thead>
+                  <tr>
+                    <td colspan="8" align="center">
+                      <h6><b>LAPORAN SETOR DAN TARIK TUNAI TABUNGAN SISWA</b></h6>
+                    </td>
+                  </tr>
+                </thead>
+              </table>
+              <!-- /.row -->
+              <div class="row">
+                <div class="col-6">
+                  <i class="fas fa-credit-card"></i><b> Data Setor Tunai</b>
+                </div>
+                <div class="col-6">
+                  <i class="fas fa-credit-card"></i><b> Data Tarik Tunai</b>
+                </div>
+              </div>
+
               <!-- Table row -->
               <div class="row">
-                <div class="col-12 table-responsive">
+                <div class="col-6">
                   <table class="table table-bordered table-head-fixed bg-white">
                     <thead>
                       <tr>
-                        <td colspan="8" align="center">
-                          <h6><b>LAPORAN TRANSAKSI PEMBAYARAN</b></h6>
-                        </td>
-                      </tr>
-                      <tr>
                         <th>No.</th>
-                        <th>Nama Siswa </th>
-                        <th>Kelas</th>
-                        <th>Rincian</th>
-                        <th>Nominal Dibayar</th>
-                        <th>Tanggal Pembayaran</th>
+                        <th>Nama Pesdik</th>
+                        <th>Kelas Saat Ini </th>
+                        <th>Tanggal Setor</th>
+                        <th>Jumlah</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php $no = 0; ?>
-                      @foreach($data_transaksi as $transaksi)
+                      @foreach($data_setor as $setor)
                       <?php $no++; ?>
                       <tr>
                         <td>{{$no}}</td>
-                        <td>{{$transaksi->pesdik->nama}}</td>
-                        <td>{{$transaksi->pesdik->rombel->nama_rombel}} {{$transaksi->pesdik->rombel->tapel->semester}} {{$transaksi->pesdik->rombel->tapel->tahun}}</td>
-                        <td>{{$transaksi->tagihan->rincian}}</td>
-                        <td>@currency($transaksi->jumlah_bayar),00</td>
-                        <td>{{$transaksi->created_at}}</td>
+                        <td>{{$setor->pesdik->nama}}</td>
+                        <td>{{$setor->pesdik->rombel->nama_rombel}} {{$setor->pesdik->rombel->tapel->semester}} {{$setor->pesdik->rombel->tapel->tahun}}</td>
+                        <td>{{$setor->tanggal}}</td>
+                        <td>@currency($setor->jumlah),00</td>
                       </tr>
                       @endforeach
                     </tbody>
                     <tfoot>
                       <tr>
-                        <td colspan="4" align="center"><b>Jumlah Total Transaksi</b></td>
-                        <td colspan="2" align="left">
-                          <b>@currency($total_transaksi),00</b>
+                        <td colspan="4" align="center"><b>Total Setor Tunai</b></td>
+                        <td align="left">
+                          <b>@currency($total_setor),00</b>
                         </td>
                       </tr>
                     </tfoot>
                   </table>
                 </div>
-                <!-- /.col -->
+                <div class="col-6">
+                  <table class="table table-bordered table-head-fixed bg-white">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Nama Pesdik</th>
+                        <th>Kelas Saat Ini </th>
+                        <th>Tanggal Penarikan</th>
+                        <th>Jumlah</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $no = 0; ?>
+                      @foreach($data_tarik as $tarik)
+                      <?php $no++; ?>
+                      <tr>
+                        <td>{{$no}}</td>
+                        <td>{{$tarik->pesdik->nama}}</td>
+                        <td>{{$tarik->pesdik->rombel->nama_rombel}} {{$tarik->pesdik->rombel->tapel->semester}} {{$tarik->pesdik->rombel->tapel->tahun}}</td>
+                        <td>{{$tarik->tanggal}}</td>
+                        <td>@currency($tarik->jumlah),00</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="4" align="center"><b>Total Tarik Tunai</b></td>
+                        <td align="left">
+                          <b>@currency($total_tarik),00</b>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
               </div>
-              <!-- /.row -->
             </div>
             <!-- /.invoice -->
           </div><!-- /.col -->

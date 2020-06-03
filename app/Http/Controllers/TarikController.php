@@ -14,18 +14,25 @@ class TarikController extends Controller
     public function index()
     {
         $data_tarik = \App\Tarik::all();
-        $data_pesdik = \App\Pesdik::all();
+        $data_pesdik = \App\Setor::groupBy('pesdik_id')->get();
         return view('/tabungan/tarik/index', compact('data_tarik','data_pesdik'));
     }
 
     //function untuk tambah
     public function tambah (Request $request)
     {
+        $pilih_pesdik = $request->input('pesdik_id');
+        //Mengambil nilai rombel id
+        $pesdik = \App\Pesdik::select('rombel_id')->where('id', $pilih_pesdik)->get();
+        $data=$pesdik->first();
+        $rombel_id=$data->rombel_id;
+        
         $request->validate([
             'jumlah' => 'numeric',
         ]);
         $tarik = new Tarik();
-        $tarik->pesdik_id           = $request->input('pesdik_id');
+        $tarik->pesdik_id           = $pilih_pesdik;
+        $tarik->id_rombel           = $rombel_id;
         $tarik->tanggal             = $request->input('tanggal');
         $tarik->jumlah              = $request->input('jumlah');
         $tarik->keterangan          = $request->input('keterangan');

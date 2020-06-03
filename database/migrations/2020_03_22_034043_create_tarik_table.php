@@ -16,6 +16,7 @@ class CreateTarikTable extends Migration
         Schema::create('tarik', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pesdik_id');
+            $table->integer('id_rombel');
             $table->date('tanggal');
             $table->integer('jumlah');
             $table->string('keterangan');

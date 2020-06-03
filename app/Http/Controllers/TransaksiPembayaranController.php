@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\TransaksiPembayaran;
-use App\Tagihan;
-use App\Anggotarombel;
-use App\Pesdik;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class TransaksiPembayaranController extends Controller
@@ -50,7 +46,7 @@ class TransaksiPembayaranController extends Controller
     {
         //Olah Lagi
         $pesdik = $id_pesdik;
-        $pilihTagihan = $request->Input('pilih');
+        $pilihTagihan = $request->input('pilih');
         $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id_pesdik)->get();
         $tagihan_siswa =  \App\Tagihan::whereIn('id', $pilihTagihan)->get();
         //End Olah Lagi

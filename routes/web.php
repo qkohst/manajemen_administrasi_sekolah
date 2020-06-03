@@ -175,6 +175,12 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::post('/laporankeuangan/transaksipembayaran/cetak', 'LaporanController@tPembayaranCetak');
     
     Route::get('/laporankeuangan/setortariktunai/index', 'LaporanController@tSetorTarikIndex')->name('laporankeuangan.setortariktunai.index');
+    Route::post('/laporankeuangan/setortariktunai/filterByNama', 'LaporanController@tSetorTarikfilterByNama')->name('laporankeuangan.setortariktunai.filterByNama');
+    Route::post('/laporankeuangan/setortariktunai/filterByKelas', 'LaporanController@tSetorTarikfilterByKelas')->name('laporankeuangan.setortariktunai.filterByKelas');
+    Route::post('/laporankeuangan/setortariktunai/filterByTanggal', 'LaporanController@tSetorTarikfilterByTanggal')->name('laporankeuangan.setortariktunai.filterByTanggal');
+    Route::get('/laporankeuangan/setortariktunai/DownloadExcel', 'LaporanController@tSetorTarikDownloadExcel')->name('laporankeuangan.setortariktunai.DownloadExcel');
+    Route::post('/laporankeuangan/setortariktunai/cetak', 'LaporanController@tSetorTarikCetak');
+
     Route::get('/laporankeuangan/keuangansekolah/index', 'LaporanController@tKeuanganSekolah')->name('laporankeuangan.keuangansekolah.index');
 
 });

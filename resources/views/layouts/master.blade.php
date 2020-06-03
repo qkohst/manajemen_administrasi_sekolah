@@ -523,7 +523,16 @@
                 "info": true,
                 "autoWidth": true,
             });
+
             $("#agenda").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": true,
+            });
+            $("#agenda2").DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,

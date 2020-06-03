@@ -23,7 +23,7 @@
                                 <form action="/laporankeuangan/transaksipembayaran/filterByNama" method="POST">
                                     {{csrf_field()}}
                                     <label>Berdasarkan Nama Siswa</label>
-                                    <select name="filterNama" id="filterNama" class="form-control select2bs4" onchange="this.form.submit();">
+                                    <select name="filterNama" id="filterNama" class="form-control select2bs4 my-1 mr-sm-1" onchange="this.form.submit();">
                                         <option value="">-- Pilih Nama Siswa --</option>
                                         @foreach($daftar_nama as $list_nama)
                                         <option value="{{ $list_nama->pesdik_id }}">{{$list_nama->pesdik->nisn}}/{{$list_nama->pesdik->induk}} - {{$list_nama->pesdik->nama}}</option>
@@ -35,7 +35,7 @@
                                 <form action="/laporankeuangan/transaksipembayaran/filterByKelas" method="POST">
                                     {{csrf_field()}}
                                     <label>Berdasarkan Kelas</label>
-                                    <select name="filterKelas" id="filterKelas" class="form-control select2bs4" onchange="this.form.submit();">
+                                    <select name="filterKelas" id="filterKelas" class="form-control select2bs4 my-1 mr-sm-1" onchange="this.form.submit();">
                                         <option value="">-- Pilih Kelas --</option>
                                         @foreach($daftar_kelas as $list_kelas)
                                         <option value="{{ $list_kelas->id_rombel }}">{{$list_kelas->pesdik->rombel->nama_rombel}} {{$list_kelas->pesdik->rombel->tapel->semester}} {{$list_kelas->pesdik->rombel->tapel->tahun}}</option>
