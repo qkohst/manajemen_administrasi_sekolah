@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pengeluaran extends Model
 {
     protected $table = 'pengeluaran';
-    protected $fillable = ['kategori_id','tanggal','jumlah','keterangan'];
+    protected $fillable = ['kategori_id','jumlah','keterangan'];
 
     //function relasi ke tapel
     public function kategori()

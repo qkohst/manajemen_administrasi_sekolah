@@ -181,7 +181,11 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::get('/laporankeuangan/setortariktunai/DownloadExcel', 'LaporanController@tSetorTarikDownloadExcel')->name('laporankeuangan.setortariktunai.DownloadExcel');
     Route::post('/laporankeuangan/setortariktunai/cetak', 'LaporanController@tSetorTarikCetak');
 
-    Route::get('/laporankeuangan/keuangansekolah/index', 'LaporanController@tKeuanganSekolah')->name('laporankeuangan.keuangansekolah.index');
+    Route::get('/laporankeuangan/keuangansekolah/index', 'LaporanController@tKeuanganSekolahIndex')->name('laporankeuangan.keuangansekolah.index');
+    Route::post('/laporankeuangan/keuangansekolah/filterByKategori', 'LaporanController@tKeuanganSekolahfilterByKategori')->name('laporankeuangan.keuangansekolah.filterByKategori');
+    Route::post('/laporankeuangan/keuangansekolah/filterByTanggal', 'LaporanController@tKeuanganSekolahfilterByTanggal')->name('laporankeuangan.keuangansekolah.filterByTanggal');
+    Route::get('/laporankeuangan/keuangansekolah/DownloadExcel', 'LaporanController@tKeuanganSekolahDownloadExcel')->name('laporankeuangan.keuangansekolah.DownloadExcel');
+    Route::post('/laporankeuangan/keuangansekolah/cetak', 'LaporanController@tKeuanganSekolahCetak');
 
 });
 

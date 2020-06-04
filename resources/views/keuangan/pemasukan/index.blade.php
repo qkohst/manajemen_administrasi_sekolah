@@ -44,10 +44,6 @@
                                         </select>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="tanggal">Tanggal Uang Masuk</label>
-                                        <input value="{{old('tanggal')}}" name="tanggal" type="date" class="form-control bg-light" id="tanggal" required>
-                                    </div>
-                                    <div class="form-group row">
                                         <label for="jumlah">Jumlah</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -100,7 +96,7 @@
                                                             <?php $no++; ?>
                                                             <tr>
                                                                 <td>{{$no}}</td>
-                                                                <td>{{$pemasukan->tanggal}}</td>
+                                                                <td>{{$pemasukan->created_at}}</td>
                                                                 <td>@currency($pemasukan->jumlah),00</td>
                                                                 <td>{{$pemasukan->kategori->nama_kategori}}</td>
                                                                 <td>{{$pemasukan->keterangan}}</td>

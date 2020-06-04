@@ -44,10 +44,6 @@
                                         </select>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="tanggal">Tanggal Uang Keluar</label>
-                                        <input value="{{old('tanggal')}}" name="tanggal" type="date" class="form-control bg-light" id="tanggal" required>
-                                    </div>
-                                    <div class="form-group row">
                                         <label for="jumlah">Jumlah</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -100,7 +96,7 @@
                                                             <?php $no++; ?>
                                                             <tr>
                                                                 <td>{{$no}}</td>
-                                                                <td>{{$pengeluaran->tanggal}}</td>
+                                                                <td>{{$pengeluaran->created_at}}</td>
                                                                 <td>@currency($pengeluaran->jumlah),00</td>
                                                                 <td>{{$pengeluaran->kategori->nama_kategori}}</td>
                                                                 <td>{{$pengeluaran->keterangan}}</td>
@@ -146,9 +142,6 @@
                                                                 <td>{{$no}}</td>
                                                                 <td>{{$kategorikeluar->nama_kategori}}</td>
                                                                 <td>
-                                                                    <!-- <a href="#"
-                                                            class="btn btn-primary btn-sm my-1 mr-sm-1"><i
-                                                                class="nav-icon fas fa-pencil-alt"></i> Edit</a> -->
                                                                     @if (auth()->user()->role == 'admin')
                                                                     <a href="/keuangan/pengeluaran/{{$kategorikeluar->id}}/deletekategori" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                                                         Hapus</a>

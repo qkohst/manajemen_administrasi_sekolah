@@ -36,8 +36,6 @@
                         <option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
                         @endforeach
                     </select>
-                    <label for="tanggal">Tanggal Uang Masuk</label>
-                    <input value="{{$pengeluaran->tanggal}}" name="tanggal" type="date" class="form-control bg-light" id="tanggal" required>
                     <label for="jumlah">Jumlah</label>
                     <div class="input-group">
                         <div class="input-group-prepend">

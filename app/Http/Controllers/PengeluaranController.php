@@ -25,7 +25,6 @@ class PengeluaranController extends Controller
         ]);
        $pengeluaran = new Pengeluaran();
        $pengeluaran->kategori_id      = $request->input('kategori_id');
-       $pengeluaran->tanggal          = $request->input('tanggal');
        $pengeluaran->jumlah           = $request->input('jumlah');
        $pengeluaran->keterangan       = $request->input('keterangan');
        $pengeluaran->save();

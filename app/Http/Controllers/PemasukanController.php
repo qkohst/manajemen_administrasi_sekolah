@@ -26,7 +26,6 @@ class PemasukanController extends Controller
         ]);
        $pemasukan = new Pemasukan();
        $pemasukan->kategori_id      = $request->input('kategori_id');
-       $pemasukan->tanggal          = $request->input('tanggal');
        $pemasukan->jumlah           = $request->input('jumlah');
        $pemasukan->keterangan       = $request->input('keterangan');
        $pemasukan->save();

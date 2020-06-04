@@ -201,10 +201,76 @@ class LaporanController extends Controller
 
 
     //Laporan Keuangan Sekolah
-    public function tKeuanganSekolah()
+    public function tKeuanganSekolahIndex()
     {
+        $daftar_kategori = \App\Kategori::all();
+
+        $data_id_kategori = \App\Kategori::all();
+        $tgl_1 = \App\Pemasukan::first();
+        $tgl_awal = $tgl_1->created_at;
+        $tgl_akhir = Carbon::now();
+
+
         $data_pemasukan = \App\Pemasukan::all();
+        $total_pemasukan = \App\Pemasukan::all()->sum('jumlah');
+
         $data_pengeluaran = \App\Pengeluaran::all();
-        return view('/laporankeuangan/keuangansekolah/index', compact('data_pemasukan', 'data_pengeluaran'));
+        $total_pengeluaran = \App\Pengeluaran::all()->sum('jumlah');
+
+        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori','data_id_kategori','tgl_awal','tgl_akhir','data_pemasukan','total_pemasukan', 'data_pengeluaran','total_pengeluaran'));
+    }
+
+    public function tKeuanganSekolahfilterByKategori(Request $request)
+    {
+        $kategori_id = $request->input('filterKategori');
+
+        $data_id_kategori = \App\Kategori::select('id')->where('id', $kategori_id)->get();
+        $tgl_1 = \App\Pemasukan::first();
+        $tgl_awal = $tgl_1->created_at;
+        $tgl_akhir = Carbon::now();
+
+
+        $daftar_kategori = \App\Kategori::all();
+
+        $data_pemasukan = \App\Pemasukan::where('kategori_id', $kategori_id)->get();
+        $total_pemasukan = \App\Pemasukan::where('kategori_id', $kategori_id)->sum('jumlah');
+
+        $data_pengeluaran = \App\Pengeluaran::where('kategori_id', $kategori_id)->get();
+        $total_pengeluaran = \App\Pengeluaran::where('kategori_id', $kategori_id)->sum('jumlah');
+
+        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori','data_id_kategori','tgl_awal','tgl_akhir','data_pemasukan','total_pemasukan', 'data_pengeluaran','total_pengeluaran'));
+    }
+
+    public function tKeuanganSekolahfilterByTanggal(Request $request)
+    {
+        $tgl_awal = $request->input('tgl_awal');
+        $tgl_akhir = $request->input('tgl_akhir');
+        $data_id_kategori = \App\Kategori::all();
+
+        $daftar_kategori = \App\Kategori::all();
+
+        $data_pemasukan = \App\Pemasukan::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $total_pemasukan = \App\Pemasukan::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
+
+        $data_pengeluaran = \App\Pengeluaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $total_pengeluaran = \App\Pengeluaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
+
+        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori','data_id_kategori','tgl_awal','tgl_akhir','data_pemasukan','total_pemasukan', 'data_pengeluaran','total_pengeluaran'));
+    }
+
+    public function tKeuanganSekolahCetak(Request $request)
+    {
+        $inst = \App\Instansi::first();
+        $data_id_kategori = $request->id_kategori;
+        $tgl_awal = $request->input('tgl_awal');
+        $tgl_akhir = $request->input('tgl_akhir');
+
+        $data_pemasukan = \App\Pemasukan::whereIn('kategori_id', $data_id_kategori)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $total_pemasukan = \App\Pemasukan::whereIn('kategori_id', $data_id_kategori)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
+
+        $data_pengeluaran = \App\Pengeluaran::whereIn('kategori_id', $data_id_kategori)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $total_pengeluaran = \App\Pengeluaran::whereIn('kategori_id', $data_id_kategori)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
+
+        return view('/laporankeuangan/keuangansekolah/cetak', compact('inst', 'tgl_awal', 'tgl_akhir', 'data_pemasukan', 'total_pemasukan', 'data_pengeluaran', 'total_pengeluaran'));
     }
 }
