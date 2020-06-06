@@ -1,3 +1,6 @@
+![Manajemen_Administrasi_Sekolah Login](https://user-images.githubusercontent.com/57386598/83773200-7115dd00-a6ae-11ea-9912-6e2ac4ca1758.png)
+![Manajemen_Administrasi_Sekolah dasboard](https://user-images.githubusercontent.com/57386598/83773196-6eb38300-a6ae-11ea-805d-ed96013149b4.png)
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
