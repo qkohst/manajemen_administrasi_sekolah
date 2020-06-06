@@ -36,7 +36,7 @@
                     <label for="tanggal_lahir">Tanggal Lahir</label>
                     <input value="{{$pesdik->tanggal_lahir}}" name="tanggal_lahir" type="date" class="form-control" id="tanggal_lahir" required>
                     <label for="jenis_pendaftaran">Jenis Pendaftaran</label>
-                    <select name="jenis_pendaftaran" id="jenis_pendaftaran" class="form-control" required>
+                    <select name="jenis_pendaftaran" id="jenis_pendaftaran" class="form-control" disabled>
                         <option value="Siswa Baru" @if ($pesdik->jenis_pendaftaran == 'Siswa Baru') selected @endif>Siswa Baru</option>
                         <option value="Pindahan" @if ($pesdik->jenis_pendaftaran == 'Pindahan') selected @endif>Pindahan</option>
                         <option value="Mengulang" @if ($pesdik->jenis_pendaftaran == 'Mengulang') selected @endif>Mengulang</option>

@@ -178,7 +178,7 @@
                     <a class="text-white">
                         <p>
                             MANAJEMEN KEUANGAN
-                            <span class="right badge badge-warning">Progress</span>
+                            <span class="right badge badge-warning">New</span>
                         </p>
                     </a>
                     <!-- Add icons to the links using the .nav-icon class
@@ -267,7 +267,7 @@
                             <p>
                                 Cetak Laporan
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-warning">Progress</span>
+                                <span class="right badge badge-warning">New</span>
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -289,7 +289,7 @@
                                 <a href="/laporankeuangan/keuangansekolah/index" class="nav-link text-white">
                                     <i class="nav-icon fas fa-dollar-sign"></i>
                                     <p>Keuangan Sekolah</p>
-                                    <span class="right badge badge-warning">onProgress</span>
+                                    <span class="right badge badge-warning">New</span>
                                 </a>
                             </li>
                         </ul>
@@ -536,6 +536,14 @@
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": true,
+            });
+            $("#notOrdering").DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
                 "ordering": false,
                 "info": true,
                 "autoWidth": true,

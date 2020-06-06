@@ -21,7 +21,6 @@ class PesdikController extends Controller
     public function index()
     {
         $data_pesdik = \App\Pesdik::where('status', 'Aktif')->get();
-        // $data_kategori = \App\Kategori::where('jenis_kategori', 2)->get();
         return view('pesdik.index',['data_pesdik'=> $data_pesdik]);
     }
 
@@ -29,7 +28,8 @@ class PesdikController extends Controller
     public function create()
     {
         $data_pesdik = \App\Pesdik::all();
-        $data_rombel = \App\Rombel::all();
+        $tapel_terakhir = \App\Rombel::max('tapel_id');
+        $data_rombel = \App\Rombel::where('tapel_id',$tapel_terakhir)->get();
         return view('pesdik.create', ['data_pesdik' => $data_pesdik],['data_rombel'=>$data_rombel]);
     }
 
@@ -65,29 +65,10 @@ class PesdikController extends Controller
         public function registrasi ($id_pesdik)
         {
             $pesdik = \App\Pesdik::find($id_pesdik);
-            // $data_rombel = \App\Rombel::orderByRaw('tapel_id DESC')->limit(1)->get();
             $data_rombel = \App\Rombel::all();
             return view('pesdik/registrasi',['pesdik'=>$pesdik],['data_rombel'=>$data_rombel]);
         }
 
-        //function untuk registrasi keluar
-        public function naik(Request $request, $id_pesdik)
-        {
-            $pesdik=\App\Pesdik::find($id_pesdik);
-            $data_rombel = \App\Rombel::all();
-            //deklarasi variabel
-            $id_pesdik          = $pesdik->id;
-
-            $anggotarombel = new Anggotarombel();
-            $anggotarombel->pesdik_id       = $id_pesdik;
-            $anggotarombel->rombel_id       = $request->input('rombel_id');
-            $anggotarombel->save();
-
-            $pesdik->rombel_id = $request->input('rombel_id');
-            $pesdik->update();
-            // $pesdik->delete();
-            return redirect('pesdik/index') ->with('sukses','Registrasi Peserta Didik, Berhasil');
-        }
         //function untuk registrasi keluar
         public function keluar(Request $request, $id_pesdik)
         {
@@ -183,8 +164,7 @@ class PesdikController extends Controller
         public function edit ($id_pesdik)
         {
             $pesdik = \App\Pesdik::find($id_pesdik);
-            $data_rombel = \App\Rombel::all();
-            return view('pesdik/edit',['pesdik'=>$pesdik],['data_rombel'=>$data_rombel]);
+            return view('pesdik/edit',['pesdik'=>$pesdik]);
         }
         public function update (Request $request, $id_pesdik)
         {

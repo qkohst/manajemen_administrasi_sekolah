@@ -47,11 +47,8 @@
                         @endforeach
                     </select>
                     <label for="tapel_id">Tahun Pelajaran</label>
-                    <select name="tapel_id" class="form-control bg-light" id="tapel_id" required>
+                    <select name="tapel_id" class="form-control bg-disabled" id="tapel_id" disabled>
                         <option value="{{$rombel->tapel_id}}">{{$rombel->tapel->tahun}} ({{$rombel->tapel->semester}})</option>
-                        @foreach($data_tapel as $tapel)
-                        <option value="{{$tapel->id}}">{{$tapel->tahun}} ({{$tapel->semester}})</option>
-                        @endforeach
                     </select>
                 </div>
             </div>

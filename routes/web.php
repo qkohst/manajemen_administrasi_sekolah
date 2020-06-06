@@ -88,6 +88,8 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::get('/rombel/index', 'RombelController@index');
     Route::post('/rombel/tambah', 'RombelController@tambah');
     Route::get('/rombel/{id}/anggota', 'RombelController@anggota');
+    Route::get('/rombel/{rombel}/tambahAnggota', 'RombelController@tambahAnggota');
+    Route::post('/rombel/{id_rombel}/simpanAnggota', 'RombelController@simpanAnggota');
     Route::get('/rombel/{id}/edit', 'RombelController@edit');
     Route::post('/rombel/{id}/update', 'RombelController@update');
     Route::get('/rombel/{id}/delete', 'RombelController@delete');
@@ -106,7 +108,6 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
     Route::get('/pesdik/{id}/delete', 'PesdikController@delete');
 
     Route::get('/pesdik/{id}/registrasi', 'PesdikController@registrasi');
-    Route::post('/pesdik/{id}/naik', 'PesdikController@naik');
     Route::post('/pesdik/{id}/keluar', 'PesdikController@keluar');
     Route::get('/pesdik/keluarindex', 'PesdikController@keluarindex');
     Route::post('/pesdik/{id}/alumni', 'PesdikController@alumni');

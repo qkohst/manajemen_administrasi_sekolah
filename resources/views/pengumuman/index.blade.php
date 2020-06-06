@@ -31,7 +31,7 @@
         <div>
             <div class="col">
                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambahPengumuman"><i class="fas fa-plus"></i>
-                    Tambah Data
+                    Posting Pengumuman
                 </button>
             </div>
             <br>
@@ -94,7 +94,7 @@
                                 </div>
                                 <hr>
                                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i>
-                                    SIMPAN</button>
+                                    POSTING</button>
                             </form>
                         </div>
                     </div>

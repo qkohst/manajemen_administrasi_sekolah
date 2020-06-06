@@ -8,6 +8,7 @@ use App\Tapel;
 use App\Anggotarombel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class RombelController extends Controller
 {
@@ -18,43 +19,78 @@ class RombelController extends Controller
      */
     public function index()
     {
-        $data_rombel = \App\Rombel::all();
         $data_guru = \App\Guru::all();
-        $data_tapel = \App\Tapel::all();
-        return view('rombel.index', compact('data_rombel','data_guru','data_tapel'));
+        $tapel_terakhir = \App\Tapel::max('id');
+        $data_tapel = \App\Tapel::where('id', $tapel_terakhir)->get();
+        $data_rombel = \App\Rombel::where('tapel_id', $tapel_terakhir)->get();
+        return view('rombel.index', compact('data_rombel', 'data_guru', 'data_tapel'));
     }
 
     //function untuk tambah
-    public function tambah (Request $request)
+    public function tambah(Request $request)
     {
         $request->validate([
             'nama_rombel' => 'min:3',
         ]);
-       $rombel = new Rombel();
-       $rombel->tapel_id   = $request->input('tapel_id');
-       $rombel->kelas   = $request->input('kelas');
-       $rombel->nama_rombel   = $request->input('nama_rombel');
-       $rombel->wali_kelas   = $request->input('wali_kelas');
-       $rombel->save();
-       return redirect('/rombel/index')->with("sukses", "Data Rombongan Belajar Berhasil Ditambahkan");
+        $rombel = new Rombel();
+        $rombel->tapel_id   = $request->input('tapel_id');
+        $rombel->kelas   = $request->input('kelas');
+        $rombel->nama_rombel   = $request->input('nama_rombel');
+        $rombel->wali_kelas   = $request->input('wali_kelas');
+        $rombel->save();
+        return redirect('/rombel/index')->with("sukses", "Data Rombongan Belajar Berhasil Ditambahkan");
     }
 
-     //function untuk anggota Rombel
+    //function untuk anggota Rombel
     public function anggota($id_rombel)
-    {  
-        $data_anggota = \App\Anggotarombel::where('rombel_id',$id_rombel)->get();
-        return view('rombel.anggota',['data_anggota'=> $data_anggota]);
+    {
+        $data_anggota = \App\Pesdik::where('rombel_id', $id_rombel)->get();
+        $jumlah_anggota_L = \App\Pesdik::where('rombel_id', $id_rombel)->where('jenis_kelamin',"Laki-Laki")->count();
+        $jumlah_anggota_P = \App\Pesdik::where('rombel_id', $id_rombel)->where('jenis_kelamin',"Perempuan")->count();
+        $rombel = $id_rombel;
+        return view('rombel.anggota', compact('data_anggota', 'rombel','jumlah_anggota_L','jumlah_anggota_P'));
     }
 
-     //function untuk masuk ke view edit
-    public function edit ($id_rombel)
+    public function tambahAnggota($rombel)
+    {
+        $id_rombel = $rombel;
+        $tapel_terakhir = \App\Tapel::max('id');
+        $rombel_tapel_sebelumnya = \App\Rombel::select('id')->where('tapel_id', $tapel_terakhir - 1)->get();
+        $data_pesdik_tapel_sebelumnya = \App\Pesdik::whereIn('rombel_id', $rombel_tapel_sebelumnya)->where('status', "Aktif")->get();
+        return view('rombel.tambahAnggota', compact('id_rombel', 'data_pesdik_tapel_sebelumnya'));
+    }
+
+    public function simpanAnggota(Request $request, $id_rombel)
+    {
+        $rombel = $id_rombel;
+        $pesdik_id = $request->input('pilih');
+
+        //Untuk Menmbahkan data pada tabel anggota rombel
+        for ($count = 0; $count < count($pesdik_id); $count++) {
+            $data = array(
+                'pesdik_id' => $pesdik_id[$count],
+                'rombel_id'  => $rombel,
+                'created_at'  => Carbon::now(),
+                'updated_at'  => Carbon::now()
+
+            );
+            $insert_data[] = $data;
+        }
+        Anggotarombel::insert($insert_data);
+
+        //Untuk Update Data Pada Table Pesdik
+        $pesdik_dipilih = \App\Pesdik::whereIn('id', $pesdik_id)->update(['rombel_id' => $rombel]);
+        return redirect('rombel/index')->with('sukses', 'Data Anggota Rombel Berhasil Ditambahkan');
+    }
+
+    //function untuk masuk ke view edit
+    public function edit($id_rombel)
     {
         $rombel = \App\Rombel::find($id_rombel);
         $data_guru = \App\Guru::all();
-        $data_tapel = \App\Tapel::all();
-        return view('rombel/edit', compact('rombel','data_guru','data_tapel'));
+        return view('rombel/edit', compact('rombel', 'data_guru'));
     }
-    public function update (Request $request, $id_rombel)
+    public function update(Request $request, $id_rombel)
     {
         $request->validate([
             'nama_rombel' => 'min:3',
@@ -62,13 +98,13 @@ class RombelController extends Controller
         $rombel = \App\Rombel::find($id_rombel);
         $rombel->update($request->all());
         $rombel->save();
-        return redirect('rombel/index') ->with('sukses','Data Rombongan Belajar Berhasil Diedit');
+        return redirect('rombel/index')->with('sukses', 'Data Rombongan Belajar Berhasil Diedit');
     }
-     //function untuk hapus
-     public function delete($id)
-     {
-         $rombel=\App\Rombel::find($id);
-         $rombel->delete();
-         return redirect('rombel/index') ->with('sukses','Data Rombongan Belajar Berhasil Dihapus');
-     }
+    //function untuk hapus
+    public function delete($id)
+    {
+        $rombel = \App\Rombel::find($id);
+        $rombel->delete();
+        return redirect('rombel/index')->with('sukses', 'Data Rombongan Belajar Berhasil Dihapus');
+    }
 }

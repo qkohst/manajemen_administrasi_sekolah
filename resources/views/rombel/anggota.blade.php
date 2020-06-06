@@ -31,6 +31,7 @@
         <div>
             <div class="col">
                 <a class="btn btn-danger btn-sm my-1 mr-sm-1" href="/rombel/index" role="button"><i class="fas fa-undo"></i> Kembali</a>
+                <a class="btn btn-success btn-sm my-1 mr-sm-1" href="/rombel/{{$rombel}}/tambahAnggota" role="button"><i class="fas fa-plus"></i> Tambah Anggota</a>
                 <br>
             </div>
         </div>
@@ -43,12 +44,6 @@
                                 <th>No.</th>
                                 <th>Nama Lengkap</th>
                                 <th>Jenis Kelamin</th>
-                                <th>NISN</th>
-                                <th>No. Induk</th>
-                                <th>Rombel</th>
-                                <th>Tempat Lahir</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Jenis Pendaftaran</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -58,18 +53,29 @@
                             <?php $no++; ?>
                             <tr>
                                 <td>{{$no}}</td>
-                                <td>{{$anggota->pesdik->nama}}</td>
-                                <td>{{$anggota->pesdik->jenis_kelamin}}</td>
-                                <td>{{$anggota->pesdik->nisn}}</td>
-                                <td>{{$anggota->pesdik->induk}}</td>
-                                <td>{{$anggota->pesdik->rombel->nama_rombel}}</td>
-                                <td>{{$anggota->pesdik->tempat_lahir}}</td>
-                                <td>{{$anggota->pesdik->tanggal_lahir}}</td>
-                                <td>{{$anggota->pesdik->jenis_pendaftaran}}</td>
-                                <td>{{$anggota->pesdik->status}}</td>
+                                <td>{{$anggota->nama}}</td>
+                                <td>{{$anggota->jenis_kelamin}}</td>
+                                <td>{{$anggota->status}}</td>
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td>Laki-Laki</td>
+                                <td colspan="2">: {{$jumlah_anggota_L}} Siswa</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Perempuan</td>
+                                <td colspan="2">: {{$jumlah_anggota_P}} Siswi</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>Jumlah</b></td>
+                                <td colspan="2"><b>: {{$jumlah_anggota_L+$jumlah_anggota_P}} Anggota</b></td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

@@ -36,7 +36,7 @@
                                     <img class="profile-user-img img-fluid img-circle" src="/adminLTE/img/user.png" alt="User profile picture">
                                 </div>
                                 <h3 class="profile-username text-center"><b>{{$pesdik->nama}}</b></h3>
-                                <p class="text-muted text-center">{{$pesdik->rombel->nama_rombel}}</p>
+                                <p class="text-muted text-center">{{$pesdik->rombel->nama_rombel}} {{$pesdik->rombel->tapel->semester}}</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Tempat, Tenggal lahir</b>
@@ -68,41 +68,21 @@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active btn-sm" href="#naik" data-toggle="tab"><i class="far fa-smile-beam"></i> Kenaikan Tingkat</a></li>
-                                    <li class="nav-item"><a class="nav-link btn-sm" href="#keluar" data-toggle="tab"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                                    <li class="nav-item"><a class="nav-link active btn-sm" href="#keluar" data-toggle="tab"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                                    @if ($pesdik->rombel->kelas == '9' && $pesdik->rombel->tapel->semester == 'Semester Genap')
                                     <li class="nav-item"><a class="nav-link btn-sm" href="#lulus" data-toggle="tab"><i class="fas fa-user-graduate"></i> Lulus</a></li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="card-body">
                                 <div class="tab-content">
-                                    <div class="active tab-pane" id="naik">
-                                        <form action="/pesdik/{{$pesdik->id}}/naik" method="POST" enctype="multipart/form-data">
-                                            {{csrf_field()}}
-                                            <div class="form-group row">
-                                                <label for="rombel_id" class="col-sm-3 col-form-label">Naik Ke Rombel</label>
-                                                <div class="col-sm-4">
-                                                    <select name="rombel_id" class="custom-select my-1 mr-sm-1 bg-light" id="rombel_id" required>
-                                                        <option value="">-- Pilih Rombel --</option>
-                                                        @foreach($data_rombel as $rombel)
-                                                        <option value="{{$rombel->id}}">(Tingkat {{$rombel->kelas}}) {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}} {{$rombel->nama_rombel}}
-                                                        </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> SIMPAN</button>
-                                            <a class="btn btn-danger btn-sm" href="/pesdik/index" role="button"><i class="fas fa-undo"></i> BATAL</a>
-                                        </form>
-                                    </div>
-
-                                    <div class="tab-pane" id="keluar">
+                                    <div class="active tab-pane" id="keluar">
                                         <form action="/pesdik/{{$pesdik->id}}/keluar" method="POST" enctype="multipart/form-data">
                                             {{csrf_field()}}
                                             <div class="form-group row">
                                                 <label for="keluar_karena" class="col-sm-3 col-form-label">Keluar Karena</label>
                                                 <div class="col-sm-4">
-                                                    <select name="keluar_karena" class="custom-select my-1 mr-sm-1 bg-light" id="keluar_karena" required>
+                                                    <select name="keluar_karena" class="form-control my-1 mr-sm-1 bg-light" id="keluar_karena" required>
                                                         <option value="">-- Pilih Jenis Keluar --</option>
                                                         <option value="Mutasi">Mutasi</option>
                                                         <option value="Dikeluarkan">Dikeluarkan</option>

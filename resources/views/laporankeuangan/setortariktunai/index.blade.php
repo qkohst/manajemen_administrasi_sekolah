@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <h6 class="card-header bg-secondary p-2"><i class="fas fa-search"></i> Filter Data</h6>
+                    <h6 class="card-header bg-secondary p-2"><i class="fas fa-filter"></i> Filter Data</h6>
                     <div class="card-body bg-light">
                         <div class="row">
                             <div class="col-md-3">

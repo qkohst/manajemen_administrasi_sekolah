@@ -129,6 +129,9 @@
                                                     @if($tagih->nominal != $tagih->jumlah_bayar)
                                                     <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}" onclick="myFunction()">
                                                     @endif
+                                                    @if($tagih->nominal = $tagih->jumlah_bayar)
+                                                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}" disabled>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             @endforeach
