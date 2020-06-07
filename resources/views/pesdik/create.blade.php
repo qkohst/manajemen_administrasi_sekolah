@@ -21,7 +21,7 @@
                     <label for="nama">Nama Siswa</label>
                     <input value="{{old('nama')}}" name="nama" type="text" class="form-control" id="nama" placeholder="Nama Siswa" required>
                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                    <select name="jenis_kelamin" class="custom-select my-1 mr-sm-1 bg-light" id="jenis_kelamin" required>
+                    <select name="jenis_kelamin" class="form-control my-1 mr-sm-1 bg-light" id="jenis_kelamin" required>
                         <option value="">-- Pilih Jenis Kelamin --</option>
                         <option value="Laki-Laki">Laki-laki</option>
                         <option value="Perempuan">Perempuan</option>
@@ -31,7 +31,7 @@
                     <label for="induk">Induk</label>
                     <input value="{{old('induk')}}" name="induk" type="text" class="form-control" id="induk" placeholder="Induk" required>
                     <label for="rombel">Rombongan Belajar</label>
-                    <select name="rombel" class="custom-select my-1 mr-sm-2 bg-light" id="rombel" required>
+                    <select name="rombel" class="form-control my-1 mr-sm-2 bg-light" id="rombel" required>
                         <option value="">-- Pilih Rombongan Belajar --</option>
                         @foreach($data_rombel as $rombel)
                         <option value="{{$rombel->id}}">(Tingkat {{$rombel->kelas}}) {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}} {{$rombel->nama_rombel}}
@@ -45,11 +45,10 @@
                     <label for="tanggal_lahir">Tanggal Lahir</label>
                     <input value="{{old('tanggal_lahir')}}" name="tanggal_lahir" type="date" class="form-control bg-light" id="tanggal_lahir" required>
                     <label for="jenis_pendaftaran">Jenis Pendaftaran</label>
-                    <select name="jenis_pendaftaran" class="custom-select my-1 mr-sm-1 bg-light" id="jenis_pendaftaran" required>
+                    <select name="jenis_pendaftaran" class="form-control my-1 mr-sm-1 bg-light" id="jenis_pendaftaran" required>
                         <option value="">-- Pilih Jenis Pendaftaran --</option>
                         <option value="Siswa Baru">Siswa Baru</option>
                         <option value="Pindahan">Pindahan</option>
-                        <option value="Mengulang">Mengulang</option>
                     </select>
                     <label for="tanggal_masuk">Tanggal Masuk</label>
                     <input value="{{old('tanggal_masuk')}}" name="tanggal_masuk" type="date" class="form-control bg-light" id="tanggal_masuk" required>

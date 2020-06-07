@@ -3,6 +3,7 @@
 <div class="row">
   <div class="container-fluid">
     <!-- Info boxes -->
+    @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiSurat')
     <div class="row">
       <div class="flex-fill col-md-3" style="padding: 4px 4px 4px 4px">
         <div class="info-box md-3">
@@ -47,7 +48,6 @@
         <!-- /.info-box -->
       </div>
       <!-- /.col -->
-      @if (auth()->user()->role == 'admin')
       <div class=" flex-fill" style="padding: 4px 4px 4px 4px">
         <div class="info-box md-3">
           <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user"></i></span>
@@ -59,11 +59,12 @@
         </div>
         <!-- /.info-box -->
       </div>
-      @endif
       <!-- /.col -->
     </div>
+    @endif
     <!-- /.row -->
   </div>
+  @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiKeuangan')
   <div class="col-md-9">
     <section class="content card" style="padding: 15px 15px 40px 15px ">
       <div class="box">
@@ -86,7 +87,7 @@
                 <div class="icon">
                   <i class="nav-icon fas fa-graduation-cap"></i>
                 </div>
-                <a href="/guru/index" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+                <p class="small-box-footer">Jumlah Guru</p>
               </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -99,7 +100,7 @@
                 <div class="icon">
                   <i class="nav-icon fas fa-graduation-cap"></i>
                 </div>
-                <a href="/tendik/index" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+                <p class="small-box-footer">Jumlah Tenaga Kependidikan</p>
               </div>
             </div>
             <!-- ./col -->
@@ -107,26 +108,26 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>{{DB::table('pesdik')->count()}}</h3>
+                  <h3>{{DB::table('pesdik')->where('status',"Aktif")->count()}}</h3>
                   <p>Peserta Didik</p>
                 </div>
                 <div class="icon">
                   <i class="nav-icon fas fa-child nav-icon"></i>
                 </div>
-                <a href="/pesdik/index" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+                <p class="small-box-footer">Jumlah Peserta Didik</p>
               </div>
             </div>
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>{{DB::table('rombel')->count()}}</h3>
+                  <h3>{{DB::table('rombel')->where('tapel_id', DB::table('rombel')->MAX('tapel_id'))->count()}}</h3>
                   <p>Rombel</p>
                 </div>
                 <div class="icon">
                   <i class="nav-icon fas fa-users"></i>
                 </div>
-                <a href="/rombel/index" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+                <p class="small-box-footer">Jumlah Rombongan Belajar</p>
               </div>
             </div>
           </div>
@@ -169,6 +170,7 @@
       </div>
     </section>
   </div>
+  @endif
   <div class="col-md-6">
     <section class="content card" style="padding: 10px 10px 10px 10px ">
       <div class="box">
@@ -219,22 +221,39 @@
       <div class="box">
         <div class="row">
           <div class="col">
-            <h4><i class="nav-icon fas fa-user-tag my-0 btn-sm-1"></i> Riwayat Login</h4>
+            <h4><i class="nav-icon fas fa-headset my-0 btn-sm-1"></i> Team Support</h4>
             <hr>
           </div>
         </div>
         <div class="card-body p-0">
           <ul class="products-list product-list-in-card pl-2 pr-2">
-            @foreach($data_pengguna as $pengguna)
+            @foreach($data_admin as $admin)
             <li class="item">
               <div class="product-img">
-                <img src="/adminLTE/img/user.png" alt="Product Image" class="img-size-50">
+                <img src="/adminLTE/img/support.png" alt="Product Image" class="img-size-50">
               </div>
               <div class="product-info">
-                <a href="javascript:void(0)" class="product-title">{{$pengguna->name}}
-                  <span class="badge badge-warning float-right">{{$pengguna->role}}</span></a>
+                <a href="javascript:void(0)" class="product-title">{{$admin->name}}
+                  <span class="badge badge-warning float-right">Administrator</span></a>
                 <span class="product-description">
-                  Email : {{$pengguna->email}}
+                  Email : {{$admin->email}}
+                </span>
+              </div>
+            </li>
+            @endforeach
+            @foreach($data_petugas as $petugas)
+            <li class="item">
+              <div class="product-img">
+                <img src="/adminLTE/img/support.png" alt="Product Image" class="img-size-50">
+              </div>
+              <div class="product-info">
+                <a href="javascript:void(0)" class="product-title">{{$petugas->nama}}
+                  <span class="badge badge-warning float-right">{{$petugas->tugas}}</span></a>
+                <span class="product-description">
+                  Email : {{$petugas->email}}
+                </span>
+                <span class="product-description text-info">
+                  HP : {{$petugas->no_hp}}
                 </span>
               </div>
             </li>
@@ -250,25 +269,22 @@
       <div class="box">
         <div class="row">
           <div class="col">
-            <h4><i class="nav-icon fas fa-headset my-0 btn-sm-1"></i> Team Support</h4>
+            <h4><i class="nav-icon fas fa-user-tag my-0 btn-sm-1"></i> Riwayat Login</h4>
             <hr>
           </div>
         </div>
         <div class="card-body p-0">
           <ul class="products-list product-list-in-card pl-2 pr-2">
-            @foreach($data_pengguna as $pengguna)
+            @foreach($data_admin as $pengguna)
             <li class="item">
               <div class="product-img">
-                <img src="/adminLTE/img/support.png" alt="Product Image" class="img-size-50">
+                <img src="/adminLTE/img/user.png" alt="Product Image" class="img-size-50">
               </div>
               <div class="product-info">
                 <a href="javascript:void(0)" class="product-title">{{$pengguna->name}}
                   <span class="badge badge-warning float-right">{{$pengguna->role}}</span></a>
                 <span class="product-description">
                   Email : {{$pengguna->email}}
-                </span>
-                <span class="product-description text-info">
-                  HP : 085232077932
                 </span>
               </div>
             </li>

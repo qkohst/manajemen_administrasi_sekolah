@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +26,11 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/login');
+    }
+    public function ubahpassword($id)
+    {
+        $data_pengguna= User::findorfail($id);
+        return view('auths.ubahpassword', compact('data_pengguna'));
     }
 
 }

@@ -14,9 +14,10 @@
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
+Route::get('/auths/{id}/ubahpassword', 'AuthController@ubahpassword');
 Route::get('/logout', 'AuthController@logout');
 
-Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasiKeuangan,PetugasAdministrasiSurat']], function () {
 
     Route::get('/', function () {
         return view('/dashboard');
@@ -190,7 +191,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,petugas']], function () 
 
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasiKeuangan,PetugasAdministrasiSurat']], function () {
     Route::resource('/instansi', 'InstansiController');
     Route::resource('/pengguna', 'PenggunaController');
 });

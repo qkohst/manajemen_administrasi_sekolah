@@ -69,8 +69,12 @@
                             <i class="fas fa-user mr-2"></i> Lihat Profil
                         </a>
                         <div class="dropdown-divider"></div>
+                        <a href="/auths/{{auth()->user()->id}}/ubahpassword" class="dropdown-item">
+                            <i class="fas fa-user-cog mr-2"></i> Ubah Password
+                        </a>
+                        <div class="dropdown-divider"></div>
                         <a href="/logout" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                            <i class="fas fa-sign-out-alt mr-2"></i> Keluar
                         </a>
                     </div>
                 </li>
@@ -87,6 +91,7 @@
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
+                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiSurat')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Sidebar Menu -->
                     <a>
@@ -172,7 +177,9 @@
                         </a>
                     </li>
                 </ul>
+                @endif
 
+                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiKeuangan')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Sidebar Menu -->
                     <a class="text-white">
@@ -295,6 +302,7 @@
                         </ul>
                     </li>
                 </ul>
+                @endif
 
                 @if (auth()->user()->role == 'admin')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -406,6 +414,7 @@
                             <span class="right badge badge-primary">New</span>
                         </a>
                     </li>
+                    @if (auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a href="{{ route('pengguna.index') }}" class="nav-link">
                             <i class="fas fa-user-cog nav-icon"></i>
@@ -414,6 +423,7 @@
                             </p>
                         </a>
                     </li>
+                    @endif
                 </ul>
                 <!-- /.sidebar-menu -->
             </div>
@@ -615,6 +625,13 @@
                         </div>
                     </div>
                 </div>
+                <!-- <div class="modal-footer center">
+                    <div class="col-12">
+                        <center>
+                            <a href="/pengguna/{{auth()->user()->id}}/edit" class="btn btn-primary"><i class="nav-icon fas fa-pencil-alt"></i> Ubah Password</a>
+                        </center>
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>

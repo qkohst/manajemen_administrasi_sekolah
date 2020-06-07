@@ -116,9 +116,8 @@
                                     <label for="kode">Bertugas Sebagai</label>
                                     <select name="tugas" class="custom-select my-1 mr-sm-2 bg-light" id="tugas" required>
                                         <option value="">-- Pilih Jenis Tugas--</option>
-                                        <option value="Pengelola Administrasi Surat">Pengelola Administrasi Surat</option>
-                                        <option value="Pengelola Administrasi Keuangan">Pengelola Administrasi Keuangan</option>
-                                        <option value="Pengelola Data Sekolah">Pengelola Data Sekolah</option>
+                                        <option value="PetugasAdministrasiSurat">Pengelola Administrasi Surat</option>
+                                        <option value="PetugasAdministrasiKeuangan">Pengelola Administrasi Keuangan</option>
                                     </select>
                                 </div>
                                 <hr>

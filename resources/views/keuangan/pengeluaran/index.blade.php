@@ -131,7 +131,9 @@
                                                             <tr class="bg-light">
                                                                 <th>No.</th>
                                                                 <th>Nama Kategori</th>
+                                                                @if (auth()->user()->role == 'admin')
                                                                 <th>Aksi</th>
+                                                                @endif
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -141,12 +143,12 @@
                                                             <tr>
                                                                 <td>{{$no}}</td>
                                                                 <td>{{$kategorikeluar->nama_kategori}}</td>
+                                                                @if (auth()->user()->role == 'admin')
                                                                 <td>
-                                                                    @if (auth()->user()->role == 'admin')
                                                                     <a href="/keuangan/pengeluaran/{{$kategorikeluar->id}}/deletekategori" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                                                         Hapus</a>
-                                                                    @endif
                                                                 </td>
+                                                                @endif
                                                             </tr>
                                                             @endforeach
                                                         </tbody>
