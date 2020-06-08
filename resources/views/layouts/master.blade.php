@@ -55,9 +55,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
-                <!-- Notifications Dropdown Menu -->
-
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle " href="javascript:void(0)" data-toggle="dropdown">
                         <i class="fas fa-user mr-2"></i> &nbsp;<span>{{auth()->user()->name}}</span> &nbsp;<i class="icon-submenu lnr lnr-chevron-down"></i>
@@ -69,8 +66,8 @@
                             <i class="fas fa-user mr-2"></i> Lihat Profil
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="/auths/{{auth()->user()->id}}/ubahpassword" class="dropdown-item">
-                            <i class="fas fa-user-cog mr-2"></i> Ubah Password
+                        <a href="/auths/{{auth()->user()->id}}/gantipassword" class="dropdown-item">
+                            <i class="fas fa-user-cog mr-2"></i> Ganti Password
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="/logout" class="dropdown-item">

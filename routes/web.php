@@ -14,7 +14,8 @@
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
-Route::get('/auths/{id}/ubahpassword', 'AuthController@ubahpassword');
+Route::get('/auths/{id}/gantipassword', 'AuthController@gantipassword');
+Route::post('/auths/{id}/simpanpassword', 'AuthController@simpanpassword');
 Route::get('/logout', 'AuthController@logout');
 
 Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasiKeuangan,PetugasAdministrasiSurat']], function () {

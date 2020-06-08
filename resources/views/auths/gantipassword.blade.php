@@ -97,22 +97,21 @@
 
 <body>
   <div class="kotak_login">
-    @if(session('sukses'))
+    @if(session('error'))
     <div class="alert alert-danger" role="alert">
-      {{session('sukses')}}
+      {{session('error')}}
     </div>
     @endif
-    <img src="/seo.svg" alt="Logo" class="logo">
+    <img src="/adminLTE/img/user.png" alt="Logo" class="logo">
     <br>
-    <h2 class="font-weight-bold text-center">Manajemen</h2>
-    <h3 class="font-weight-bold text-center">Administrasi Sekolah</h3>
-    <!-- <h6 class="font-weight text-center">Versi 1.1.0</h6> -->
+    <h4 class="font-weight-bold text-center">Ganti Password</h4>
+    <h6 class="font-weight-bold text-center">{{$data_pengguna->email}}</h6>
 
-    <form action="#" method="POST">
-      @csrf
+    <form action="/auths/{{$data_pengguna->id}}/simpanpassword" method="POST">
+      {{csrf_field()}}
       <input id="password_baru" type="password" name="password_baru" class="form_login" placeholder="Password Baru" required>
       <input id="konfirmasi_password_baru" type="password" name="konfirmasi_password_baru" class="form_login" placeholder="Konfirmasi Password" required>
-      <button type="submit" class="tombol_login">Ubah Password</button>
+      <button type="submit" class="tombol_login">Ganti Password</button>
       <a href="/login">Login</a>
     </form>
   </div>
