@@ -201,9 +201,6 @@
                 <div class="timeline-body">
                   <p>{{$pengumuman->isi}}</p>
                 </div>
-                <!-- <div class="timeline-footer">
-                                <a href="#" class="btn btn-primary btn-sm">Lihat Detail</a>
-                              </div> -->
               </div>
             </div>
             <!-- END timeline item -->

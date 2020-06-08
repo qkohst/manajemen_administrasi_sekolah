@@ -82,10 +82,19 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
+            @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiSurat' || auth()->user()->role == 'PetugasAdministrasiKeuangan')
             <a href="/dashboard" class="brand-link bg-secondary">
                 <img src="/seo.svg" alt="Logo" class="brand-image" style="opacity: .8">
                 <span class="brand-text font-weight-white">Beranda</span>
             </a>
+            @endif
+
+            @if (auth()->user()->role == 'Siswa')
+            <a href="/{{$id_pesdik_login->id}}/siswadashboard" class="brand-link bg-secondary">
+                <img src="/seo.svg" alt="Logo" class="brand-image" style="opacity: .8">
+                <span class="brand-text font-weight-white">Beranda</span>
+            </a>
+            @endif
             <!-- Sidebar -->
             <div class="sidebar">
                 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiSurat')
@@ -208,7 +217,7 @@
                                 <a href="/pembayaran/transaksipembayaran/index" class="nav-link  text-white">
                                     <i class="far fa-handshake nav-icon"></i>
                                     <p>Transaksi Pembayaran</p>
-                                    <span class="right badge badge-primary">New</span>
+                                    <span class="right badge badge-danger">New</span>
                                 </a>
                             </li>
                         </ul>
@@ -271,7 +280,7 @@
                             <p>
                                 Cetak Laporan
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-warning">New</span>
+                                <span class="right badge badge-danger">New</span>
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -393,6 +402,7 @@
                     </li>
                 </ul>
                 @endif
+                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiSurat' || auth()->user()->role == 'PetugasAdministrasiKeuangan')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Sidebar Menu -->
                     <a class="text-white">
@@ -422,6 +432,47 @@
                     </li>
                     @endif
                 </ul>
+                @endif
+                @if (auth()->user()->role == 'Siswa')
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-credit-card"></i>
+                            <p>
+                                Rekap Tabungan
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="right badge badge-primary">New</span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview bg-secondary">
+                            <li class="nav-item">
+                                <a href="/tabungan/setor/{{$id_pesdik_login->id}}/siswaindex" class="nav-link text-white">
+                                    <i class="fas fa-credit-card nav-icon"></i>
+                                    <p>Setor Tunai</p>
+                                    <span class="right badge badge-primary">New</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/tabungan/tarik/{{$id_pesdik_login->id}}/siswaindex" class="nav-link text-white">
+                                    <i class="fas fa-credit-card nav-icon"></i>
+                                    <p>Tarik Tunai</p>
+                                    <span class="right badge badge-primary">New</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/pembayaran/transaksipembayaran/{{$id_pesdik_login->id}}/siswaindex" class="nav-link">
+                            <i class="far fa-handshake nav-icon"></i>
+                            <p>
+                                Rekap Pembayaran
+                            </p>
+                            <span class="right badge badge-primary">New</span>
+                        </a>
+                    </li>
+                </ul>
+                @endif
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -440,7 +491,7 @@
                 <b>Teknik Informatika Unirow Tuban | </b>
                 Version 1.1.0
             </div>
-            Copyright &copy; 2020 | by : Qkoh St, Iqbal, Afif
+            Copyright &copy; 2020 | by : Qkoh St
         </footer>
 
 

@@ -24,8 +24,8 @@ class SetorController extends Controller
         $pilih_pesdik = $request->input('pesdik_id');
         //Mengambil nilai rombel id
         $pesdik = \App\Pesdik::select('rombel_id')->where('id', $pilih_pesdik)->get();
-        $data=$pesdik->first();
-        $rombel_id=$data->rombel_id;
+        $data = $pesdik->first();
+        $rombel_id = $data->rombel_id;
 
         $request->validate([
             'jumlah' => 'numeric',
@@ -78,5 +78,15 @@ class SetorController extends Controller
     {
         $setor = \App\Setor::find($id_setor);
         return view('/tabungan/setor/cetakprint', compact('setor'));
+    }
+
+    public function siswaindex($id)
+    {
+        $pesdik= \App\Pesdik::where('id',$id)->get();
+        $id_pesdik_login=$pesdik->first();
+        
+        $data_pesdik = \App\Pesdik::where('id',$id)->get();
+        $data_setor = \App\Setor::where('pesdik_id',$id)->get();
+        return view('/tabungan/setor/siswaindex', compact('data_pesdik','data_setor','id_pesdik_login'));
     }
 }

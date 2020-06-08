@@ -18,7 +18,19 @@ class AuthController extends Controller
     {
         $cre = $request->only('email','password');
         if (Auth::attempt($cre)) {
-            return redirect('/dashboard');
+            //mengambil data siswa login
+            $siswalogin=$request->input('email');
+            $pisah_email=explode("@",$siswalogin);
+            $nisn=$pisah_email[0];
+            $id_pesdik=\App\Pesdik::where('nisn',$nisn)->get();
+            $id_pesdik_login=$id_pesdik->first();
+
+            //data untuk ditampilkan ke dashboard
+            $data_admin = \App\User::where('role',"admin")->get();
+            $data_petugas = \App\Tendik::all();
+            $data_pengumuman = \App\Pengumuman::orderByRaw('created_at DESC')->limit(5)->get();
+
+            return view('/dashboard', compact('data_admin','data_pengumuman','data_petugas','id_pesdik_login'));
         }
         return redirect()->back()->with('error','Email atau Password Salah!');
     }
@@ -40,7 +52,6 @@ class AuthController extends Controller
         $pengguna= User::findorfail($id);
         $password_baru=$request->input('password_baru');
         $konfirmasi_password_baru=$request->input('konfirmasi_password_baru');
-        // dd($konfirmasi_password_baru);
         if ($password_baru==$konfirmasi_password_baru) {
             $data_pengguna = [
                 'name' => $pengguna->name,

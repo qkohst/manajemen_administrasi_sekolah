@@ -18,7 +18,7 @@ Route::get('/auths/{id}/gantipassword', 'AuthController@gantipassword');
 Route::post('/auths/{id}/simpanpassword', 'AuthController@simpanpassword');
 Route::get('/logout', 'AuthController@logout');
 
-Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasiKeuangan,PetugasAdministrasiSurat']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasiKeuangan,PetugasAdministrasiSurat,Siswa']], function () {
 
     Route::get('/', function () {
         return view('/dashboard');
@@ -147,6 +147,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasi
     Route::get('/tabungan/setor/{id}/cetak', 'SetorController@cetak');
     Route::get('/tabungan/setor/{id}/cetakprint', 'SetorController@cetakprint');
 
+
     Route::get('/tabungan/tarik/index', 'TarikController@index');
     Route::post('/tabungan/tarik/tambah', 'TarikController@tambah');
     Route::get('/tabungan/tarik/{id}/edit', 'TarikController@edit');
@@ -190,9 +191,15 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasi
     Route::get('/laporankeuangan/keuangansekolah/DownloadExcel', 'LaporanController@tKeuanganSekolahDownloadExcel')->name('laporankeuangan.keuangansekolah.DownloadExcel');
     Route::post('/laporankeuangan/keuangansekolah/cetak', 'LaporanController@tKeuanganSekolahCetak');
 
+    //route untuk siswa
+    Route::get('/{id}/siswadashboard', 'DashboardController@siswadashboard');
+    Route::get('/tabungan/setor/{id}/siswaindex', 'SetorController@siswaindex');
+    Route::get('/tabungan/tarik/{id}/siswaindex', 'TarikController@siswaindex');
+    Route::get('/pembayaran/transaksipembayaran/{id}/siswaindex', 'TransaksiPembayaranController@siswaindex');
+
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasiKeuangan,PetugasAdministrasiSurat']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:admin,Guru,PetugasAdministrasiKeuangan,PetugasAdministrasiSurat,Siswa']], function () {
     Route::resource('/instansi', 'InstansiController');
     Route::resource('/pengguna', 'PenggunaController');
 });

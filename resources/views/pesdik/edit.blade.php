@@ -26,9 +26,9 @@
                         <option value="Perempuan" @if ($pesdik->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
                     </select>
                     <label for="nisn">NISN</label>
-                    <input value="{{$pesdik->nisn}}" name="nisn" type="text" class="form-control" id="nisn" placeholder="NISN" required>
+                    <input value="{{$pesdik->nisn}}" name="nisn" type="text" class="form-control" id="nisn" placeholder="NISN" disabled>
                     <label for="induk">Induk</label>
-                    <input value="{{$pesdik->induk}}" name="induk" type="text" class="form-control" id="induk" placeholder="Induk" required>
+                    <input value="{{$pesdik->induk}}" name="induk" type="text" class="form-control" id="induk" placeholder="Induk" disabled>
                 </div>
                 <div class="col-6">
                     <label for="tempat_lahir">Tempat Lahir</label>

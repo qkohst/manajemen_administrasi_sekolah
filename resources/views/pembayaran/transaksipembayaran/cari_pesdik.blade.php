@@ -37,7 +37,7 @@
                                     <select name="cari_pesdik" id="cari_pesdik" class="form-control select2bs4" onchange="this.form.submit();">
                                         <option value="">-- Pilih Siswa --</option>
                                         @foreach($pesdik as $data)
-                                        <option value="{{ $data->pesdik_id }}">{{$data->pesdik->nisn}}/{{$data->pesdik->induk}} - {{$data->pesdik->nama}}</option>
+                                        <option value="{{ $data->pesdik_id }}">{{$data->pesdik_id}}/{{$data->pesdik->induk}} - {{$data->pesdik->nama}}</option>
                                         @endforeach
                                     </select>
                                 </form>

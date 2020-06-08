@@ -32,11 +32,11 @@ class TransaksiPembayaranController extends Controller
 
         // $tagihan_siswa =  \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
         //     ->WhereIn('jenis_kelamin', $pilih_jk)->get();
-        
+
         $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
-        ->WhereIn('jenis_kelamin', $pilih_jk)
-        ->leftJoin('transaksipembayaran', 'tagihan.id', '=', 'transaksipembayaran.tagihan_id')
-        ->get();
+            ->WhereIn('jenis_kelamin', $pilih_jk)
+            ->leftJoin('transaksipembayaran', 'tagihan.id', '=', 'transaksipembayaran.tagihan_id')
+            ->get();
         //End Olah Lagi
         // dd($coba);
         return view('/pembayaran/transaksipembayaran/cari_pesdik', compact('pesdik', 'cari', 'data_pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilih_jk'));
@@ -54,7 +54,7 @@ class TransaksiPembayaranController extends Controller
     }
 
     public function bayar(Request $request)
-    
+
     {
         $users_id = Auth::id();
         $tagihan_id = $request->tagihan_id;
@@ -77,17 +77,39 @@ class TransaksiPembayaranController extends Controller
             $insert_data[] = $data;
         }
         TransaksiPembayaran::insert($insert_data);
-        $tagihan_dibayar=\App\TransaksiPembayaran::whereIn('tagihan_id',$tagihan_id)->where('pesdik_id', $pesdik_id)->get();
+        $tagihan_dibayar = \App\TransaksiPembayaran::whereIn('tagihan_id', $tagihan_id)->where('pesdik_id', $pesdik_id)->get();
         $identitas = $tagihan_dibayar->first();
-        return view('/pembayaran/transaksipembayaran/invoice_bukti_pembayaran', compact('identitas','tagihan_dibayar','tagihan_id','pesdik_id'));
+        return view('/pembayaran/transaksipembayaran/invoice_bukti_pembayaran', compact('identitas', 'tagihan_dibayar', 'tagihan_id', 'pesdik_id'));
     }
 
     public function cetak_invoice(Request $request)
     {
         $tagihan_id = $request->id_tagih;
         $pesdik_id = $request->id_pesdik;
-        $tagihan_dibayar=\App\TransaksiPembayaran::whereIn('tagihan_id',$tagihan_id)->where('pesdik_id', $pesdik_id)->get();
+        $tagihan_dibayar = \App\TransaksiPembayaran::whereIn('tagihan_id', $tagihan_id)->where('pesdik_id', $pesdik_id)->get();
         $identitas = $tagihan_dibayar->first();
-        return view('/pembayaran/transaksipembayaran/cetak_invoice', compact('identitas','tagihan_dibayar','tagihan_id','pesdik_id'));
+        return view('/pembayaran/transaksipembayaran/cetak_invoice', compact('identitas', 'tagihan_dibayar', 'tagihan_id', 'pesdik_id'));
+    }
+
+    public function siswaindex($id)
+    {
+        $pesdik = \App\Pesdik::where('id', $id)->get();
+        $id_pesdik_login = $pesdik->first();
+
+        $pesdik = \App\Anggotarombel::groupBy('pesdik_id')->orderByRaw('updated_at - created_at DESC')->get();
+        $data = \App\Anggotarombel::where('pesdik_id', $id)->get();
+        $data_pesdik = $data->last();
+
+        //Olah Lagi
+        $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id)->get();
+        $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $id)->get();
+        $pilih_jk =  \App\Tagihan::whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
+
+        $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
+            ->WhereIn('jenis_kelamin', $pilih_jk)
+            ->leftJoin('transaksipembayaran', 'tagihan.id', '=', 'transaksipembayaran.tagihan_id')
+            ->get();
+
+        return view('/pembayaran/transaksipembayaran/siswaindex', compact('id_pesdik_login', 'data_pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilih_jk'));
     }
 }
