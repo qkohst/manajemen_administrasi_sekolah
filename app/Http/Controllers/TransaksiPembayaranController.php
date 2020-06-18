@@ -11,35 +11,45 @@ use Carbon\Carbon;
 
 class TransaksiPembayaranController extends Controller
 {
+    // public function index()
+    // {
+    //     $pesdik = \App\Anggotarombel::groupBy('pesdik_id')->first();
+    //     $rombel = \App\Anggotarombel::groupBy('rombel_id')->get();
+    //     return view('/pembayaran/transaksipembayaran/index', compact('pesdik', 'rombel'));
+    // }
+
     public function index()
     {
-        $pesdik = \App\Anggotarombel::groupBy('pesdik_id')->orderByRaw('updated_at - created_at DESC')->get();
-        $rombel = \App\Anggotarombel::groupBy('rombel_id')->orderByRaw('updated_at - created_at DESC')->get();
-        return view('/pembayaran/transaksipembayaran/index', compact('pesdik', 'rombel'));
+        $data_pesdik = \App\Pesdik::all();
+        return view('/pembayaran/transaksipembayaran/index', compact('data_pesdik'));
     }
 
     public function cari_pesdik(Request $request)
     {
         $cari = $request->input('cari_pesdik');
-        $pesdik = \App\Anggotarombel::groupBy('pesdik_id')->orderByRaw('updated_at - created_at DESC')->get();
-        $data = \App\Anggotarombel::where('pesdik_id', $cari)->get();
-        $data_pesdik = $data->last();
+        $data_pesdik = \App\Pesdik::all();
+        $identitas_pendik = \App\Pesdik::where('id', $cari)->first();
 
-        //Olah Lagi
+        //Mencari Data Tagihan Per Siswa
         $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $cari)->get();
-        $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $cari)->get();
+        $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $cari)->first();
         $pilih_jk =  \App\Tagihan::whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
 
-        // $tagihan_siswa =  \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
-        //     ->WhereIn('jenis_kelamin', $pilih_jk)->get();
-
-        $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
-            ->WhereIn('jenis_kelamin', $pilih_jk)
-            ->leftJoin('transaksipembayaran', 'tagihan.id', '=', 'transaksipembayaran.tagihan_id')
+        $id_tagihan_terbayar = \App\TransaksiPembayaran::select('tagihan_id')->where('pesdik_id', $cari)->get();
+        $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)->whereNotIn('id', $id_tagihan_terbayar)
+            ->WhereIn('jenis_kelamin', $pilih_jk)->get();
+        $tagihan_terbayar = \App\TransaksiPembayaran::where('pesdik_id', $cari)
+            ->leftJoin('tagihan', function ($join) {
+                $join->on('transaksipembayaran.tagihan_id', '=', 'tagihan.id');
+            })
             ->get();
-        //End Olah Lagi
-        // dd($coba);
-        return view('/pembayaran/transaksipembayaran/cari_pesdik', compact('pesdik', 'cari', 'data_pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilih_jk'));
+        $jumlah_tagihan = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
+            ->WhereIn('jenis_kelamin', $pilih_jk)->sum('nominal');
+        $jumlah_terbayar =  \App\TransaksiPembayaran::where('pesdik_id', $cari)
+            ->sum('jumlah_bayar');
+        // dd($tagihan_siswa);
+
+        return view('/pembayaran/transaksipembayaran/cari_pesdik', compact('data_pesdik', 'identitas_pendik', 'tagihan_siswa', 'tagihan_terbayar', 'jumlah_tagihan', 'jumlah_terbayar'));
     }
 
     public function form_bayar(Request $request, $id_pesdik)

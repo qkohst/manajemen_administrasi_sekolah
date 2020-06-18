@@ -191,7 +191,7 @@
                     <a class="text-white">
                         <p>
                             MANAJEMEN KEUANGAN
-                            <span class="right badge badge-warning">New</span>
+                            <span class="right badge badge-primary">New</span>
                         </p>
                     </a>
                     <!-- Add icons to the links using the .nav-icon class
@@ -217,7 +217,7 @@
                                 <a href="/pembayaran/transaksipembayaran/index" class="nav-link  text-white">
                                     <i class="far fa-handshake nav-icon"></i>
                                     <p>Transaksi Pembayaran</p>
-                                    <span class="right badge badge-danger">New</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </a>
                             </li>
                         </ul>
@@ -280,7 +280,7 @@
                             <p>
                                 Cetak Laporan
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-danger">New</span>
+                                <span class="right badge badge-danger">Error</span>
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">

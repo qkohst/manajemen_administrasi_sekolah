@@ -17,14 +17,15 @@ class TagihanController extends Controller
     public function index()
     {
         // $data_rombel = \App\Rombel::all();
-        $daftar_rombel = \App\Tagihan::groupBy('rombel_id')->get();
+        $daftar_rombel = \App\Tagihan::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
         $data_tagihan = \App\Tagihan::all();
         return view('/pembayaran/tagihan/index', compact('daftar_rombel', 'data_tagihan'));
     }
 
     public function create()
     {
-        $data_rombel = \App\Rombel::all();
+        $tapel_terakhir = \App\Tapel::select('id')->max('id');
+        $data_rombel = \App\Rombel::where('tapel_id',$tapel_terakhir)->get();
         $data_tagihan = \App\Tagihan::all();
         return view('/pembayaran/tagihan/create', compact('data_rombel', 'data_tagihan'));
     }

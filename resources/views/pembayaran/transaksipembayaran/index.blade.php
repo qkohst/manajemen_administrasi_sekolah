@@ -36,8 +36,8 @@
                                     {{csrf_field()}}
                                     <select name="cari_pesdik" id="cari_pesdik" class="form-control select2bs4" onchange="this.form.submit();">
                                         <option value="">-- Pilih Siswa --</option>
-                                        @foreach($pesdik as $data)
-                                        <option value="{{ $data->pesdik_id }}">{{$data->pesdik->nisn}}/{{$data->pesdik->induk}} - {{$data->pesdik->nama}}</option>
+                                        @foreach($data_pesdik as $pesdik)
+                                        <option value="{{$pesdik->id}}">{{$pesdik->nisn}}/{{$pesdik->induk}} - {{$pesdik->nama}}</option>
                                         @endforeach
                                     </select>
                                 </form>
