@@ -100,7 +100,7 @@
                 <div class="icon">
                   <i class="nav-icon fas fa-graduation-cap"></i>
                 </div>
-                <p class="small-box-footer">Jumlah Tenaga Kependidikan</p>
+                <p class="small-box-footer">Jumlah Tendik</p>
               </div>
             </div>
             <!-- ./col -->
@@ -127,7 +127,7 @@
                 <div class="icon">
                   <i class="nav-icon fas fa-users"></i>
                 </div>
-                <p class="small-box-footer">Jumlah Rombongan Belajar</p>
+                <p class="small-box-footer">Jumlah Rombel</p>
               </div>
             </div>
           </div>
@@ -272,16 +272,17 @@
         </div>
         <div class="card-body p-0">
           <ul class="products-list product-list-in-card pl-2 pr-2">
-            @foreach($data_admin as $pengguna)
+            @foreach($data_login as $user_login)
             <li class="item">
               <div class="product-img">
                 <img src="/adminLTE/img/user.png" alt="Product Image" class="img-size-50">
               </div>
               <div class="product-info">
-                <a href="javascript:void(0)" class="product-title">{{$pengguna->name}}
-                  <span class="badge badge-warning float-right">{{$pengguna->role}}</span></a>
+                <a href="javascript:void(0)" class="product-title">{{$user_login->name}}
+                  <span class="badge float-right"><i class="far fa-clock"></i> {{$user_login->created_at->diffForHumans()}}</span></a>
+
                 <span class="product-description">
-                  Email : {{$pengguna->email}}
+                  {{$user_login->email}}
                 </span>
               </div>
             </li>

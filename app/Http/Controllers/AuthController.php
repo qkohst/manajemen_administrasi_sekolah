@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -26,11 +27,23 @@ class AuthController extends Controller
             $id_pesdik_login=$id_pesdik->first();
 
             //data untuk ditampilkan ke dashboard
+            $data_login = \App\Login::orderByRaw('created_at DESC')->limit(25)->get();
             $data_admin = \App\User::where('role',"admin")->get();
             $data_petugas = \App\Tendik::all();
             $data_pengumuman = \App\Pengumuman::orderByRaw('created_at DESC')->limit(5)->get();
 
-            return view('/dashboard', compact('data_admin','data_pengumuman','data_petugas','id_pesdik_login'));
+            //Riwayat Login
+            $email=$request->input('email');
+            $id_pengguna=\App\User::select('name')->where('email',$email)->get();
+            $pengguna_login=$id_pengguna->first();
+
+            $login = new Login();
+            $login->name   = $pengguna_login->name;
+            $login->email   = $email;
+            $login->save();
+            //EndRiwayat Login
+
+            return view('/dashboard', compact('data_admin','data_login','data_pengumuman','data_petugas','id_pesdik_login'));
         }
         return redirect()->back()->with('error','Email atau Password Salah!');
     }
