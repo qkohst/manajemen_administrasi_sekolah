@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-6">
                     <label for="nama">Nama Siswa</label>
-                    <input value="{{$pesdik->nama}}" name="nama" type="text" class="form-control" id="nama" placeholder="Nama Siswa" required>
+                    <input value="{{$pesdik->nama}}" name="nama" type="text" class="form-control" id="nama" placeholder="Nama Siswa" disabled>
                     <label for="jenis_kelamin">Jenis Kelamin</label>
                     <select name="jenis_kelamin" class="form-control" id="jenis_kelamin" required>
                         <option value="Laki-Laki" @if ($pesdik->jenis_kelamin == 'Laki-Laki') selected @endif>Laki-Laki</option>
@@ -28,7 +28,7 @@
                     <label for="nisn">NISN</label>
                     <input value="{{$pesdik->nisn}}" name="nisn" type="text" class="form-control" id="nisn" placeholder="NISN" disabled>
                     <label for="induk">Induk</label>
-                    <input value="{{$pesdik->induk}}" name="induk" type="text" class="form-control" id="induk" placeholder="Induk" disabled>
+                    <input value="{{$pesdik->induk}}" name="induk" type="text" class="form-control" id="induk" placeholder="Induk" required>
                 </div>
                 <div class="col-6">
                     <label for="tempat_lahir">Tempat Lahir</label>

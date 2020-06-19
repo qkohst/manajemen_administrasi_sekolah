@@ -12,7 +12,6 @@
             <table class="table table-hover table-head-fixed bg-white" id='tabelAgendaMasuk'>
               <thead>
                 <tr>
-                  <th style="width: 10px">No</th>
                   <th>Kelas</th>
                   <th>Rincian</th>
                   <th>Batas Pembayaran</th>
@@ -22,12 +21,8 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $no = 0;
-                ?>
                 @foreach($tagihan_siswa as $tagih)
-                <?php $no++; ?>
                 <tr>
-                  <td>{{$no}}</td>
                   <td>{{$tagih->rombel->nama_rombel}} {{$tagih->rombel->tapel->semester}}</td>
                   <td>{{$tagih->rincian}}</td>
                   <td>{{$tagih->batas_bayar}}</td>
@@ -36,27 +31,23 @@
                   <td>@currency($tagih->nominal-$tagih->jumlah_bayar),00</td>
                 </tr>
                 @endforeach
+                @foreach($tagihan_terbayar as $terbayar)
+                <tr>
+                  <td>{{$terbayar->rombel->nama_rombel}} {{$terbayar->rombel->tapel->semester}}</td>
+                  <td>{{$terbayar->rincian}}</td>
+                  <td>{{$terbayar->batas_bayar}}</td>
+                  <td>@currency($terbayar->nominal),00</td>
+                  <td>@currency($terbayar->jumlah_bayar),00</td>
+                  <td>@currency($terbayar->nominal-$terbayar->jumlah_bayar),00</td>
+                </tr>
+                @endforeach
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="4" align="center"><b>Jumlah</b></td>
-                  <td align="left">
-                    <?php
-                    $jumlah_tagihan = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
-                      ->WhereIn('jenis_kelamin', $pilih_jk)->sum('nominal');
-                    ?>
-                    <b>@currency($jumlah_tagihan),00</b><br>
-                  </td>
-                  <td align="left">
-                    <?php
-                    $jumlah_terbayar =  \App\TransaksiPembayaran::where('pesdik_id', $data_pesdik->pesdik->id)
-                      ->sum('jumlah_bayar');
-                    ?>
-                    <b>@currency($jumlah_terbayar),00</b><br>
-                  </td>
-                  <td align="left">
-                    <b>@currency($jumlah_tagihan-$jumlah_terbayar),00</b><br>
-                  </td>
+                  <td colspan="3" align="center"><b>Jumlah</b></td>
+                  <td align="left"><b>@currency($jumlah_tagihan),00</b><br></td>
+                  <td align="left"><b>@currency($jumlah_terbayar),00</b><br></td>
+                  <td align="left"><b>@currency($jumlah_tagihan-$jumlah_terbayar),00</b><br></td>
                 </tr>
               </tfoot>
             </table>

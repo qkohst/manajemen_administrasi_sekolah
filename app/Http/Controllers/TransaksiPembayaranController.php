@@ -111,15 +111,33 @@ class TransaksiPembayaranController extends Controller
         $data_pesdik = $data->last();
 
         //Olah Lagi
+        // $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id)->get();
+        // $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $id)->get();
+        // $pilih_jk =  \App\Tagihan::whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
+
+        // $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
+        //     ->WhereIn('jenis_kelamin', $pilih_jk)
+        //     ->leftJoin('transaksipembayaran', 'tagihan.id', '=', 'transaksipembayaran.tagihan_id')
+        //     ->get();
+
+        //Mencari Data Tagihan Per Siswa
         $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id)->get();
-        $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $id)->get();
+        $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $id)->first();
         $pilih_jk =  \App\Tagihan::whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
 
-        $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
-            ->WhereIn('jenis_kelamin', $pilih_jk)
-            ->leftJoin('transaksipembayaran', 'tagihan.id', '=', 'transaksipembayaran.tagihan_id')
+        $id_tagihan_terbayar = \App\TransaksiPembayaran::select('tagihan_id')->where('pesdik_id', $id)->get();
+        $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)->whereNotIn('id', $id_tagihan_terbayar)
+            ->WhereIn('jenis_kelamin', $pilih_jk)->get();
+        $tagihan_terbayar = \App\TransaksiPembayaran::where('pesdik_id', $id)
+            ->leftJoin('tagihan', function ($join) {
+                $join->on('transaksipembayaran.tagihan_id', '=', 'tagihan.id');
+            })
             ->get();
+        $jumlah_tagihan = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
+            ->WhereIn('jenis_kelamin', $pilih_jk)->sum('nominal');
+        $jumlah_terbayar =  \App\TransaksiPembayaran::where('pesdik_id', $id)
+            ->sum('jumlah_bayar');
 
-        return view('/pembayaran/transaksipembayaran/siswaindex', compact('id_pesdik_login', 'data_pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilih_jk'));
+        return view('/pembayaran/transaksipembayaran/siswaindex', compact('id_pesdik_login', 'data_pesdik', 'tagihan_siswa', 'tagihan_terbayar', 'jumlah_tagihan', 'jumlah_terbayar'));
     }
 }

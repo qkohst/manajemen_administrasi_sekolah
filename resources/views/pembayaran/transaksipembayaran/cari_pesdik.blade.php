@@ -102,7 +102,6 @@
                                     <table class="table table-hover table-head-fixed" id='tabelAgendaMasuk'>
                                         <thead>
                                             <tr>
-                                                <th style="width: 10px">No</th>
                                                 <th>Kelas</th>
                                                 <th>Rincian</th>
                                                 <th>Batas Pembayaran</th>
@@ -113,12 +112,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $no = 0;
-                                            ?>
                                             @foreach($tagihan_siswa as $tagih)
-                                            <?php $no++; ?>
                                             <tr>
-                                                <td>{{$no}}</td>
                                                 <td>{{$tagih->rombel->nama_rombel}} {{$tagih->rombel->tapel->semester}}</td>
                                                 <td>{{$tagih->rincian}}</td>
                                                 <td>{{$tagih->batas_bayar}}</td>
@@ -137,7 +132,6 @@
                                             @endforeach
                                             @foreach($tagihan_terbayar as $terbayar)
                                             <tr>
-                                                <td></td>
                                                 <td>{{$terbayar->rombel->nama_rombel}} {{$terbayar->rombel->tapel->semester}}</td>
                                                 <td>{{$terbayar->rincian}}</td>
                                                 <td>{{$terbayar->batas_bayar}}</td>
@@ -157,10 +151,10 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colspan="4" align="center"><b>Jumlah</b></td>
-                                                <td align="left"><b>@currency($jumlah_tagihan),00</b><br></td>                                                
-                                                <td align="left"><b>@currency($jumlah_terbayar),00</b><br></td>                                                
-                                                <td align="left"><b>@currency($jumlah_tagihan-$jumlah_terbayar),00</b><br></td>                                                
+                                                <td colspan="3" align="center"><b>Jumlah</b></td>
+                                                <td align="left"><b>@currency($jumlah_tagihan),00</b><br></td>
+                                                <td align="left"><b>@currency($jumlah_terbayar),00</b><br></td>
+                                                <td align="left"><b>@currency($jumlah_tagihan-$jumlah_terbayar),00</b><br></td>
                                                 <td>
                                                     <button class="btn btn-primary btn-sm my-1 mr-sm-1" style="display:none" type="submit" id="bayar">Bayar</button>
                                                 </td>
