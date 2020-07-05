@@ -20,7 +20,7 @@ class TambahForeignKeyConstraint extends Migration
         });
 
         Schema::table('suratkeluar', function($table) {
-            $table->foreign('users_id')
+            $table->foreign('users_id')romb
                   ->references('id')->on('users')
                   ->onDelete('restrict')->onUpdate('restrict');
         });

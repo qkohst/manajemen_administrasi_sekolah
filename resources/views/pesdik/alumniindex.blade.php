@@ -51,11 +51,11 @@
                             <?php $no++; ?>
                             <tr>
                                 <td>{{$no}}</td>
-                                <td>{{$pesdikalumni->nama}}</td>
-                                <td>{{$pesdikalumni->jenis_kelamin}}</td>
-                                <td>{{$pesdikalumni->nisn}}</td>
-                                <td>{{$pesdikalumni->induk}}</td>
-                                <td>{{$pesdikalumni->tanggal_masuk}}</td>
+                                <td>{{$pesdikalumni->pesdik->nama}}</td>
+                                <td>{{$pesdikalumni->pesdik->jenis_kelamin}}</td>
+                                <td>{{$pesdikalumni->pesdik->nisn}}</td>
+                                <td>{{$pesdikalumni->pesdik->induk}}</td>
+                                <td>{{$pesdikalumni->pesdik->tanggal_masuk}}</td>
                                 <td>{{$pesdikalumni->tanggal_lulus}}</td>
                                 <td>{{$pesdikalumni->melanjutkan_ke}}</td>
                                 <td>{{$pesdikalumni->keterangan}}</td>

@@ -36,7 +36,7 @@ class RombelController extends Controller
         $rombel->tapel_id   = $request->input('tapel_id');
         $rombel->kelas   = $request->input('kelas');
         $rombel->nama_rombel   = $request->input('nama_rombel');
-        $rombel->wali_kelas   = $request->input('wali_kelas');
+        $rombel->guru_id   = $request->input('guru_id');
         $rombel->save();
         return redirect('/rombel/index')->with("sukses", "Data Rombongan Belajar Berhasil Ditambahkan");
     }
@@ -45,10 +45,10 @@ class RombelController extends Controller
     public function anggota($id_rombel)
     {
         $data_anggota = \App\Pesdik::where('rombel_id', $id_rombel)->get();
-        $jumlah_anggota_L = \App\Pesdik::where('rombel_id', $id_rombel)->where('jenis_kelamin',"Laki-Laki")->count();
-        $jumlah_anggota_P = \App\Pesdik::where('rombel_id', $id_rombel)->where('jenis_kelamin',"Perempuan")->count();
+        $jumlah_anggota_L = \App\Pesdik::where('rombel_id', $id_rombel)->where('jenis_kelamin', "Laki-Laki")->count();
+        $jumlah_anggota_P = \App\Pesdik::where('rombel_id', $id_rombel)->where('jenis_kelamin', "Perempuan")->count();
         $rombel = $id_rombel;
-        return view('rombel.anggota', compact('data_anggota', 'rombel','jumlah_anggota_L','jumlah_anggota_P'));
+        return view('rombel.anggota', compact('data_anggota', 'rombel', 'jumlah_anggota_L', 'jumlah_anggota_P'));
     }
 
     public function tambahAnggota($rombel)

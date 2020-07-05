@@ -52,12 +52,12 @@
                             <?php $no++; ?>
                             <tr>
                                 <td>{{$no}}</td>
-                                <td>{{$pesdikkeluar->nama}}</td>
-                                <td>{{$pesdikkeluar->jenis_kelamin}}</td>
-                                <td>{{$pesdikkeluar->nisn}}</td>
-                                <td>{{$pesdikkeluar->induk}}</td>
-                                <td>{{$pesdikkeluar->tanggal_masuk}}</td>
-                                <td>{{$pesdikkeluar->rombel_sebelumnya}}</td>
+                                <td>{{$pesdikkeluar->pesdik->nama}}</td>
+                                <td>{{$pesdikkeluar->pesdik->jenis_kelamin}}</td>
+                                <td>{{$pesdikkeluar->pesdik->nisn}}</td>
+                                <td>{{$pesdikkeluar->pesdik->induk}}</td>
+                                <td>{{$pesdikkeluar->pesdik->tanggal_masuk}}</td>
+                                <td>{{$pesdikkeluar->pesdik->rombel->nama_rombel}} {{$pesdikkeluar->pesdik->rombel->tapel->tahun}} {{$pesdikkeluar->pesdik->rombel->tapel->semester}}</td>
                                 <td>{{$pesdikkeluar->keluar_karena}}</td>
                                 <td>{{$pesdikkeluar->tanggal_keluar}}</td>
                                 <td>{{$pesdikkeluar->alasan_keluar}}</td>

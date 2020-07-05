@@ -62,7 +62,7 @@
                                 <td>{{$rombel->tapel->semester}}</td>
                                 <td>{{$rombel->kelas}}</td>
                                 <td>{{$rombel->nama_rombel}}</td>
-                                <td>{{$rombel->wali_kelas}}</td>
+                                <td>{{$rombel->guru->nama}}</td>
                                 <td>
                                     {{DB::table('pesdik')->where('rombel_id', $rombel->id)->count()}} Siswa
                                 </td>
@@ -95,7 +95,7 @@
                                 {{csrf_field()}}
                                 <div class="row">
                                     <label for="tapel_id">Tahun Pelajaran</label>
-                                    <select name="tapel_id" class="custom-select my-1 mr-sm-2 bg-light" id="tapel_id" required>
+                                    <select name="tapel_id" class="form-control my-1 mr-sm-2 bg-light" id="tapel_id" required>
                                         <option value="">-- Pilih Tahun Pelajaran --</option>
                                         @foreach($data_tapel as $tapel)
                                         <option value="{{$tapel->id}}">{{$tapel->tahun}} ({{$tapel->semester}})
@@ -103,7 +103,7 @@
                                         @endforeach
                                     </select>
                                     <label for="kelas">Kelas</label>
-                                    <select name="kelas" class="custom-select my-1 mr-sm-2 bg-light" id="kelas" required>
+                                    <select name="kelas" class="form-control my-1 mr-sm-2 bg-light" id="kelas" required>
                                         <option value="">-- Pilih Kelas --</option>
                                         <option value="7">7</option>
                                         <option value="8">8</option>
@@ -111,11 +111,11 @@
                                     </select>
                                     <label for="nama_rombel">Nama Rombel</label>
                                     <input value="{{old('nama_rombel')}}" name="nama_rombel" type="text" class="form-control bg-light" id="nama_rombel" placeholder="Nama Rombel" required>
-                                    <label for="wali_kelas">Wali Kelas</label>
-                                    <select name="wali_kelas" class="custom-select my-1 mr-sm-2 bg-light" id="wali_kelas" required>
+                                    <label for="guru_id">Wali Kelas</label>
+                                    <select name="guru_id" class="form-control my-1 mr-sm-2 bg-light" id="guru_id" required>
                                         <option value="">-- Pilih Wali Kelas--</option>
                                         @foreach($data_guru as $guru)
-                                        <option value="{{$guru->nama}}">{{$guru->nama}}
+                                        <option value="{{$guru->id}}">{{$guru->nama}}
                                         </option>
                                         @endforeach
                                     </select>

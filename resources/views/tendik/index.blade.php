@@ -98,7 +98,7 @@
                                     <label for="nama">Nama Lengkap</label>
                                     <input value="{{old('nama')}}" name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Lengkap" required>
                                     <label for="kode">Jenis Kelamin</label>
-                                    <select name="jk" class="custom-select my-1 mr-sm-2 bg-light" id="jk" required>
+                                    <select name="jk" class="form-control my-1 mr-sm-2 bg-light" id="jk" required>
                                         <option value="">-- Pilih Jenis Kelamin --</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -114,7 +114,7 @@
                                     <label for="email">Email</label>
                                     <input value="{{old('email')}}" name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" required>
                                     <label for="kode">Bertugas Sebagai</label>
-                                    <select name="tugas" class="custom-select my-1 mr-sm-2 bg-light" id="tugas" required>
+                                    <select name="tugas" class="form-control my-1 mr-sm-2 bg-light" id="tugas" required>
                                         <option value="">-- Pilih Jenis Tugas--</option>
                                         <option value="PetugasAdministrasiSurat">Pengelola Administrasi Surat</option>
                                         <option value="PetugasAdministrasiKeuangan">Pengelola Administrasi Keuangan</option>

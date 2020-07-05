@@ -96,7 +96,7 @@
                                     <label for="nama">Nama Lengkap</label>
                                     <input value="{{old('nama')}}" name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Lengkap" required>
                                     <label for="kode">Jenis Kelamin</label>
-                                    <select name="jk" class="custom-select my-1 mr-sm-2 bg-light" id="jk" required>
+                                    <select name="jk" class="form-control my-1 mr-sm-2 bg-light" id="jk" required>
                                         <option value="">-- Pilih Jenis Kelamin --</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>

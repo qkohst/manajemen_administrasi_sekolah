@@ -31,7 +31,7 @@ class GuruController extends Controller
             'no_hp' => 'unique:guru|min:12',
             'email' => 'required|unique:guru|email',
         ]);
-        
+
         //Menambah data ke table guru
         $guru = new Guru();
         $guru->nama   = $request->input('nama');
@@ -43,15 +43,15 @@ class GuruController extends Controller
         $guru->email = $request->input('email');
         $guru->save();
 
-        //Menambah acount user dengan role guru
-        $role="Guru";
-        $pengguna = User::create([
-            'name' => $request->input('nama'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('no_hp')),
-            'role' => $role,
-        ]);
-        return redirect('/guru/index')->with("sukses", "Data Guru Berhasil Ditambahkan, Guru bisa login ke sistem dengan menggunakan email sesuai yang  didaftarkan dan password menggunakan nomor HP !");
+        // //Menambah acount user dengan role guru
+        // $role="Guru";
+        // $pengguna = User::create([
+        //     'name' => $request->input('nama'),
+        //     'email' => $request->input('email'),
+        //     'password' => Hash::make($request->input('no_hp')),
+        //     'role' => $role,
+        // ]);
+        return redirect('/guru/index')->with("sukses", "Data Guru Berhasil Ditambahkan");
     }
     //function untuk masuk ke view edit
     public function edit($id_guru)

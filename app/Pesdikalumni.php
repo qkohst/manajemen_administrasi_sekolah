@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pesdikalumni extends Model
 {
     protected $table = 'pesdikalumni';
-    protected $fillable = ['nama','jenis_kelamin','nisn','induk','tempat_lahir','tanggal_lahir','jenis_pendaftaran','tanggal_masuk','tanggal_lulus','melanjutkan_ke','keterangan'];
+    protected $fillable = ['pesdik_id', 'tanggal_lulus', 'melanjutkan_ke', 'keterangan'];
+
+    public function pesdik()
+    {
+        return $this->belongsTo('App\Pesdik');
+    }
 }

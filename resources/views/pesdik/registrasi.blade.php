@@ -124,10 +124,10 @@
                                             <div class="form-group row">
                                                 <label for="melanjutkan_ke" class="col-sm-3 col-form-label">Melanjutkan Ke</label>
                                                 <div class="col-sm-4">
-                                                    <select name="melanjutkan_ke" class="custom-select my-1 mr-sm-1 bg-light" id="melanjutkan_ke" required>
+                                                    <select name="melanjutkan_ke" class="form-control my-1 mr-sm-1 bg-light" id="melanjutkan_ke" required>
                                                         <option value="">-- Pilih Data --</option>
                                                         <option value="SMA/SMK">SMA/SMK</option>
-                                                        <option value="Modok">Modok</option>
+                                                        <option value="Mondok">Mondok</option>
                                                         <option value="SMA/SMK + Mondok">SMA/SMK + Mondok</option>
                                                         <option value="Tidak Sekolah">Tidak Sekolah</option>
                                                         <option value="Lainnya">Lainnya....</option>

@@ -16,9 +16,9 @@ class CreateRombelTable extends Migration
         Schema::create('rombel', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tapel_id');
-            $table->string('kelas');
+            $table->integer('guru_id');
+            $table->integer('kelas');
             $table->string('nama_rombel');
-            $table->string('wali_kelas');
             $table->timestamps();
         });
     }
