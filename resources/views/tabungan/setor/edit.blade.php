@@ -24,7 +24,7 @@
         </div>
         @endif
         <form action="/tabungan/setor/{{$setor->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Edit Data Setor Tunai</h3>
+            <h3><i class="nav-icon fas fa-credit-card my-1 btn-sm-1"></i> Edit Data Setor Tunai</h3>
             <hr>
             {{csrf_field()}}
             <div class="row">

@@ -24,7 +24,7 @@
         </div>
         @endif
         <form action="/rombel/{{$rombel->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-graduation-cap my-1 btn-sm-1"></i> Edit Data Rombongan Belajar</h3>
+            <h3><i class="nav-icon fas fa-users my-1 btn-sm-1"></i> Edit Data Rombongan Belajar</h3>
             <hr>
             {{csrf_field()}}
             <div class="row">

@@ -18,13 +18,13 @@
         </div>
         @endif
         <form action="{{ route('instansi.update', $instansi->id) }}" method="POST" enctype="multipart/form-data">
-            <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Instansi</h3>
+            <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Edit Profil Sekolah</h3>
             <hr>
             {{ csrf_field() }}
             @method('put')
             <div class="row">
                 <div class="col-6">
-                    <label for="nama">Nama Instansi</label>
+                    <label for="nama">Nama Sekolah</label>
                     <input name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Instansi" value="{{$instansi->nama}}" required>
                     <label for="alamat">Alamat</label>
                     <textarea name="alamat" class="form-control bg-light" id="alamat" rows="3" placeholder="Alamat" required>{{$instansi->alamat}}</textarea>

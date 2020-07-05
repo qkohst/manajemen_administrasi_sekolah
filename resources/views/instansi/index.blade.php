@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="content card" style="padding: 10px 10px 10px 10px ">
-    <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Instansi</h3>
+    <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Sekolah</h3>
     <hr>
     @if ($instansi->count() >= 1)
     @foreach ($instansi as $item_ins)
@@ -35,14 +35,14 @@
             </div>
             <hr>
             <div class="col-12 text-center">
-                <a class="btn btn-primary" href="{{ route('instansi.edit', $item_ins->id) }}" role="button"><i class="fas fa-edit"></i> Edit Data Instansi</a>
+                <a class="btn btn-primary" href="{{ route('instansi.edit', $item_ins->id) }}" role="button"><i class="fas fa-edit"></i> Edit Data Sekolah</a>
             </div>
         </div>
     </div>
     @endforeach
     @else
     <div class="col-md-6">
-        <a class="btn btn-primary btn-md" href="{{ route('instansi.create') }}" role="button"><i class="fas fa-plus"></i> Setting Data Instansi</a>
+        <a class="btn btn-primary btn-md" href="{{ route('instansi.create') }}" role="button"><i class="fas fa-plus"></i> Setting Data Sekolah</a>
     </div>
     @endif
 </section>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Manajemen Administrasi Sekolah</title>
+    <title>Sistem Informasi Administrasi Sekolah</title>
     <style>
         body {
             margin: 0;
@@ -109,13 +109,13 @@
         @endif
         <img src="/seo.svg" alt="Logo" class="logo">
         <br>
-        <h2 class="font-weight-bold text-center">Manajemen</h2>
+        <h3 class="font-weight-bold text-center">Sistem Informasi</h3>
         <h3 class="font-weight-bold text-center">Administrasi Sekolah</h3>
         <!-- <h6 class="font-weight text-center">Versi 1.1.0</h6> -->
 
         <form action="postlogin" method="POST">
             @csrf
-            <input type="email" name="email" class="form_login" placeholder="name@example.com" required>
+            <input type="email" name="email" class="form_login" placeholder="email" required>
             <input id="password" type="password" name="password" class="form_login" placeholder="password" required>
             <button type="submit" class="tombol_login">Login</button>
         </form>

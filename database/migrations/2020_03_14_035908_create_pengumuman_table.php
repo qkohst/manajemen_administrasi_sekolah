@@ -17,7 +17,7 @@ class CreatePengumumanTable extends Migration
             $table->increments('id');
             $table->string('judul');
             $table->text('isi');
-            $table->string('pembuat');
+            $table->integer('users_id');
             $table->timestamps();
         });
     }

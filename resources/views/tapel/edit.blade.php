@@ -29,7 +29,7 @@
             {{csrf_field()}}
             <div class="row">
                 <div class="col-6">
-                    <label for="tahun">Tahun</label>
+                    <label for="tahun">Tahun Pelajaran</label>
                     <input name="tahun" type="text" class="form-control bg-light" id="tahun" placeholder="Contoh : (2019/2020)" value="{{$tapel->tahun}}" required>
                     <label for="semester">Semester</label>
                     <select name="semester" id="semester" class="form-control bg-light" required>

@@ -28,7 +28,7 @@
                     <label for="password">Password</label>
                     <input name="password" type="password" class="form-control bg-light" id="password" placeholder="Password" required>
                     <label for="role">Level</label>
-                    <select name="role" id="role" class="form-control" required>
+                    <select name="role" id="role" class="form-control" disabled>
                         <option value="admin" @if ($data_pengguna->role == 'admin') selected @endif>Administrator</option>
                         <option value="PetugasAdministrasiSurat" @if ($data_pengguna->role == 'PetugasAdministrasiSurat') selected @endif>Petugas Administrasi Surat</option>
                         <option value="PetugasAdministrasiKeuangan" @if ($data_pengguna->role == 'PetugasAdministrasiKeuangan') selected @endif>Petugas Administrasi Keuangan</option>

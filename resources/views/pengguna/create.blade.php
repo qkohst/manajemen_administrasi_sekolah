@@ -13,7 +13,7 @@
         </div>
         @endif
         <form action="{{ route('pengguna.store') }}" method="POST">
-            <h3><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Tambah Data Pengguna</h3>
+            <h3><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Tambah Data Administrator</h3>
             <hr>
             {{csrf_field()}}
             <div class="row">
@@ -29,7 +29,6 @@
                     <label for="role">Level</label>
                     <select name="role" id="role" class="form-control bg-light" required>
                         <option value="admin">Administrator</option>
-                        <option value="petugas">Petugas</option>
                     </select>
                 </div>
             </div>

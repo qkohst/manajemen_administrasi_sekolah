@@ -218,7 +218,7 @@
       <div class="box">
         <div class="row">
           <div class="col">
-            <h4><i class="nav-icon fas fa-headset my-0 btn-sm-1"></i> Team Support</h4>
+            <h4><i class="nav-icon fas fa-headset my-0 btn-sm-1"></i> Team Teknis</h4>
             <hr>
           </div>
         </div>

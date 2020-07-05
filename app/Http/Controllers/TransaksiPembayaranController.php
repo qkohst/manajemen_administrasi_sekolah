@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\TransaksiPembayaran;
+use App\Pemasukan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -89,6 +90,15 @@ class TransaksiPembayaranController extends Controller
         TransaksiPembayaran::insert($insert_data);
         $tagihan_dibayar = \App\TransaksiPembayaran::whereIn('tagihan_id', $tagihan_id)->where('pesdik_id', $pesdik_id)->get();
         $identitas = $tagihan_dibayar->first();
+
+        //memasukkan data pembayaran siswa ke pemasukan sekolah
+        $jumlah_transaksi = \App\TransaksiPembayaran::whereIn('tagihan_id', $tagihan_id)->where('pesdik_id', $pesdik_id)->sum('jumlah_bayar');
+        $pemasukan = new Pemasukan();
+        $pemasukan->kategori_id      = '1';
+        $pemasukan->jumlah           = $jumlah_transaksi;
+        $pemasukan->keterangan       = '-';
+        $pemasukan->save();
+
         return view('/pembayaran/transaksipembayaran/invoice_bukti_pembayaran', compact('identitas', 'tagihan_dibayar', 'tagihan_id', 'pesdik_id'));
     }
 

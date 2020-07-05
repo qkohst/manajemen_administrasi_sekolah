@@ -39,7 +39,7 @@
                     </select>
                     <label for="tempat_lahir">Tempat Lahir</label>
                     <input name="tempat_lahir" type="text" class="form-control bg-light" id="tempat_lahir" placeholder="Tempat Lahir" value="{{$guru->tempat_lahir}}" required>
-                    <label for="tanggal_lahir">Tanggal Surat</label>
+                    <label for="tanggal_lahir">Tanggal Lahir</label>
                     <input name="tanggal_lahir" type="date" class="form-control bg-light" id="tanggal_lahir" value="{{$guru->tanggal_lahir}}" required>
                 </div>
                 <div class="col-6">

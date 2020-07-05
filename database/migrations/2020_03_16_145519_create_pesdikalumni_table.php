@@ -15,17 +15,10 @@ class CreatePesdikalumniTable extends Migration
     {
         Schema::create('pesdikalumni', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('jenis_kelamin');
-            $table->string('nisn');
-            $table->string('induk');
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
-            $table->string('jenis_pendaftaran');
-            $table->date('tanggal_masuk');
+            $table->integer('id_peserta_didik');
             $table->date('tanggal_lulus');
-            $table->string('melanjutkan_ke');
-            $table->string('keterangan');
+            $table->string('melanjutkan_ke', 20);
+            $table->string('keterangan', 100);
             $table->timestamps();
         });
     }

@@ -39,7 +39,7 @@
         </form>
         <div class="row">
             <div class="col-md-8">
-                <h6>Agenda surat masuk dari tanggal terima {{$tgl_awal}} sampai tanggal {{$tgl_akhir}}</h6>
+                <h6>Agenda surat masuk dari tanggal pencatatan {{$tgl_awal}} sampai tanggal {{$tgl_akhir}}</h6>
             </div>
             <div class="col-md-4">
                 <form action="/suratkeluar/cetakagenda" method="POST" target="_blank">

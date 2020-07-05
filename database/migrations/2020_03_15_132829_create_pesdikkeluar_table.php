@@ -15,18 +15,10 @@ class CreatePesdikkeluarTable extends Migration
     {
         Schema::create('pesdikkeluar', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('jenis_kelamin');
-            $table->string('nisn');
-            $table->string('induk');
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
-            $table->string('jenis_pendaftaran');
-            $table->date('tanggal_masuk');
-            $table->string('rombel_sebelumnya');
-            $table->string('keluar_karena');
+            $table->integer('id_peserta_didik');
+            $table->string('keluar_karena', 20);
             $table->date('tanggal_keluar');
-            $table->string('alasan_keluar');
+            $table->string('alasan_keluar', 100);
             $table->timestamps();
         });
     }

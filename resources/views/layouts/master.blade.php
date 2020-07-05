@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Manajemen Administrasi Sekolah</title>
+    <title>Sistem Informasi Administrasi Sekolah</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/adminLTE/plugins/fontawesome-free/css/all.min.css">
     <!-- overlayScrollbars -->
@@ -50,7 +50,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
-                <h3 class="font-weight-bold">SISTEM MANAJEMEN ADMINISTRASI SEKOLAH</h3>
+                <h3 class="font-weight-bold">SISTEM INFORMASI ADMINISTRASI SEKOLAH</h3>
             </ul>
 
             <!-- Right navbar links -->
@@ -489,7 +489,7 @@
         <footer class="main-footer bg-secondary">
             <div class="float-right d-none d-sm-block">
                 <b>Teknik Informatika Unirow Tuban | </b>
-                Version 1.1.0
+                Versi 1.0.0
             </div>
             Copyright &copy; 2020 | by : Qkoh St
         </footer>

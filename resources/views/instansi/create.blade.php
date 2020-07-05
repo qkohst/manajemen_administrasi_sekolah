@@ -18,7 +18,7 @@
         </div>
         @endif
         <form action="{{ route('instansi.store') }}" method="POST" enctype="multipart/form-data">
-            <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Instansi</h3>
+            <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Sekolah</h3>
             <hr>
             {{ csrf_field() }}
             <div class="row">

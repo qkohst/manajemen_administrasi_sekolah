@@ -18,13 +18,13 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Pengguna</h3>
+                <h3><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Data Pengguna</h3>
                 <hr>
             </div>
         </div>
         <div>
             <div class="col">
-                <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{ route('pengguna.create') }}" role="button"><i class="fas fa-plus"></i> Tambah Data</a>
+                <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{ route('pengguna.create') }}" role="button"><i class="fas fa-plus"></i> Tambah Administrator</a>
                 <br><br>
             </div>
         </div>
