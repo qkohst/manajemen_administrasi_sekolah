@@ -15,9 +15,9 @@ class CreateTagihanTable extends Migration
     {
         Schema::create('tagihan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('rombel_id');
-            $table->string('rincian');
-            $table->string('jenis_kelamin');
+            $table->integer('rombel_id')->unsigned();
+            $table->string('rincian', 50);
+            $table->string('jenis_kelamin', 9);
             $table->integer('nominal');
             $table->date('batas_bayar');
             $table->timestamps();

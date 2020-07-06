@@ -15,7 +15,7 @@ class CreatePesdikalumniTable extends Migration
     {
         Schema::create('pesdikalumni', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pesdik_id');
+            $table->integer('pesdik_id')->unsigned();
             $table->date('tanggal_lulus');
             $table->string('melanjutkan_ke', 20);
             $table->string('keterangan', 100);

@@ -15,13 +15,14 @@ class CreateSuratkeluarTable extends Migration
     {
         Schema::create('suratkeluar', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('no_surat')->unique();
-            $table->string('tujuan_surat');
+            $table->integer('klasifikasi_id')->unsigned();
+            $table->integer('users_id')->unsigned();
+            $table->string('no_surat', 30)->unique();
+            $table->string('tujuan_surat', 30);
             $table->string('isi');
-            $table->string('kode');
             $table->date('tgl_surat');
             $table->date('tgl_catat');
-            $table->string('filekeluar');
+            $table->string('filekeluar', 30);
             $table->string('keterangan');
             $table->timestamps();
         });

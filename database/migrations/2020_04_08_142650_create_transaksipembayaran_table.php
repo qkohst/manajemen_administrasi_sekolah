@@ -14,11 +14,11 @@ class CreateTransaksipembayaranTable extends Migration
     public function up()
     {
         Schema::create('transaksipembayaran', function (Blueprint $table) {
-            $table->increments('id_transaksi');
-            $table->integer('tagihan_id');
-            $table->integer('users_id');
-            $table->integer('pesdik_id');
-            $table->integer('id_rombel');
+            $table->increments('id');
+            $table->integer('tagihan_id')->unsigned();
+            $table->integer('users_id')->unsigned();
+            $table->integer('pesdik_id')->unsigned();
+            $table->integer('rombel_id')->unsigned();
             $table->integer('jumlah_bayar');
             $table->timestamps();
         });

@@ -15,12 +15,12 @@ class CreateSetorTable extends Migration
     {
         Schema::create('setor', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pesdik_id');
-            $table->integer('id_rombel');
+            $table->integer('pesdik_id')->unsigned();
+            $table->integer('users_id')->unsigned();
+            $table->integer('rombel_id')->unsigned();
             $table->date('tanggal');
             $table->integer('jumlah');
-            $table->string('keterangan');
-            $table->integer('users_id');
+            $table->string('keterangan', 50);
             $table->timestamps();
         });
     }

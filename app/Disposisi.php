@@ -6,10 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Disposisi extends Model
 {
-    protected $fillable = ['tujuan','isi','sifat','batas_waktu','catatan','users_id','suratmasuk_id'];
+    protected $fillable = ['tujuan', 'isi', 'sifat', 'batas_waktu', 'catatan', 'users_id', 'suratmasuk_id'];
 
-    public function smasuk()
+    public function suratmasuk()
     {
         return $this->belongsTo('App\SuratMasuk');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo('App\User');
     }
 }

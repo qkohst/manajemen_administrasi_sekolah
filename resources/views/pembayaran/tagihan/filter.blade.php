@@ -36,7 +36,7 @@
             <div class="col-sm-4 invoice-col">
               Wali Kelas :
               <address>
-                <strong>{{$header->rombel->wali_kelas}}</strong>
+                <strong>{{$header->rombel->guru->nama}}</strong>
               </address>
             </div>
             <!-- /.col -->

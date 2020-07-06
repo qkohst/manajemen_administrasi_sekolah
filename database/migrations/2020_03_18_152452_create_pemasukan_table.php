@@ -15,10 +15,10 @@ class CreatePemasukanTable extends Migration
     {
         Schema::create('pemasukan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('kategori_id');
+            $table->integer('kategori_id')->unsigned();
             $table->date('tanggal');
             $table->integer('jumlah');
-            $table->string('keterangan');
+            $table->string('keterangan', 50);
             $table->timestamps();
         });
     }

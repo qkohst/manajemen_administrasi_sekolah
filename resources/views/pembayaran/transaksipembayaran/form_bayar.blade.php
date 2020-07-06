@@ -40,7 +40,7 @@
                 <input value="{{$pesdik_id}}" name="pesdik_id[]" type="text" class="form-control bg-white" id="pesdik_id[]">
               </td>
               <td visibility: hidden>
-                <input value="{{$tagih->rombel_id}}" name="id_rombel[]" type="text" class="form-control bg-white" id="id_rombel[]">
+                <input value="{{$tagih->rombel_id}}" name="rombel_id[]" type="text" class="form-control bg-white" id="rombel_id[]">
               </td>
               <td>{{$no}}</td>
               <td>{{$tagih->rombel->nama_rombel}} {{$tagih->rombel->tapel->semester}}</td>

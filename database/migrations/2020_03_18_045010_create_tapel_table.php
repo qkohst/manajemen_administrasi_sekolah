@@ -15,8 +15,8 @@ class CreateTapelTable extends Migration
     {
         Schema::create('tapel', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tahun');
-            $table->string('semester');
+            $table->string('tahun', 9);
+            $table->string('semester', 15);
             $table->timestamps();
         });
     }

@@ -15,10 +15,10 @@ class CreateRombelTable extends Migration
     {
         Schema::create('rombel', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tapel_id');
-            $table->integer('guru_id');
+            $table->integer('tapel_id')->unsigned();
+            $table->integer('guru_id')->unsigned();
             $table->integer('kelas');
-            $table->string('nama_rombel');
+            $table->string('nama_rombel', 15);
             $table->timestamps();
         });
     }

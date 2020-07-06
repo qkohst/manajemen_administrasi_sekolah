@@ -12,13 +12,6 @@ use Carbon\Carbon;
 
 class TransaksiPembayaranController extends Controller
 {
-    // public function index()
-    // {
-    //     $pesdik = \App\Anggotarombel::groupBy('pesdik_id')->first();
-    //     $rombel = \App\Anggotarombel::groupBy('rombel_id')->get();
-    //     return view('/pembayaran/transaksipembayaran/index', compact('pesdik', 'rombel'));
-    // }
-
     public function index()
     {
         $data_pesdik = \App\Pesdik::all();
@@ -70,7 +63,7 @@ class TransaksiPembayaranController extends Controller
         $users_id = Auth::id();
         $tagihan_id = $request->tagihan_id;
         $pesdik_id = $request->pesdik_id;
-        $id_rombel = $request->id_rombel;
+        $rombel_id = $request->rombel_id;
         $nominal = $request->nominal;
         $jumlah_bayar = $request->jumlah_bayar;
 
@@ -79,7 +72,7 @@ class TransaksiPembayaranController extends Controller
                 'tagihan_id' => $tagihan_id[$count],
                 'users_id'  => $users_id,
                 'pesdik_id'  => $pesdik_id[$count],
-                'id_rombel'  => $id_rombel[$count],
+                'rombel_id'  => $rombel_id[$count],
                 'jumlah_bayar'  => $jumlah_bayar[$count],
                 'created_at'  => Carbon::now(),
                 'updated_at'  => Carbon::now()

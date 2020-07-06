@@ -101,7 +101,7 @@
                         <td>{{ $i++ }}</td>
                         <td>{{$masuk->isi}}</td>
                         <td>{{$masuk->asal_surat}}</td>
-                        <td>{{$masuk->kode}}</td>
+                        <td>{{$masuk->klasifikasi->kode}}</td>
                         <td>{{$masuk->no_surat}}</td>
                         <td>{{$masuk->tgl_surat}}</td>
                         <td>{{$masuk->tgl_terima}}</td>

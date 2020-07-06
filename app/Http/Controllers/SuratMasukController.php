@@ -40,7 +40,7 @@ class SuratmasukController extends Controller
         $suratmasuk->no_surat   = $request->input('no_surat');
         $suratmasuk->asal_surat = $request->input('asal_surat');
         $suratmasuk->isi        = $request->input('isi');
-        $suratmasuk->kode       = $request->input('kode');
+        $suratmasuk->klasifikasi_id       = $request->input('klasifikasi_id');
         $suratmasuk->tgl_surat  = $request->input('tgl_surat');
         $suratmasuk->tgl_terima = $request->input('tgl_terima');
         $suratmasuk->keterangan = $request->input('keterangan');

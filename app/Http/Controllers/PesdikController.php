@@ -93,7 +93,7 @@ class PesdikController extends Controller
         $reg      = 'Keluar';
 
         $pesdikkeluar = new Pesdikkeluar();
-        $pesdikkeluar->id_peserta_didik = $id_pesdik;
+        $pesdikkeluar->pesdik_id = $id_pesdik;
         $pesdikkeluar->keluar_karena   = $request->input('keluar_karena');
         $pesdikkeluar->tanggal_keluar   = $request->input('tanggal_keluar');
         $pesdikkeluar->alasan_keluar   = $request->input('alasan_keluar');

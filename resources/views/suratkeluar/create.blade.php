@@ -35,11 +35,11 @@
                     <input value="{{old('tujuan_surat')}}" name="tujuan_surat" type="text" class="form-control bg-light" id="tujuansurat" placeholder="Tujuan Surat" required>
                     <label for="isisurat">Isi Ringkas</label>
                     <textarea name="isi" class="form-control bg-light" id="isisurat" rows="3" placeholder="Isi Ringkas Surat Keluar" required>{{old('isi')}}</textarea>
-                    <label for="kode">Kode Klasifikasi</label>
-                    <select name="kode" class="form-control my-1 mr-sm-2 bg-light" id="inlineFormCustomSelectPref" required>
+                    <label for="klasifikasi_id">Kode Klasifikasi</label>
+                    <select name="klasifikasi_id" class="form-control my-1 mr-sm-2 bg-light" id="inlineFormCustomSelectPref" required>
                         <option value="">-- Pilih Klasifikasi Surat --</option>
                         @foreach($data_klasifikasi as $klasifikasi)
-                        <option value="{{$klasifikasi->kode}}">{{$klasifikasi->nama}} ( {{$klasifikasi->kode}} )
+                        <option value="{{$klasifikasi->id}}">{{$klasifikasi->nama}} ( {{$klasifikasi->kode}} )
                         </option>
                         @endforeach
                     </select>

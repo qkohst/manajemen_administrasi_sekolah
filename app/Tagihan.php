@@ -14,4 +14,9 @@ class Tagihan extends Model
      {
          return $this->belongsTo('App\Rombel');
      }
+
+     public function transaksipembayaran()
+     {
+         return $this->hasMany('App\TransaksiPembayaran');
+     }
 }

@@ -15,14 +15,14 @@ class LaporanController extends Controller
     public function tPembayaranIndex()
     {
         $data_id_pesdik = \App\TransaksiPembayaran::select('pesdik_id')->groupBy('pesdik_id')->get();
-        $data_id_rombel = \App\TransaksiPembayaran::select('id_rombel')->groupBy('id_rombel')->get();
+        $data_id_rombel = \App\TransaksiPembayaran::select('rombel_id')->groupBy('rombel_id')->get();
         $tgl_1 = \App\TransaksiPembayaran::first();
         $tgl_2 = \App\TransaksiPembayaran::latest()->first();
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = $tgl_2->created_at;
 
         $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\TransaksiPembayaran::groupBy('id_rombel')->get();
+        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->get();
         $data_transaksi = \App\TransaksiPembayaran::all();
         $total_transaksi = \App\TransaksiPembayaran::all()->sum('jumlah_bayar');
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi', 'daftar_nama', 'daftar_kelas', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
@@ -33,14 +33,14 @@ class LaporanController extends Controller
         $pesdik_id = $request->input('filterNama');
 
         $data_id_pesdik = \App\TransaksiPembayaran::select('pesdik_id')->where('pesdik_id', $pesdik_id)->get();
-        $data_id_rombel = \App\TransaksiPembayaran::select('id_rombel')->groupBy('id_rombel')->get();
+        $data_id_rombel = \App\TransaksiPembayaran::select('rombel_id')->groupBy('rombel_id')->get();
         $tgl_1 = \App\TransaksiPembayaran::first();
         $tgl_2 = \App\TransaksiPembayaran::latest()->first();
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = $tgl_2->created_at;
 
         $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\TransaksiPembayaran::groupBy('id_rombel')->get();
+        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->get();
         $data_transaksi = \App\TransaksiPembayaran::where('pesdik_id', $pesdik_id)->get();
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi', 'daftar_nama', 'daftar_kelas', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
     }
@@ -50,15 +50,15 @@ class LaporanController extends Controller
         $id_rombel = $request->input('filterKelas');
 
         $data_id_pesdik = \App\TransaksiPembayaran::select('pesdik_id')->groupBy('pesdik_id')->get();
-        $data_id_rombel = \App\TransaksiPembayaran::select('id_rombel')->where('id_rombel', $id_rombel)->get();
+        $data_id_rombel = \App\TransaksiPembayaran::select('rombel_id')->where('rombel_id', $id_rombel)->get();
         $tgl_1 = \App\TransaksiPembayaran::first();
         $tgl_2 = \App\TransaksiPembayaran::latest()->first();
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = $tgl_2->created_at;
 
         $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\TransaksiPembayaran::groupBy('id_rombel')->get();
-        $data_transaksi = \App\TransaksiPembayaran::where('id_rombel', $id_rombel)->get();
+        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->get();
+        $data_transaksi = \App\TransaksiPembayaran::where('rombel_id', $id_rombel)->get();
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi', 'daftar_nama', 'daftar_kelas', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -68,10 +68,10 @@ class LaporanController extends Controller
         $tgl_akhir = $request->input('tgl_akhir');
 
         $data_id_pesdik = \App\TransaksiPembayaran::select('pesdik_id')->groupBy('pesdik_id')->get();
-        $data_id_rombel = \App\TransaksiPembayaran::select('id_rombel')->groupBy('id_rombel')->get();
+        $data_id_rombel = \App\TransaksiPembayaran::select('rombel_id')->groupBy('rombel_id')->get();
 
         $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\TransaksiPembayaran::groupBy('id_rombel')->get();
+        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->get();
         $data_transaksi = \App\TransaksiPembayaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi', 'daftar_nama', 'daftar_kelas', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
     }
@@ -89,8 +89,8 @@ class LaporanController extends Controller
         $tgl_awal = $request->input('tgl_awal');
         $tgl_akhir = $request->input('tgl_akhir');
 
-        $data_transaksi = \App\TransaksiPembayaran::whereIn('pesdik_id', $data_id_pesdik)->whereIn('id_rombel', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
-        $total_transaksi = \App\TransaksiPembayaran::whereIn('pesdik_id', $data_id_pesdik)->whereIn('id_rombel', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah_bayar');
+        $data_transaksi = \App\TransaksiPembayaran::whereIn('pesdik_id', $data_id_pesdik)->whereIn('rombel_id', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $total_transaksi = \App\TransaksiPembayaran::whereIn('pesdik_id', $data_id_pesdik)->whereIn('rombel_id', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah_bayar');
         return view('/laporankeuangan/transaksipembayaran/cetak', compact('inst', 'data_transaksi', 'tgl_awal', 'tgl_akhir', 'total_transaksi'));
     }
 
@@ -99,13 +99,13 @@ class LaporanController extends Controller
     public function tSetorTarikIndex()
     {
         $data_id_pesdik = \App\Setor::select('pesdik_id')->groupBy('pesdik_id')->get();
-        $data_id_rombel = \App\Setor::select('id_rombel')->groupBy('id_rombel')->get();
+        $data_id_rombel = \App\Setor::select('rombel_id')->groupBy('rombel_id')->get();
         $tgl_1 = \App\Setor::first();
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = Carbon::now();
 
         $daftar_nama = \App\Setor::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\Setor::groupBy('id_rombel')->get();
+        $daftar_kelas = \App\Setor::groupBy('rombel_id')->get();
 
         $data_setor = \App\Setor::all();
         $total_setor = \App\Setor::all()->sum('jumlah');
@@ -121,14 +121,14 @@ class LaporanController extends Controller
         $pesdik_id = $request->input('filterNama');
 
         $data_id_pesdik = \App\Setor::select('pesdik_id')->where('pesdik_id', $pesdik_id)->get();
-        $data_id_rombel = \App\Setor::select('id_rombel')->groupBy('id_rombel')->get();
+        $data_id_rombel = \App\Setor::select('rombel_id')->groupBy('rombel_id')->get();
 
         $tgl_1 = \App\Setor::first();
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = Carbon::now();
 
         $daftar_nama = \App\Setor::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\Setor::groupBy('id_rombel')->get();
+        $daftar_kelas = \App\Setor::groupBy('rombel_id')->get();
 
         $data_setor = \App\Setor::where('pesdik_id', $pesdik_id)->get();
         $total_setor = \App\Setor::where('pesdik_id', $pesdik_id)->sum('jumlah');
@@ -144,19 +144,19 @@ class LaporanController extends Controller
         $id_rombel = $request->input('filterKelas');
 
         $data_id_pesdik = \App\Setor::select('pesdik_id')->groupBy('pesdik_id')->get();
-        $data_id_rombel = \App\Setor::select('id_rombel')->where('id_rombel', $id_rombel)->get();
+        $data_id_rombel = \App\Setor::select('rombel_id')->where('rombel_id', $id_rombel)->get();
         $tgl_1 = \App\Setor::first();
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = Carbon::now();
 
         $daftar_nama = \App\Setor::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\Setor::groupBy('id_rombel')->get();
+        $daftar_kelas = \App\Setor::groupBy('rombel_id')->get();
 
-        $data_setor = \App\Setor::where('id_rombel', $id_rombel)->get();
-        $total_setor = \App\Setor::where('id_rombel', $id_rombel)->sum('jumlah');
+        $data_setor = \App\Setor::where('rombel_id', $id_rombel)->get();
+        $total_setor = \App\Setor::where('rombel_id', $id_rombel)->sum('jumlah');
 
-        $data_tarik = \App\Tarik::where('id_rombel', $id_rombel)->get();
-        $total_tarik = \App\Tarik::where('id_rombel', $id_rombel)->sum('jumlah');
+        $data_tarik = \App\Tarik::where('rombel_id', $id_rombel)->get();
+        $total_tarik = \App\Tarik::where('rombel_id', $id_rombel)->sum('jumlah');
 
         return view('/laporankeuangan/setortariktunai/index', compact('daftar_nama', 'daftar_kelas', 'data_setor', 'total_setor', 'data_tarik', 'total_tarik', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
     }
@@ -167,10 +167,10 @@ class LaporanController extends Controller
         $tgl_akhir = $request->input('tgl_akhir');
 
         $data_id_pesdik = \App\Setor::select('pesdik_id')->groupBy('pesdik_id')->get();
-        $data_id_rombel = \App\Setor::select('id_rombel')->groupBy('id_rombel')->get();
+        $data_id_rombel = \App\Setor::select('rombel_id')->groupBy('rombel_id')->get();
 
         $daftar_nama = \App\Setor::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\Setor::groupBy('id_rombel')->get();
+        $daftar_kelas = \App\Setor::groupBy('rombel_id')->get();
 
         $data_setor = \App\Setor::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
         $total_setor = \App\Setor::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
@@ -190,11 +190,11 @@ class LaporanController extends Controller
         $tgl_awal = $request->input('tgl_awal');
         $tgl_akhir = $request->input('tgl_akhir');
 
-        $data_setor = \App\Setor::whereIn('pesdik_id', $data_id_pesdik)->whereIn('id_rombel', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
-        $total_setor = \App\Setor::whereIn('pesdik_id', $data_id_pesdik)->whereIn('id_rombel', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
+        $data_setor = \App\Setor::whereIn('pesdik_id', $data_id_pesdik)->whereIn('rombel_id', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $total_setor = \App\Setor::whereIn('pesdik_id', $data_id_pesdik)->whereIn('rombel_id', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
 
-        $data_tarik = \App\Tarik::whereIn('pesdik_id', $data_id_pesdik)->whereIn('id_rombel', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
-        $total_tarik = \App\Tarik::whereIn('pesdik_id', $data_id_pesdik)->whereIn('id_rombel', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
+        $data_tarik = \App\Tarik::whereIn('pesdik_id', $data_id_pesdik)->whereIn('rombel_id', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $total_tarik = \App\Tarik::whereIn('pesdik_id', $data_id_pesdik)->whereIn('rombel_id', $data_id_rombel)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
 
         return view('/laporankeuangan/setortariktunai/cetak', compact('inst', 'tgl_awal', 'tgl_akhir', 'data_setor', 'total_setor', 'data_tarik', 'total_tarik'));
     }
@@ -217,7 +217,7 @@ class LaporanController extends Controller
         $data_pengeluaran = \App\Pengeluaran::all();
         $total_pengeluaran = \App\Pengeluaran::all()->sum('jumlah');
 
-        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori','data_id_kategori','tgl_awal','tgl_akhir','data_pemasukan','total_pemasukan', 'data_pengeluaran','total_pengeluaran'));
+        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori', 'data_id_kategori', 'tgl_awal', 'tgl_akhir', 'data_pemasukan', 'total_pemasukan', 'data_pengeluaran', 'total_pengeluaran'));
     }
 
     public function tKeuanganSekolahfilterByKategori(Request $request)
@@ -238,7 +238,7 @@ class LaporanController extends Controller
         $data_pengeluaran = \App\Pengeluaran::where('kategori_id', $kategori_id)->get();
         $total_pengeluaran = \App\Pengeluaran::where('kategori_id', $kategori_id)->sum('jumlah');
 
-        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori','data_id_kategori','tgl_awal','tgl_akhir','data_pemasukan','total_pemasukan', 'data_pengeluaran','total_pengeluaran'));
+        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori', 'data_id_kategori', 'tgl_awal', 'tgl_akhir', 'data_pemasukan', 'total_pemasukan', 'data_pengeluaran', 'total_pengeluaran'));
     }
 
     public function tKeuanganSekolahfilterByTanggal(Request $request)
@@ -255,7 +255,7 @@ class LaporanController extends Controller
         $data_pengeluaran = \App\Pengeluaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
         $total_pengeluaran = \App\Pengeluaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
 
-        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori','data_id_kategori','tgl_awal','tgl_akhir','data_pemasukan','total_pemasukan', 'data_pengeluaran','total_pengeluaran'));
+        return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori', 'data_id_kategori', 'tgl_awal', 'tgl_akhir', 'data_pemasukan', 'total_pemasukan', 'data_pengeluaran', 'total_pengeluaran'));
     }
 
     public function tKeuanganSekolahCetak(Request $request)

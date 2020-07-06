@@ -32,7 +32,7 @@ class SetorController extends Controller
         ]);
         $setor = new Setor();
         $setor->pesdik_id           = $pilih_pesdik;
-        $setor->id_rombel           = $rombel_id;
+        $setor->rombel_id           = $rombel_id;
         $setor->tanggal             = $request->input('tanggal');
         $setor->jumlah              = $request->input('jumlah');
         $setor->keterangan          = $request->input('keterangan');
@@ -82,11 +82,11 @@ class SetorController extends Controller
 
     public function siswaindex($id)
     {
-        $pesdik= \App\Pesdik::where('id',$id)->get();
-        $id_pesdik_login=$pesdik->first();
-        
-        $data_pesdik = \App\Pesdik::where('id',$id)->get();
-        $data_setor = \App\Setor::where('pesdik_id',$id)->get();
-        return view('/tabungan/setor/siswaindex', compact('data_pesdik','data_setor','id_pesdik_login'));
+        $pesdik = \App\Pesdik::where('id', $id)->get();
+        $id_pesdik_login = $pesdik->first();
+
+        $data_pesdik = \App\Pesdik::where('id', $id)->get();
+        $data_setor = \App\Setor::where('pesdik_id', $id)->get();
+        return view('/tabungan/setor/siswaindex', compact('data_pesdik', 'data_setor', 'id_pesdik_login'));
     }
 }

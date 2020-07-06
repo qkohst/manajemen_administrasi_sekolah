@@ -15,8 +15,8 @@ class CreateAnggotarombelTable extends Migration
     {
         Schema::create('anggotarombel', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pesdik_id');
-            $table->integer('rombel_id');
+            $table->integer('pesdik_id')->unsigned();
+            $table->integer('rombel_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -15,11 +15,11 @@ class CreateInstansisTable extends Migration
     {
         Schema::create('instansis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('alamat');
-            $table->string('pimpinan');
-            $table->string('email');
-            $table->string('file');
+            $table->string('nama', 30);
+            $table->string('alamat', 30);
+            $table->string('pimpinan', 20);
+            $table->string('email', 35);
+            $table->string('file', 50);
             $table->timestamps();
         });
     }

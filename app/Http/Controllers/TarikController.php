@@ -32,7 +32,7 @@ class TarikController extends Controller
         ]);
         $tarik = new Tarik();
         $tarik->pesdik_id           = $pilih_pesdik;
-        $tarik->id_rombel           = $rombel_id;
+        $tarik->rombel_id           = $rombel_id;
         $tarik->tanggal             = $request->input('tanggal');
         $tarik->jumlah              = $request->input('jumlah');
         $tarik->keterangan          = $request->input('keterangan');

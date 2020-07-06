@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role',
+        'name', 'email', 'password', 'role',
     ];
 
     /**
@@ -27,4 +27,39 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function pengumuman()
+    {
+        return $this->hasMany('App\Pengumuman');
+    }
+
+    public function transaksipembayaran()
+    {
+        return $this->hasMany('App\TransaksiPembayaran');
+    }
+
+    public function tarik()
+    {
+        return $this->hasMany('App\Tarik');
+    }
+
+    public function setor()
+    {
+        return $this->hasMany('App\Setor');
+    }
+
+    public function suratmasuk()
+    {
+        return $this->hasMany('App\Suratmasuk');
+    }
+
+    public function suratkeluar()
+    {
+        return $this->hasMany('App\Suratkeluar');
+    }
+
+    public function disposisis()
+    {
+        return $this->hasMany('App\Disposisi');
+    }
 }

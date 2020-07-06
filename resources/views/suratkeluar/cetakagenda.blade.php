@@ -101,7 +101,7 @@
                         <td>{{ $i++ }}</td>
                         <td>{{$keluar->isi}}</td>
                         <td>{{$keluar->tujuan_surat}}</td>
-                        <td>{{$keluar->kode}}</td>
+                        <td>{{$keluar->klasifikasi->kode}}</td>
                         <td>{{$keluar->no_surat}}</td>
                         <td>{{$keluar->tgl_surat}}</td>
                         <td>{{$keluar->tgl_catat}}</td>

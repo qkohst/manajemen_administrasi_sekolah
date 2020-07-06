@@ -15,7 +15,7 @@ class CreatePesdikkeluarTable extends Migration
     {
         Schema::create('pesdikkeluar', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pesdik_id');
+            $table->integer('pesdik_id')->unsigned();
             $table->string('keluar_karena', 20);
             $table->date('tanggal_keluar');
             $table->string('alasan_keluar', 100);

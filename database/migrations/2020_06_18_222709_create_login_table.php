@@ -15,8 +15,8 @@ class CreateLoginTable extends Migration
     {
         Schema::create('login', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email');
+            $table->string('name', 30);
+            $table->string('email', 35);
             $table->timestamps();
         });
     }

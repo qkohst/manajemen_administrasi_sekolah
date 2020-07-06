@@ -15,14 +15,14 @@ class CreateTendikTable extends Migration
     {
         Schema::create('tendik', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('jenis_kelamin');
-            $table->string('tempat_lahir');
+            $table->string('nama', 30);
+            $table->string('jenis_kelamin', 9);
+            $table->string('tempat_lahir', 25);
             $table->date('tanggal_lahir');
-            $table->string('alamat');
-            $table->string('no_hp');
-            $table->string('email');
-            $table->string('tugas');
+            $table->string('alamat', 30);
+            $table->string('no_hp', 13);
+            $table->string('email', 35);
+            $table->string('tugas', 35);
             $table->timestamps();
         });
     }

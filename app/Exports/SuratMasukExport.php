@@ -12,6 +12,6 @@ class SuratMasukExport implements FromCollection
     */
     public function collection()
     {
-        return SuratMasuk::select('id', 'isi', 'asal_surat', 'kode', 'no_surat', 'tgl_surat', 'tgl_terima', 'keterangan')->get();
+        return SuratMasuk::select('id', 'isi', 'asal_surat', 'klasifikasi_id', 'no_surat', 'tgl_surat', 'tgl_terima', 'keterangan')->get();
     }
 }

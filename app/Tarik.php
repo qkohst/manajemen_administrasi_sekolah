@@ -6,21 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tarik extends Model
 {
-    protected $table = 'tarik';
-    protected $fillable = ['pesdik_id','id_rombel','tanggal','jumlah','keterangan','users_id'];
+  protected $table = 'tarik';
+  protected $fillable = ['pesdik_id', 'rombel_id', 'tanggal', 'jumlah', 'keterangan', 'users_id'];
 
-    public function pesdik()
-      {
-          return $this->belongsTo('App\Pesdik');
-      }
+  public function users()
+  {
+    return $this->belongsTo('App\User');
+  }
 
-    public function users()
-      {
-        return $this->belongsTo('App\User');
-      }
+  public function pesdik()
+  {
+    return $this->belongsTo('App\Pesdik');
+  }
 
-    public function Rombel()
-      {
-        return $this->belongsTo('App\Rombel');
-      }
+  public function rombel()
+  {
+    return $this->belongsTo('App\Rombel');
+  }
 }

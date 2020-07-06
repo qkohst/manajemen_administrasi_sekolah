@@ -15,13 +15,14 @@ class CreateSuratmasukTable extends Migration
     {
         Schema::create('suratmasuk', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('no_surat')->unique();
-            $table->string('asal_surat');
+            $table->integer('klasifikasi_id')->unsigned();
+            $table->integer('users_id')->unsigned();
+            $table->string('no_surat', 30)->unique();
+            $table->string('asal_surat', 30);
             $table->text('isi');
-            $table->char('kode');
             $table->date('tgl_surat');
             $table->date('tgl_terima');
-            $table->string('filemasuk');
+            $table->string('filemasuk', 50);
             $table->text('keterangan');
             $table->timestamps();
         });

@@ -38,7 +38,7 @@ class SuratKeluarController extends Controller
         $suratkeluar->no_surat     = $request->input('no_surat');
         $suratkeluar->tujuan_surat = $request->input('tujuan_surat');
         $suratkeluar->isi          = $request->input('isi');
-        $suratkeluar->kode         = $request->input('kode');
+        $suratkeluar->klasifikasi_id         = $request->input('klasifikasi_id');
         $suratkeluar->tgl_surat    = $request->input('tgl_surat');
         $suratkeluar->tgl_catat    = $request->input('tgl_catat');
         $suratkeluar->keterangan   = $request->input('keterangan');

@@ -35,13 +35,9 @@
                     <input name="tujuan_surat" type="text" class="form-control bg-light" id="tujuansurat" placeholder="Tujuan Surat" value="{{$suratkeluar->tujuan_surat}}" required>
                     <label for="isisurat">Isi Ringkas</label>
                     <textarea name="isi" class="form-control bg-light" id="isisurat" rows="3" placeholder="Isi Ringkas Surat Keluar" value="{{$suratkeluar->isi}}" required>{{$suratkeluar->isi}}</textarea>
-                    <label for="kode">Kode Klasifikasi</label>
-                    <select name="kode" class="form-control my-1 mr-sm-2 bg-light" id="kode" value="{{$suratkeluar->kode}}" required>
-                        <option selected>{{$suratkeluar->kode}}</option>
-                        @foreach($data_klasifikasi as $klasifikasi)
-                        <option value="{{$klasifikasi->kode}}">{{$klasifikasi->nama}} ( {{$klasifikasi->kode}} )
-                        </option>
-                        @endforeach
+                    <label for="klasifikasi_id">Kode Klasifikasi</label>
+                    <select name="klasifikasi_id" class="form-control my-1 mr-sm-2" id="klasifikasi_id" disabled>
+                        <option value="{{$suratkeluar->klasifikasi_id}}">{{$suratkeluar->klasifikasi->nama}} ({{$suratkeluar->klasifikasi->kode}})</option>
                     </select>
                 </div>
                 <div class="col-6">

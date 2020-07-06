@@ -15,10 +15,10 @@ class CreatePengeluaranTable extends Migration
     {
         Schema::create('pengeluaran', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('kategori_id');
+            $table->integer('kategori_id')->unsigned();
             $table->date('tanggal');
             $table->integer('jumlah');
-            $table->string('keterangan');
+            $table->string('keterangan', 50);
             $table->timestamps();
         });
     }

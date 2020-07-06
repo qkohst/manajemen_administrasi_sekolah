@@ -77,7 +77,7 @@
                                 <td>{{$no}}</td>
                                 <td>{{$suratmasuk->isi}}</td>
                                 <td>{{$suratmasuk->asal_surat}}</td>
-                                <td>{{$suratmasuk->kode}}</td>
+                                <td>{{$suratmasuk->klasifikasi->kode}}</td>
                                 <td>{{$suratmasuk->no_surat}}</td>
                                 <td>{{$suratmasuk->tgl_surat}}</td>
                                 <td>{{$suratmasuk->tgl_terima}}</td>

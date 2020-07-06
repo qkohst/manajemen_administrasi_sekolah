@@ -89,7 +89,7 @@
                                                 Tanggal Surat
                                             </td>
                                             <td colspan="4"> {{ $smasuk->tgl_surat }}</td>
-                                            <td>Kode : {{ $smasuk->kode }}</td>
+                                            <td>Kode : {{ $smasuk->klasifikasi->kode }}</td>
                                         </tr>
                                         <tr>
                                             <td>
