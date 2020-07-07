@@ -3,15 +3,28 @@
 <section class="content card" style="padding: 10px 10px 20px 20px  ">
     <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -94,23 +107,23 @@
                                 {{csrf_field()}}
                                 <div class="row">
                                     <label for="nama">Nama Lengkap</label>
-                                    <input value="{{old('nama')}}" name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Lengkap" required>
+                                    <input value="{{old('nama')}}" name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Lengkap" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                     <label for="kode">Jenis Kelamin</label>
-                                    <select name="jk" class="form-control my-1 mr-sm-2 bg-light" id="jk" required>
+                                    <select name="jk" class="form-control my-1 mr-sm-2 bg-light" id="jk" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                         <option value="">-- Pilih Jenis Kelamin --</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
                                     </select>
                                     <label for="tempatlahir">Tempat Lahir</label>
-                                    <input value="{{old('tempatlahir')}}" name="tempatlahir" type="text" class="form-control bg-light" id="tempatlahir" placeholder="Tempat Lahir" required>
+                                    <input value="{{old('tempatlahir')}}" name="tempatlahir" type="text" class="form-control bg-light" id="tempatlahir" placeholder="Tempat Lahir" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                     <label for="tgllahir">Tanggal Lahir</label>
-                                    <input value="{{old('tgllahir')}}" name="tgllahir" type="date" class="form-control bg-light" id="tgllahir" required>
+                                    <input value="{{old('tgllahir')}}" name="tgllahir" type="date" class="form-control bg-light" id="tgllahir" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                     <label for="alamat">Alamat Lengkap</label>
-                                    <textarea name="alamat" class="form-control bg-light" id="alamat" rows="2" placeholder="Alamat Lengkap" required>{{old('alamat')}}</textarea>
+                                    <textarea name="alamat" class="form-control bg-light" id="alamat" rows="2" placeholder="Alamat Lengkap" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{old('alamat')}}</textarea>
                                     <label for="no_hp">Nomor HP</label>
-                                    <input value="{{old('no_hp')}}" name="no_hp" type="text" class="form-control bg-light" id="no_hp" placeholder="Nomor HP" required>
+                                    <input value="{{old('no_hp')}}" name="no_hp" type="number" class="form-control bg-light" id="no_hp" placeholder="Nomor HP" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                     <label for="email">Email</label>
-                                    <input value="{{old('email')}}" name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" required>
+                                    <input value="{{old('email')}}" name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" required email oninvalid="this.setCustomValidity('Pastikan anda sudah mengisikan email dengan benar !')" oninput="setCustomValidity('')">
                                 </div>
                                 <hr>
                                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i>

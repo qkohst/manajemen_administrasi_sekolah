@@ -4,12 +4,16 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         <form action="{{ route('pengguna.update', $data_pengguna->id) }}" method="POST">
@@ -20,13 +24,13 @@
             <div class="row">
                 <div class="col-6">
                     <label for="name">Nama</label>
-                    <input name="name" type="text" class="form-control bg-light" id="name" placeholder="Nama" value="{{$data_pengguna->name}}" required>
+                    <input name="name" type="text" class="form-control bg-light" id="name" placeholder="Nama" value="{{$data_pengguna->name}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" value="{{$data_pengguna->email}}" required>
+                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" value="{{$data_pengguna->email}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
                 <div class="col-6">
                     <label for="password">Password</label>
-                    <input name="password" type="password" class="form-control bg-light" id="password" placeholder="Password" required>
+                    <input name="password" type="password" class="form-control bg-light" id="password" placeholder="Password" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="role">Level</label>
                     <select name="role" id="role" class="form-control" disabled>
                         <option value="admin" @if ($data_pengguna->role == 'admin') selected @endif>Administrator</option>

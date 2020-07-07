@@ -4,15 +4,28 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -45,7 +58,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="tanggal">Tanggal Setoran</label>
-                                        <input value="{{old('tanggal')}}" name="tanggal" type="date" class="form-control bg-light" id="tanggal" required>
+                                        <input value="{{old('tanggal')}}" name="tanggal" type="date" class="form-control bg-light" id="tanggal" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                     </div>
                                     <div class="form-group row">
                                         <label for="jumlah">Jumlah</label>
@@ -53,7 +66,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input value="{{old('jumlah')}}" name="jumlah" type="text" class="form-control" id="jumlah" required>
+                                            <input value="{{old('jumlah')}}" name="jumlah" type="number" class="form-control" id="jumlah" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">.00</span>
                                             </div>
@@ -61,7 +74,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="keterangan">Keterangan</label>
-                                        <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Ketikkan Tanda ( - ) Jika Tidak Ada Keterangan">{{old('keterangan')}}</textarea>
+                                        <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Ketikkan Tanda ( - ) Jika Tidak Ada Keterangan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{old('keterangan')}}</textarea>
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> SIMPAN</button>
@@ -109,7 +122,7 @@
                                                                 <td>{{$setor->keterangan}}</td>
                                                                 <td>{{$setor->users->name}}</td>
                                                                 <td>
-                                                                    <a href="/tabungan/setor/{{$setor->id}}/cetak" class="btn btn-primary btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-print"></i> Cetak</a>
+                                                                    <a href="/tabungan/setor/{{$setor->id}}/cetakprint" target="_blank" class="btn btn-primary btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-print"></i> Cetak</a>
                                                                     <a href="/tabungan/setor/{{$setor->id}}/edit" class="btn btn-primary btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
                                                                     @if (auth()->user()->role == 'admin')
                                                                     <a href="/tabungan/setor/{{$setor->id}}/delete" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>

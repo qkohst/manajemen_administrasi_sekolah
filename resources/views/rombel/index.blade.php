@@ -3,15 +3,28 @@
 <section class="content card" style="padding: 10px 10px 20px 20px  ">
     <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -95,7 +108,7 @@
                                 {{csrf_field()}}
                                 <div class="row">
                                     <label for="tapel_id">Tahun Pelajaran</label>
-                                    <select name="tapel_id" class="form-control my-1 mr-sm-2 bg-light" id="tapel_id" required>
+                                    <select name="tapel_id" class="form-control my-1 mr-sm-2 bg-light" id="tapel_id" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                         <option value="">-- Pilih Tahun Pelajaran --</option>
                                         @foreach($data_tapel as $tapel)
                                         <option value="{{$tapel->id}}">{{$tapel->tahun}} ({{$tapel->semester}})
@@ -103,16 +116,16 @@
                                         @endforeach
                                     </select>
                                     <label for="kelas">Kelas</label>
-                                    <select name="kelas" class="form-control my-1 mr-sm-2 bg-light" id="kelas" required>
+                                    <select name="kelas" class="form-control my-1 mr-sm-2 bg-light" id="kelas" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                         <option value="">-- Pilih Kelas --</option>
                                         <option value="7">7</option>
                                         <option value="8">8</option>
                                         <option value="9">9</option>
                                     </select>
                                     <label for="nama_rombel">Nama Rombel</label>
-                                    <input value="{{old('nama_rombel')}}" name="nama_rombel" type="text" class="form-control bg-light" id="nama_rombel" placeholder="Nama Rombel" required>
+                                    <input value="{{old('nama_rombel')}}" name="nama_rombel" type="text" class="form-control bg-light" id="nama_rombel" placeholder="Nama Rombel" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                     <label for="guru_id">Wali Kelas</label>
-                                    <select name="guru_id" class="form-control my-1 mr-sm-2 bg-light" id="guru_id" required>
+                                    <select name="guru_id" class="form-control my-1 mr-sm-2 bg-light" id="guru_id" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                         <option value="">-- Pilih Wali Kelas--</option>
                                         @foreach($data_guru as $guru)
                                         <option value="{{$guru->id}}">{{$guru->nama}}

@@ -70,7 +70,7 @@
                             <i class="fas fa-user-cog mr-2"></i> Ganti Password
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="/logout" class="dropdown-item">
+                        <a href="/logout" class="dropdown-item" onclick="return confirm('Apakah anda yakin ingin keluar dari sistem ?')">
                             <i class="fas fa-sign-out-alt mr-2"></i> Keluar
                         </a>
                     </div>

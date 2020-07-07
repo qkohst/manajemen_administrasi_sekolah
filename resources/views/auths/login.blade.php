@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/adminLTE/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Sistem Informasi Administrasi Sekolah</title>
     <style>
@@ -98,13 +100,21 @@
 <body>
     <div class="kotak_login">
         @if(session('error'))
-        <div class="alert alert-danger" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Peringatan :</h5>
             {{session('error')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         @if(session('sukses'))
-        <div class="alert alert-success" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         <img src="/seo.svg" alt="Logo" class="logo">
@@ -115,8 +125,8 @@
 
         <form action="postlogin" method="POST">
             @csrf
-            <input type="email" name="email" class="form_login" placeholder="email" required>
-            <input id="password" type="password" name="password" class="form_login" placeholder="password" required>
+            <input type="email" name="email" class="form_login" placeholder="email" required email oninvalid="this.setCustomValidity('Pastikan anda sudah mengisikan email dengan benar !')" oninput="setCustomValidity('')">
+            <input id="password" type="password" name="password" class="form_login" placeholder="password" required oninvalid="this.setCustomValidity('Harap masukkan password !')" oninput="setCustomValidity('')">
             <button type="submit" class="tombol_login">Login</button>
         </form>
     </div>

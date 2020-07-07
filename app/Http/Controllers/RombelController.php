@@ -30,7 +30,7 @@ class RombelController extends Controller
     public function tambah(Request $request)
     {
         $request->validate([
-            'nama_rombel' => 'min:3',
+            'nama_rombel' => 'min:3|max:15',
         ]);
         $rombel = new Rombel();
         $rombel->tapel_id   = $request->input('tapel_id');
@@ -93,7 +93,7 @@ class RombelController extends Controller
     public function update(Request $request, $id_rombel)
     {
         $request->validate([
-            'nama_rombel' => 'min:3',
+            'nama_rombel' => 'min:3|max:15',
         ]);
         $rombel = \App\Rombel::find($id_rombel);
         $rombel->update($request->all());
@@ -103,8 +103,12 @@ class RombelController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $rombel = \App\Rombel::find($id);
-        $rombel->delete();
-        return redirect('rombel/index')->with('sukses', 'Data Rombongan Belajar Berhasil Dihapus');
+        try {
+            $rombel = \App\Rombel::find($id);
+            $rombel->delete();
+            return redirect('rombel/index')->with('sukses', 'Data Rombongan Belajar Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('warning', 'Maaf data tidak dapat dihapus, masih terdapat data pada tabel lain yang terpaut dengan data ini!');
+        }
     }
 }

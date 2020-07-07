@@ -4,15 +4,28 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -82,7 +95,7 @@
                                             <div class="form-group row">
                                                 <label for="keluar_karena" class="col-sm-3 col-form-label">Keluar Karena</label>
                                                 <div class="col-sm-4">
-                                                    <select name="keluar_karena" class="form-control my-1 mr-sm-1 bg-light" id="keluar_karena" required>
+                                                    <select name="keluar_karena" class="form-control my-1 mr-sm-1 bg-light" id="keluar_karena" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                                         <option value="">-- Pilih Jenis Keluar --</option>
                                                         <option value="Mutasi">Mutasi</option>
                                                         <option value="Dikeluarkan">Dikeluarkan</option>
@@ -96,13 +109,13 @@
                                             <div class="form-group row">
                                                 <label for="tanggal_keluar" class="col-sm-3 col-form-label">Tanggal Keluar Sekolah</label>
                                                 <div class="col-sm-4">
-                                                    <input value="{{old('tanggal_keluar')}}" name="tanggal_keluar" type="date" class="form-control bg-light" id="tanggal_keluar" required>
+                                                    <input value="{{old('tanggal_keluar')}}" name="tanggal_keluar" type="date" class="form-control bg-light" id="tanggal_keluar" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="alasan_keluar" class="col-sm-3 col-form-label">Alasan Keluar</label>
                                                 <div class="col-sm-9">
-                                                    <textarea name="alasan_keluar" class="form-control bg-light" id="alasan_keluar" rows="3" placeholder="Alasan Keluar" required>{{old('alasan')}}</textarea>
+                                                    <textarea name="alasan_keluar" class="form-control bg-light" id="alasan_keluar" rows="3" placeholder="Alasan Keluar" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{old('alasan')}}</textarea>
                                                 </div>
                                             </div>
                                             <hr>
@@ -118,13 +131,13 @@
                                             <div class="form-group row">
                                                 <label for="tanggal_lulus" class="col-sm-3 col-form-label">Tanggal Lulus Sekolah</label>
                                                 <div class="col-sm-4">
-                                                    <input value="{{old('tanggal_lulus')}}" name="tanggal_lulus" type="date" class="form-control bg-light" id="tanggal_lulus" required>
+                                                    <input value="{{old('tanggal_lulus')}}" name="tanggal_lulus" type="date" class="form-control bg-light" id="tanggal_lulus" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="melanjutkan_ke" class="col-sm-3 col-form-label">Melanjutkan Ke</label>
                                                 <div class="col-sm-4">
-                                                    <select name="melanjutkan_ke" class="form-control my-1 mr-sm-1 bg-light" id="melanjutkan_ke" required>
+                                                    <select name="melanjutkan_ke" class="form-control my-1 mr-sm-1 bg-light" id="melanjutkan_ke" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                                         <option value="">-- Pilih Data --</option>
                                                         <option value="SMA/SMK">SMA/SMK</option>
                                                         <option value="Mondok">Mondok</option>
@@ -137,7 +150,7 @@
                                             <div class="form-group row">
                                                 <label for="keterangan" class="col-sm-3 col-form-label">Keterangan</label>
                                                 <div class="col-sm-9">
-                                                    <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Keterangan" required>{{old('alasan')}}</textarea>
+                                                    <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{old('alasan')}}</textarea>
                                                 </div>
                                             </div>
                                             <hr>

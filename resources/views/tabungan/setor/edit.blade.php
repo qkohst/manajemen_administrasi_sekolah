@@ -32,13 +32,13 @@
                     <label for="pesdik_id">Nama Peserta Didik</label>
                     <input value="{{$setor->pesdik->nisn}} {{$setor->pesdik->nama}}" name="jumlah" type="text" class="form-control bg-disabled" id="jumlah" disabled>
                     <label for="tanggal">Tanggal Setoran</label>
-                    <input value="{{$setor->tanggal}}" name="tanggal" type="date" class="form-control bg-light" id="tanggal" required>
+                    <input value="{{$setor->tanggal}}" name="tanggal" type="date" class="form-control bg-light" id="tanggal" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="jumlah">Jumlah</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Rp.</span>
                         </div>
-                        <input value="{{$setor->jumlah}}" name="jumlah" type="text" class="form-control bg-light" id="jumlah" placeholder="Jumlah" required>
+                        <input value="{{$setor->jumlah}}" name="jumlah" type="number" class="form-control" id="jumlah" placeholder="Jumlah" disabled>
                         <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                         </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-6">
                     <label for="keterangan">Keterangan</label>
-                    <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Keterangan" required>{{$setor->keterangan}}</textarea>
+                    <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$setor->keterangan}}</textarea>
                 </div>
             </div>
             <hr>

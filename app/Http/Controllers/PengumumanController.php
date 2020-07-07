@@ -19,7 +19,7 @@ class PengumumanController extends Controller
     public function tambah (Request $request)
     {
        $request->validate([
-           'judul'  => 'min:5',
+           'judul'  => 'min:5|max:50',
            'isi'    => 'min:10',
        ]);
        $pengumuman = new Pengumuman();
@@ -39,7 +39,7 @@ class PengumumanController extends Controller
     public function update (Request $request, $id_pengumuman)
     {
             $request->validate([
-                'judul'  => 'min:5',
+                'judul'  => 'min:5|max:50',
                 'isi'    => 'min:10',
             ]);
             $pengumuman = \App\Pengumuman::find($id_pengumuman);

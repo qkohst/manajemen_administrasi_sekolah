@@ -2,15 +2,28 @@
 
 @section('content')
 @if(session('sukses'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
+<div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+    <h5><i class="fas fa-check"></i> Sukses :</h5>
     {{session('sukses')}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 @endif
+
+@if(session('warning'))
+<div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+    <h5><i class="fas fa-info"></i> Informasi :</h5>
+    {{session('warning')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 @if ($errors->any())
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+    <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
     <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -31,17 +44,17 @@
             <div class="row">
                 <div class="col-6">
                     <label for="tujuan">Tujuan</label>
-                    <input name="tujuan" type="text" class="form-control bg-light" placeholder="Tujuan" value="{{ $disp->tujuan }}" required>
+                    <input name="tujuan" type="text" class="form-control bg-light" placeholder="Tujuan" value="{{ $disp->tujuan }}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="isi">Isi</label>
-                    <input name="isi" type="text" class="form-control bg-light" placeholder="Isi" value="{{ $disp->isi }}" required>
+                    <input name="isi" type="text" class="form-control bg-light" placeholder="Isi" value="{{ $disp->isi }}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="sifat">Sifat</label>
-                    <input name="sifat" type="text" class="form-control bg-light" placeholder="Sifat" value="{{ $disp->sifat }}" required>
+                    <input name="sifat" type="text" class="form-control bg-light" placeholder="Sifat" value="{{ $disp->sifat }}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
                 <div class="col-6">
                     <label for="batas_waktu">Batas Waktu</label>
-                    <input name="batas_waktu" type="date" class="form-control bg-light" value="{{ $disp->batas_waktu }}" required>
+                    <input name="batas_waktu" type="date" class="form-control bg-light" value="{{ $disp->batas_waktu }}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="catatan">Catatan</label>
-                    <input name="catatan" type="text" class="form-control bg-light" placeholder="Catatan" value="{{ $disp->catatan }}" required>
+                    <input name="catatan" type="text" class="form-control bg-light" placeholder="Catatan" value="{{ $disp->catatan }}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
             </div>
             <hr>

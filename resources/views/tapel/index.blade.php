@@ -3,15 +3,30 @@
 <section class="content card" style="padding: 10px 10px 20px 20px  ">
     <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
+
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -22,6 +37,7 @@
             </button>
         </div>
         @endif
+
         <div class="row">
             <div class="col">
                 <h3><i class="nav-icon fas fa-calendar-alt my-0 btn-sm-1"></i> Data Tahun Pelajaran</h3>
@@ -84,9 +100,9 @@
                                 {{csrf_field()}}
                                 <div class="row">
                                     <label for="tahun">Tahun Pelajaran</label>
-                                    <input value="{{old('tahun')}}" name="tahun" type="text" class="form-control bg-light" id="tahun" placeholder="Contoh : (2019/2020)" required>
+                                    <input value="{{old('tahun')}}" name="tahun" type="text" class="form-control bg-light" id="tahun" placeholder="Contoh : (2019/2020)" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                     <label for="semester">Semester</label>
-                                    <select name="semester" class="custom-select my-1 mr-sm-2 bg-light" id="semester" required>
+                                    <select name="semester" class="form-control my-1 mr-sm-2 bg-light" id="semester" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                         <option value="">-- Pilih Semester --</option>
                                         <option value="Semester Ganjil">Semester Ganjil</option>
                                         <option value="Semester Genap">Semester Genap</option>

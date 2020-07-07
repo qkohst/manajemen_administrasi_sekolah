@@ -49,7 +49,7 @@ class PenggunaController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('pengguna.index')->with('sukses','Data Pengguna Berhasil Disimpan');
+        return redirect()->route('pengguna.index')->with('sukses', 'Data pengguna administrator berhasil ditambahkan');
     }
 
     /**
@@ -71,7 +71,7 @@ class PenggunaController extends Controller
      */
     public function edit($id)
     {
-        $data_pengguna= User::findorfail($id);
+        $data_pengguna = User::findorfail($id);
         return view('pengguna.edit', compact('data_pengguna'));
     }
 
@@ -95,12 +95,11 @@ class PenggunaController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->input('password')),
-            'role' => $request->role,
         ];
 
         $pengguna->update($data_pengguna);
 
-        return redirect()->route('pengguna.index')->with('sukses','Data Pengguna Berhasil Di Update');
+        return redirect()->route('pengguna.index')->with('sukses', 'Data pengguna berhasil diedit');
     }
 
     /**
@@ -115,9 +114,9 @@ class PenggunaController extends Controller
             $pengguna = User::findorfail($id);
             $pengguna->delete();
 
-            return redirect()->route('pengguna.index')->with('sukses','Data Berhasil di Hapus');
+            return redirect()->route('pengguna.index')->with('sukses', 'Data pengguna berhasil dihapus');
         } catch (\Illuminate\Database\QueryException $ex) {
-            return redirect()->back()->with('sukses','Maaf, Masih ada data yang terpaut dengan user ini.');
+            return redirect()->back()->with('warning', 'Maaf data pengguna tidak dapat dihapus, masih terdapat data yang terpaut dengan data pengguna !');
         }
     }
 }

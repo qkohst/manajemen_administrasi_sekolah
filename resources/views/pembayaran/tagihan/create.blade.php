@@ -406,15 +406,28 @@
             <section class="content card" style="padding: 10px 10px 10px 10px ">
                 <div class="box">
                     @if(session('sukses'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+                        <h5><i class="fas fa-check"></i> Sukses :</h5>
                         {{session('sukses')}}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     @endif
+
+                    @if(session('warning'))
+                    <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+                        <h5><i class="fas fa-info"></i> Informasi :</h5>
+                        {{session('warning')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+
                     @if ($errors->any())
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+                        <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
                         <ul>
                             @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -555,11 +568,11 @@
                 html = '<tr>';
                 html += '<td> <select name="rombel_id[]" id="rombel_id[]" class="form-control select2bs4" required><option value="">-- Pilih Rombel --</option>@foreach($data_rombel as $rombel)<option value="{{$rombel->id}}">{{$rombel->nama_rombel}} {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}}</option>@endforeach</select></td>';
                 html += '<td><select id="jenis_kelamin[]" name="jenis_kelamin[]"  class="form-control" required><option value="Semua" selected="selected">Semua</option><option value="Laki-Laki">Laki-Laki</option><option value="Perempuan">Perempuan</option></select></td>';
-                html += '<td><textarea name="rincian[]" class="form-control bg-light" id="rincian[]" rows="2"placeholder="Rincian Deskripsi Pembayaran">{{old('
+                html += '<td><textarea name="rincian[]" class="form-control bg-light" id="rincian[]" rows="2"placeholder="Rincian Deskripsi Pembayaran" required>{{old('
                 rincian ')}}</textarea></td>';
                 html += '<td><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">Rp.</span></div><input value="{{old('
                 nominal[]
-                ')}}" name="nominal[]" type="text" class="form-control" id="nominal[]" required><div class="input-group-append"><span class="input-group-text">.00</span></div></div></td>';
+                ')}}" name="nominal[]" type="number" class="form-control" id="nominal[]" required><div class="input-group-append"><span class="input-group-text">.00</span></div></div></td>';
                 html += '<td><input value="{{old('
                 batas_bayar[]
                 ')}}" name="batas_bayar[]" type="date" class="form-control bg-light" id="batas_bayar[]" required></td>';

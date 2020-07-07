@@ -28,7 +28,7 @@ class GuruController extends Controller
             'nama' => 'min:5',
             'tempat_lahir' => 'min:5',
             'alamat' => 'min:10',
-            'no_hp' => 'unique:guru|min:12',
+            'no_hp' => 'unique:guru|min:12|max:13',
             'email' => 'required|unique:guru|email',
         ]);
 
@@ -65,7 +65,7 @@ class GuruController extends Controller
             'nama' => 'min:5',
             'tempat_lahir' => 'min:5',
             'alamat' => 'min:10',
-            'no_hp' => 'min:12',
+            'no_hp' => 'min:12|max:13',
             'email' => 'email',
         ]);
         $guru = \App\Guru::find($id_guru);
@@ -77,8 +77,12 @@ class GuruController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $guru = \App\Guru::find($id);
-        $guru->delete();
-        return redirect('guru/index')->with('sukses', 'Data Guru Berhasil Dihapus');
+        try {
+            $guru = \App\Guru::find($id);
+            $guru->delete();
+            return redirect('guru/index')->with('sukses', 'Data Guru Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('warning', 'Maaf data  tidak dapat dihapus, masih terdapat data pada tabel lain yang terpaut dengan data ini !');
+        }
     }
 }

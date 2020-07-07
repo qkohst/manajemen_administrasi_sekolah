@@ -5,9 +5,14 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <div class="callout callout-info">
-          <h5><i class="fas fa-info"></i> Catatan :</h5>
-          Halaman ini dapat dicetak sebagai bukti transaksi, Silahkan klik tombol cetak yang berada dibawah halaman !
+        <div class="callout callout-success alert alert-success alert-dismissible fade show">
+          <h5><i class="fas fa-info"></i> Informasi :</h5>
+          - Data setor tunai telah berhasil disimpan ! <br>
+          - Halaman ini dapat dicetak sebagai bukti transaksi, Silahkan klik tombol CETAK yang berada dibawah halaman ! <br>
+          - Klik tombol KEMBALI setelah selesai mecetak bukti setor tunai !
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
 
 
@@ -139,7 +144,7 @@
           <div class="row no-print">
             <div class="col-12">
               <a class="btn btn-danger btn-sm my-1 mr-sm-1 float-right" href="/tabungan/setor/index" role="button"><i class="fas fa-undo"></i> KEMBALI</a>
-              <a href="/tabungan/setor/{{$setor->id}}/cetakprint" class="btn btn-primary btn-sm my-1 mr-sm-1 float-right"><i class="fas fa-print"></i> CETAK</a>
+              <a href="/tabungan/setor/{{$setor->id}}/cetakprint" target="_blank" class="btn btn-primary btn-sm my-1 mr-sm-1 float-right"><i class="fas fa-print"></i> CETAK</a>
             </div>
           </div>
         </div>

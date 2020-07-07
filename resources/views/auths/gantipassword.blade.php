@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="/adminLTE/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Manajemen Administrasi Sekolah</title>
   <style>
@@ -98,8 +100,12 @@
 <body>
   <div class="kotak_login">
     @if(session('error'))
-    <div class="alert alert-danger" role="alert">
+    <div class="callout callout-danger alert alert-danger alert-dismissible fade show" role="alert">
+      <h5><i class="fas fa-info"></i> Peringatan :</h5>
       {{session('error')}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     @endif
     <img src="/adminLTE/img/user.png" alt="Logo" class="logo">
@@ -109,9 +115,9 @@
 
     <form action="/auths/{{$data_pengguna->id}}/simpanpassword" method="POST">
       {{csrf_field()}}
-      <input id="password_baru" type="password" name="password_baru" class="form_login" placeholder="Password Baru" required>
-      <input id="konfirmasi_password_baru" type="password" name="konfirmasi_password_baru" class="form_login" placeholder="Konfirmasi Password" required>
-      <button type="submit" class="tombol_login">Ganti Password</button>
+      <input value="{{old('password_baru')}}" id="password_baru" type="password" name="password_baru" class="form_login" placeholder="Password Baru" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
+      <input id="konfirmasi_password_baru" type="password" name="konfirmasi_password_baru" class="form_login" placeholder="Konfirmasi Password" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
+      <button type="submit" class="tombol_login" onclick="return confirm('Apakah anda yakin ingin mengganti password ?')">Ganti Password</button>
       <a href="/login">Login</a>
     </form>
   </div>

@@ -30,15 +30,16 @@ class SetorController extends Controller
         $request->validate([
             'jumlah' => 'numeric',
         ]);
-        $setor = new Setor();
-        $setor->pesdik_id           = $pilih_pesdik;
-        $setor->rombel_id           = $rombel_id;
-        $setor->tanggal             = $request->input('tanggal');
-        $setor->jumlah              = $request->input('jumlah');
-        $setor->keterangan          = $request->input('keterangan');
-        $setor->users_id            = Auth::id();
-        $setor->save();
-        return redirect('/tabungan/setor/index')->with("sukses", "Data Setor Tunai Berhasil Ditambahkan");
+        $data_setor = new Setor();
+        $data_setor->pesdik_id           = $pilih_pesdik;
+        $data_setor->rombel_id           = $rombel_id;
+        $data_setor->tanggal             = $request->input('tanggal');
+        $data_setor->jumlah              = $request->input('jumlah');
+        $data_setor->keterangan          = $request->input('keterangan');
+        $data_setor->users_id            = Auth::id();
+        $data_setor->save();
+        $setor = \App\Setor::find($data_setor->id);
+        return view('/tabungan/setor/cetak', compact('setor'));
     }
 
     //function untuk masuk ke view edit

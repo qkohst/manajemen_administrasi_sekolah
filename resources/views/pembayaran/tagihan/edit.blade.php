@@ -4,15 +4,28 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -32,13 +45,13 @@
                     <label for="rombel_id">Rombongan Belajar</label>
                     <input value="{{$tagihan->rombel->nama_rombel}} {{$tagihan->rombel->tapel->tahun}} {{$tagihan->rombel->tapel->semester}}" name="rombel_id" type="text" class="form-control bg-disabled" id="jumlah" disabled>
                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                    <select name="jenis_kelamin" class="form-control bg-light" id="jenis_kelamin" required>
+                    <select name="jenis_kelamin" class="form-control " id="jenis_kelamin" disabled>
                         <option value="Semua" @if ($tagihan->jenis_kelamin == 'Semua') selected @endif>Semua</option>
                         <option value="Laki-Laki" @if ($tagihan->jenis_kelamin == 'Laki-Laki') selected @endif>Laki-Laki</option>
                         <option value="Perempuan" @if ($tagihan->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
                     </select>
                     <label for="rincian">Rincian</label>
-                    <textarea name="rincian" class="form-control bg-light" id="rincian" rows="2" placeholder="rincian" required>{{$tagihan->rincian}}</textarea>
+                    <textarea name="rincian" class="form-control bg-light" id="rincian" rows="2" placeholder="rincian" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$tagihan->rincian}}</textarea>
                 </div>
                 <div class="col-6">
                     <label for="nominal">Nominal</label>
@@ -46,13 +59,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Rp.</span>
                         </div>
-                        <input value="{{$tagihan->nominal}}" name="nominal" type="text" class="form-control bg-light" id="nominal" placeholder="nominal" required>
+                        <input value="{{$tagihan->nominal}}" name="nominal" type="number" class="form-control" id="nominal" placeholder="nominal" disabled>
                         <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                         </div>
                     </div>
                     <label for="batas_bayar">Batas Waktu Pembayaran</label>
-                    <input value="{{$tagihan->batas_bayar}}" name="batas_bayar" type="date" class="form-control bg-light" id="batas_bayar" required>
+                    <input value="{{$tagihan->batas_bayar}}" name="batas_bayar" type="date" class="form-control bg-light" id="batas_bayar" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
             </div>
             <hr>

@@ -5,11 +5,15 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <div class="callout callout-info">
-          <h5><i class="fas fa-info"></i> Catatan :</h5>
-          Halaman ini dapat dicetak sebagai bukti transaksi, Silahkan klik tombol cetak yang berada dibawah halaman !
+        <div class="callout callout-success alert alert-success alert-dismissible fade show">
+          <h5><i class="fas fa-info"></i> Informasi :</h5>
+          - Data tarik tunai telah berhasil disimpan ! <br>
+          - Halaman ini dapat dicetak sebagai bukti transaksi, Silahkan klik tombol CETAK yang berada dibawah halaman ! <br>
+          - Klik tombol KEMBALI setelah selesai mecetak bukti tarik tunai !
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-
 
         <!-- Main content -->
         <div class="invoice p-3 mb-3">

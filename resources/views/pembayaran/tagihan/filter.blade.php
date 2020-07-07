@@ -123,13 +123,13 @@
                                   </thead>
                                   <tbody>
                                     <?php $no = 0; ?>
-                                    @foreach($data_tagihan_L as $tagihan_L)
+                                    @foreach($data_tagihan_P as $tagihan_P)
                                     <?php $no++; ?>
                                     <tr>
                                       <td>{{$no}}</td>
-                                      <td>{{$tagihan_L->rincian}}</td>
-                                      <td>@currency($tagihan_L->nominal),00</td>
-                                      <td>{{$tagihan_L->batas_bayar}}</td>
+                                      <td>{{$tagihan_P->rincian}}</td>
+                                      <td>@currency($tagihan_P->nominal),00</td>
+                                      <td>{{$tagihan_P->batas_bayar}}</td>
                                     </tr>
                                     @endforeach
                                   </tbody>

@@ -4,15 +4,28 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -36,7 +49,7 @@
                                     {{csrf_field()}}
                                     <div class="form-group row">
                                         <label for="kategori_id">Pilih Kategori</label>
-                                        <select name="kategori_id" id="kategori_id" class="form-control bg-light" required>
+                                        <select name="kategori_id" id="kategori_id" class="form-control bg-light" required oninvalid="this.setCustomValidity('Belum ada data yang dipilih !')" oninput="setCustomValidity('')">
                                             <option value="">-- Pilih Kategori Pengeluaran --</option>
                                             @foreach($data_kategori as $ktgr)
                                             <option value="{{$ktgr->id}}">{{$ktgr->nama_kategori}}</option>
@@ -49,7 +62,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input value="{{old('jumlah')}}" name="jumlah" type="text" class="form-control" id="jumlah" required>
+                                            <input value="{{old('jumlah')}}" name="jumlah" type="number" class="form-control" id="jumlah" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">.00</span>
                                             </div>
@@ -57,7 +70,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="keterangan">Keterangan</label>
-                                        <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="2" placeholder="Keterangan" required>{{old('keterangan')}}</textarea>
+                                        <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="2" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{old('keterangan')}}</textarea>
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> SIMPAN</button>
@@ -119,7 +132,7 @@
                                     <div class="tab-pane" id="kategori">
                                         <div>
                                             <div class="col">
-                                                <a class="btn btn-primary btn-sm my-1 mr-sm-1" data-toggle="modal" href="#tambahKategori"><i class="fas fa-plus"></i> Tambah Data</a>
+                                                <a class="btn btn-primary btn-sm my-1 mr-sm-1" data-toggle="modal" href="#tambahKategori"><i class="fas fa-plus"></i> Tambah Kategori</a>
                                                 <br>
                                             </div>
                                         </div>
@@ -179,7 +192,7 @@
                                         {{csrf_field()}}
                                         <div class="row">
                                             <label for="nama_kategori">Nama Kategori</label>
-                                            <input value="{{old('nama_kategori')}}" name="nama_kategori" type="text" class="form-control bg-light" id="nama_kategori" placeholder="Nama Kategori" required>
+                                            <input value="{{old('nama_kategori')}}" name="nama_kategori" type="text" class="form-control bg-light" id="nama_kategori" placeholder="Nama Kategori" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                                         </div>
                                         <hr>
                                         <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i>

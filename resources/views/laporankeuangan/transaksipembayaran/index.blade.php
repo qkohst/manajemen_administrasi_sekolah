@@ -38,7 +38,7 @@
                                     <select name="filterKelas" id="filterKelas" class="form-control select2bs4 my-1 mr-sm-1" onchange="this.form.submit();">
                                         <option value="">-- Pilih Kelas --</option>
                                         @foreach($daftar_kelas as $list_kelas)
-                                        <option value="{{ $list_kelas->id_rombel }}">{{$list_kelas->pesdik->rombel->nama_rombel}} {{$list_kelas->pesdik->rombel->tapel->semester}} {{$list_kelas->pesdik->rombel->tapel->tahun}}</option>
+                                        <option value="{{ $list_kelas->rombel_id }}">{{$list_kelas->pesdik->rombel->nama_rombel}} {{$list_kelas->pesdik->rombel->tapel->semester}} {{$list_kelas->pesdik->rombel->tapel->tahun}}</option>
                                         @endforeach
                                     </select>
                                 </form>
@@ -73,7 +73,7 @@
                     <input name="id_pesdik[]" type="text" class="d-none" id="id_pesdik[]" value="{{$id_pesdik->pesdik_id}}">
                     @endforeach
                     @foreach($data_id_rombel as $id_rombel)
-                    <input name="id_rombel[]" type="text" class="d-none" id="id_rombel[]" value="{{$id_rombel->id_rombel}}">
+                    <input name="id_rombel[]" type="text" class="d-none" id="id_rombel[]" value="{{$id_rombel->rombel_id}}">
                     @endforeach
 
                     <input name="tgl_awal" type="text" class="d-none" id="tgl_awal" value="{{$tgl_awal}}">

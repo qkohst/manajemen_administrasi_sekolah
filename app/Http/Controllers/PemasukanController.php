@@ -12,7 +12,7 @@ class PemasukanController extends Controller
     public function index()
     {
         $data_pemasukan = \App\Pemasukan::all();
-        $data_kategori = \App\Kategori::where('jenis_kategori', 1)->get();
+        $data_kategori = \App\Kategori::where('jenis_kategori', 1)->where('id', '!=', 1)->get();
         return view('/keuangan/pemasukan/index', compact('data_pemasukan', 'data_kategori'));
     }
 
@@ -74,8 +74,12 @@ class PemasukanController extends Controller
     //function untuk hapus
     public function deletekategori($id)
     {
-        $kategori = \App\Kategori::find($id);
-        $kategori->delete();
-        return redirect('/keuangan/pemasukan/index')->with('sukses', 'Data Kategori Berhasil Dihapus');
+        try {
+            $kategori = \App\Kategori::find($id);
+            $kategori->delete();
+            return redirect('/keuangan/pemasukan/index')->with('sukses', 'Data Kategori Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('warning', 'Maaf data tidak dapat dihapus, masih terdapat data pada tabel lain yang terpaut dengan data ini!');
+        }
     }
 }

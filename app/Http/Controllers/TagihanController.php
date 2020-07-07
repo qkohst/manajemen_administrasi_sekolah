@@ -25,7 +25,7 @@ class TagihanController extends Controller
     public function create()
     {
         $tapel_terakhir = \App\Tapel::select('id')->max('id');
-        $data_rombel = \App\Rombel::where('tapel_id',$tapel_terakhir)->get();
+        $data_rombel = \App\Rombel::where('tapel_id', $tapel_terakhir)->get();
         $data_tagihan = \App\Tagihan::all();
         return view('/pembayaran/tagihan/create', compact('data_rombel', 'data_tagihan'));
     }
@@ -79,6 +79,7 @@ class TagihanController extends Controller
         $request->validate([
             'nominal' => 'numeric',
         ]);
+        $tagihan_id = \App\TransaksiPembayaran::find($id_tagihan);
         $tagihan = \App\Tagihan::find($id_tagihan);
         $tagihan->update($request->all());
         $tagihan->save();
@@ -88,9 +89,13 @@ class TagihanController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $tagihan = \App\Tagihan::find($id);
-        $tagihan->delete();
-        return redirect('/pembayaran/tagihan/index')->with('sukses', 'Data Rincian Tagihan Berhasil Dihapus');
+        try {
+            $tagihan = \App\Tagihan::find($id);
+            $tagihan->delete();
+            return redirect('/pembayaran/tagihan/index')->with('sukses', 'Data Rincian Tagihan Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('warning', 'Maaf data tidak dapat dihapus, masih terdapat data pada tabel lain yang terpaut dengan data ini!');
+        }
     }
 
     //function untuk masuk ke view filter

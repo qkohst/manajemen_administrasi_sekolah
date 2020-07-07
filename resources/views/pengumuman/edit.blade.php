@@ -4,15 +4,28 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -30,13 +43,13 @@
             <div class="row">
                 <div class="col-4">
                     <label for="judul">Judul Ppengumuman</label>
-                    <input name="judul" type="text" class="form-control bg-light" id="judul" placeholder="Judul Pengumuman" value="{{$pengumuman->judul}}" required>
+                    <input name="judul" type="text" class="form-control bg-light" id="judul" placeholder="Judul Pengumuman" value="{{$pengumuman->judul}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <label for="isi">Isi Pengumuman</label>
-                    <textarea name="isi" class="form-control bg-light" id="isi" rows="7" placeholder="Isi Pengumuman" required>{{$pengumuman->isi}}</textarea>
+                    <textarea name="isi" class="form-control bg-light" id="isi" rows="7" placeholder="Isi Pengumuman" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$pengumuman->isi}}</textarea>
                 </div>
             </div>
             <hr>

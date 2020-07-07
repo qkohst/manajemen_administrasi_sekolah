@@ -28,7 +28,7 @@ class TendikController extends Controller
             'nama' => 'min:5',
             'tempat_lahir' => 'min:5',
             'alamat' => 'min:10',
-            'no_hp' => 'unique:tendik|min:12',
+            'no_hp' => 'unique:tendik|min:12|max:13',
             'email' => 'required|unique:tendik|email',
         ]);
         //Menambah data ke table Tendik
@@ -65,7 +65,7 @@ class TendikController extends Controller
             'nama' => 'min:5',
             'tempat_lahir' => 'min:5',
             'alamat' => 'min:10',
-            'no_hp' => 'min:12',
+            'no_hp' => 'min:12|max:13',
             'email' => 'email',
         ]);
         $tendik = \App\Tendik::find($id_tendik);
@@ -77,8 +77,12 @@ class TendikController extends Controller
     //function untuk hapus
     public function delete($id)
     {
-        $tendik = \App\Tendik::find($id);
-        $tendik->delete();
-        return redirect('tendik/index')->with('sukses', 'Data Tenaga Kependidikan Berhasil Dihapus');
+        try {
+            $tendik = \App\Tendik::find($id);
+            $tendik->delete();
+            return redirect('tendik/index')->with('sukses', 'Data Tenaga Kependidikan Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('warning', 'Maaf data tidak dapat dihapus, masih terdapat data pada tabel lain yang terpaut dengan data ini!');
+        }
     }
 }

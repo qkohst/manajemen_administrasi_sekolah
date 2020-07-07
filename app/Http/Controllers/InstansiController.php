@@ -37,25 +37,24 @@ class InstansiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama'     => 'required',
-            'pimpinan' => 'required',
+            'nama'     => 'required|min:10',
+            'pimpinan' => 'required|min:10',
             'file'     => 'file|mimes:jpeg,png|max:2048',
         ]);
 
         $filelogo = $request->file;
-        $newlogo = time().$filelogo->getClientOriginalName();
+        $newlogo = time() . $filelogo->getClientOriginalName();
 
         $ins = Instansi::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'pimpinan' => $request->pimpinan,
             'email' => $request->email,
-            'file' => 'uploads/logo/'.$newlogo,
+            'file' => 'uploads/logo/' . $newlogo,
         ]);
 
         $filelogo->move('uploads/logo/', $newlogo);
-        return redirect()->route('instansi.index')->with('sukses','Data Instansi Berhasil Disimpan');
-
+        return redirect()->route('instansi.index')->with('sukses', 'Data Sekolah Berhasil Disimpan');
     }
 
     /**
@@ -77,7 +76,7 @@ class InstansiController extends Controller
      */
     public function edit($id)
     {
-        $instansi= Instansi::findorfail($id);
+        $instansi = Instansi::findorfail($id);
         return view('instansi.edit', compact('instansi'));
     }
 
@@ -91,8 +90,8 @@ class InstansiController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'pimpinan' => 'required',
+            'nama' => 'required|min:10',
+            'pimpinan' => 'required|min:10',
             'email' => 'email|required',
             'file' => 'file|mimes:jpeg,png|max:2048',
         ]);
@@ -101,7 +100,7 @@ class InstansiController extends Controller
 
         if ($request->has('file')) {
             $filelogo = $request->file;
-            $newlogo = time().$filelogo->getClientOriginalName();
+            $newlogo = time() . $filelogo->getClientOriginalName();
             $filelogo->move('uploads/logo/', $newlogo);
 
             $post_data = [
@@ -109,7 +108,7 @@ class InstansiController extends Controller
                 'alamat' => $request->alamat,
                 'pimpinan' => $request->pimpinan,
                 'email' => $request->email,
-                'file' => 'uploads/logo/'.$newlogo,
+                'file' => 'uploads/logo/' . $newlogo,
             ];
         } else {
             $post_data = [
@@ -122,7 +121,7 @@ class InstansiController extends Controller
 
         $post->update($post_data);
 
-        return redirect()->route('instansi.index')->with('sukses','Data Instansi Berhasil di Update');
+        return redirect()->route('instansi.index')->with('sukses', 'Data Sekolah Berhasil Diedit');
     }
 
     /**

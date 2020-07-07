@@ -2,15 +2,28 @@
 
 @section('content')
 @if(session('sukses'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
+<div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+    <h5><i class="fas fa-check"></i> Sukses :</h5>
     {{session('sukses')}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 @endif
+
+@if(session('warning'))
+<div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+    <h5><i class="fas fa-info"></i> Informasi :</h5>
+    {{session('warning')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 @if ($errors->any())
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+    <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
     <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -30,13 +43,13 @@
             <div class="row">
                 <div class="col-6">
                     <label for="nomorsurat">Nomor Surat</label>
-                    <input value="{{old('no_surat')}}" name="no_surat" type="text" class="form-control bg-light" id="nomorsurat" placeholder="Nomor Surat" required>
+                    <input value="{{old('no_surat')}}" name="no_surat" type="text" class="form-control bg-light" id="nomorsurat" placeholder="Nomor Surat" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="asalsurat">Tujuan Surat</label>
-                    <input value="{{old('tujuan_surat')}}" name="tujuan_surat" type="text" class="form-control bg-light" id="tujuansurat" placeholder="Tujuan Surat" required>
+                    <input value="{{old('tujuan_surat')}}" name="tujuan_surat" type="text" class="form-control bg-light" id="tujuansurat" placeholder="Tujuan Surat" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="isisurat">Isi Ringkas</label>
-                    <textarea name="isi" class="form-control bg-light" id="isisurat" rows="3" placeholder="Isi Ringkas Surat Keluar" required>{{old('isi')}}</textarea>
+                    <textarea name="isi" class="form-control bg-light" id="isisurat" rows="3" placeholder="Isi Ringkas Surat Keluar" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{old('isi')}}</textarea>
                     <label for="klasifikasi_id">Kode Klasifikasi</label>
-                    <select name="klasifikasi_id" class="form-control my-1 mr-sm-2 bg-light" id="inlineFormCustomSelectPref" required>
+                    <select name="klasifikasi_id" class="form-control my-1 mr-sm-2 bg-light" id="inlineFormCustomSelectPref" required oninvalid="this.setCustomValidity('Belum ada data yang dipilih !')" oninput="setCustomValidity('')">
                         <option value="">-- Pilih Klasifikasi Surat --</option>
                         @foreach($data_klasifikasi as $klasifikasi)
                         <option value="{{$klasifikasi->id}}">{{$klasifikasi->nama}} ( {{$klasifikasi->kode}} )
@@ -46,15 +59,15 @@
                 </div>
                 <div class="col-6">
                     <label for="tglsurat">Tanggal Surat</label>
-                    <input value="{{old('tgl_surat')}}" name="tgl_surat" type="date" class="form-control bg-light" id="tglsurat" required>
+                    <input value="{{old('tgl_surat')}}" name="tgl_surat" type="date" class="form-control bg-light" id="tglsurat" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="tglcatat">Tanggal Catat</label>
-                    <input value="{{old('tgl_catat')}}" name="tgl_catat" type="date" class="form-control bg-light" id="tglcatat" required>
+                    <input value="{{old('tgl_catat')}}" name="tgl_catat" type="date" class="form-control bg-light" id="tglcatat" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="keterangan">Keterangan</label>
-                    <input value="{{old('keterangan')}}" name="keterangan" type="text" class="form-control bg-light" id="keterangan" placeholder="Keterangan" required>
+                    <input value="{{old('keterangan')}}" name="keterangan" type="text" class="form-control bg-light" id="keterangan" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <div class="custom-file">
                         <label for="exampleFormControlFile1">File</label>
-                        <input name="filekeluar" type="file" class="form-control-file" id="validatedCustomFile" required>
-                        <small id="validatedCustomFile" class="text-danger">
+                        <input name="filekeluar" type="file" class="form-control-file" id="validatedCustomFile" required oninvalid="this.setCustomValidity('Belum ada file yang dipilih !')" oninput="setCustomValidity('')">
+                        <small id="validatedCustomFile" class="text-warning">
                             Pastikan file anda ( jpg,jpeg,png,doc,docx,pdf ) !!!
                         </small>
                     </div>

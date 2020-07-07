@@ -38,8 +38,8 @@ class PesdikController extends Controller
     {
         $request->validate([
             'nama' => 'min:5',
-            'nisn' => 'unique:pesdik|numeric|min:10',
-            'induk' => 'unique:pesdik|numeric|min:2',
+            'nisn' => 'unique:pesdik|size:10',
+            'induk' => 'unique:pesdik|min:2|max:6',
         ]);
         //Menambah data ke tabel pesdik
         $pesdik = new Pesdik();
@@ -101,7 +101,7 @@ class PesdikController extends Controller
 
         $pesdik->status = $reg;
         $pesdik->update();
-        return redirect('pesdik/index')->with('sukses', 'Registrasi Peserta Didik Keluar, Berhasil');
+        return redirect('pesdik/index')->with('sukses', 'Registrasi Peserta Didik Keluar, Berhasil !');
     }
 
     //function untuk masuk ke view pesdik keluar
@@ -129,7 +129,7 @@ class PesdikController extends Controller
         $pesdikalumni->save();
         $pesdik->status = $reg;
         $pesdik->update();
-        return redirect('pesdik/index')->with('sukses', 'Registrasi Peserta Didik Lulus, Berhasil');
+        return redirect('pesdik/index')->with('sukses', 'Registrasi Peserta Didik Lulus, Berhasil !');
     }
 
     //function untuk masuk ke view pesdik alumni
@@ -149,20 +149,24 @@ class PesdikController extends Controller
     {
         $request->validate([
             'nama' => 'min:5',
-            'nisn' => 'numeric|min:10',
-            'induk' => 'numeric|min:2',
+            'nisn' => 'size:10',
+            'induk' => 'min:2|max:6',
         ]);
         $pesdik = \App\Pesdik::find($id_pesdik);
         $pesdik->update($request->all());
         $pesdik->save();
-        return redirect('pesdik/index')->with('sukses', 'Data Rombongan Belajar Berhasil Diedit');
+        return redirect('pesdik/index')->with('sukses', 'Data Peserta Didik Berhasil Diedit');
     }
 
     //function untuk hapus
     public function delete($id_pesdik)
     {
-        $pesdik = \App\Pesdik::find($id_pesdik);
-        $pesdik->delete();
-        return redirect('pesdik/index')->with('sukses', 'Data Peserta Didik Berhasil Dihapus');
+        try {
+            $pesdik = \App\Pesdik::find($id_pesdik);
+            $pesdik->delete();
+            return redirect('pesdik/index')->with('sukses', 'Data Peserta Didik Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('warning', 'Maaf data tidak dapat dihapus, masih terdapat data pada tabel lain yang terpaut dengan data ini!');
+        }
     }
 }

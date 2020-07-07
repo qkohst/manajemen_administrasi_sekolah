@@ -27,18 +27,32 @@ class TarikController extends Controller
         $data = $pesdik->first();
         $rombel_id = $data->rombel_id;
 
-        $request->validate([
-            'jumlah' => 'numeric',
-        ]);
-        $tarik = new Tarik();
-        $tarik->pesdik_id           = $pilih_pesdik;
-        $tarik->rombel_id           = $rombel_id;
-        $tarik->tanggal             = $request->input('tanggal');
-        $tarik->jumlah              = $request->input('jumlah');
-        $tarik->keterangan          = $request->input('keterangan');
-        $tarik->users_id            = Auth::id();
-        $tarik->save();
-        return redirect('/tabungan/tarik/index')->with("sukses", "Data Tarik Tunai Berhasil Ditambahkan");
+        //menghitung saldo tabungan
+        $total_setor = DB::table('setor')->where('setor.pesdik_id', '=', $pilih_pesdik)
+            ->sum('setor.jumlah');
+        $total_tarik = DB::table('tarik')->where('tarik.pesdik_id', '=', $pilih_pesdik)
+            ->sum('tarik.jumlah');
+        $saldo_tabungan = $total_setor - $total_tarik;
+        $jumlah_penarikan = $request->input('jumlah');
+
+        if ($jumlah_penarikan > $saldo_tabungan) {
+            return redirect()->back()->with('warning', 'Maaf saldo tabungan siswa kurang dari nominal yang anda masukkan pada kolom jumlah, harap cek saldo tabungan siswa pada menu Data Peserta Didik !');
+        } else {
+            $request->validate([
+                'jumlah' => 'numeric',
+            ]);
+            $data_tarik = new Tarik();
+            $data_tarik->pesdik_id           = $pilih_pesdik;
+            $data_tarik->rombel_id           = $rombel_id;
+            $data_tarik->tanggal             = $request->input('tanggal');
+            $data_tarik->jumlah              = $request->input('jumlah');
+            $data_tarik->keterangan          = $request->input('keterangan');
+            $data_tarik->users_id            = Auth::id();
+            $data_tarik->save();
+            // return redirect('/tabungan/tarik/index')->with("sukses", "Data Tarik Tunai Berhasil Ditambahkan");
+            $tarik = \App\Tarik::find($data_tarik->id);
+            return view('/tabungan/tarik/cetak', compact('tarik'));
+        }
     }
 
     //function untuk masuk ke view edit
