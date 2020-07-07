@@ -59,22 +59,23 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
-                <!-- Notifications Dropdown Menu -->
-
                 <li class="nav-item dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
+                    <a class="dropdown-toggle " href="javascript:void(0)" data-toggle="dropdown">
                         <i class="fas fa-user mr-2"></i> &nbsp;<span>{{auth()->user()->name}}</span> &nbsp;<i class="icon-submenu lnr lnr-chevron-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">Profil</span>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#lihatprofile">
+                        <a class="dropdown-item" data-toggle="modal" href="javascript:void(0)" data-target="#lihatprofile">
                             <i class="fas fa-user mr-2"></i> Lihat Profil
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="/logout" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        <a href="/auths/{{auth()->user()->id}}/gantipassword" class="dropdown-item">
+                            <i class="fas fa-user-cog mr-2"></i> Ganti Password
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/logout" class="dropdown-item" onclick="return confirm('Apakah anda yakin ingin keluar dari sistem ?')">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Keluar
                         </a>
                     </div>
                 </li>
@@ -85,12 +86,22 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
+            @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiSurat' || auth()->user()->role == 'PetugasAdministrasiKeuangan')
             <a href="/dashboard" class="brand-link bg-secondary">
                 <img src="/seo.svg" alt="Logo" class="brand-image" style="opacity: .8">
                 <span class="brand-text font-weight-white">Beranda</span>
             </a>
+            @endif
+
+            @if (auth()->user()->role == 'Siswa')
+            <a href="/{{$id_pesdik_login->id}}/siswadashboard" class="brand-link bg-secondary">
+                <img src="/seo.svg" alt="Logo" class="brand-image" style="opacity: .8">
+                <span class="brand-text font-weight-white">Beranda</span>
+            </a>
+            @endif
             <!-- Sidebar -->
             <div class="sidebar">
+                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiSurat')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Sidebar Menu -->
                     <a>
@@ -176,13 +187,15 @@
                         </a>
                     </li>
                 </ul>
+                @endif
 
+                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiKeuangan')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Sidebar Menu -->
                     <a class="text-white">
                         <p>
                             MANAJEMEN KEUANGAN
-                            <span class="right badge badge-danger">Not Yet</span>
+                            <span class="right badge badge-primary">New</span>
                         </p>
                     </a>
                     <!-- Add icons to the links using the .nav-icon class
@@ -193,22 +206,22 @@
                             <p>
                                 Pembayaran
                                 <i class="right fas fa-angle-left"></i>
-                                <span class="right badge badge-warning">Progress</span>
+                                <span class="right badge badge-primary">New</span>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview bg-secondary">
                             <li class="nav-item">
-                                <a href="/pembayaran/tagihan/index" class="nav-link">
+                                <a href="/pembayaran/tagihan/index" class="nav-link  text-white">
                                     <i class="fas fa-money-check-alt nav-icon"></i>
                                     <p>Rincian Tagihan</p>
                                     <span class="right badge badge-primary">New</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/pembayaran/transaksipembayaran/index" class="nav-link">
+                                <a href="/pembayaran/transaksipembayaran/index" class="nav-link  text-white">
                                     <i class="far fa-handshake nav-icon"></i>
                                     <p>Transaksi Pembayaran</p>
-                                    <span class="right badge badge-warning">Progress</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </a>
                             </li>
                         </ul>
@@ -267,14 +280,39 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-download"></i>
+                            <i class="nav-icon fas fa-print"></i>
                             <p>
-                                Unduhan
+                                Cetak Laporan
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="right badge badge-primary">New</span>
                             </p>
-                            <span class="right badge badge-danger">Not Yet</span>
                         </a>
+                        <ul class="nav nav-treeview bg-secondary">
+                            <li class="nav-item">
+                                <a href="/laporankeuangan/transaksipembayaran/index" class="nav-link text-white">
+                                    <i class="far fa-handshake nav-icon"></i>
+                                    <p>Transaksi Pembayaran</p>
+                                    <span class="right badge badge-primary">New</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/laporankeuangan/setortariktunai/index" class="nav-link text-white">
+                                    <i class="nav-icon fas fa-credit-card"></i>
+                                    <p>Setor & Tarik Tunai</p>
+                                    <span class="right badge badge-primary">New</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/laporankeuangan/keuangansekolah/index" class="nav-link text-white">
+                                    <i class="nav-icon fas fa-dollar-sign"></i>
+                                    <p>Keuangan Sekolah</p>
+                                    <span class="right badge badge-primary">New</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
+                @endif
 
                 @if (auth()->user()->role == 'admin')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -368,6 +406,7 @@
                     </li>
                 </ul>
                 @endif
+                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'PetugasAdministrasiSurat' || auth()->user()->role == 'PetugasAdministrasiKeuangan')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Sidebar Menu -->
                     <a class="text-white">
@@ -386,6 +425,7 @@
                             <span class="right badge badge-primary">New</span>
                         </a>
                     </li>
+                    @if (auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a href="{{ route('pengguna.index') }}" class="nav-link">
                             <i class="fas fa-user-cog nav-icon"></i>
@@ -394,7 +434,49 @@
                             </p>
                         </a>
                     </li>
+                    @endif
                 </ul>
+                @endif
+                @if (auth()->user()->role == 'Siswa')
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-credit-card"></i>
+                            <p>
+                                Rekap Tabungan
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="right badge badge-primary">New</span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview bg-secondary">
+                            <li class="nav-item">
+                                <a href="/tabungan/setor/{{$id_pesdik_login->id}}/siswaindex" class="nav-link text-white">
+                                    <i class="fas fa-credit-card nav-icon"></i>
+                                    <p>Setor Tunai</p>
+                                    <span class="right badge badge-primary">New</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/tabungan/tarik/{{$id_pesdik_login->id}}/siswaindex" class="nav-link text-white">
+                                    <i class="fas fa-credit-card nav-icon"></i>
+                                    <p>Tarik Tunai</p>
+                                    <span class="right badge badge-primary">New</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/pembayaran/transaksipembayaran/{{$id_pesdik_login->id}}/siswaindex" class="nav-link">
+                            <i class="far fa-handshake nav-icon"></i>
+                            <p>
+                                Rekap Pembayaran
+                            </p>
+                            <span class="right badge badge-primary">New</span>
+                        </a>
+                    </li>
+                </ul>
+                @endif
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -485,9 +567,9 @@
         <footer class="main-footer bg-secondary">
             <div class="float-right d-none d-sm-block">
                 <b>Teknik Informatika Unirow Tuban | </b>
-                Version 1.1.0
+                Versi 1.0.0
             </div>
-            Copyright &copy; 2020 | by : Qkoh St, Iqbal, Afif
+            Copyright &copy; 2020 | by : Qkoh St
         </footer>
 
 
@@ -568,7 +650,7 @@
                 html = '<tr>';
                 html += '<td> <select name="rombel_id[]" id="rombel_id[]" class="form-control select2bs4" required><option value="">-- Pilih Rombel --</option>@foreach($data_rombel as $rombel)<option value="{{$rombel->id}}">{{$rombel->nama_rombel}} {{$rombel->tapel->tahun}} {{$rombel->tapel->semester}}</option>@endforeach</select></td>';
                 html += '<td><select id="jenis_kelamin[]" name="jenis_kelamin[]"  class="form-control" required><option value="Semua" selected="selected">Semua</option><option value="Laki-Laki">Laki-Laki</option><option value="Perempuan">Perempuan</option></select></td>';
-                html += '<td><textarea name="rincian[]" class="form-control bg-light" id="rincian[]" rows="2"placeholder="Rincian Deskripsi Pembayaran" required>{{old('
+                html += '<td><textarea name="rincian[]" class="form-control bg-light" id="rincian[]" rows="2"placeholder="Rincian Deskripsi Pembayaran" required|min:5>{{old('
                 rincian ')}}</textarea></td>';
                 html += '<td><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">Rp.</span></div><input value="{{old('
                 nominal[]
@@ -611,10 +693,10 @@
                             for (var count = 0; count < data.error.length; count++) {
                                 error_html += '<p>' + data.error[count] + '</p>';
                             }
-                            $('#result').html('<div class="alert alert-danger">' + error_html + '</div>');
+                            $('#result').html('<div class="callout callout-danger alert alert-danger alert-dismissible fade show" role="alert"><h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>' + error_html + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                         } else {
                             dynamic_field(1);
-                            $('#result').html('<div class="alert alert-success">' + data.success + '</div>');
+                            $('#result').html('<div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert"><h5><i class="fas fa-check"></i> Sukses :</h5>' + data.success + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                         }
                         $('#save').attr('disabled', false);
                     }

@@ -48,13 +48,17 @@ class TransaksiPembayaranController extends Controller
 
     public function form_bayar(Request $request, $id_pesdik)
     {
-        //Olah Lagi
-        $pesdik = $id_pesdik;
-        $pilihTagihan = $request->input('pilih');
-        $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id_pesdik)->get();
-        $tagihan_siswa =  \App\Tagihan::whereIn('id', $pilihTagihan)->get();
-        //End Olah Lagi
-        return view('/pembayaran/transaksipembayaran/form_bayar', compact('pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilihTagihan'));
+        $tagihan = $request->input('pilih');
+        if ($tagihan > 0) {
+            $pesdik = $id_pesdik;
+            $pilihTagihan = $request->input('pilih');
+            $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id_pesdik)->get();
+            $tagihan_siswa =  \App\Tagihan::whereIn('id', $pilihTagihan)->get();
+            return view('/pembayaran/transaksipembayaran/form_bayar', compact('pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilihTagihan'));
+        } else {
+            return redirect('/pembayaran/transaksipembayaran/index')->with('warning', 'Maaf belum ada tagihan pembayaran siswa yang dipilih, mohon ulangi proses dan centang pada checkbox disamping kanan tabel tagihan pembayaran siswa !');       
+        }
+
     }
 
     public function bayar(Request $request)

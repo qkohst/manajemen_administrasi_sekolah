@@ -280,7 +280,7 @@
                             <p>
                                 Cetak Laporan
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-danger">Error</span>
+                                <span class="right badge badge-primary">New</span>
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -295,14 +295,14 @@
                                 <a href="/laporankeuangan/setortariktunai/index" class="nav-link text-white">
                                     <i class="nav-icon fas fa-credit-card"></i>
                                     <p>Setor & Tarik Tunai</p>
-                                    <span class="right badge badge-warning">New</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/laporankeuangan/keuangansekolah/index" class="nav-link text-white">
                                     <i class="nav-icon fas fa-dollar-sign"></i>
                                     <p>Keuangan Sekolah</p>
-                                    <span class="right badge badge-warning">New</span>
+                                    <span class="right badge badge-primary">New</span>
                                 </a>
                             </li>
                         </ul>

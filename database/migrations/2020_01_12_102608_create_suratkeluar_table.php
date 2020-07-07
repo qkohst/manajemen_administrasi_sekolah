@@ -22,7 +22,7 @@ class CreateSuratkeluarTable extends Migration
             $table->string('isi');
             $table->date('tgl_surat');
             $table->date('tgl_catat');
-            $table->string('filekeluar', 30);
+            $table->string('filekeluar', 100);
             $table->string('keterangan');
             $table->timestamps();
         });

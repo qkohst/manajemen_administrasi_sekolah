@@ -76,7 +76,7 @@ return [
     ],
     'max'                  => [
         'numeric' => 'Isian pada kolom :attribute maximal :max digit.',
-        'file'    => 'The :attribute may not be greater than :max kilobytes.',
+        'file'    => 'Nama file pada :attribute maximal :max karakter, mohon rubah nama file terlebih dahulu !',
         'string'  => 'Isian pada kolom :attribute maximal :max karakter.',
         'array'   => 'The :attribute may not have more than :max items.',
     ],

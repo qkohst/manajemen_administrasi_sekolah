@@ -3,26 +3,6 @@
 @section('content')
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
-        @if(session('sukses'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{session('sukses')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
-        @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
         <h3><i class="nav-icon far fa-handshake nav-icon my-1 btn-sm-1"></i> Transaksi Pembayaran Siswa</h3>
         <hr>
         <section class="content">
@@ -97,7 +77,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="/pembayaran/transaksipembayaran/{{$identitas_pendik->id}}/form_bayar" method="GET">
+                                <form action="/pembayaran/transaksipembayaran/{{$identitas_pendik->id}}/form_bayar" method="POST">
                                     {{csrf_field()}}
                                     <table class="table table-hover table-head-fixed" id='tabelAgendaMasuk'>
                                         <thead>
@@ -121,12 +101,17 @@
                                                 <td>@currency($tagih->jumlah_bayar),00</td>
                                                 <td>@currency($tagih->nominal-$tagih->jumlah_bayar),00</td>
                                                 <td align="center">
-                                                    @if($tagih->nominal != $tagih->jumlah_bayar)
-                                                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}" onclick="myFunction()">
+                                                    <div class="icheck-primary d-inline">
+                                                        <input type="checkbox" id="checkboxPrimary{{$tagih->id}}" name="pilih[]" value="{{$tagih->id}}">
+                                                        <label for="checkboxPrimary{{$tagih->id}}">
+                                                        </label>
+                                                    </div>
+                                                    <!-- @if($tagih->nominal != $tagih->jumlah_bayar)
+                                                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}">
                                                     @endif
                                                     @if($tagih->nominal = $tagih->jumlah_bayar)
                                                     <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}" disabled>
-                                                    @endif
+                                                    @endif -->
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -139,12 +124,17 @@
                                                 <td>@currency($terbayar->jumlah_bayar),00</td>
                                                 <td>@currency($terbayar->nominal-$terbayar->jumlah_bayar),00</td>
                                                 <td align="center">
-                                                    @if($terbayar->nominal != $terbayar->jumlah_bayar)
+                                                    <div class="icheck-primary d-inline">
+                                                        <input type="checkbox" id="checkboxPrimary{{$tagih->id}}" name="pilih[]" value="{{$tagih->id}}" disabled>
+                                                        <label for="checkboxPrimary{{$tagih->id}}">
+                                                        </label>
+                                                    </div>
+                                                    <!-- @if($terbayar->nominal != $terbayar->jumlah_bayar)
                                                     <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$terbayar->id}}" onclick="myFunction()">
                                                     @endif
                                                     @if($terbayar->nominal = $terbayar->jumlah_bayar)
                                                     <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$terbayar->id}}" disabled>
-                                                    @endif
+                                                    @endif -->
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -156,7 +146,8 @@
                                                 <td align="left"><b>@currency($jumlah_terbayar),00</b><br></td>
                                                 <td align="left"><b>@currency($jumlah_tagihan-$jumlah_terbayar),00</b><br></td>
                                                 <td>
-                                                    <button class="btn btn-primary btn-sm my-1 mr-sm-1" style="display:none" type="submit" id="bayar">Bayar</button>
+                                                    <!-- <button class="btn btn-primary btn-sm my-1 mr-sm-1" style="display:none" type="submit" id="bayar">Bayar</button> -->
+                                                    <button class="btn btn-primary btn-sm my-1 mr-sm-1" type="submit" id="bayar">BAYAR</button>
                                                 </td>
                                             </tr>
                                         </tfoot>

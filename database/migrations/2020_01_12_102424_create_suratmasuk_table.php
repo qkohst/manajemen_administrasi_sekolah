@@ -22,7 +22,7 @@ class CreateSuratmasukTable extends Migration
             $table->text('isi');
             $table->date('tgl_surat');
             $table->date('tgl_terima');
-            $table->string('filemasuk', 50);
+            $table->string('filemasuk', 100);
             $table->text('keterangan');
             $table->timestamps();
         });
