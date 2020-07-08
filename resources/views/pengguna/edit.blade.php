@@ -26,7 +26,7 @@
                     <label for="name">Nama</label>
                     <input name="name" type="text" class="form-control bg-light" id="name" placeholder="Nama" value="{{$data_pengguna->name}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" value="{{$data_pengguna->email}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
+                    <input name="email" type="email" class="form-control" id="email" placeholder="Email" value="{{$data_pengguna->email}}" disabled>
                 </div>
                 <div class="col-6">
                     <label for="password">Password</label>

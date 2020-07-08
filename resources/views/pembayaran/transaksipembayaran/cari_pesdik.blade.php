@@ -106,12 +106,6 @@
                                                         <label for="checkboxPrimary{{$tagih->id}}">
                                                         </label>
                                                     </div>
-                                                    <!-- @if($tagih->nominal != $tagih->jumlah_bayar)
-                                                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}">
-                                                    @endif
-                                                    @if($tagih->nominal = $tagih->jumlah_bayar)
-                                                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$tagih->id}}" disabled>
-                                                    @endif -->
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -129,12 +123,6 @@
                                                         <label for="checkboxPrimary{{$tagih->id}}">
                                                         </label>
                                                     </div>
-                                                    <!-- @if($terbayar->nominal != $terbayar->jumlah_bayar)
-                                                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$terbayar->id}}" onclick="myFunction()">
-                                                    @endif
-                                                    @if($terbayar->nominal = $terbayar->jumlah_bayar)
-                                                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$terbayar->id}}" disabled>
-                                                    @endif -->
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -146,7 +134,6 @@
                                                 <td align="left"><b>@currency($jumlah_terbayar),00</b><br></td>
                                                 <td align="left"><b>@currency($jumlah_tagihan-$jumlah_terbayar),00</b><br></td>
                                                 <td>
-                                                    <!-- <button class="btn btn-primary btn-sm my-1 mr-sm-1" style="display:none" type="submit" id="bayar">Bayar</button> -->
                                                     <button class="btn btn-primary btn-sm my-1 mr-sm-1" type="submit" id="bayar">BAYAR</button>
                                                 </td>
                                             </tr>
