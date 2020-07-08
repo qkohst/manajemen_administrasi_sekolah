@@ -79,10 +79,10 @@
                     <input name="tgl_awal" type="text" class="d-none" id="tgl_awal" value="{{$tgl_awal}}">
                     <input name="tgl_akhir" type="text" class="d-none" id="tgl_akhir" value="{{$tgl_akhir}}">
 
-                    <button type="submit" class="btn btn-primary btn-sm my-1 mr-sm-1 float-right"><i class="fas fa-print"></i> Cetak</button>
+                    <button type="submit" class="btn btn-primary btn-sm my-2 mr-sm-2 float-right"><i class="fas fa-print"></i> Cetak</button>
                 </form>
-                <a class="btn btn-success btn-sm my-1 mr-sm-1 float-right" href="index" role="button"><i class="fas fa-sync-alt"></i> Refresh</a>
-                <a class="btn btn-primary btn-sm my-1 mr-sm-1" href="{{route('laporankeuangan.transaksipembayaran.DownloadExcel')}}" role="button"><i class="fas fa-file-excel"></i> Download Excel</a>
+                <a class="btn btn-primary btn-sm my-2 mr-sm-2 float-right" href="{{route('laporankeuangan.transaksipembayaran.DownloadExcel')}}" role="button"><i class="fas fa-file-excel"></i> Download Excel</a>
+                <a class="btn btn-success btn-sm my-2 mr-sm-2 float-right" href="index" role="button"><i class="fas fa-sync-alt"></i> Refresh</a>
             </div>
             <div class="row table-responsive">
                 <div class="col-12">
@@ -104,7 +104,7 @@
                             <tr>
                                 <td>{{$no}}</td>
                                 <td>{{$transaksi->pesdik->nama}}</td>
-                                <td>{{$transaksi->pesdik->rombel->nama_rombel}} {{$transaksi->pesdik->rombel->tapel->semester}} {{$transaksi->pesdik->rombel->tapel->tahun}}</td>
+                                <td>{{$transaksi->rombel->nama_rombel}} {{$transaksi->rombel->tapel->semester}} {{$transaksi->pesdik->rombel->tapel->tahun}}</td>
                                 <td>{{$transaksi->tagihan->rincian}}</td>
                                 <td>@currency($transaksi->jumlah_bayar),00</td>
                                 <td>{{$transaksi->created_at}}</td>

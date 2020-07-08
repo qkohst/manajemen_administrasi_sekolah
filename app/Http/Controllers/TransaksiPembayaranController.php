@@ -117,16 +117,6 @@ class TransaksiPembayaranController extends Controller
         $data = \App\Anggotarombel::where('pesdik_id', $id)->get();
         $data_pesdik = $data->last();
 
-        //Olah Lagi
-        // $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id)->get();
-        // $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $id)->get();
-        // $pilih_jk =  \App\Tagihan::whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
-
-        // $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
-        //     ->WhereIn('jenis_kelamin', $pilih_jk)
-        //     ->leftJoin('transaksipembayaran', 'tagihan.id', '=', 'transaksipembayaran.tagihan_id')
-        //     ->get();
-
         //Mencari Data Tagihan Per Siswa
         $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $id)->get();
         $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $id)->first();

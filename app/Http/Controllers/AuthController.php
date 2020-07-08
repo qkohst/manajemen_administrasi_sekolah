@@ -12,6 +12,18 @@ class AuthController extends Controller
 {
     public function login()
     {
+        // return view('auths.login');
+        if (auth()->user()) {
+            if (auth()->user()->role == 'admin') {
+                return redirect('/dashboard')->with('warning', 'Maaf tindakan anda tidak dibenarkan, tidak usah macem-macem lah !');
+            } else if (auth()->user()->role == 'Siswa') {
+                return redirect()->back()->with('warning', 'Maaf tindakan anda tidak dibenarkan, tidak usah macem-macem lah !');
+            } else if (auth()->user()->role == 'PetugasAdministrasiKeuangan') {
+                return redirect('/dashboard')->with('warning', 'Maaf tindakan anda tidak dibenarkan, tidak usah macem-macem lah !');
+            } else if (auth()->user()->role == 'PetugasAdministrasiSurat') {
+                return redirect('/dashboard')->with('warning', 'Maaf tindakan anda tidak dibenarkan, tidak usah macem-macem lah !');
+            }
+        }
         return view('auths.login');
     }
 

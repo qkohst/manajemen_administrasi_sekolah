@@ -66,10 +66,6 @@ class SuratKeluarController extends Controller
         return view('suratkeluar.tampil', compact('downloads'));
     }
 
-    public function agendakeluardownload_excel()
-    {
-        return Excel::download(new SuratKeluarExport, 'AgendaSuratKeluar(All).xlsx');
-    }
     //function untuk ke view edit
     public function edit($id_suratkeluar)
     {
@@ -132,6 +128,12 @@ class SuratKeluarController extends Controller
 
         $data_suratkeluar = \App\SuratKeluar::whereBetween('tgl_catat', [$tgl1, $tgl2])->get();
         return view('suratkeluar.cetakagenda', compact('inst', 'data_suratkeluar', 'tgl1', 'tgl2'));
+    }
+
+    public function agendakeluardownload_excel()
+    {
+        $namafile = 'Agenda_surat_keluar_' . date('Y-m-d_H-i-s') . '.xlsx';
+        return Excel::download(new SuratKeluarExport, $namafile);
     }
 
     public function galeri(Request $request)

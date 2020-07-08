@@ -7,8 +7,9 @@ use App\Instansi;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Excel;
 use App\Exports\SuratMasukExport;
-use Maatwebsite\Excel\Facades\Excel;
+// use Maatwebsite\Excel\Facades\Excel;
 
 
 
@@ -66,11 +67,6 @@ class SuratmasukController extends Controller
 
         $downloads = DB::table('suratmasuk')->get();
         return view('suratmasuk.tampil', compact('downloads'));
-    }
-
-    public function agendamasukdownload_excel()
-    {
-        return Excel::download(new SuratMasukExport, 'AgendaSuratMasuk(All).xlsx');
     }
 
     //function untuk masuk ke view edit
@@ -135,6 +131,12 @@ class SuratmasukController extends Controller
 
         $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl1, $tgl2])->get();
         return view('suratmasuk.cetakagenda', compact('inst', 'data_suratmasuk', 'tgl1', 'tgl2'));
+    }
+
+    public function agendamasukdownload_excel()
+    {
+        $namafile='Agenda_surat_masuk_'.date('Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new SuratMasukExport, $namafile);
     }
 
     //Function Untuk Galeri Surat Masuk

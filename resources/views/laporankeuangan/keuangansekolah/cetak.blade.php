@@ -113,15 +113,15 @@
                         <td>{{$no}}</td>
                         <td>{{$pemasukan->kategori->nama_kategori}}</td>
                         <td>{{$pemasukan->created_at}}</td>
-                        <td>{{$pemasukan->keterangan}}</td>
                         <td>@currency($pemasukan->jumlah),00</td>
+                        <td>{{$pemasukan->keterangan}}</td>
                       </tr>
                       @endforeach
                     </tbody>
                     <tfoot>
                       <tr>
-                        <td colspan="4" align="center"><b>Total Pemasukan</b></td>
-                        <td lign="left">
+                        <td colspan="3" align="center"><b>Total Pemasukan</b></td>
+                        <td colspan="2" lign="left">
                           <b>@currency($total_pemasukan),00</b>
                         </td>
                       </tr>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="col-6">
                   <table class="table table-bordered table-head-fixed bg-white">
-                  <thead>
+                    <thead>
                       <tr>
                         <th>No.</th>
                         <th>Kategori</th>
@@ -147,15 +147,15 @@
                         <td>{{$no}}</td>
                         <td>{{$pengeluaran->kategori->nama_kategori}}</td>
                         <td>{{$pengeluaran->created_at}}</td>
-                        <td>{{$pengeluaran->keterangan}}</td>
                         <td>@currency($pengeluaran->jumlah),00</td>
+                        <td>{{$pengeluaran->keterangan}}</td>
                       </tr>
                       @endforeach
                     </tbody>
                     <tfoot>
                       <tr>
-                        <td colspan="4" align="center"><b>Total Pengeluaran</b></td>
-                        <td lign="left">
+                        <td colspan="3" align="center"><b>Total Pengeluaran</b></td>
+                        <td colspan="2" lign="left">
                           <b>@currency($total_pengeluaran),00</b>
                         </td>
                       </tr>

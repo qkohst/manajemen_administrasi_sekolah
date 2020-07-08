@@ -1,5 +1,14 @@
 @extends('layouts.master')
 @section('content')
+@if(session('warning'))
+<div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+  <h5><i class="fas fa-info"></i> Peringatan :</h5>
+  {{session('warning')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 <div class="row">
   <div class="container-fluid">
     <!-- Info boxes -->

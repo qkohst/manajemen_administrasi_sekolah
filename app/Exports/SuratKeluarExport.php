@@ -3,15 +3,16 @@
 namespace App\Exports;
 
 use App\SuratKeluar;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class SuratKeluarExport implements FromCollection
+class SuratKeluarExport implements FromView,ShouldAutoSize
 {
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function collection()
+    public function view(): View
     {
-        return SuratKeluar::select('id', 'isi', 'tujuan_surat', 'klasifikasi_id', 'no_surat', 'tgl_surat', 'tgl_catat', 'keterangan')->get();
+        return view('suratkeluar.downloadexcel', [
+            'suratkeluar' => SuratKeluar::all()
+        ]);
     }
 }

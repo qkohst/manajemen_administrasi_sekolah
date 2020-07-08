@@ -55,7 +55,6 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <a class="btn btn-danger btn-sm my-1 mr-sm-1 float-right" href="{{route('laporankeuangan.keuangansekolah.DownloadExcel')}}" role="button"><i class="fas fa-file-excel"></i> Download Excel</a>
                 <form action="/laporankeuangan/keuangansekolah/cetak" method="POST" target="_blank">
                     {{csrf_field()}}
                     @foreach($data_id_kategori as $id_kategori)
@@ -64,9 +63,10 @@
 
                     <input name="tgl_awal" type="text" class="d-none" id="tgl_awal" value="{{$tgl_awal}}">
                     <input name="tgl_akhir" type="text" class="d-none" id="tgl_akhir" value="{{$tgl_akhir}}">
-                    <button type="submit" class="btn btn-primary btn-sm my-1 mr-sm-1 float-right"><i class="fas fa-print"></i> Cetak</button>
+                    <button type="submit" class="btn btn-primary btn-sm my-2 mr-sm-2 float-right"><i class="fas fa-print"></i> Cetak</button>
                 </form>
-                <a class="btn btn-success btn-sm my-1 mr-sm-1 float-right" href="index" role="button"><i class="fas fa-sync-alt"></i> Refresh</a>
+                <a class="btn btn-primary btn-sm my-2 mr-sm-2 float-right" href="{{route('laporankeuangan.keuangansekolah.DownloadExcel')}}" role="button"><i class="fas fa-file-excel"></i> Download Excel</a>
+                <a class="btn btn-success btn-sm my-2 mr-sm-2 float-right" href="index" role="button"><i class="fas fa-sync-alt"></i> Refresh</a>
             </div>
         </div>
 

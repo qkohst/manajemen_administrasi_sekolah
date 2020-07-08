@@ -99,7 +99,7 @@
                       <tr>
                         <td>{{$no}}</td>
                         <td>{{$transaksi->pesdik->nama}}</td>
-                        <td>{{$transaksi->pesdik->rombel->nama_rombel}} {{$transaksi->pesdik->rombel->tapel->semester}} {{$transaksi->pesdik->rombel->tapel->tahun}}</td>
+                        <td>{{$transaksi->rombel->nama_rombel}} {{$transaksi->rombel->tapel->semester}} {{$transaksi->pesdik->rombel->tapel->tahun}}</td>
                         <td>{{$transaksi->tagihan->rincian}}</td>
                         <td>@currency($transaksi->jumlah_bayar),00</td>
                         <td>{{$transaksi->created_at}}</td>

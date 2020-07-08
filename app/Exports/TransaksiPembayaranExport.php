@@ -3,15 +3,17 @@
 namespace App\Exports;
 
 use App\TransaksiPembayaran;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class TransaksiPembayaranExport implements FromCollection
+class TransaksiPembayaranExport implements FromView, ShouldAutoSize
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    public function view(): View
     {
-        return TransaksiPembayaran::all();
+        return view('laporankeuangan.transaksipembayaran.DownloadExcel', [
+            'data_transaksi' => TransaksiPembayaran::all(),
+            'total_transaksi' => TransaksiPembayaran::all()->sum('jumlah_bayar'),
+        ]);
     }
 }

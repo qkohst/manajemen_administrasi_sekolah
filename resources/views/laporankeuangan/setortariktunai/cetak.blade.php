@@ -100,7 +100,7 @@
                       <tr>
                         <th>No.</th>
                         <th>Nama Pesdik</th>
-                        <th>Kelas Saat Ini </th>
+                        <th>Kelas</th>
                         <th>Tanggal Setor</th>
                         <th>Jumlah</th>
                       </tr>
@@ -112,7 +112,7 @@
                       <tr>
                         <td>{{$no}}</td>
                         <td>{{$setor->pesdik->nama}}</td>
-                        <td>{{$setor->pesdik->rombel->nama_rombel}} {{$setor->pesdik->rombel->tapel->semester}} {{$setor->pesdik->rombel->tapel->tahun}}</td>
+                        <td>{{$setor->rombel->nama_rombel}} {{$setor->rombel->tapel->semester}} {{$setor->pesdik->rombel->tapel->tahun}}</td>
                         <td>{{$setor->tanggal}}</td>
                         <td>@currency($setor->jumlah),00</td>
                       </tr>
@@ -134,7 +134,7 @@
                       <tr>
                         <th>No.</th>
                         <th>Nama Pesdik</th>
-                        <th>Kelas Saat Ini </th>
+                        <th>Kelas</th>
                         <th>Tanggal Penarikan</th>
                         <th>Jumlah</th>
                       </tr>
@@ -146,7 +146,7 @@
                       <tr>
                         <td>{{$no}}</td>
                         <td>{{$tarik->pesdik->nama}}</td>
-                        <td>{{$tarik->pesdik->rombel->nama_rombel}} {{$tarik->pesdik->rombel->tapel->semester}} {{$tarik->pesdik->rombel->tapel->tahun}}</td>
+                        <td>{{$tarik->rombel->nama_rombel}} {{$tarik->rombel->tapel->semester}} {{$tarik->pesdik->rombel->tapel->tahun}}</td>
                         <td>{{$tarik->tanggal}}</td>
                         <td>@currency($tarik->jumlah),00</td>
                       </tr>

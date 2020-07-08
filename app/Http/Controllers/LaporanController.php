@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TransaksiPembayaranExport;
+use App\Exports\SetorTarikExport;
+use App\Exports\KeuanganSekolahExport;
 use Carbon\Carbon;
 
 
@@ -78,7 +80,8 @@ class LaporanController extends Controller
 
     public function tPembayaranDownloadExcel()
     {
-        return Excel::download(new TransaksiPembayaranExport, 'TransaksiPembayaran(All).xlsx');
+        $namafile = 'Laporan_transaksi_pembayaran_siswa_' . date('Y-m-d_H-i-s') . '.xlsx';
+        return Excel::download(new TransaksiPembayaranExport, $namafile);
     }
 
     public function tPembayaranCetak(Request $request)
@@ -199,6 +202,11 @@ class LaporanController extends Controller
         return view('/laporankeuangan/setortariktunai/cetak', compact('inst', 'tgl_awal', 'tgl_akhir', 'data_setor', 'total_setor', 'data_tarik', 'total_tarik'));
     }
 
+    public function tSetorTarikDownloadExcel ()
+    {
+        $namafile = 'Laporan_setor_tarik_tunai_' . date('Y-m-d_H-i-s') . '.xlsx';
+        return Excel::download(new SetorTarikExport, $namafile);
+    }
 
     //Laporan Keuangan Sekolah
     public function tKeuanganSekolahIndex()
@@ -272,5 +280,11 @@ class LaporanController extends Controller
         $total_pengeluaran = \App\Pengeluaran::whereIn('kategori_id', $data_id_kategori)->whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
 
         return view('/laporankeuangan/keuangansekolah/cetak', compact('inst', 'tgl_awal', 'tgl_akhir', 'data_pemasukan', 'total_pemasukan', 'data_pengeluaran', 'total_pengeluaran'));
+    }
+
+    public function tKeuanganSekolahDownloadExcel()
+    {
+        $namafile = 'Laporan_keuangan_sekolah_' . date('Y-m-d_H-i-s') . '.xlsx';
+        return Excel::download(new KeuanganSekolahExport, $namafile);
     }
 }

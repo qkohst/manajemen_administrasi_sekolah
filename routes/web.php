@@ -13,6 +13,7 @@
 
 
 Route::get('/login', 'AuthController@login')->name('login');
+Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
 
 //Route untuk user Admin
@@ -228,7 +229,6 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,PetugasAdministrasiKeuan
 
 //Route untuk user Admin, Petugas Administrasi Surat, Petugas Administrasi Keuangan dan Siswa
 Route::group(['middleware' => ['auth', 'checkRole:admin,PetugasAdministrasiKeuangan,PetugasAdministrasiSurat,Siswa']], function () {
-    Route::post('/postlogin', 'AuthController@postlogin');
     Route::get('/auths/{id}/gantipassword', 'AuthController@gantipassword');
     Route::post('/auths/{id}/simpanpassword', 'AuthController@simpanpassword');
 });
