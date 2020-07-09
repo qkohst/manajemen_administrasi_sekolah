@@ -7,6 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Sistem Informasi Administrasi Sekolah</title>
+    <style type="text/css">
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999;
+        }
+
+        .loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font: 14px arial;
+        }
+    </style>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/adminLTE/plugins/fontawesome-free/css/all.min.css">
     <!-- overlayScrollbars -->
@@ -37,10 +55,28 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="/adminLTE/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="/adminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="preloader">
+        <div class="loading">
+            <div class="row">
+                <div class="col d-flex align-items-center">
+                    <div class="spinner-border text-primary" role="status" style="width: 3rem;height: 3rem">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div class="col text-primary d-flex align-items-center">
+                    <h6>Loading......</h6>
+                </div>
+                <div class="col d-flex align-items-center">
+                    <div class="spinner-grow text-primary" role="status" style="width: 1rem;height: 1rem">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -480,7 +516,6 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper bg-light" style="padding: 15px 15px 15px 15px ">
-
             @yield('content')
 
         </div>
@@ -521,6 +556,11 @@
     <!-- AdminLTE for demo purposes -->
     <script src="/adminLTE/js/demo.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            $(".preloader").fadeOut("1000");
+        });
+    </script>
     <!-- page script -->
     <script>
         // Untuk Menampilkan Button kembali
@@ -673,18 +713,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="modal-footer center">
-                    <div class="col-12">
-                        <center>
-                            <a href="/pengguna/{{auth()->user()->id}}/edit" class="btn btn-primary"><i class="nav-icon fas fa-pencil-alt"></i> Ubah Password</a>
-                        </center>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
     </div>
     </div>
+
 </body>
 
 </html>
