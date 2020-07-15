@@ -16,7 +16,7 @@ class CreateInstansisTable extends Migration
         Schema::create('instansis', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama', 30);
-            $table->string('alamat', 30);
+            $table->string('alamat', 100);
             $table->string('pimpinan', 20);
             $table->string('email', 35);
             $table->string('file', 50);

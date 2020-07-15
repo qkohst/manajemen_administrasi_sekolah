@@ -43,7 +43,7 @@ class SuratKeluarController extends Controller
         $suratkeluar->tgl_catat    = $request->input('tgl_catat');
         $suratkeluar->keterangan   = $request->input('keterangan');
         $file                      = $request->file('filekeluar');
-        $fileName   = 'suratKeluar-' . $file->getClientOriginalName();
+        $fileName   = 'S_keluar-' . $file->getClientOriginalName();
         $file->move('datasuratkeluar/', $fileName);
         $suratkeluar->filekeluar  = $fileName;
         $suratkeluar->users_id = Auth::id();
@@ -85,8 +85,8 @@ class SuratKeluarController extends Controller
         $suratkeluar->update($request->all());
         //Untuk Update File
         if ($request->hasFile('filekeluar')) {
-            $request->file('filekeluar')->move('datasuratkeluar/', 'suratKeluar-' . $request->file('filekeluar')->getClientOriginalName());
-            $suratkeluar->filekeluar = 'suratKeluar-' . $request->file('filekeluar')->getClientOriginalName();
+            $request->file('filekeluar')->move('datasuratkeluar/', 'S_Keluar-' . $request->file('filekeluar')->getClientOriginalName());
+            $suratkeluar->filekeluar = 'S_Keluar-' . $request->file('filekeluar')->getClientOriginalName();
             $suratkeluar->save();
         }
         return redirect('suratkeluar/index')->with('sukses', 'Data Surat Keluar Berhasil Diedit');

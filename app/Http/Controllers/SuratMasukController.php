@@ -46,7 +46,7 @@ class SuratmasukController extends Controller
         $suratmasuk->tgl_terima = $request->input('tgl_terima');
         $suratmasuk->keterangan = $request->input('keterangan');
         $file                   = $request->file('filemasuk');
-        $fileName   = 'suratMasuk-' . $file->getClientOriginalName();
+        $fileName   = 'S_Masuk-' . $file->getClientOriginalName();
         $file->move('datasuratmasuk/', $fileName);
         $suratmasuk->filemasuk  = $fileName;
         $suratmasuk->users_id = Auth::id();
@@ -88,8 +88,8 @@ class SuratmasukController extends Controller
         $suratmasuk->update($request->all());
         //Untuk Update File
         if ($request->hasFile('filemasuk')) {
-            $request->file('filemasuk')->move('datasuratmasuk/', 'suratMasuk-' . $request->file('filemasuk')->getClientOriginalName());
-            $suratmasuk->filemasuk = 'suratMasuk-' . $request->file('filemasuk')->getClientOriginalName();
+            $request->file('filemasuk')->move('datasuratmasuk/', 'S_Masuk-' . $request->file('filemasuk')->getClientOriginalName());
+            $suratmasuk->filemasuk = 'S_Masuk-' . $request->file('filemasuk')->getClientOriginalName();
             $suratmasuk->save();
         }
         return redirect('suratmasuk/index')->with('sukses', 'Data Surat Masuk Berhasil Diedit');
@@ -135,7 +135,7 @@ class SuratmasukController extends Controller
 
     public function agendamasukdownload_excel()
     {
-        $namafile='Agenda_surat_masuk_'.date('Y-m-d_H-i-s').'.xlsx';
+        $namafile = 'Agenda_surat_masuk_' . date('Y-m-d_H-i-s') . '.xlsx';
         return Excel::download(new SuratMasukExport, $namafile);
     }
 

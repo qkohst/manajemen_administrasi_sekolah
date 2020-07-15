@@ -227,7 +227,6 @@
                     <a class="text-white">
                         <p>
                             MANAJEMEN KEUANGAN
-                            <span class="right badge badge-primary">New</span>
                         </p>
                     </a>
                     <!-- Add icons to the links using the .nav-icon class
@@ -238,7 +237,7 @@
                             <p>
                                 Pembayaran
                                 <i class="right fas fa-angle-left"></i>
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -246,14 +245,14 @@
                                 <a href="/pembayaran/tagihan/index" class="nav-link  text-white">
                                     <i class="fas fa-money-check-alt nav-icon"></i>
                                     <p>Rincian Tagihan</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/pembayaran/transaksipembayaran/index" class="nav-link  text-white">
                                     <i class="far fa-handshake nav-icon"></i>
                                     <p>Transaksi Pembayaran</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                         </ul>
@@ -264,7 +263,7 @@
                             <p>
                                 Tabungan Siswa
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -272,14 +271,14 @@
                                 <a href="/tabungan/setor/index" class="nav-link text-white">
                                     <i class="fas fa-credit-card nav-icon"></i>
                                     <p>Setor Tunai</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/tabungan/tarik/index" class="nav-link text-white">
                                     <i class="fas fa-credit-card nav-icon"></i>
                                     <p>Tarik Tunai</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                         </ul>
@@ -290,7 +289,7 @@
                             <p>
                                 Keuangan Sekolah
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -298,14 +297,14 @@
                                 <a href="/keuangan/pemasukan/index" class="nav-link text-white">
                                     <i class="fas fa-money-bill-alt nav-icon"></i>
                                     <p>Pemasukan</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/keuangan/pengeluaran/index" class="nav-link text-white">
                                     <i class="fas fa-money-bill nav-icon"></i>
                                     <p>Pengeluaran</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                         </ul>
@@ -316,7 +315,7 @@
                             <p>
                                 Cetak Laporan
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -324,21 +323,21 @@
                                 <a href="/laporankeuangan/transaksipembayaran/index" class="nav-link text-white">
                                     <i class="far fa-handshake nav-icon"></i>
                                     <p>Transaksi Pembayaran</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/laporankeuangan/setortariktunai/index" class="nav-link text-white">
                                     <i class="nav-icon fas fa-credit-card"></i>
                                     <p>Setor & Tarik Tunai</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/laporankeuangan/keuangansekolah/index" class="nav-link text-white">
                                     <i class="nav-icon fas fa-dollar-sign"></i>
                                     <p>Keuangan Sekolah</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                         </ul>
@@ -370,7 +369,7 @@
                             <p>
                                 GTK
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -393,7 +392,7 @@
                             <i class="fas fa-calendar-alt nav-icon"></i>
                             <p>
                                 Tahun Pelajaran
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                     </li>
@@ -402,7 +401,7 @@
                             <i class="fas fa-users nav-icon"></i>
                             <p>
                                 Rombongan Belajar
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                     </li>
@@ -412,7 +411,7 @@
                             <p>
                                 Peserta Didik
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -454,7 +453,6 @@
                             <p>
                                 Pengumuman
                             </p>
-                            <span class="right badge badge-primary">New</span>
                         </a>
                     </li>
                     @if (auth()->user()->role == 'admin')
@@ -478,7 +476,7 @@
                             <p>
                                 Rekap Tabungan
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="right badge badge-primary">New</span>
+
                             </p>
                         </a>
                         <ul class="nav nav-treeview bg-secondary">
@@ -486,14 +484,14 @@
                                 <a href="/tabungan/setor/{{$id_pesdik_login->id}}/siswaindex" class="nav-link text-white">
                                     <i class="fas fa-credit-card nav-icon"></i>
                                     <p>Setor Tunai</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/tabungan/tarik/{{$id_pesdik_login->id}}/siswaindex" class="nav-link text-white">
                                     <i class="fas fa-credit-card nav-icon"></i>
                                     <p>Tarik Tunai</p>
-                                    <span class="right badge badge-primary">New</span>
+
                                 </a>
                             </li>
                         </ul>
@@ -504,7 +502,6 @@
                             <p>
                                 Rekap Pembayaran
                             </p>
-                            <span class="right badge badge-primary">New</span>
                         </a>
                     </li>
                 </ul>

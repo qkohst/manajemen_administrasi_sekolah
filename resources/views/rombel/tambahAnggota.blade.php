@@ -72,8 +72,12 @@
                   <td>{{$data_pesdik->nama}}</td>
                   <td>{{$data_pesdik->jenis_kelamin}}</td>
                   <td>{{$data_pesdik->rombel->nama_rombel}} {{$data_pesdik->rombel->tapel->semester}}</td>
-                  <td>
-                    <input type="checkbox" id="pilih[]" name="pilih[]" value="{{$data_pesdik->id}}" onclick="myFunction()">
+                  <td align="center">
+                    <div class="icheck-primary d-inline">
+                      <input type="checkbox" id="checkboxPrimary{{$data_pesdik->id}}" name="pilih[]" value="{{$data_pesdik->id}}" onclick="myFunction()">
+                      <label for="checkboxPrimary{{$data_pesdik->id}}">
+                      </label>
+                    </div>
                   </td>
                 </tr>
                 @endforeach
@@ -82,7 +86,7 @@
               <tfoot>
                 <tr>
                   <td colspan="5" align="right">
-                    <button class="btn btn-success btn-sm my-1 mr-sm-1" style="display:none" type="submit" id="bayar">Tambahkan Ke Rombel</button>
+                    <button class="btn btn-success btn-sm my-1 mr-sm-1" type="submit" id="bayar">Tambahkan Ke Rombel</button>
                   </td>
                 </tr>
               </tfoot>

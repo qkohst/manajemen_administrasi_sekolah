@@ -65,22 +65,26 @@ class RombelController extends Controller
         $rombel = $id_rombel;
         $pesdik_id = $request->input('pilih');
 
-        //Untuk Menmbahkan data pada tabel anggota rombel
-        for ($count = 0; $count < count($pesdik_id); $count++) {
-            $data = array(
-                'pesdik_id' => $pesdik_id[$count],
-                'rombel_id'  => $rombel,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now()
+        if ($pesdik_id > 0) {
+            //Untuk Menmbahkan data pada tabel anggota rombel
+            for ($count = 0; $count < count($pesdik_id); $count++) {
+                $data = array(
+                    'pesdik_id' => $pesdik_id[$count],
+                    'rombel_id'  => $rombel,
+                    'created_at'  => Carbon::now(),
+                    'updated_at'  => Carbon::now()
 
-            );
-            $insert_data[] = $data;
+                );
+                $insert_data[] = $data;
+            }
+            Anggotarombel::insert($insert_data);
+
+            //Untuk Update Data Pada Table Pesdik
+            $pesdik_dipilih = \App\Pesdik::whereIn('id', $pesdik_id)->update(['rombel_id' => $rombel]);
+            return redirect('rombel/index')->with('sukses', 'Data Anggota Rombel Berhasil Ditambahkan');
+        }else{
+            return redirect('/rombel/index')->with('warning', 'Maaf belum ada data anggota rombel yang dipilih, mohon ulangi proses dan centang pada checkbox disamping kanan tabel anggota rombongan belajar !');       
         }
-        Anggotarombel::insert($insert_data);
-
-        //Untuk Update Data Pada Table Pesdik
-        $pesdik_dipilih = \App\Pesdik::whereIn('id', $pesdik_id)->update(['rombel_id' => $rombel]);
-        return redirect('rombel/index')->with('sukses', 'Data Anggota Rombel Berhasil Ditambahkan');
     }
 
     //function untuk masuk ke view edit

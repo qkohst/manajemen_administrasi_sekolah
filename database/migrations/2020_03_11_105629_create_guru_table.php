@@ -19,7 +19,7 @@ class CreateGuruTable extends Migration
             $table->string('jenis_kelamin', 9);
             $table->string('tempat_lahir', 25);
             $table->date('tanggal_lahir');
-            $table->string('alamat', 30);
+            $table->string('alamat', 100);
             $table->string('no_hp', 13);
             $table->string('email', 35);
             $table->timestamps();
