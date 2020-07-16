@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Excel;
 use App\Exports\SuratMasukExport;
-// use Maatwebsite\Excel\Facades\Excel;
 
 
 
@@ -17,14 +16,14 @@ class SuratmasukController extends Controller
 {
     public function index()
     {
-        $data_suratmasuk = \App\SuratMasuk::all();
+        $data_suratmasuk = \App\SuratMasuk::orderByRaw('created_at DESC')->get();
         return view('suratmasuk.index', ['data_suratmasuk' => $data_suratmasuk]);
     }
 
     //function untuk masuk ke view Tambah
     public function create()
     {
-        $data_klasifikasi = \App\Klasifikasi::all();
+        $data_klasifikasi = \App\Klasifikasi::orderByRaw('kode ASC')->get();
         return view('suratmasuk/create', ['data_klasifikasi' => $data_klasifikasi]);
     }
 
@@ -72,7 +71,7 @@ class SuratmasukController extends Controller
     //function untuk masuk ke view edit
     public function edit($id_suratmasuk)
     {
-        $data_klasifikasi = \App\Klasifikasi::all();
+        $data_klasifikasi = \App\Klasifikasi::orderByRaw('kode ASC')->get();
         $suratmasuk = \App\SuratMasuk::find($id_suratmasuk);
         return view('suratmasuk/edit', ['suratmasuk' => $suratmasuk], ['data_klasifikasi' => $data_klasifikasi]);
     }
@@ -110,7 +109,7 @@ class SuratmasukController extends Controller
         $tgl2 = \App\SuratMasuk::latest()->first();
         $tgl_awal = $tgl1->tgl_terima;
         $tgl_akhir = $tgl2->tgl_terima;
-        $data_suratmasuk = \App\SuratMasuk::all();
+        $data_suratmasuk = \App\SuratMasuk::orderByRaw('created_at DESC')->get();
         return view('suratmasuk.agenda', compact('data_suratmasuk', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -119,7 +118,7 @@ class SuratmasukController extends Controller
         $tgl_awal = $request->input('tgl_awal');
         $tgl_akhir = $request->input('tgl_akhir');
 
-        $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl_awal, $tgl_akhir])->get();
+        $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl_awal, $tgl_akhir])->orderByRaw('created_at DESC')->get();
         return view('suratmasuk.agenda', compact('data_suratmasuk', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -129,7 +128,7 @@ class SuratmasukController extends Controller
         $tgl1 = $request->input('tgl_a');
         $tgl2 = $request->input('tgl_b');
 
-        $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl1, $tgl2])->get();
+        $data_suratmasuk = \App\SuratMasuk::whereBetween('tgl_terima', [$tgl1, $tgl2])->orderByRaw('created_at DESC')->get();
         return view('suratmasuk.cetakagenda', compact('inst', 'data_suratmasuk', 'tgl1', 'tgl2'));
     }
 
@@ -142,7 +141,7 @@ class SuratmasukController extends Controller
     //Function Untuk Galeri Surat Masuk
     public function galeri(Request $request)
     {
-        $data_suratmasuk = \App\SuratMasuk::all();
+        $data_suratmasuk = \App\SuratMasuk::orderByRaw('created_at DESC')->get();
         return view('suratmasuk.galeri', ['data_suratmasuk' => $data_suratmasuk]);
     }
 }

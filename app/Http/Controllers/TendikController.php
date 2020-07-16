@@ -17,7 +17,7 @@ class TendikController extends Controller
      */
     public function index()
     {
-        $data_tendik = \App\Tendik::all();
+        $data_tendik = \App\Tendik::orderByRaw('nama ASC')->get();
         return view('tendik.index', ['data_tendik' => $data_tendik]);
     }
 

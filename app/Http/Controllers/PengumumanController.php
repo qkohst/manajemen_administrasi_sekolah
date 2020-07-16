@@ -11,7 +11,7 @@ class PengumumanController extends Controller
 {
     public function index()
     {
-        $data_pengumuman = \App\Pengumuman::all();
+        $data_pengumuman = \App\Pengumuman::orderByRaw('created_at DESC')->get();
         return view('pengumuman.index',['data_pengumuman'=> $data_pengumuman]);
     }
 

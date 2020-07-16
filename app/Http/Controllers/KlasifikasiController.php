@@ -12,7 +12,7 @@ class KlasifikasiController extends Controller
 {
     public function index()
     {
-        $data_klasifikasi = \App\Klasifikasi::all();
+        $data_klasifikasi = \App\Klasifikasi::orderByRaw('kode ASC')->get();
         return view('klasifikasi.index', ['data_klasifikasi' => $data_klasifikasi]);
     }
 
@@ -67,17 +67,5 @@ class KlasifikasiController extends Controller
         } catch (\Illuminate\Database\QueryException $ex) {
             return redirect()->back()->with('warning', 'Maaf data tidak dapat dihapus, masih terdapat data pada tabel lain yang terpaut dengan data ini!');
         }
-    }
-
-    //function untuk import excel
-    public function import()
-    {
-        // Excel::import(new KlasifikasiImport, 'data_klasifikasi.xls');
-        Excel::import(new KlasifikasiImport)->import('data_klasifikasi.xls', null, \Maatwebsite\Excel\Excel::XLS);
-        return redirect('klasifikasi/index')->with('sukses', 'Import Klasifikasi Berhasil');
-
-        // Excel::import(new ImportKlasifikasi,$request->file('data_klasifikasi'));
-        // return back()->with('sukses','Import Klasifikasi Sukses');
-        // // dd($request->all());
     }
 }

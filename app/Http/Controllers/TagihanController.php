@@ -18,7 +18,7 @@ class TagihanController extends Controller
     {
         // $data_rombel = \App\Rombel::all();
         $daftar_rombel = \App\Tagihan::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
-        $data_tagihan = \App\Tagihan::all();
+        $data_tagihan = \App\Tagihan::orderByRaw('created_at DESC')->get();
         return view('/pembayaran/tagihan/index', compact('daftar_rombel', 'data_tagihan'));
     }
 

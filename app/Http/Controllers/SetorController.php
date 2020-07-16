@@ -13,8 +13,8 @@ class SetorController extends Controller
 {
     public function index()
     {
-        $data_setor = \App\Setor::all();
-        $data_pesdik = \App\Pesdik::all();
+        $data_setor = \App\Setor::orderByRaw('created_at DESC')->get();
+        $data_pesdik = \App\Pesdik::orderByRaw('nama ASC')->get();
         return view('/tabungan/setor/index', compact('data_setor', 'data_pesdik'));
     }
 
@@ -87,7 +87,7 @@ class SetorController extends Controller
         $id_pesdik_login = $pesdik->first();
 
         $data_pesdik = \App\Pesdik::where('id', $id)->get();
-        $data_setor = \App\Setor::where('pesdik_id', $id)->get();
+        $data_setor = \App\Setor::where('pesdik_id', $id)->orderByRaw('created_at DESC')->get();
         return view('/tabungan/setor/siswaindex', compact('data_pesdik', 'data_setor', 'id_pesdik_login'));
     }
 }

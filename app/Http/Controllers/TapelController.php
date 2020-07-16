@@ -10,7 +10,7 @@ class TapelController extends Controller
 {
     public function index()
     {
-        $data_tapel = \App\Tapel::all();
+        $data_tapel = \App\Tapel::orderByRaw('created_at DESC')->get();
         return view('tapel.index', ['data_tapel' => $data_tapel]);
     }
 

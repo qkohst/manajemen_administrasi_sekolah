@@ -23,9 +23,9 @@ class LaporanController extends Controller
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = $tgl_2->created_at;
 
-        $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->get();
-        $data_transaksi = \App\TransaksiPembayaran::all();
+        $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->orderByRaw('pesdik_id DESC')->get();
+        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
+        $data_transaksi = \App\TransaksiPembayaran::orderByRaw('created_at DESC')->get();
         $total_transaksi = \App\TransaksiPembayaran::all()->sum('jumlah_bayar');
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi', 'daftar_nama', 'daftar_kelas', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
     }
@@ -41,9 +41,9 @@ class LaporanController extends Controller
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = $tgl_2->created_at;
 
-        $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->get();
-        $data_transaksi = \App\TransaksiPembayaran::where('pesdik_id', $pesdik_id)->get();
+        $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->orderByRaw('pesdik_id DESC')->get();
+        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
+        $data_transaksi = \App\TransaksiPembayaran::where('pesdik_id', $pesdik_id)->orderByRaw('created_at DESC')->get();
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi', 'daftar_nama', 'daftar_kelas', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -58,9 +58,9 @@ class LaporanController extends Controller
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = $tgl_2->created_at;
 
-        $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->get();
-        $data_transaksi = \App\TransaksiPembayaran::where('rombel_id', $id_rombel)->get();
+        $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->orderByRaw('pesdik_id DESC')->get();
+        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
+        $data_transaksi = \App\TransaksiPembayaran::where('rombel_id', $id_rombel)->orderByRaw('created_at DESC')->get();
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi', 'daftar_nama', 'daftar_kelas', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -72,9 +72,9 @@ class LaporanController extends Controller
         $data_id_pesdik = \App\TransaksiPembayaran::select('pesdik_id')->groupBy('pesdik_id')->get();
         $data_id_rombel = \App\TransaksiPembayaran::select('rombel_id')->groupBy('rombel_id')->get();
 
-        $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->get();
-        $data_transaksi = \App\TransaksiPembayaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $daftar_nama = \App\TransaksiPembayaran::groupBy('pesdik_id')->orderByRaw('pesdik_id DESC')->get();
+        $daftar_kelas = \App\TransaksiPembayaran::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
+        $data_transaksi = \App\TransaksiPembayaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->orderByRaw('created_at DESC')->get();
         return view('/laporankeuangan/transaksipembayaran/index', compact('data_transaksi', 'daftar_nama', 'daftar_kelas', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -107,13 +107,13 @@ class LaporanController extends Controller
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = Carbon::now();
 
-        $daftar_nama = \App\Setor::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\Setor::groupBy('rombel_id')->get();
+        $daftar_nama = \App\Setor::groupBy('pesdik_id')->orderByRaw('pesdik_id DESC')->get();
+        $daftar_kelas = \App\Setor::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
 
-        $data_setor = \App\Setor::all();
+        $data_setor = \App\Setor::orderByRaw('created_at DESC')->get();
         $total_setor = \App\Setor::all()->sum('jumlah');
 
-        $data_tarik = \App\Tarik::all();
+        $data_tarik = \App\Tarik::orderByRaw('created_at DESC')->get();
         $total_tarik = \App\Tarik::all()->sum('jumlah');
 
         return view('/laporankeuangan/setortariktunai/index', compact('daftar_nama', 'daftar_kelas', 'data_setor', 'total_setor', 'data_tarik', 'total_tarik', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
@@ -130,13 +130,13 @@ class LaporanController extends Controller
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = Carbon::now();
 
-        $daftar_nama = \App\Setor::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\Setor::groupBy('rombel_id')->get();
+        $daftar_nama = \App\Setor::groupBy('pesdik_id')->orderByRaw('pesdik_id DESC')->get();
+        $daftar_kelas = \App\Setor::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
 
-        $data_setor = \App\Setor::where('pesdik_id', $pesdik_id)->get();
+        $data_setor = \App\Setor::where('pesdik_id', $pesdik_id)->orderByRaw('created_at DESC')->get();
         $total_setor = \App\Setor::where('pesdik_id', $pesdik_id)->sum('jumlah');
 
-        $data_tarik = \App\Tarik::where('pesdik_id', $pesdik_id)->get();
+        $data_tarik = \App\Tarik::where('pesdik_id', $pesdik_id)->orderByRaw('created_at DESC')->get();
         $total_tarik = \App\Tarik::where('pesdik_id', $pesdik_id)->sum('jumlah');
 
         return view('/laporankeuangan/setortariktunai/index', compact('daftar_nama', 'daftar_kelas', 'data_setor', 'total_setor', 'data_tarik', 'total_tarik', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
@@ -152,13 +152,13 @@ class LaporanController extends Controller
         $tgl_awal = $tgl_1->created_at;
         $tgl_akhir = Carbon::now();
 
-        $daftar_nama = \App\Setor::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\Setor::groupBy('rombel_id')->get();
+        $daftar_nama = \App\Setor::groupBy('pesdik_id')->orderByRaw('pesdik_id DESC')->get();
+        $daftar_kelas = \App\Setor::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
 
-        $data_setor = \App\Setor::where('rombel_id', $id_rombel)->get();
+        $data_setor = \App\Setor::where('rombel_id', $id_rombel)->orderByRaw('created_at DESC')->get();
         $total_setor = \App\Setor::where('rombel_id', $id_rombel)->sum('jumlah');
 
-        $data_tarik = \App\Tarik::where('rombel_id', $id_rombel)->get();
+        $data_tarik = \App\Tarik::where('rombel_id', $id_rombel)->orderByRaw('created_at DESC')->get();
         $total_tarik = \App\Tarik::where('rombel_id', $id_rombel)->sum('jumlah');
 
         return view('/laporankeuangan/setortariktunai/index', compact('daftar_nama', 'daftar_kelas', 'data_setor', 'total_setor', 'data_tarik', 'total_tarik', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
@@ -172,13 +172,13 @@ class LaporanController extends Controller
         $data_id_pesdik = \App\Setor::select('pesdik_id')->groupBy('pesdik_id')->get();
         $data_id_rombel = \App\Setor::select('rombel_id')->groupBy('rombel_id')->get();
 
-        $daftar_nama = \App\Setor::groupBy('pesdik_id')->get();
-        $daftar_kelas = \App\Setor::groupBy('rombel_id')->get();
+        $daftar_nama = \App\Setor::groupBy('pesdik_id')->orderByRaw('pesdik_id DESC')->get();
+        $daftar_kelas = \App\Setor::groupBy('rombel_id')->orderByRaw('rombel_id DESC')->get();
 
-        $data_setor = \App\Setor::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $data_setor = \App\Setor::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->orderByRaw('created_at DESC')->get();
         $total_setor = \App\Setor::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
 
-        $data_tarik = \App\Tarik::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $data_tarik = \App\Tarik::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->orderByRaw('created_at DESC')->get();
         $total_tarik = \App\Tarik::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
 
         return view('/laporankeuangan/setortariktunai/index', compact('daftar_nama', 'daftar_kelas', 'data_setor', 'total_setor', 'data_tarik', 'total_tarik', 'data_id_pesdik', 'data_id_rombel', 'tgl_awal', 'tgl_akhir'));
@@ -202,7 +202,7 @@ class LaporanController extends Controller
         return view('/laporankeuangan/setortariktunai/cetak', compact('inst', 'tgl_awal', 'tgl_akhir', 'data_setor', 'total_setor', 'data_tarik', 'total_tarik'));
     }
 
-    public function tSetorTarikDownloadExcel ()
+    public function tSetorTarikDownloadExcel()
     {
         $namafile = 'Laporan_setor_tarik_tunai_' . date('Y-m-d_H-i-s') . '.xlsx';
         return Excel::download(new SetorTarikExport, $namafile);
@@ -211,7 +211,7 @@ class LaporanController extends Controller
     //Laporan Keuangan Sekolah
     public function tKeuanganSekolahIndex()
     {
-        $daftar_kategori = \App\Kategori::all();
+        $daftar_kategori = \App\Kategori::orderByRaw('nama_kategori ASC')->get();
 
         $data_id_kategori = \App\Kategori::all();
         $tgl_1 = \App\Pemasukan::first();
@@ -219,10 +219,10 @@ class LaporanController extends Controller
         $tgl_akhir = Carbon::now();
 
 
-        $data_pemasukan = \App\Pemasukan::all();
+        $data_pemasukan = \App\Pemasukan::orderByRaw('created_at DESC')->get();
         $total_pemasukan = \App\Pemasukan::all()->sum('jumlah');
 
-        $data_pengeluaran = \App\Pengeluaran::all();
+        $data_pengeluaran = \App\Pengeluaran::orderByRaw('created_at DESC')->get();
         $total_pengeluaran = \App\Pengeluaran::all()->sum('jumlah');
 
         return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori', 'data_id_kategori', 'tgl_awal', 'tgl_akhir', 'data_pemasukan', 'total_pemasukan', 'data_pengeluaran', 'total_pengeluaran'));
@@ -238,12 +238,12 @@ class LaporanController extends Controller
         $tgl_akhir = Carbon::now();
 
 
-        $daftar_kategori = \App\Kategori::all();
+        $daftar_kategori = \App\Kategori::orderByRaw('nama_kategori ASC')->get();
 
-        $data_pemasukan = \App\Pemasukan::where('kategori_id', $kategori_id)->get();
+        $data_pemasukan = \App\Pemasukan::where('kategori_id', $kategori_id)->orderByRaw('created_at DESC')->get();
         $total_pemasukan = \App\Pemasukan::where('kategori_id', $kategori_id)->sum('jumlah');
 
-        $data_pengeluaran = \App\Pengeluaran::where('kategori_id', $kategori_id)->get();
+        $data_pengeluaran = \App\Pengeluaran::where('kategori_id', $kategori_id)->orderByRaw('created_at DESC')->get();
         $total_pengeluaran = \App\Pengeluaran::where('kategori_id', $kategori_id)->sum('jumlah');
 
         return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori', 'data_id_kategori', 'tgl_awal', 'tgl_akhir', 'data_pemasukan', 'total_pemasukan', 'data_pengeluaran', 'total_pengeluaran'));
@@ -255,12 +255,12 @@ class LaporanController extends Controller
         $tgl_akhir = $request->input('tgl_akhir');
         $data_id_kategori = \App\Kategori::all();
 
-        $daftar_kategori = \App\Kategori::all();
+        $daftar_kategori = \App\Kategori::orderByRaw('nama_kategori ASC')->get();
 
-        $data_pemasukan = \App\Pemasukan::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $data_pemasukan = \App\Pemasukan::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->orderByRaw('created_at DESC')->get();
         $total_pemasukan = \App\Pemasukan::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
 
-        $data_pengeluaran = \App\Pengeluaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->get();
+        $data_pengeluaran = \App\Pengeluaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->orderByRaw('created_at DESC')->get();
         $total_pengeluaran = \App\Pengeluaran::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->sum('jumlah');
 
         return view('/laporankeuangan/keuangansekolah/index', compact('daftar_kategori', 'data_id_kategori', 'tgl_awal', 'tgl_akhir', 'data_pemasukan', 'total_pemasukan', 'data_pengeluaran', 'total_pengeluaran'));

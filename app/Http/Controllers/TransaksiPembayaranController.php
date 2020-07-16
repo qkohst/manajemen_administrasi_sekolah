@@ -14,14 +14,14 @@ class TransaksiPembayaranController extends Controller
 {
     public function index()
     {
-        $data_pesdik = \App\Pesdik::all();
+        $data_pesdik = \App\Pesdik::orderByRaw('nama ASC')->get();
         return view('/pembayaran/transaksipembayaran/index', compact('data_pesdik'));
     }
 
     public function cari_pesdik(Request $request)
     {
         $cari = $request->input('cari_pesdik');
-        $data_pesdik = \App\Pesdik::all();
+        $data_pesdik = \App\Pesdik::orderByRaw('nama ASC')->get();
         $identitas_pendik = \App\Pesdik::where('id', $cari)->first();
 
         //Mencari Data Tagihan Per Siswa
@@ -31,12 +31,12 @@ class TransaksiPembayaranController extends Controller
 
         $id_tagihan_terbayar = \App\TransaksiPembayaran::select('tagihan_id')->where('pesdik_id', $cari)->get();
         $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)->whereNotIn('id', $id_tagihan_terbayar)
-            ->WhereIn('jenis_kelamin', $pilih_jk)->get();
+            ->WhereIn('jenis_kelamin', $pilih_jk)->orderByRaw('rombel_id DESC')->get();
         $tagihan_terbayar = \App\TransaksiPembayaran::where('pesdik_id', $cari)
             ->leftJoin('tagihan', function ($join) {
                 $join->on('transaksipembayaran.tagihan_id', '=', 'tagihan.id');
             })
-            ->get();
+            ->orderByRaw('transaksipembayaran.rombel_id DESC')->get();
         $jumlah_tagihan = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
             ->WhereIn('jenis_kelamin', $pilih_jk)->sum('nominal');
         $jumlah_terbayar =  \App\TransaksiPembayaran::where('pesdik_id', $cari)
@@ -56,9 +56,8 @@ class TransaksiPembayaranController extends Controller
             $tagihan_siswa =  \App\Tagihan::whereIn('id', $pilihTagihan)->get();
             return view('/pembayaran/transaksipembayaran/form_bayar', compact('pesdik', 'tagihan_siswa', 'pesdik_pilih', 'pilihTagihan'));
         } else {
-            return redirect('/pembayaran/transaksipembayaran/index')->with('warning', 'Maaf belum ada tagihan pembayaran siswa yang dipilih, mohon ulangi proses dan centang pada checkbox disamping kanan tabel tagihan pembayaran siswa !');       
+            return redirect('/pembayaran/transaksipembayaran/index')->with('warning', 'Maaf belum ada tagihan pembayaran siswa yang dipilih, mohon ulangi proses dan centang pada checkbox disamping kanan tabel tagihan pembayaran siswa !');
         }
-
     }
 
     public function bayar(Request $request)
@@ -124,12 +123,12 @@ class TransaksiPembayaranController extends Controller
 
         $id_tagihan_terbayar = \App\TransaksiPembayaran::select('tagihan_id')->where('pesdik_id', $id)->get();
         $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)->whereNotIn('id', $id_tagihan_terbayar)
-            ->WhereIn('jenis_kelamin', $pilih_jk)->get();
+            ->WhereIn('jenis_kelamin', $pilih_jk)->orderByRaw('rombel_id DESC')->get();
         $tagihan_terbayar = \App\TransaksiPembayaran::where('pesdik_id', $id)
             ->leftJoin('tagihan', function ($join) {
                 $join->on('transaksipembayaran.tagihan_id', '=', 'tagihan.id');
             })
-            ->get();
+            ->orderByRaw('transaksipembayaran.rombel_id DESC')->get();
         $jumlah_tagihan = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)
             ->WhereIn('jenis_kelamin', $pilih_jk)->sum('nominal');
         $jumlah_terbayar =  \App\TransaksiPembayaran::where('pesdik_id', $id)

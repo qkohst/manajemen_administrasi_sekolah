@@ -20,17 +20,16 @@ class PesdikController extends Controller
      */
     public function index()
     {
-        $data_pesdik = \App\Pesdik::where('status', 'Aktif')->get();
+        $data_pesdik = \App\Pesdik::where('status', 'Aktif')->orderByRaw('nama ASC')->get();
         return view('pesdik.index', ['data_pesdik' => $data_pesdik]);
     }
 
     //function untuk masuk ke view Tambah
     public function create()
     {
-        $data_pesdik = \App\Pesdik::all();
         $tapel_terakhir = \App\Rombel::max('tapel_id');
-        $data_rombel = \App\Rombel::where('tapel_id', $tapel_terakhir)->get();
-        return view('pesdik.create', ['data_pesdik' => $data_pesdik], ['data_rombel' => $data_rombel]);
+        $data_rombel = \App\Rombel::where('tapel_id', $tapel_terakhir)->orderByRaw('kelas ASC')->get();
+        return view('pesdik.create', ['data_rombel' => $data_rombel]);
     }
 
     //function untuk tambah
@@ -107,7 +106,7 @@ class PesdikController extends Controller
     //function untuk masuk ke view pesdik keluar
     public function keluarindex()
     {
-        $data_pesdikkeluar = \App\Pesdikkeluar::all();
+        $data_pesdikkeluar = \App\Pesdikkeluar::orderByRaw('pesdik_id ASC')->get();
         return view('pesdik.keluarindex', compact('data_pesdikkeluar'));
     }
 
@@ -135,7 +134,7 @@ class PesdikController extends Controller
     //function untuk masuk ke view pesdik alumni
     public function alumniindex()
     {
-        $data_pesdikalumni = \App\Pesdikalumni::all();
+        $data_pesdikalumni = \App\Pesdikalumni::orderByRaw('pesdik_id ASC')->get();
         return view('pesdik.alumniindex', ['data_pesdikalumni' => $data_pesdikalumni]);
     }
 

@@ -13,8 +13,8 @@ class TarikController extends Controller
 {
     public function index()
     {
-        $data_tarik = \App\Tarik::all();
-        $data_pesdik = \App\Setor::groupBy('pesdik_id')->get();
+        $data_tarik = \App\Tarik::orderByRaw('created_at DESC')->get();
+        $data_pesdik = \App\Setor::groupBy('pesdik_id')->orderByRaw('created_at DESC')->get();
         return view('/tabungan/tarik/index', compact('data_tarik', 'data_pesdik'));
     }
 
@@ -101,7 +101,7 @@ class TarikController extends Controller
         $id_pesdik_login = $pesdik->first();
 
         $data_pesdik = \App\Pesdik::where('id', $id)->get();
-        $data_tarik = \App\Tarik::where('pesdik_id', $id)->get();
+        $data_tarik = \App\Tarik::where('pesdik_id', $id)->orderByRaw('created_at DESC')->get();
         return view('/tabungan/tarik/siswaindex', compact('data_pesdik', 'data_tarik', 'id_pesdik_login'));
     }
 }

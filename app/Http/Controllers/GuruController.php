@@ -17,7 +17,7 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $data_guru = \App\Guru::all();
+        $data_guru = \App\Guru::orderByRaw('nama ASC')->get();
         return view('guru.index', ['data_guru' => $data_guru]);
     }
 

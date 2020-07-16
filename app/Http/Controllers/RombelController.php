@@ -19,10 +19,10 @@ class RombelController extends Controller
      */
     public function index()
     {
-        $data_guru = \App\Guru::all();
+        $data_guru = \App\Guru::orderByRaw('nama ASC')->get();
         $tapel_terakhir = \App\Tapel::max('id');
         $data_tapel = \App\Tapel::where('id', $tapel_terakhir)->get();
-        $data_rombel = \App\Rombel::where('tapel_id', $tapel_terakhir)->get();
+        $data_rombel = \App\Rombel::where('tapel_id', $tapel_terakhir)->orderByRaw('kelas ASC')->get();
         return view('rombel.index', compact('data_rombel', 'data_guru', 'data_tapel'));
     }
 
@@ -44,7 +44,7 @@ class RombelController extends Controller
     //function untuk anggota Rombel
     public function anggota($id_rombel)
     {
-        $data_anggota = \App\Pesdik::where('rombel_id', $id_rombel)->get();
+        $data_anggota = \App\Pesdik::where('rombel_id', $id_rombel)->orderByRaw('nama ASC')->get();
         $jumlah_anggota_L = \App\Pesdik::where('rombel_id', $id_rombel)->where('jenis_kelamin', "Laki-Laki")->count();
         $jumlah_anggota_P = \App\Pesdik::where('rombel_id', $id_rombel)->where('jenis_kelamin', "Perempuan")->count();
         $rombel = $id_rombel;
@@ -56,7 +56,7 @@ class RombelController extends Controller
         $id_rombel = $rombel;
         $tapel_terakhir = \App\Tapel::max('id');
         $rombel_tapel_sebelumnya = \App\Rombel::select('id')->where('tapel_id', $tapel_terakhir - 1)->get();
-        $data_pesdik_tapel_sebelumnya = \App\Pesdik::whereIn('rombel_id', $rombel_tapel_sebelumnya)->where('status', "Aktif")->get();
+        $data_pesdik_tapel_sebelumnya = \App\Pesdik::whereIn('rombel_id', $rombel_tapel_sebelumnya)->where('status', "Aktif")->orderByRaw('nama ASC')->get();
         return view('rombel.tambahAnggota', compact('id_rombel', 'data_pesdik_tapel_sebelumnya'));
     }
 

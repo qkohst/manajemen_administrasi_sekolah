@@ -15,7 +15,7 @@ class PenggunaController extends Controller
      */
     public function index(User $pengguna)
     {
-        $data_pengguna = $pengguna->all();
+        $data_pengguna = $pengguna->orderByRaw('name ASC')->get();
         return view('pengguna.index', compact('data_pengguna'));
     }
 

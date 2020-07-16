@@ -11,8 +11,8 @@ class PemasukanController extends Controller
 {
     public function index()
     {
-        $data_pemasukan = \App\Pemasukan::all();
-        $data_kategori = \App\Kategori::where('jenis_kategori', 1)->where('id', '!=', 1)->get();
+        $data_pemasukan = \App\Pemasukan::orderByRaw('created_at DESC')->get();
+        $data_kategori = \App\Kategori::where('jenis_kategori', 1)->where('id', '!=', 1)->orderByRaw('nama_kategori ASC')->get();
         return view('/keuangan/pemasukan/index', compact('data_pemasukan', 'data_kategori'));
     }
 

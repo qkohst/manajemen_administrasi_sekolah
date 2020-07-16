@@ -14,14 +14,14 @@ class SuratKeluarController extends Controller
 {
     public function index()
     {
-        $data_suratkeluar = \App\SuratKeluar::all();
+        $data_suratkeluar = \App\SuratKeluar::orderByRaw('created_at DESC')->get();
         return view('suratkeluar.index', ['data_suratkeluar' => $data_suratkeluar]);
     }
 
     //function untuk masuk ke view Tambah
     public function create()
     {
-        $data_klasifikasi = \App\Klasifikasi::all();
+        $data_klasifikasi = \App\Klasifikasi::orderByRaw('kode ASC')->get();
         return view('suratkeluar/create', ['data_klasifikasi' => $data_klasifikasi]);
     }
 
@@ -107,7 +107,7 @@ class SuratKeluarController extends Controller
         $tgl2 = \App\SuratKeluar::latest()->first();
         $tgl_awal = $tgl1->tgl_catat;
         $tgl_akhir = $tgl2->tgl_catat;
-        $data_suratkeluar = \App\SuratKeluar::all();
+        $data_suratkeluar = \App\SuratKeluar::orderByRaw('created_at DESC')->get();
         return view('suratkeluar.agenda', compact('data_suratkeluar', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -116,7 +116,7 @@ class SuratKeluarController extends Controller
         $tgl_awal = $request->input('tgl_awal');
         $tgl_akhir = $request->input('tgl_akhir');
 
-        $data_suratkeluar = \App\SuratKeluar::whereBetween('tgl_catat', [$tgl_awal, $tgl_akhir])->get();
+        $data_suratkeluar = \App\SuratKeluar::whereBetween('tgl_catat', [$tgl_awal, $tgl_akhir])->orderByRaw('created_at DESC')->get();
         return view('suratkeluar.agenda', compact('data_suratkeluar', 'tgl_awal', 'tgl_akhir'));
     }
 
@@ -126,7 +126,7 @@ class SuratKeluarController extends Controller
         $tgl1 = $request->input('tgl_a');
         $tgl2 = $request->input('tgl_b');
 
-        $data_suratkeluar = \App\SuratKeluar::whereBetween('tgl_catat', [$tgl1, $tgl2])->get();
+        $data_suratkeluar = \App\SuratKeluar::whereBetween('tgl_catat', [$tgl1, $tgl2])->orderByRaw('created_at DESC')->get();
         return view('suratkeluar.cetakagenda', compact('inst', 'data_suratkeluar', 'tgl1', 'tgl2'));
     }
 
@@ -138,7 +138,7 @@ class SuratKeluarController extends Controller
 
     public function galeri(Request $request)
     {
-        $data_suratkeluar = \App\SuratKeluar::all();
+        $data_suratkeluar = \App\SuratKeluar::orderByRaw('created_at DESC')->get();
         return view('suratkeluar.galeri', ['data_suratkeluar' => $data_suratkeluar]);
     }
 }

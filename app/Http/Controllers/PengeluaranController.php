@@ -12,8 +12,8 @@ class PengeluaranController extends Controller
 {
     public function index()
     {
-        $data_pengeluaran = \App\Pengeluaran::all();
-        $data_kategori = \App\Kategori::where('jenis_kategori', 2)->get();
+        $data_pengeluaran = \App\Pengeluaran::orderByRaw('created_at DESC')->get();
+        $data_kategori = \App\Kategori::where('jenis_kategori', 2)->orderByRaw('nama_kategori ASC')->get();
         return view('/keuangan/pengeluaran/index', compact('data_pengeluaran', 'data_kategori'));
     }
 
