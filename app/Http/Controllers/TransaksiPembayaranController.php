@@ -89,10 +89,12 @@ class TransaksiPembayaranController extends Controller
 
         //memasukkan data pembayaran siswa ke pemasukan sekolah
         $jumlah_transaksi = \App\TransaksiPembayaran::whereIn('tagihan_id', $tagihan_id)->where('pesdik_id', $pesdik_id)->sum('jumlah_bayar');
+        $siswa=\App\Pesdik::select('nama')->where('id',$pesdik_id)->first();
+        $nama_siswa=$siswa->nama;
         $pemasukan = new Pemasukan();
         $pemasukan->kategori_id      = '1';
         $pemasukan->jumlah           = $jumlah_transaksi;
-        $pemasukan->keterangan       = '-';
+        $pemasukan->keterangan       = $nama_siswa;
         $pemasukan->save();
 
         return view('/pembayaran/transaksipembayaran/invoice_bukti_pembayaran', compact('identitas', 'tagihan_dibayar', 'tagihan_id', 'pesdik_id'));

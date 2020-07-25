@@ -1,41 +1,41 @@
 @extends('layouts.master')
 
 @section('content')
+@if(session('sukses'))
+<div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+    <h5><i class="fas fa-check"></i> Sukses :</h5>
+    {{session('sukses')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(session('warning'))
+<div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+    <h5><i class="fas fa-info"></i> Informasi :</h5>
+    {{session('warning')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if ($errors->any())
+<div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+    <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
-        @if(session('sukses'))
-        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
-            <h5><i class="fas fa-check"></i> Sukses :</h5>
-            {{session('sukses')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
-
-        @if(session('warning'))
-        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
-            <h5><i class="fas fa-info"></i> Informasi :</h5>
-            {{session('warning')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
-
-        @if ($errors->any())
-        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
-            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
         <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Pemasukan Sekolah</h3>
         <hr>
         <section class="content">
@@ -114,10 +114,12 @@
                                                                 <td>{{$pemasukan->kategori->nama_kategori}}</td>
                                                                 <td>{{$pemasukan->keterangan}}</td>
                                                                 <td>
+                                                                    @if ($pemasukan->kategori_id != 1)
                                                                     <a href="/keuangan/pemasukan/{{$pemasukan->id}}/edit" class="btn btn-primary btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
                                                                     @if (auth()->user()->role == 'admin')
                                                                     <a href="/keuangan/pemasukan/{{$pemasukan->id}}/delete" class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                                                         Hapus</a>
+                                                                    @endif
                                                                     @endif
                                                                 </td>
                                                             </tr>

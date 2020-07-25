@@ -35,9 +35,9 @@ class TagihanController extends Controller
         if ($request->ajax()) {
             $rules = array(
                 'rombel_id.*'  => 'required',
-                'rincian.*'  => 'required',
+                'rincian.*'  => 'required|min:5',
                 'jenis_kelamin.*'  => 'required',
-                'nominal.*'  => 'required|numeric',
+                'nominal.*'  => 'required|numeric|min:4',
                 'batas_bayar.*'  => 'required'
             );
 

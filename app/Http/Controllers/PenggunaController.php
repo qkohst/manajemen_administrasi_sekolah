@@ -49,7 +49,7 @@ class PenggunaController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('pengguna.index')->with('sukses', 'Data pengguna administrator berhasil ditambahkan');
+        return redirect()->route('pengguna.index')->with('sukses', 'Data administrator berhasil ditambahkan');
     }
 
     /**
@@ -88,12 +88,11 @@ class PenggunaController extends Controller
 
         $this->validate($request, [
             'name' => 'required|min:5',
-            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
 
         $data_pengguna = [
             'name' => $request->name,
-            'email' => $request->email,
             'password' => Hash::make($request->input('password')),
         ];
 

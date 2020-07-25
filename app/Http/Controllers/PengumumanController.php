@@ -27,7 +27,7 @@ class PengumumanController extends Controller
        $pengumuman->isi     = $request->input('isi');
        $pengumuman->users_id = Auth::id();
        $pengumuman->save();
-       return redirect('/pengumuman/index')->with("sukses", "Data Pengumuman Berhasil Ditambahkan");
+       return redirect('/pengumuman/index')->with("sukses", "Pengumuman Baru Berhasil Diposting");
 
     }
     //function untuk masuk ke view edit

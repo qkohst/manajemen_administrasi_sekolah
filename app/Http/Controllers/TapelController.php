@@ -18,9 +18,12 @@ class TapelController extends Controller
     public function tambah(Request $request)
     {
         $request->validate([
-            'tahun' => '',
+            'tahun' => 'size:9',
         ]);
+        $id_max = \App\Tapel::max('id');
+        $id = $id_max + 1;
         $tapel = new Tapel();
+        $tapel->id   = $id;
         $tapel->tahun   = $request->input('tahun');
         $tapel->semester   = $request->input('semester');
         $tapel->save();
@@ -36,7 +39,7 @@ class TapelController extends Controller
     public function update(Request $request, $id_tapel)
     {
         $request->validate([
-            'tahun' => 'min:9|max:9',
+            'tahun' => 'size:9',
         ]);
         $tapel = \App\Tapel::find($id_tapel);
         $tapel->update($request->all());

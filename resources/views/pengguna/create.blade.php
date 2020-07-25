@@ -25,7 +25,7 @@
                     <label for="name">Nama</label>
                     <input name="name" type="text" class="form-control bg-light" id="name" placeholder="Nama" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
+                    <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" required oninvalid="this.setCustomValidity('Pastikan anda sudah mengisikan email dengan format yang benar !')" oninput="setCustomValidity('')">
                 </div>
                 <div class="col-6">
                     <label for="password">Password</label>

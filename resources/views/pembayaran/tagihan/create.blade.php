@@ -483,43 +483,42 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper bg-light" style="padding: 15px 15px 15px 15px ">
+        @if(session('sukses'))
+        <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-check"></i> Sukses :</h5>
+            {{session('sukses')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
 
+        @if(session('warning'))
+        <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
+            <h5><i class="fas fa-info"></i> Informasi :</h5>
+            {{session('warning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
+        @if ($errors->any())
+        <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
+            <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+        <div class="content-wrapper bg-light" style="padding: 15px 15px 15px 15px ">
             <section class="content card" style="padding: 10px 10px 10px 10px ">
                 <div class="box">
-                    @if(session('sukses'))
-                    <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
-                        <h5><i class="fas fa-check"></i> Sukses :</h5>
-                        {{session('sukses')}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
-
-                    @if(session('warning'))
-                    <div class="callout callout-warning alert alert-warning alert-dismissible fade show" role="alert">
-                        <h5><i class="fas fa-info"></i> Informasi :</h5>
-                        {{session('warning')}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
-
-                    @if ($errors->any())
-                    <div class="callout callout-danger alert alert-danger alert-dismissible fade show">
-                        <h5><i class="fas fa-exclamation-triangle"></i> Peringatan :</h5>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
                     <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Tambah Tagihan Pembayaran</h3>
                     <hr>
                     <section class="content">
@@ -654,7 +653,7 @@
                 rincian ')}}</textarea></td>';
                 html += '<td><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">Rp.</span></div><input value="{{old('
                 nominal[]
-                ')}}" name="nominal[]" type="number" class="form-control" id="nominal[]" required><div class="input-group-append"><span class="input-group-text">.00</span></div></div></td>';
+                ')}}" name="nominal[]" type="number" class="form-control" id="nominal[]" required|min:4><div class="input-group-append"><span class="input-group-text">.00</span></div></div></td>';
                 html += '<td><input value="{{old('
                 batas_bayar[]
                 ')}}" name="batas_bayar[]" type="date" class="form-control bg-light" id="batas_bayar[]" required></td>';

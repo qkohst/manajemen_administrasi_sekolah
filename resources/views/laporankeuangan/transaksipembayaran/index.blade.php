@@ -38,7 +38,7 @@
                                     <select name="filterKelas" id="filterKelas" class="form-control select2bs4 my-1 mr-sm-1" onchange="this.form.submit();">
                                         <option value="">-- Pilih Kelas --</option>
                                         @foreach($daftar_kelas as $list_kelas)
-                                        <option value="{{ $list_kelas->rombel_id }}">{{$list_kelas->pesdik->rombel->nama_rombel}} {{$list_kelas->pesdik->rombel->tapel->semester}} {{$list_kelas->pesdik->rombel->tapel->tahun}}</option>
+                                        <option value="{{ $list_kelas->rombel_id }}">{{$list_kelas->rombel->nama_rombel}} {{$list_kelas->rombel->tapel->semester}} {{$list_kelas->rombel->tapel->tahun}}</option>
                                         @endforeach
                                     </select>
                                 </form>
