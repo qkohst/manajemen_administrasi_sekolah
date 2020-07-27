@@ -208,7 +208,7 @@
                 <span class="time"><i class="far fa-calendar-alt"></i> {{$pengumuman->created_at}} <br> {{$pengumuman->created_at->diffForHumans()}} </span>
                 <h3 class="timeline-header"><a class="text-primary">{{$pengumuman->judul}}</a><br>{{$pengumuman->users->role}} </h3>
                 <div class="timeline-body">
-                  <p>{{$pengumuman->isi}}</p>
+                  {!!$pengumuman->isi!!}
                 </div>
               </div>
             </div>

@@ -74,7 +74,7 @@
                                 <td>{{$pengumuman->judul}}</td>
                                 <td>{{$pengumuman->users->name}}</td>
                                 <td>{{$pengumuman->created_at}}</td>
-                                <td>{{$pengumuman->isi}}</td>
+                                <td>{!!$pengumuman->isi!!}</td>
                                 @if (auth()->user()->role == 'admin')
                                 <td>
                                     <a href="/pengumuman/{{$pengumuman->id}}/edit" class="btn btn-primary btn-sm my-1 mr-sm-1"><i class="nav-icon fas fa-pencil-alt"></i> Edit</a>
@@ -104,8 +104,8 @@
                                 <div class="row">
                                     <label for="judul">Judul Pengumuman</label>
                                     <input value="{{old('judul')}}" name="judul" type="text" class="form-control bg-light" id="judul" placeholder="Judul Pengumuman" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
-                                    <label for="isi">Isi Pengumuman</label>
-                                    <textarea name="isi" class="form-control bg-light" id="isi" rows="7" placeholder="Isi Pengumuman" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{old('isi')}}</textarea>
+                                    <label for="isi_pengumuman">Isi Pengumuman</label>
+                                    <textarea name="isi_pengumuman" class="form-control bg-light" id="isi_pengumuman" rows="7" placeholder="Isi Pengumuman" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{old('isi')}}</textarea>
                                 </div>
                                 <hr>
                                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i>

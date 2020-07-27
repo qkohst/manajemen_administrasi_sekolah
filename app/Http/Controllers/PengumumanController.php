@@ -20,11 +20,11 @@ class PengumumanController extends Controller
     {
        $request->validate([
            'judul'  => 'min:5|max:50',
-           'isi'    => 'min:10',
+           'isi_pengumuman'    => 'min:10',
        ]);
        $pengumuman = new Pengumuman();
        $pengumuman->judul   = $request->input('judul');
-       $pengumuman->isi     = $request->input('isi');
+       $pengumuman->isi     = $request->input('isi_pengumuman');
        $pengumuman->users_id = Auth::id();
        $pengumuman->save();
        return redirect('/pengumuman/index')->with("sukses", "Pengumuman Baru Berhasil Diposting");
@@ -40,9 +40,11 @@ class PengumumanController extends Controller
     {
             $request->validate([
                 'judul'  => 'min:5|max:50',
-                'isi'    => 'min:10',
+                'isi_pengumuman'    => 'min:10',
             ]);
             $pengumuman = \App\Pengumuman::find($id_pengumuman);
+            $pengumuman->judul   = $request->input('judul');
+            $pengumuman->isi     = $request->input('isi_pengumuman');
             $pengumuman->update($request->all());
             $pengumuman->save();
             return redirect('pengumuman/index') ->with('sukses','Data Pengumuman Berhasil Diedit');

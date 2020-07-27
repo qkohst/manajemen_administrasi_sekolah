@@ -532,7 +532,8 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
+    <!-- Ck editor -->
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <!-- jQuery -->
     <script src="/adminLTE/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -552,6 +553,11 @@
     <script src="/adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/adminLTE/js/demo.js"></script>
+
+
+    <script>
+        CKEDITOR.replace('isi_pengumuman');
+    </script>
 
     <script>
         $(document).ready(function() {

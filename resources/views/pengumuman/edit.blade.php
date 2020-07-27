@@ -48,8 +48,8 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <label for="isi">Isi Pengumuman</label>
-                    <textarea name="isi" class="form-control bg-light" id="isi" rows="7" placeholder="Isi Pengumuman" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$pengumuman->isi}}</textarea>
+                    <label for="isi_pengumuman">Isi Pengumuman</label>
+                    <textarea name="isi_pengumuman" class="form-control bg-light" id="isi_pengumuman" rows="7" placeholder="Isi Pengumuman" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$pengumuman->isi}}</textarea>
                 </div>
             </div>
             <hr>
