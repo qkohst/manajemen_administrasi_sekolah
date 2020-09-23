@@ -11,8 +11,12 @@ Adapun fitur dari sistem ini secara global antara lain :
 
 
 
-![Manajemen_Administrasi_Sekolah Login](https://user-images.githubusercontent.com/57386598/83773200-7115dd00-a6ae-11ea-9912-6e2ac4ca1758.png)
-![Manajemen_Administrasi_Sekolah dasboard](https://user-images.githubusercontent.com/57386598/83773196-6eb38300-a6ae-11ea-805d-ed96013149b4.png)
+![1](https://user-images.githubusercontent.com/57386598/94006552-32757100-fdca-11ea-815c-16fc1691f959.png)
+![2](https://user-images.githubusercontent.com/57386598/94006561-36a18e80-fdca-11ea-9e52-8137c047302d.png)
+![3](https://user-images.githubusercontent.com/57386598/94006568-3a351580-fdca-11ea-95e4-4ffc5a0dbf3c.png)
+![4](https://user-images.githubusercontent.com/57386598/94006579-3d300600-fdca-11ea-8bbe-ca3eedee24eb.png)
+![5](https://user-images.githubusercontent.com/57386598/94006592-40c38d00-fdca-11ea-98ed-5648c5a92650.png)
+![6](https://user-images.githubusercontent.com/57386598/94006600-44571400-fdca-11ea-8aff-2a99600dc81d.png)
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
