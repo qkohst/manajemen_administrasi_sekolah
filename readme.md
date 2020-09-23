@@ -1,3 +1,16 @@
+Sistem ini dibangun dengan framework laravel dan basis data MySQL dengan menggunakan template dari admin LTE. yang mana merupakan hasil pengembangan dari sistem sebelumnya yaitu Sistem Manajemen Surat yang dapat diakses pada https://github.com/qkohst/surat_management
+
+Adapun fitur dari sistem ini secara global antara lain : 
+1. Multi user (Admin, Petugas, Siswa) 
+2. Mengelola Data Master (Identitas Sekolah, Guru, Siswa, Rombongan Belajar, dll).
+3. Mengelola Manajemen Surat (Surat Masuk dan Surat Keluar).
+4. Mengelola Pembayaran Siswa
+5. Mengelola Tabungan Siswa 
+6. Mengelola Keuangan Sekolah (Pemasukan dan Pengeluaran Sekolah)
+7. Mengelola dan membuat Laporan Keuangan 
+
+
+
 ![Manajemen_Administrasi_Sekolah Login](https://user-images.githubusercontent.com/57386598/83773200-7115dd00-a6ae-11ea-9912-6e2ac4ca1758.png)
 ![Manajemen_Administrasi_Sekolah dasboard](https://user-images.githubusercontent.com/57386598/83773196-6eb38300-a6ae-11ea-805d-ed96013149b4.png)
 
