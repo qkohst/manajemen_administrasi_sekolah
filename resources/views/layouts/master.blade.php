@@ -55,7 +55,14 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="/adminLTE/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="/adminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-</head>
+
+    <!-- responsive image  -->
+    <style>
+        .img-responsive {
+            width: 100%;
+            min-height: 200px;
+        }
+    </style>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="preloader">
@@ -84,9 +91,11 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
-                <h3 class="font-weight-bold">SISTEM INFORMASI ADMINISTRASI SEKOLAH</h3>
+                <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link font-weight-bold">SISTEM INFORMASI PERPUSTAKAAN</a>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -692,27 +701,27 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-3">
-                            <h5><label for="nama">Nama </label></h5>
+                        <div class="col-md-3">
+                            <h6><label for="nama">Nama </label></h6>
                         </div>
-                        <div class="col-9">
-                            <h5><label for="nama"> : {{auth()->user()->name}}</label></h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">
-                            <h5><label for="nama">Email </label></h5>
-                        </div>
-                        <div class="col-9">
-                            <h5><label for="nama"> : {{auth()->user()->email}}</label></h5>
+                        <div class="col-md-9">
+                            <h6><label for="nama"> : {{auth()->user()->name}}</label></h6>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3">
-                            <h5><label for="nama">Level User </label></h5>
+                        <div class="col-md-3">
+                            <h6><label for="nama">Email </label></h6>
                         </div>
-                        <div class="col-9">
-                            <h5><label for="nama"> : {{auth()->user()->role}}</label></h5>
+                        <div class="col-md-9">
+                            <h6><label for="nama"> : {{auth()->user()->email}}</label></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6><label for="nama">Level User </label></h6>
+                        </div>
+                        <div class="col-md-9">
+                            <h6><label for="nama"> : {{auth()->user()->role}}</label></h6>
                         </div>
                     </div>
                 </div>

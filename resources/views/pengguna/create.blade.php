@@ -17,17 +17,17 @@
         </div>
         @endif
         <form action="{{ route('pengguna.store') }}" method="POST">
-            <h3><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Tambah Data Administrator</h3>
+            <h4><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Tambah Data Administrator</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="name">Nama</label>
                     <input name="name" type="text" class="form-control bg-light" id="name" placeholder="Nama" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="email">Email</label>
                     <input name="email" type="email" class="form-control bg-light" id="email" placeholder="Email" required oninvalid="this.setCustomValidity('Pastikan anda sudah mengisikan email dengan format yang benar !')" oninput="setCustomValidity('')">
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="password">Password</label>
                     <input name="password" type="password" class="form-control bg-light" id="password" placeholder="Password" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="role">Level</label>

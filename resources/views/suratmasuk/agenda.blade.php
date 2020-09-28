@@ -9,7 +9,7 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-envelope my-0 btn-sm-1"></i> Agenda Surat Masuk</h3>
+                <h4><i class="nav-icon fas fa-envelope my-0 btn-sm-1"></i> Agenda Surat Masuk</h4>
                 <hr>
             </div>
         </div>
@@ -48,10 +48,10 @@
                     <input name="tgl_a" type="text" class="d-none" id="tgl_a" value="{{$tgl_awal}}">
                     <input name="tgl_b" type="text" class="d-none" id="tgl_b" value="{{$tgl_akhir}}">
 
-                    <button type="submit" class="btn btn-primary btn-sm my-1 mr-sm-1 float-right"><i class="fas fa-print"></i> Cetak</button>
+                    <button type="submit" class="btn btn-primary btn-sm my-1 mr-1 float-right"><i class="fas fa-print"></i> Cetak</button>
                 </form>
 
-                <a class="btn btn-primary btn-sm my-1 mr-sm-1 float-right" href="{{route('suratmasuk.downloadexcel')}}" role="button"><i class="fas fa-file-excel"></i> Download Excel</a>
+                <a class="btn btn-primary btn-sm my-1 mr-1 float-right" href="{{route('suratmasuk.downloadexcel')}}" role="button"><i class="fas fa-file-excel"></i> Download Excel</a>
             </div>
 
             <div class="row table-responsive">

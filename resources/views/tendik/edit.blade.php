@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="content card" style="padding: 10px 10px 10px 10px ">
-    <div class="box">
         @if(session('sukses'))
         <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
             <h5><i class="fas fa-check"></i> Sukses :</h5>
@@ -36,13 +34,14 @@
             </button>
         </div>
         @endif
-
+<section class="content card" style="padding: 10px 10px 10px 10px ">
+    <div class="box">
         <form action="/tendik/{{$tendik->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-graduation-cap my-1 btn-sm-1"></i> Edit Data Tenaga Kependidikan</h3>
+            <h4><i class="nav-icon fas fa-graduation-cap my-1 btn-sm-1"></i> Edit Data Tenaga Kependidikan</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nama">Nama Lengkap</label>
                     <input name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Lengkap" value="{{$tendik->nama}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -58,7 +57,7 @@
                     <label for="alamat">Alamat Lengkap</label>
                     <textarea name="alamat" class="form-control bg-light" id="alamat" rows="2" placeholder="Alamat" value="{{$tendik->alamat}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$tendik->alamat}}</textarea>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="no_hp">Nomor HP</label>
                     <input name="no_hp" type="number" class="form-control bg-light" id="no_hp" placeholder="Nomor HP" value="{{$tendik->no_hp}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="email">Email</label>

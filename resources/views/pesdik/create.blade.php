@@ -37,11 +37,11 @@
         </div>
         @endif
         <form action="/pesdik/tambah" method="POST" enctype="multipart/form-data">
-            <h3><i class="nav-icon fas fa-child my-1 btn-sm-1"></i> Tambah Data Peserta Didik</h3>
+            <h4><i class="nav-icon fas fa-child my-1 btn-sm-1"></i> Tambah Data Peserta Didik</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nama">Nama Siswa</label>
                     <input value="{{old('nama')}}" name="nama" type="text" class="form-control" id="nama" placeholder="Nama Siswa" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -63,7 +63,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="tempat_lahir">Tempat Lahir</label>
                     <input value="{{old('tempat_lahir')}}" name="tempat_lahir" type="text" class="form-control" id="tempat_lahir" placeholder="Tempat Lahir" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="tanggal_lahir">Tanggal Lahir</label>

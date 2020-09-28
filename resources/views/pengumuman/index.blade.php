@@ -37,7 +37,7 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-bullhorn my-0 btn-sm-1"></i> Data Pengumuman</h3>
+                <h4><i class="nav-icon fas fa-bullhorn my-0 btn-sm-1"></i> Data Pengumuman</h4>
                 <hr>
             </div>
         </div>

@@ -37,11 +37,11 @@
         </div>
         @endif
         <form action="/tabungan/tarik/{{$tarik->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Edit Data Tarik Tunai</h3>
+            <h4><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Edit Data Tarik Tunai</h3>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="pesdik_id">Nama Peserta Didik</label>
                     <input value="{{$tarik->pesdik->nisn}} {{$tarik->pesdik->nama}}" name="jumlah" type="text" class="form-control bg-disabled" id="jumlah" disabled>
                     <label for="tanggal">Tanggal Penarikan</label>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="keterangan">Keterangan</label>
                     <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$tarik->keterangan}}</textarea>
                 </div>

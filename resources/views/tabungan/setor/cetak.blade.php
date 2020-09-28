@@ -143,8 +143,8 @@
           <!-- this row will not appear when printing -->
           <div class="row no-print">
             <div class="col-12">
-              <a class="btn btn-danger btn-sm my-1 mr-sm-1 float-right" href="/tabungan/setor/index" role="button"><i class="fas fa-undo"></i> KEMBALI</a>
-              <a href="/tabungan/setor/{{$setor->id}}/cetakprint" target="_blank" class="btn btn-primary btn-sm my-1 mr-sm-1 float-right"><i class="fas fa-print"></i> CETAK</a>
+              <a class="btn btn-danger btn-sm my-1 mr-1 float-right" href="/tabungan/setor/index" role="button"><i class="fas fa-undo"></i> KEMBALI</a>
+              <a href="/tabungan/setor/{{$setor->id}}/cetakprint" target="_blank" class="btn btn-primary btn-sm my-1 mr-1 float-right"><i class="fas fa-print"></i> CETAK</a>
             </div>
           </div>
         </div>

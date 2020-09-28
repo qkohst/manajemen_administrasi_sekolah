@@ -24,11 +24,11 @@
         </div>
         @endif
         <form action="/tabungan/setor/{{$setor->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-credit-card my-1 btn-sm-1"></i> Edit Data Setor Tunai</h3>
+            <h4><i class="nav-icon fas fa-credit-card my-1 btn-sm-1"></i> Edit Data Setor Tunai</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="pesdik_id">Nama Peserta Didik</label>
                     <input value="{{$setor->pesdik->nisn}} {{$setor->pesdik->nama}}" name="jumlah" type="text" class="form-control bg-disabled" id="jumlah" disabled>
                     <label for="tanggal">Tanggal Setoran</label>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="keterangan">Keterangan</label>
                     <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$setor->keterangan}}</textarea>
                 </div>

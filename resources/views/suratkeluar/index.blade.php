@@ -37,7 +37,7 @@
     <div class="box">
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-envelope-open my-1 btn-sm-1"></i> Surat Keluar</h3>
+                <h4><i class="nav-icon fas fa-envelope-open my-1 btn-sm-1"></i> Surat Keluar</h4>
                 <hr>
             </div>
         </div>

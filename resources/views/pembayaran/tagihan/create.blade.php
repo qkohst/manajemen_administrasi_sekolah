@@ -52,9 +52,11 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
-                <h3 class="font-weight-bold">SISTEM MANAJEMEN ADMINISTRASI SEKOLAH</h3>
+                <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link font-weight-bold">SISTEM INFORMASI PERPUSTAKAAN</a>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -519,7 +521,7 @@
         <div class="content-wrapper bg-light" style="padding: 15px 15px 15px 15px ">
             <section class="content card" style="padding: 10px 10px 10px 10px ">
                 <div class="box">
-                    <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Tambah Tagihan Pembayaran</h3>
+                    <h4><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Tambah Tagihan Pembayaran</h4>
                     <hr>
                     <section class="content">
                         <span id="result"></span>

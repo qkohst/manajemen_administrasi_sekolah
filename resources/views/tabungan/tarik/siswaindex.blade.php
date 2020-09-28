@@ -23,7 +23,7 @@
       </button>
     </div>
     @endif
-    <h3><i class="nav-icon fas fa-credit-card my-1 btn-sm-1"></i> Data Tarik Tunai</h3>
+    <h4><i class="nav-icon fas fa-credit-card my-1 btn-sm-1"></i> Data Tarik Tunai</h4>
     <hr>
     <section class="content">
       <div class="container-fluid">

@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="content card" style="padding: 10px 10px 10px 10px ">
-    <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Sekolah</h3>
+    <h4><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Sekolah</h4>
     <hr>
     @if(session('sukses'))
     <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">

@@ -28,11 +28,11 @@
         </div>
         @endif
         <form action="/tapel/{{$tapel->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-calendar-alt my-1 btn-sm-1"></i> Edit Data Tahun Pelajaran</h3>
+            <h4><i class="nav-icon fas fa-calendar-alt my-1 btn-sm-1"></i> Edit Data Tahun Pelajaran</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md">
                     <label for="tahun">Tahun Pelajaran</label>
                     <input name="tahun" type="text" class="form-control bg-light" id="tahun" placeholder="Contoh : (2019/2020)" value="{{$tapel->tahun}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="semester">Semester</label>

@@ -18,7 +18,7 @@ class CreateSuratkeluarTable extends Migration
             $table->integer('klasifikasi_id')->unsigned();
             $table->integer('users_id')->unsigned();
             $table->string('no_surat', 30)->unique();
-            $table->string('tujuan_surat', 30);
+            $table->string('tujuan_surat', 50);
             $table->string('isi');
             $table->date('tgl_surat');
             $table->date('tgl_catat');

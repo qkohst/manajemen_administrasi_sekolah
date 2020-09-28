@@ -3,11 +3,11 @@
 @section('content')
 <section class="content card" style="padding: 10px 10px 10px 10px ">
   <div class="box">
-    <h3><i class="nav-icon far fa-handshake nav-icon my-1 btn-sm-1"></i> Rekap Pembayaran Siswa</h3>
+    <h4><i class="nav-icon far fa-handshake nav-icon my-1 btn-sm-1"></i> Rekap Pembayaran Siswa</h4>
     <hr>
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row table-responsive">
           <div class="col-md-12">
             <table class="table table-hover table-head-fixed bg-white" id='tabelAgendaMasuk'>
               <thead>

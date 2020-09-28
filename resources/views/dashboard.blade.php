@@ -86,7 +86,7 @@
         <div class="card-body">
           <!-- Small boxes (Stat box) -->
           <div class="filter-container p-0 row d-flex justify-content-center">
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-md-6">
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
@@ -99,7 +99,7 @@
                 <p class="small-box-footer">Jumlah Guru</p>
               </div>
             </div>
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-md-6">
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
@@ -113,7 +113,7 @@
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-md-6">
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
@@ -126,7 +126,7 @@
                 <p class="small-box-footer">Jumlah Peserta Didik</p>
               </div>
             </div>
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-md-6">
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">

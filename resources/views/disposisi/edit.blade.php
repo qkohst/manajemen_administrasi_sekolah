@@ -37,12 +37,12 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         <form action="{{ route('disposisi.update', [$smasuk, $disp->id]) }}" method="get">
-            <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Edit Disposisi</h3>
+            <h4><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Edit Disposisi</h4>
             <hr />
             {{csrf_field()}}
             @method('put')
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="tujuan">Tujuan</label>
                     <input name="tujuan" type="text" class="form-control bg-light" placeholder="Tujuan" value="{{ $disp->tujuan }}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="isi">Isi</label>
@@ -50,7 +50,7 @@
                     <label for="sifat">Sifat</label>
                     <input name="sifat" type="text" class="form-control bg-light" placeholder="Sifat" value="{{ $disp->sifat }}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="batas_waktu">Batas Waktu</label>
                     <input name="batas_waktu" type="date" class="form-control bg-light" value="{{ $disp->batas_waktu }}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="catatan">Catatan</label>

@@ -24,7 +24,7 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-user-graduate my-0 btn-sm-1"></i> Data Alumni</h3>
+                <h4><i class="nav-icon fas fa-user-graduate my-0 btn-sm-1"></i> Data Alumni</h4>
                 <hr>
             </div>
         </div>

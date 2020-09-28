@@ -37,11 +37,11 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         <form action="/suratmasuk/tambah" method="POST" enctype="multipart/form-data">
-            <h3><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Tambah Data Surat Masuk</h3>
+            <h4><i class="nav-icon fas fa-envelope-open-text my-1 btn-sm-1"></i> Tambah Data Surat Masuk</h4>
             <hr />
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nomorsurat">Nomor Surat</label>
                     <input value="{{old('no_surat')}}" name="no_surat" type="text" class="form-control bg-light" id="nomorsurat" placeholder="Nomor Surat" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="asalsurat">Asal Surat</label>
@@ -57,7 +57,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="tglsurat">Tanggal Surat</label>
                     <input value="{{old('tgl_surat')}}" name="tgl_surat" type="date" class="form-control bg-light" id="tglsurat" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="tglditerima">Tanggal Diterima</label>

@@ -24,7 +24,7 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-child my-0 btn-sm-1"></i> Data Peserta Didik Keluar</h3>
+                <h4><i class="nav-icon fas fa-child my-0 btn-sm-1"></i> Data Peserta Didik Keluar</h4>
                 <hr>
             </div>
         </div>

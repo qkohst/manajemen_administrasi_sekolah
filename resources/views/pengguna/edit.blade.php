@@ -17,18 +17,18 @@
         </div>
         @endif
         <form action="{{ route('pengguna.update', $data_pengguna->id) }}" method="POST">
-            <h3><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Edit Data Pengguna</h3>
+            <h4><i class="nav-icon fas fa-user my-1 btn-sm-1"></i> Edit Data Pengguna</h4>
             <hr>
             {{csrf_field()}}
             @method('put')
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="name">Nama</label>
                     <input name="name" type="text" class="form-control bg-light" id="name" placeholder="Nama" value="{{$data_pengguna->name}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="email">Email</label>
                     <input name="email" type="email" class="form-control" id="email" placeholder="Email" value="{{$data_pengguna->email}}" disabled>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="password">Password</label>
                     <input name="password" type="password" class="form-control bg-light" id="password" placeholder="Password" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="role">Level</label>

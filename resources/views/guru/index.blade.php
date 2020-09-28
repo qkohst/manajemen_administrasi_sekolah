@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<section class="content card" style="padding: 10px 10px 20px 20px  ">
-    <div class="box">
-        @if(session('sukses'))
+    @if(session('sukses'))
         <div class="callout callout-success alert alert-success alert-dismissible fade show" role="alert">
             <h5><i class="fas fa-check"></i> Sukses :</h5>
             {{session('sukses')}}
@@ -35,9 +33,11 @@
             </button>
         </div>
         @endif
+<section class="content card" style="padding: 10px 10px 20px 20px  ">
+    <div class="box">
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-graduation-cap my-0 btn-sm-1"></i> Data Guru</h3>
+                <h4><i class="nav-icon fas fa-graduation-cap my-0 btn-sm-1"></i> Data Guru</h4>
                 <hr>
             </div>
         </div>

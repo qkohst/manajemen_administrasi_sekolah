@@ -37,11 +37,11 @@
         </div>
         @endif
         <form action="/rombel/{{$rombel->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-users my-1 btn-sm-1"></i> Edit Data Rombongan Belajar</h3>
+            <h4><i class="nav-icon fas fa-users my-1 btn-sm-1"></i> Edit Data Rombongan Belajar</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="kelas">Kelas</label>
                     <select name="kelas" id="kelas" class="form-control bg-light" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                         <option value="7" @if ($rombel->kelas == '7') selected @endif>7</option>
@@ -51,7 +51,7 @@
                     <label for="nama_rombel">Nama Rombel</label>
                     <input name="nama_rombel" type="text" class="form-control bg-light" id="nama_rombel" placeholder="Nama Rombel" value="{{$rombel->nama_rombel}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="guru_id">Wali Kelas</label>
                     <select name="guru_id" class="form-control bg-light" id="guru_id" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                         <option value="{{$rombel->guru_id}}">{{$rombel->guru->nama}}</option>

@@ -37,17 +37,17 @@
         </div>
         @endif
         <form action="{{ route('instansi.store') }}" method="POST" enctype="multipart/form-data">
-            <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Sekolah</h3>
+            <h4><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Profil Sekolah</h4>
             <hr>
             {{ csrf_field() }}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nama">Nama Instansi</label>
                     <input name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Instansi" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="alamat">Alamat</label>
                     <textarea name="alamat" class="form-control bg-light" id="alamat" rows="3" placeholder="Alamat" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')"></textarea>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="pimpinan">Nama Pimpinan</label>
                     <input name="pimpinan" type="text" class="form-control bg-light" id="pimpinan" placeholder="Nama Pimpinan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="email">Email Instansi</label>

@@ -37,17 +37,17 @@
         </div>
         @endif
         <form action="/pengumuman/{{$pengumuman->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-bullhorn my-1 btn-sm-1"></i> Edit Data Pengumuman</h3>
+            <h4><i class="nav-icon fas fa-bullhorn my-1 btn-sm-1"></i> Edit Data Pengumuman</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label for="judul">Judul Ppengumuman</label>
                     <input name="judul" type="text" class="form-control bg-light" id="judul" placeholder="Judul Pengumuman" value="{{$pengumuman->judul}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12">
                     <label for="isi_pengumuman">Isi Pengumuman</label>
                     <textarea name="isi_pengumuman" class="form-control bg-light" id="isi_pengumuman" rows="7" placeholder="Isi Pengumuman" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$pengumuman->isi}}</textarea>
                 </div>

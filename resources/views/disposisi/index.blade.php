@@ -37,7 +37,7 @@
     <div class="box">
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Disposisi</h3>
+                <h4><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Disposisi</h3>
                 <hr />
             </div>
         </div>

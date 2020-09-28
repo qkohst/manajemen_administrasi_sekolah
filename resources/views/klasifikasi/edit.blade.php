@@ -37,17 +37,17 @@
         </div>
         @endif
         <form action="/klasifikasi/{{$klasifikasi->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-layer-group my-1 btn-sm-1"></i> Edit Klasifikasi</h3>
+            <h4><i class="nav-icon fas fa-layer-group my-1 btn-sm-1"></i> Edit Klasifikasi</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nama">Nama</label>
                     <input name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Klasifikasi" value="{{$klasifikasi->nama}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="kode">Kode</label>
                     <input name="kode" type="text" class="form-control bg-light" id="kode" placeholder="Kode Klasifikasi" value="{{$klasifikasi->kode}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="uraian">Uraian</label>
                     <textarea name="uraian" class="form-control bg-light" id="uraian" rows="3" placeholder="Uraian Klasifikasi" value="{{$klasifikasi->uraian}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$klasifikasi->uraian}}</textarea>
                 </div>

@@ -36,7 +36,7 @@
 @endif
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
-        <h3><i class="nav-icon fas fa-money-check-alt my-1 btn-sm-1"></i> Rincian Tagihan Pembayaran</h3>
+        <h4><i class="nav-icon fas fa-money-check-alt my-1 btn-sm-1"></i> Rincian Tagihan Pembayaran</h4>
         <hr>
         <section class="content">
             <div class="container-fluid">

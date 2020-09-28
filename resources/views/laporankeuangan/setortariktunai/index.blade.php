@@ -9,7 +9,7 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-credit-card my-1 btn-sm-1"></i> Laporan Setor & Tarik Tunai</h3>
+                <h4><i class="nav-icon fas fa-credit-card my-1 btn-sm-1"></i> Laporan Setor & Tarik Tunai</h4>
                 <hr>
             </div>
         </div>

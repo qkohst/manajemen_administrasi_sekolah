@@ -37,11 +37,11 @@
         </div>
         @endif
         <form action="/pembayaran/tagihan/{{$tagihan->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-money-check-alt my-1 btn-sm-1"></i> Edit Tagihan Pembayaran</h3>
+            <h4><i class="nav-icon fas fa-money-check-alt my-1 btn-sm-1"></i> Edit Tagihan Pembayaran</h3>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="rombel_id">Rombongan Belajar</label>
                     <input value="{{$tagihan->rombel->nama_rombel}} {{$tagihan->rombel->tapel->tahun}} {{$tagihan->rombel->tapel->semester}}" name="rombel_id" type="text" class="form-control bg-disabled" id="jumlah" disabled>
                     <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -53,7 +53,7 @@
                     <label for="rincian">Rincian</label>
                     <textarea name="rincian" class="form-control bg-light" id="rincian" rows="2" placeholder="rincian" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$tagihan->rincian}}</textarea>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nominal">Nominal</label>
                     <div class="input-group">
                         <div class="input-group-prepend">

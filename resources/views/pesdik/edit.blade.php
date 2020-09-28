@@ -37,11 +37,11 @@
         </div>
         @endif
         <form action="/pesdik/{{$pesdik->id}}/update" method="POST" enctype="multipart/form-data">
-            <h3><i class="nav-icon fas fa-child my-1 btn-sm-1"></i> Edit Data Peserta Didik</h3>
+            <h4><i class="nav-icon fas fa-child my-1 btn-sm-1"></i> Edit Data Peserta Didik</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nama">Nama Siswa</label>
                     <input value="{{$pesdik->nama}}" name="nama" type="text" class="form-control" id="nama" placeholder="Nama Siswa" disabled>
                     <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -54,7 +54,7 @@
                     <label for="induk">Induk</label>
                     <input value="{{$pesdik->induk}}" name="induk" type="number" class="form-control" id="induk" placeholder="Induk" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="tempat_lahir">Tempat Lahir</label>
                     <input value="{{$pesdik->tempat_lahir}}" name="tempat_lahir" type="text" class="form-control" id="tempat_lahir" placeholder="Tempat Lahir" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="tanggal_lahir">Tanggal Lahir</label>

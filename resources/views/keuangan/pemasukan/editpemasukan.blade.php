@@ -37,11 +37,11 @@
         </div>
         @endif
         <form action="/keuangan/pemasukan/{{$pemasukan->id}}/update" method="POST">
-            <h3><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Edit Data Pemasukan</h3>
+            <h4><i class="nav-icon fas fa-money-bill-alt my-1 btn-sm-1"></i> Edit Data Pemasukan</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="kategori_id">Nama Kategori</label>
                     <select name="kategori_id" class="form-control bg-light" id="kategori_id" required oninvalid="this.setCustomValidity('Belum ada data yang dipilih !')" oninput="setCustomValidity('')">
                         <option value="{{$pemasukan->kategori_id}}">{{$pemasukan->kategori->nama_kategori}}</option>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="keterangan">Keterangan</label>
                     <textarea name="keterangan" class="form-control bg-light" id="keterangan" rows="3" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$pemasukan->keterangan}}</textarea>
                 </div>

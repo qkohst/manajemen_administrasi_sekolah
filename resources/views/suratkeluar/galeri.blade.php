@@ -9,7 +9,7 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-images my-1 btn-sm-1"></i> Galeri Surat Keluar</h3>
+                <h4><i class="nav-icon fas fa-images my-1 btn-sm-1"></i> Galeri Surat Keluar</h4>
                 <hr />
             </div>
         </div>
@@ -20,7 +20,7 @@
                         <?php $no = 0; ?>
                         @foreach($data_suratkeluar as $suratkeluar)
                         <?php $no++; ?>
-                        <div class="col-lg-2 col-6">
+                        <div class="col-lg-2 col-md-6">
                             <!-- small box -->
                             <div class="small-box">
                                 <div class="inner">

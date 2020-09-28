@@ -37,18 +37,18 @@
         </div>
         @endif
         <form action="{{ route('instansi.update', $instansi->id) }}" method="POST" enctype="multipart/form-data">
-            <h3><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Edit Profil Sekolah</h3>
+            <h4><i class="nav-icon fas fa-warehouse my-1 btn-sm-1"></i> Edit Profil Sekolah</h4>
             <hr>
             {{ csrf_field() }}
             @method('put')
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nama">Nama Sekolah</label>
                     <input name="nama" type="text" class="form-control bg-light" id="nama" placeholder="Nama Instansi" value="{{$instansi->nama}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="alamat">Alamat</label>
                     <textarea name="alamat" class="form-control bg-light" id="alamat" rows="3" placeholder="Alamat" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">{{$instansi->alamat}}</textarea>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="pimpinan">Nama Pimpinan</label>
                     <input name="pimpinan" type="text" class="form-control bg-light" id="pimpinan" placeholder="Nama Pimpinan" value="{{$instansi->pimpinan}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="email">Email Instansi</label>

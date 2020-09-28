@@ -37,11 +37,11 @@
 <section class="content card" style="padding: 10px 10px 10px 10px ">
     <div class="box">
         <form action="/suratkeluar/{{$suratkeluar->id}}/update" method="POST" enctype="multipart/form-data">
-            <h3><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Edit Surat Keluar</h3>
+            <h4><i class="nav-icon fas fa-envelope my-1 btn-sm-1"></i> Edit Surat Keluar</h4>
             <hr>
             {{csrf_field()}}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="nomorsurat">Nomor Surat</label>
                     <input name="no_surat" type="text" class="form-control bg-light" id="nomorsurat" placeholder="Nomor Surat" value="{{$suratkeluar->no_surat}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="asalsurat">Tujuan Surat</label>
@@ -53,7 +53,7 @@
                         <option value="{{$suratkeluar->klasifikasi_id}}">{{$suratkeluar->klasifikasi->nama}} ({{$suratkeluar->klasifikasi->kode}})</option>
                     </select>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="tglsurat">Tanggal Surat</label>
                     <input name="tgl_surat" type="date" class="form-control bg-light" id="tglsurat" value="{{$suratkeluar->tgl_surat}}" required oninvalid="this.setCustomValidity('Isian ini tidak boleh kosong !')" oninput="setCustomValidity('')">
                     <label for="tglditerima">Tanggal Catat</label>

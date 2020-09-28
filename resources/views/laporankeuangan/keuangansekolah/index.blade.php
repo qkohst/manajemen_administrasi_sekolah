@@ -9,7 +9,7 @@
         @endif
         <div class="row">
             <div class="col">
-                <h3><i class="nav-icon fas fa-dollar-sign my-1 btn-sm-1"></i> Laporan Keuangan Sekolah</h3>
+                <h4><i class="nav-icon fas fa-dollar-sign my-1 btn-sm-1"></i> Laporan Keuangan Sekolah</h4>
                 <hr>
             </div>
         </div>

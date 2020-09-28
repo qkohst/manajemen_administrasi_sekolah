@@ -36,7 +36,7 @@
             </button>
         </div>
         @endif
-        <h3><i class="nav-icon fas fa-child my-1 btn-sm-1"></i> Registrasi Peserta Didik</h3>
+        <h4><i class="nav-icon fas fa-child my-1 btn-sm-1"></i> Registrasi Peserta Didik</h4>
         <hr>
         <section class="content">
             <div class="container-fluid">
