@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-# Indonesia Peduli 
+# School Administration Information System
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -105,7 +105,7 @@ To run the application on your computer, please follow the following command :
 ## Credential in Seeder
 
 Administrator
-> Username : kukohsantoso013@gmail.com
+> Username : admin123@gmail.com
 > Password : 123456
 > 
 <p align="right">(<a href="#top">back to top</a>)</p>
