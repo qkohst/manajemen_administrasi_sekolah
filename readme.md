@@ -1,15 +1,118 @@
-Sistem ini dibangun dengan framework laravel dan basis data MySQL dengan menggunakan template dari admin LTE. yang mana merupakan hasil pengembangan dari sistem sebelumnya yaitu Sistem Manajemen Surat yang dapat diakses pada https://github.com/qkohst/surat_management
+<div id="top"></div>
 
-Adapun fitur dari sistem ini secara global antara lain : 
-1. Multi user (Admin, Petugas, Siswa) 
-2. Mengelola Data Master (Identitas Sekolah, Guru, Siswa, Rombongan Belajar, dll).
-3. Mengelola Manajemen Surat (Surat Masuk dan Surat Keluar).
-4. Mengelola Pembayaran Siswa
-5. Mengelola Tabungan Siswa 
-6. Mengelola Keuangan Sekolah (Pemasukan dan Pengeluaran Sekolah)
-7. Mengelola dan membuat Laporan Keuangan 
+# Indonesia Peduli 
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about">About The Project</a>
+         <ul>
+        <li><a href="#features">Features</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#installation">Installation</a>
+    </li> 
+    <li>
+      <a href="#credential">Credential</a>
+    </li> 
+    <li>
+      <a href="#screenshoot">Screenshoot</a>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
 
+<p id="about">
+This system is built with the laravel framework and MySQL database using a template from the LTE admin. which is the result of the development of the previous system, namely the Mail Management System which can be accessed at https://github.com/qkohst/surat_management
+</p>
+
+<h4 id="features">
+    The features of this system globally include:
+</h4>
+<ul>
+    <li>
+       Multi user (Admin, Officer, Student).
+    </li>
+    <li>
+        Manage Master Data (School Identity, Teacher, Student, Study Group, etc).
+    </li>
+    <li>
+        Manage Mail Management (Incoming and Outgoing Mail).
+    </li>
+    <li>
+        Managing Student Payments.
+    </li>
+    <li>
+        Managing Student Savings.
+    </li>
+    <li>
+        Managing School Finances (School Income and Expenditures).
+     </li>
+    <li>
+        Manage and create Financial Reports.
+    </li>
+</ul>
+
+## Installation 
+To run the application on your computer, please follow the following command : 
+
+1. Clone the repo
+   ```sh
+   $ git clone https://github.com/qkohst/manajemen_administrasi_sekolah.git
+   ```
+2. Change directory in project which already clone
+   ```sh
+   $ cd manajemen_administrasi_sekolah
+   ```
+3. Install Composer packages
+   ```sh
+   $ composer install
+   ```
+4. Create database on your computer
+5. Create a copy of your .env file 
+   ```sh
+   $ cp .env.example .env
+   ```
+6. In the .env file, add database information to allow Laravel to connect to the database
+   ```sh
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE={database-name}
+   DB_USERNAME={username-database}
+   DB_PASSWORD={password-database}
+   ```
+7. Generate an app encryption key
+   ```sh
+   $ php artisan key:generate
+   ```
+8. Seed the database
+      ```sh
+      $ php artisan db:seed
+      ```
+9. Running project
+    ```sh
+    $ php artisan serve
+    ```
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="credential"></div>
+
+## Credential in Seeder
+
+Administrator
+> Username : kukohsantoso013@gmail.com
+> Password : 123456
+> 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="screenshoot"></div>
+
+## Screenshoot 
 
 ![1](https://user-images.githubusercontent.com/57386598/94006552-32757100-fdca-11ea-815c-16fc1691f959.png)
 ![2](https://user-images.githubusercontent.com/57386598/94006561-36a18e80-fdca-11ea-9e52-8137c047302d.png)
@@ -17,6 +120,8 @@ Adapun fitur dari sistem ini secara global antara lain :
 ![4](https://user-images.githubusercontent.com/57386598/94006579-3d300600-fdca-11ea-8bbe-ca3eedee24eb.png)
 ![5](https://user-images.githubusercontent.com/57386598/94006592-40c38d00-fdca-11ea-98ed-5648c5a92650.png)
 ![6](https://user-images.githubusercontent.com/57386598/94006600-44571400-fdca-11ea-8aff-2a99600dc81d.png)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
