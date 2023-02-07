@@ -27,7 +27,7 @@ class TransaksiPembayaranController extends Controller
         //Mencari Data Tagihan Per Siswa
         $pesdik_pilih = \App\Anggotarombel::select('rombel_id')->where('pesdik_id', $cari)->get();
         $pesdik_jk = \App\Pesdik::select('jenis_kelamin')->where('id', $cari)->first();
-        $pilih_jk =  \App\Tagihan::whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
+        $pilih_jk =  \App\Tagihan::select('jenis_kelamin')->whereIn('jenis_kelamin', $pesdik_jk)->orWhere('jenis_kelamin', 'Semua')->get();
 
         $id_tagihan_terbayar = \App\TransaksiPembayaran::select('tagihan_id')->where('pesdik_id', $cari)->get();
         $tagihan_siswa = \App\Tagihan::whereIn('rombel_id', $pesdik_pilih)->whereNotIn('id', $id_tagihan_terbayar)
@@ -41,6 +41,7 @@ class TransaksiPembayaranController extends Controller
             ->WhereIn('jenis_kelamin', $pilih_jk)->sum('nominal');
         $jumlah_terbayar =  \App\TransaksiPembayaran::where('pesdik_id', $cari)
             ->sum('jumlah_bayar');
+
         // dd($tagihan_siswa);
 
         return view('/pembayaran/transaksipembayaran/cari_pesdik', compact('data_pesdik', 'identitas_pendik', 'tagihan_siswa', 'tagihan_terbayar', 'jumlah_tagihan', 'jumlah_terbayar'));
@@ -89,8 +90,8 @@ class TransaksiPembayaranController extends Controller
 
         //memasukkan data pembayaran siswa ke pemasukan sekolah
         $jumlah_transaksi = \App\TransaksiPembayaran::whereIn('tagihan_id', $tagihan_id)->where('pesdik_id', $pesdik_id)->sum('jumlah_bayar');
-        $siswa=\App\Pesdik::select('nama')->where('id',$pesdik_id)->first();
-        $nama_siswa=$siswa->nama;
+        $siswa = \App\Pesdik::select('nama')->where('id', $pesdik_id)->first();
+        $nama_siswa = $siswa->nama;
         $pemasukan = new Pemasukan();
         $pemasukan->kategori_id      = '1';
         $pemasukan->jumlah           = $jumlah_transaksi;
